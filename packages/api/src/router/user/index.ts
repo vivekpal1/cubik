@@ -5,6 +5,7 @@ import {
   dripProof,
   findOneWithProjectAndRoundDetails,
 } from './protected';
+import { update } from './protected/update';
 import { checkEmail, checkUsername, create, findOne, search } from './public';
 
 export const userRouter = createTRPCRouter({
@@ -17,4 +18,5 @@ export const userRouter = createTRPCRouter({
   dripProof: dripProof,
   addProof: addProof,
   checkProof: checkProof,
+  update: update,
 });

@@ -78,6 +78,16 @@ const NavbarCTA = () => {
   }
   if (error) return <ComponentErrors />;
 
+    if (persist) {
+      return (
+        <HStack gap={{ base: '2px', md: '16px' }}>
+          {/* <MemoizedIconButtonBadge /> */}
+          <UserNavMenu />
+        </HStack>
+      );
+    }
+
+
   if (connecting && !publicKey) {
     return (
       <Skeleton

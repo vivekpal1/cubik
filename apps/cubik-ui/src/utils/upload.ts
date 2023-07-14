@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { env } from '~/env.mjs';
 
-export async function uploadToCloudinary(image: any) {
+export async function uploadToCloudinary(image: any): Promise<string> {
   const formData = new FormData();
 
   formData.append('file', image);

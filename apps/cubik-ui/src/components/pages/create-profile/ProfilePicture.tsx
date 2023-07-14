@@ -6,11 +6,13 @@ const ProfilePicture = ({
   onClose,
   isOpen,
   pfp,
+  showArrow = true,
 }: {
   onOpen: () => void;
   onClose: () => void;
   isOpen: boolean;
   pfp: string;
+  showArrow?: boolean;
 }) => {
   return (
     <Center
@@ -26,18 +28,20 @@ const ProfilePicture = ({
         }
       }}
     >
-      <Center
-        cursor={'pointer'}
-        position={'absolute'}
-        bottom="-4px"
-        right="-4px"
-        rounded="full"
-        bg="white"
-        p="0.1rem"
-        zIndex={'10'}
-      >
-        <BiUpArrowAlt color="black" />
-      </Center>
+      {showArrow && (
+        <Center
+          cursor={'pointer'}
+          position={'absolute'}
+          bottom="-4px"
+          right="-4px"
+          rounded="full"
+          bg="white"
+          p="0.1rem"
+          zIndex={'10'}
+        >
+          <BiUpArrowAlt color="black" />
+        </Center>
+      )}
       <ChakraAvatar src={pfp} width="84px" height="84px" borderRadius={'8px'} />
     </Center>
   );

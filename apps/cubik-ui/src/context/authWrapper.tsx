@@ -2,6 +2,7 @@ import { useDisclosure } from '@chakra-ui/react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import jwt from 'jsonwebtoken';
 import { useEffect } from 'react';
+import { MultiWalletModel } from '~/components/app/MultiWalletModel';
 import WalletVerifyModal from '~/components/app/WalletVerifyWalletModal';
 import { useAuthStore } from '~/store/authStore';
 import { verifyMessage } from '~/utils/getsignMessage';
@@ -18,12 +19,18 @@ interface Props {
 export const AuthWrapper: React.FC<Props> = ({ children }) => {
   const { publicKey, connected } = useWallet();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: multiWalletisOpen,
+    onOpen: multiWalletOpen,
+    onClose: multiWalletClose,
+  } = useDisclosure();
   const { persist } = useAuthStore();
 
   const checkAndVerifySignature = async () => {
     if (!publicKey || !connected) {
       return;
     }
+    console.log(persist, 'persist');
     // presist will be true if the user wants to persist the session and disconnect the wallet
     if (!persist) {
       // check the jwt for expire or wallet address
@@ -53,15 +60,18 @@ export const AuthWrapper: React.FC<Props> = ({ children }) => {
           onOpen();
         }
       }
+    } else {
+      multiWalletOpen();
     }
   };
   useEffect(() => {
     checkAndVerifySignature();
-  }, [publicKey]);
+  }, [publicKey, persist]);
 
   return (
     <>
       {children}
+      <MultiWalletModel isOpen={multiWalletisOpen} onClose={multiWalletClose} />
       <WalletVerifyModal isOpen={isOpen} onClose={onClose} />
     </>
   );
