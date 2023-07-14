@@ -3,10 +3,11 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useUserStore } from '~/store/userStore';
 import ComponentErrors from '../errors/ComponentErrors';
 import UserNavMenu from './navbar-menu/UserNavMenu';
+import { useAuthStore } from '~/store/authStore';
 
 export interface UserContextProps {
   isOpen: boolean;
@@ -15,18 +16,22 @@ export interface UserContextProps {
   status: string;
 }
 
+export type AuthStateNavbar =
+  | 'wallet-connet'
+  | 'dontShow'
+  | 'userIsReady'
+  | 'loadingUser'
+  | 'error'
+  | 'skeleton';
+
 const NavbarCTA = () => {
-  const [currentPath, setCurrentPath] = useState('');
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setUser, user } = useUserStore();
   const { publicKey, disconnect, connected, disconnecting, connecting } =
     useWallet();
   const router = useRouter();
-
-  useEffect(() => {
-    setCurrentPath(router.pathname);
-  }, [router.pathname]);
+  const { persist } = useAuthStore();
 
   useEffect(() => {
     const fetch = async () => {
@@ -67,13 +72,32 @@ const NavbarCTA = () => {
     fetch();
   }, [connected, publicKey]);
 
-  // If on create-profile page, don't show anything
-  if (currentPath === '/create-profile') {
-    return null;
-  }
-  if (error) return <ComponentErrors />;
+  const authHandler = useMemo((): AuthStateNavbar => {
+    if (router.isReady && router.pathname === '/create-profile') {
+      return 'dontShow';
+    }
+    if (error) {
+      return 'error';
+    }
+    if (connecting && !publicKey) {
+      return 'skeleton';
+    }
+    if (connected && publicKey && user) {
+      return 'userIsReady';
+    }
+    if (publicKey && !isLoading && !user) {
+      return 'loadingUser';
+    }
+    return 'wallet-connet';
+  }, [error, router.pathname, connecting, publicKey]);
 
-  if (connecting && !publicKey) {
+  // If on create-profile page, don't show anything
+  if (authHandler === 'dontShow') {
+    return <></>;
+  }
+  if (authHandler === 'error') return <ComponentErrors />;
+
+  if (authHandler === 'skeleton') {
     return (
       <Skeleton
         isLoaded
@@ -84,7 +108,7 @@ const NavbarCTA = () => {
     );
   }
 
-  if (connected && publicKey && user) {
+  if (authHandler === 'userIsReady') {
     return (
       <HStack gap={{ base: '2px', md: '16px' }}>
         {/* <MemoizedIconButtonBadge /> */}
@@ -93,20 +117,22 @@ const NavbarCTA = () => {
     );
   }
 
-  // Default case
-  return publicKey && !isLoading && !user ? (
-    <Center
-      as="button"
-      onClick={() => {
-        disconnect();
-        setUser(null);
-        localStorage.removeItem('anon_sig');
-        localStorage.removeItem('wallet_auth');
-      }}
-    >
-      <Spinner size="sm" color="teal" />
-    </Center>
-  ) : (
+  if (authHandler === 'loadingUser') {
+    return (
+      <Center
+        as="button"
+        onClick={() => {
+          disconnect();
+          setUser(null);
+          localStorage.removeItem('anon_sig');
+          localStorage.removeItem('wallet_auth');
+        }}
+      >
+        <Spinner size="sm" color="teal" />
+      </Center>
+    );
+  }
+  return (
     <Center>
       <WalletMultiButton>Connect Wallet</WalletMultiButton>
     </Center>

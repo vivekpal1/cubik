@@ -2,7 +2,7 @@
   "private": false,
   "scripts": {
     "build": "dotenv -- turbo run build",
-    "dev": "dotenv -- turbo run dev",
+    "dev": "dotenv -- turbo dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "generate": "dotenv -- turbo run db:generate",

@@ -24,6 +24,7 @@ import WalletBalance from './WalletBalance';
 const UserNavMenu = () => {
   const { disconnect } = useWallet();
   const { setUser } = useUserStore();
+  const { setPersist } = useAuthStore();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { user } = useUserStore();
@@ -77,6 +78,48 @@ const UserNavMenu = () => {
             <Box as="p" textStyle={{ base: 'body5', md: 'body4' }}>
               Profile
             </Box>
+          </Button>
+        </Skeleton>
+        <Skeleton
+          w="full"
+          opacity={!user?.username ? 0.3 : 1}
+          fadeDuration={2.5}
+          isLoaded={!!user?.username}
+        >
+          <Button
+            bg="transparent"
+            rounded="md"
+            w="full"
+            textStyle={'body4'}
+            color="white"
+            display={'flex'}
+            alignItems="center"
+            justifyContent={'start'}
+            leftIcon={
+              <Box
+                as={MdUpload}
+                boxSize={{ base: '16px', sm: '18px', md: '20px' }}
+                color={'#ADB8B6'}
+              />
+            }
+            iconSpacing="8px"
+            p={{ base: '12px', md: '8px' }}
+            sx={{
+              width: '-webkit-fill-available',
+            }}
+            _hover={{
+              backgroundColor: '#141414',
+            }}
+            _active={{
+              backgroundColor: '#141414',
+            }}
+            onClick={() => {
+              setPersist(true);
+            }}
+            // as={Link}
+            // href={'/submit-project'}
+          >
+            <Box textStyle={{ base: 'body5', md: 'body4' }}>persist</Box>
           </Button>
         </Skeleton>
         <Skeleton

@@ -3,6 +3,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import jwt from 'jsonwebtoken';
 import { useEffect } from 'react';
 import WalletVerifyModal from '~/components/app/WalletVerifyWalletModal';
+import { useAuthStore } from '~/store/authStore';
 import { verifyMessage } from '~/utils/getsignMessage';
 
 interface SignatureData {
@@ -17,37 +18,40 @@ interface Props {
 export const AuthWrapper: React.FC<Props> = ({ children }) => {
   const { publicKey, connected } = useWallet();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { persist } = useAuthStore();
 
   const checkAndVerifySignature = async () => {
     if (!publicKey || !connected) {
       return;
     }
+    // presist will be true if the user wants to persist the session and disconnect the wallet
+    if (!persist) {
+      // check the jwt for expire or wallet address
+      if (localStorage.getItem('wallet_auth')) {
+        const walletAuth = localStorage.getItem('wallet_auth') as string;
 
-    // check the jwt for expire or wallet address
-    if (localStorage.getItem('wallet_auth')) {
-      const walletAuth = localStorage.getItem('wallet_auth') as string;
-
-      const payload = jwt.decode(walletAuth) as jwt.JwtPayload;
-      if (
-        payload.wallet !== publicKey.toBase58() ||
-        payload.exp! * 1000 < Date.now()
-      ) {
-        onOpen();
-        return;
+        const payload = jwt.decode(walletAuth) as jwt.JwtPayload;
+        if (
+          payload.wallet !== publicKey.toBase58() ||
+          payload.exp! * 1000 < Date.now()
+        ) {
+          onOpen();
+          return;
+        }
+        return null;
       }
-      return null;
-    }
 
-    if (!localStorage.getItem('anon_sig')) {
-      onOpen();
-    }
-    if (localStorage.getItem('anon_sig')) {
-      const sigCheck = await verifyMessage(
-        localStorage.getItem('anon_sig') as string,
-        publicKey
-      );
-      if (!sigCheck) {
+      if (!localStorage.getItem('anon_sig')) {
         onOpen();
+      }
+      if (localStorage.getItem('anon_sig')) {
+        const sigCheck = await verifyMessage(
+          localStorage.getItem('anon_sig') as string,
+          publicKey
+        );
+        if (!sigCheck) {
+          onOpen();
+        }
       }
     }
   };
