@@ -72,32 +72,13 @@ const NavbarCTA = () => {
     fetch();
   }, [connected, publicKey]);
 
-  const authHandler = useMemo((): AuthStateNavbar => {
-    if (router.isReady && router.pathname === '/create-profile') {
-      return 'dontShow';
-    }
-    if (error) {
-      return 'error';
-    }
-    if (connecting && !publicKey) {
-      return 'skeleton';
-    }
-    if (connected && publicKey && user) {
-      return 'userIsReady';
-    }
-    if (publicKey && !isLoading && !user) {
-      return 'loadingUser';
-    }
-    return 'wallet-connet';
-  }, [error, router.pathname, connecting, publicKey]);
-
   // If on create-profile page, don't show anything
-  if (authHandler === 'dontShow') {
+  if (router.isReady && router.pathname === '/create-profile') {
     return <></>;
   }
-  if (authHandler === 'error') return <ComponentErrors />;
+  if (error) return <ComponentErrors />;
 
-  if (authHandler === 'skeleton') {
+  if (connecting && !publicKey) {
     return (
       <Skeleton
         isLoaded
@@ -108,7 +89,7 @@ const NavbarCTA = () => {
     );
   }
 
-  if (authHandler === 'userIsReady') {
+  if (connected && publicKey && user) {
     return (
       <HStack gap={{ base: '2px', md: '16px' }}>
         {/* <MemoizedIconButtonBadge /> */}
@@ -117,7 +98,7 @@ const NavbarCTA = () => {
     );
   }
 
-  if (authHandler === 'loadingUser') {
+  if (publicKey && !isLoading && !user) {
     return (
       <Center
         as="button"
