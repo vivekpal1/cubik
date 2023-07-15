@@ -71,7 +71,6 @@ export const AuthWrapper: React.FC<Props> = ({ children }) => {
   return (
     <>
       {children}
-      <MultiWalletModel isOpen={multiWalletisOpen} onClose={multiWalletClose} />
       <WalletVerifyModal isOpen={isOpen} onClose={onClose} />
     </>
   );

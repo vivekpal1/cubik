@@ -15,7 +15,7 @@ const SettingsHeader = () => {
         align={'start'}
         gap={10}
       >
-        <VStack align={'start'}>
+        <VStack color={'white'} align={'start'}>
           <Text
             fontSize={{
               base: 'lg',

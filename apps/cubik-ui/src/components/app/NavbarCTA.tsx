@@ -37,7 +37,7 @@ const NavbarCTA = () => {
     const fetch = async () => {
       setIsLoading(true);
       try {
-        if (connected && publicKey && !disconnecting) {
+        if (connected && publicKey && !disconnecting && !persist) {
           const { data, status } = await axios.post('/api/me/id', {
             publicKey: publicKey.toBase58(),
           });
