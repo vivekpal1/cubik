@@ -8,6 +8,9 @@ const getProjects = async () => {
     where: {
       status: 'APPROVED',
     },
+    orderBy: {
+      amountRaise: 'desc',
+    },
     select: {
       id: true,
       status: true,
