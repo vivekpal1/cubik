@@ -29,7 +29,7 @@ export default function RootLayout({
       <body className={`${jakarta.className}`}>
         <WalletContext>
           <ChakraProvider theme={theme}>
-            <VStack maxW="full" w="100%" h="100vh" p="0">
+            <VStack maxW="full" w="100%" h="100vh" p="0" bg="black">
               <Header />
               {children}
             </VStack>

@@ -13,6 +13,7 @@ import {
 } from '~/utils/chakra';
 import Link from 'next/link';
 import { ProjectJoinRoundStatus } from '@cubik/database';
+import { Project } from '.';
 
 const ProjectCard = ({
   id,
@@ -23,18 +24,7 @@ const ProjectCard = ({
   logo,
   description,
   amountRaised,
-}: {
-  id: string;
-  projectId: string;
-  owner: {
-    username: string;
-  };
-  status: ProjectJoinRoundStatus;
-  name: string;
-  logo: string;
-  description: string;
-  amountRaised: string;
-}) => {
+}: Project) => {
   return (
     <LinkBox
       as={Link}
