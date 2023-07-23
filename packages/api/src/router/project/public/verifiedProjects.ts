@@ -88,9 +88,36 @@ export const verifiedProjects = publicProcedure
       });
 
 
-    const res = shuffleArray(result, (input.seed as number) ?? 0).filter(
+    var res = shuffleArray(result, (input.seed as number) ?? 0).filter(
       (e) => e.project.isArchive === false
     );
+
+    if (input.mobile) {
+      const contributerCountByProject = await prisma.contribution.findMany({
+        distinct: ["projectId"],
+        select: {
+          projectId: true,
+          count: true,
+        },
+      });
+
+      res = res.map((data) => {
+        const matchingProject = contributerCountByProject.find(
+          (countData) => countData.projectId === data.project.id
+        );
+
+        return {
+          ...data,
+          project: {
+            ...data.project,
+            Contribution: {
+              ...data.project.Contribution,
+            },
+            contributionCount: matchingProject ? matchingProject.count : 0,
+          },
+        };
+      });
+    }
 
     // when both filter are working
     if (input.filter && input.round && input.round?.length > 0) {
@@ -122,6 +149,7 @@ export const verifiedProjects = publicProcedure
 
       return active;
     }
+
     // only round working
     if (input.round && input.round.length > 0 && !input.filter) {
       const active = res.filter((e) => {
