@@ -55,6 +55,7 @@ export const getProjects = async () => {
       amountRaised: amountRaise
         ? formatNumberWithK(parseInt(amountRaise.toFixed(2)))
         : '0',
+      industry: project.industry,
     };
   });
 };

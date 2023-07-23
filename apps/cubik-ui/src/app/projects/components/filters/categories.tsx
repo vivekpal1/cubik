@@ -1,10 +1,11 @@
 'use client';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 // import CategoryTag from '~/components/common/tags/CategoryTags';
 import CategoryTag from '~/components/common/tags/CategoryTags';
 import { Center, HStack } from '~/utils/chakra';
+import { Project } from '..';
 
-type Category = {
+export interface Category {
   value:
     | 'all'
     | 'defi'
@@ -13,9 +14,16 @@ type Category = {
     | 'consumer'
     | 'developer_tools';
   label: string;
-};
+}
 
-const Categories = () => {
+const Categories = ({
+  projects,
+  setProjects,
+}: {
+  projects: Project[];
+  setProjects: (projects: Project[]) => void;
+}) => {
+  const [category, setCategory] = useState<Category['value']>('all');
   const categories: Category[] = [
     { value: 'defi', label: 'defi' },
     { value: 'solana_infrastructure', label: 'Solana Infrastructure' },
@@ -27,8 +35,20 @@ const Categories = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const changeCategory = (category: Category['value']) => {
-    
+    setCategory(category);
+    if (category === 'all') {
+      setProjects(projects);
+    } else {
+      const filteredProjects = projects.filter(
+        ({ industry: { value } }) => value === category
+      );
+      console.log('filteredProjects', filteredProjects);
+      setProjects(filteredProjects);
+    }
   };
+
+  console.log('category', category);
+  console.log(projects);
 
   return (
     <HStack

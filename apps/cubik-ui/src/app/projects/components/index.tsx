@@ -4,6 +4,7 @@ import Filters from './filters';
 import ProjectCard from './card';
 import { ProjectJoinRoundStatus } from '@cubik/database';
 import { useState } from 'react';
+import { Category } from './filters/categories';
 
 export interface Project {
   id: string;
@@ -16,6 +17,11 @@ export interface Project {
   logo: string;
   description: string;
   amountRaised: string;
+  industry: {
+    value: Category['value'];
+    label: string;
+    colorScheme: string;
+  };
 }
 
 const Projects = ({ projects: _projects }: { projects: Project[] }) => {
@@ -28,7 +34,8 @@ const Projects = ({ projects: _projects }: { projects: Project[] }) => {
         maxW="7xl"
         py={{ base: '24px', md: '40px' }}
       >
-        <Filters />
+        <Filters projects={projects} setProjects={setProjects} />
+
         <Wrap
           overflow={'visible'}
           py="8px"
