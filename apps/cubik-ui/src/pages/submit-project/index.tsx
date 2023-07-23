@@ -116,11 +116,10 @@ const SubmitProject: React.FC<SubmitProjectProps> = ({ onSubmit }) => {
   const handleStepThreeSubmit = async (editorData: string) => {
     try {
       const imageUrl = await uploadToCloudinary(getValues('logo')).catch(
-        (error) => {
-          throw new Error(
-            `Error uploading image to Cloudinary: ${error.message}`
-          );
-        }
+        // replace this with upload to aws
+        error => {
+          throw new Error(`Error uploading image to Cloudinary: ${error.message}`);
+        },
       );
       setImageUrl(imageUrl);
       setEditorData(editorData);
