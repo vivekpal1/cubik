@@ -57,10 +57,14 @@ const getProjects = async () => {
   });
 };
 
-const Projects = async () => {
-  const projects = await getProjects();
+function shuffle<T>(array: T[]): T[] {
+  const shuffledArray = [...array];
+  shuffledArray.sort(() => Math.random() - 0.5);
+  return shuffledArray;
+}
 
-  // console.log(projects);
+const Projects = async () => {
+  const projects = await shuffle(await getProjects());
 
   return (
     <Box bg={'black'} w="full" h="full">
