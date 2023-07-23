@@ -1,64 +1,10 @@
+'use client';
 import { formatNumberWithK } from '~/utils/formatWithK';
 import { Container, Box, Wrap } from '~/utils/chakra';
 import ProjectCard from './components/card';
 import { prisma } from '@cubik/database';
-
-const getProjects = async () => {
-  const projects = await prisma.projectJoinRound.findMany({
-    where: {
-      status: 'APPROVED',
-    },
-    orderBy: {
-      amountRaise: 'desc',
-    },
-    select: {
-      id: true,
-      status: true,
-      amountRaise: true,
-      fundingRound: {
-        select: {
-          id: true,
-          colorScheme: true,
-          active: true,
-          endTime: true,
-          roundName: true,
-          startTime: true,
-        },
-      },
-      project: {
-        select: {
-          id: true,
-          industry: true,
-          logo: true,
-          name: true,
-          project_link: true,
-          short_description: true,
-          owner: {
-            select: {
-              username: true,
-            },
-          },
-          isArchive: true,
-        },
-      },
-    },
-  });
-
-  return projects.map(({ id, status, amountRaise, fundingRound, project }) => {
-    return {
-      id,
-      projectId: project.id,
-      owner: project.owner,
-      status,
-      name: project.name,
-      logo: project.logo,
-      description: project.short_description,
-      amountRaised: amountRaise
-        ? formatNumberWithK(parseInt(amountRaise.toFixed(2)))
-        : '0',
-    };
-  });
-};
+import Filters from './components/filters';
+import { getProjects } from './getProjects';
 
 function shuffle<T>(array: T[]): T[] {
   const shuffledArray = [...array];
@@ -76,6 +22,7 @@ const Projects = async () => {
         maxW="7xl"
         py={{ base: '24px', md: '40px' }}
       >
+        <Filters />
         <Wrap
           overflow={'visible'}
           py="8px"

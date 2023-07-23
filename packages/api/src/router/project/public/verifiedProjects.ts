@@ -1,6 +1,6 @@
-import { z } from 'zod';
-import { publicProcedure } from '../../../trpc';
-import type { verifiedProjectsType } from '../../../types';
+import { z } from "zod";
+import { publicProcedure } from "../../../trpc";
+import type { verifiedProjectsType } from "../../../types";
 
 export const verifiedProjects = publicProcedure
   .input(
@@ -37,56 +37,55 @@ export const verifiedProjects = publicProcedure
       return array;
     }
 
-
-  
-  const result = await prisma.projectJoinRound.findMany({
-        where: {
-          status: 'APPROVED',
-        },
-        select: {
-          id: true,
-          status: true,
-          amountRaise: true,
-          fundingRound: {
-            select: {
-              id: true,
-              colorScheme: true,
-              active: true,
-              endTime: true,
-              roundName: true,
-              startTime: true,
-            },
+    const result = await prisma.projectJoinRound.findMany({
+      where: {
+        status: "APPROVED",
+      },
+      select: {
+        id: true,
+        status: true,
+        amountRaise: true,
+        fundingRound: {
+          select: {
+            id: true,
+            colorScheme: true,
+            active: true,
+            endTime: true,
+            roundName: true,
+            startTime: true,
           },
-          project: {
-            select: {
-              id: true,
-              industry: true,
-              logo: true,
-              name: true,
-              project_link: true,
-              short_description: true,
-              owner: {
-                select: {
-                  username: true,
-                },
+        },
+        project: {
+          select: {
+            id: true,
+            industry: true,
+            logo: true,
+            name: true,
+            project_link: true,
+            short_description: true,
+            owner: {
+              select: {
+                username: true,
               },
-              isArchive: true,
-              Contribution: input.mobile ? false : {
-                select: {
-                  id: true,
-                  user: {
-                    select: {
-                      profilePicture: true,
-                      username: true,
+            },
+            isArchive: true,
+            Contribution: input.mobile
+              ? false
+              : {
+                  select: {
+                    id: true,
+                    user: {
+                      select: {
+                        profilePicture: true,
+                        username: true,
+                      },
                     },
                   },
                 },
-              },
-            },
           },
         },
-      });
-
+      },
+    });
 
     var res = shuffleArray(result, (input.seed as number) ?? 0).filter(
       (e) => e.project.isArchive === false

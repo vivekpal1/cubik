@@ -3,7 +3,7 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import dynamic from 'next/dynamic';
 
-import { Container } from '../utils/chakra';
+import { Container, VStack } from '../utils/chakra';
 import theme from '~/config/chakra.config';
 import Head from 'next/head';
 
@@ -12,6 +12,7 @@ const WalletContext: any = dynamic(() => import('../context/wallet-context'), {
 });
 
 import { Plus_Jakarta_Sans } from 'next/font/google';
+import Header from './components/header';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
@@ -28,9 +29,10 @@ export default function RootLayout({
       <body className={`${jakarta.className}`}>
         <WalletContext>
           <ChakraProvider theme={theme}>
-            <Container maxW="full" w="100%" h="100vh" p="0">
+            <VStack maxW="full" w="100%" h="100vh" p="0">
+              <Header />
               {children}
-            </Container>
+            </VStack>
           </ChakraProvider>
         </WalletContext>
       </body>
