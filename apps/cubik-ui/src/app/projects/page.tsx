@@ -2,7 +2,6 @@
 import { formatNumberWithK } from '~/utils/formatWithK';
 import { Container, Box, Wrap } from '~/utils/chakra';
 import ProjectCard from './components/card';
-import { prisma } from '@cubik/database';
 import Filters from './components/filters';
 import { getProjects } from './getProjects';
 

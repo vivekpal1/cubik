@@ -1,6 +1,6 @@
 'use server';
-
-import { formatNumberWithK } from "~/utils/formatWithK";
+import { prisma } from '@cubik/database';
+import { formatNumberWithK } from '~/utils/formatWithK';
 
 export const getProjects = async () => {
   const projects = await prisma.projectJoinRound.findMany({
