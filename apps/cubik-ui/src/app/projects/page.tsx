@@ -1,6 +1,7 @@
 import { formatNumberWithK } from '~/utils/formatWithK';
 import { Container, Box, Wrap } from '~/utils/chakra';
 import ProjectCard from './components/card';
+import { prisma } from '@cubik/database';
 
 const getProjects = async () => {
   const projects = await prisma.projectJoinRound.findMany({
