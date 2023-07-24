@@ -381,8 +381,8 @@ export const ProjectCreatorTeamMember = ({
       <HStack gap="0.6rem">
         <ProfilePictureAvatar
           asNFT={true}
-          profilePicture={teamMember.user.profilePicture}
-          username={teamMember.user.username}
+          profilePicture={teamMember.user.profilePicture as string}
+          username={teamMember.user.username as string}
           width={{ base: '32px', sm: '34px', md: '38px', lg: '38px', xl: '38px' }}
           height={{ base: '32px', sm: '34px', md: '38px', lg: '38px', xl: '38px' }}
         />

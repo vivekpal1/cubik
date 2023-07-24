@@ -35,8 +35,8 @@ const ProfileHeader: FC<profileHeaderType> = ({ admin, user, isLoading }: profil
         >
           <ProfilePictureAvatar
             asNFT={true}
-            profilePicture={user?.profilePicture}
-            username={user?.username}
+            profilePicture={user?.profilePicture as string}
+            username={user?.username as string}
             width={{ base: '56px', sm: '72px', md: '84px', lg: '84px', xl: '84px' }}
             height={{ base: '56px', sm: '72px', md: '84px', lg: '84px', xl: '84px' }}
           />
