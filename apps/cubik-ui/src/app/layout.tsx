@@ -12,7 +12,7 @@ const WalletContext: any = dynamic(() => import('../context/wallet-context'), {
 });
 
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import Header from './components/header';
+import Header from './components/layout/header';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],

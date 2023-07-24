@@ -1,7 +1,7 @@
 import { formatNumberWithK } from '~/utils/formatWithK';
 import { prisma } from '@cubik/database';
-import Projects, { Project } from './components';
-import { Category } from './components/filters/categories';
+import Projects, { Project } from '../components/projects';
+import { Category } from '../components/projects/filters/categories';
 
 const getProjects = async () => {
   const projects = await prisma.projectJoinRound.findMany({

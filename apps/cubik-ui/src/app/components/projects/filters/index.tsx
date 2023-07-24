@@ -2,8 +2,8 @@
 import { useRef } from 'react';
 import CategoryTag from '~/components/common/tags/CategoryTags';
 import { Center, HStack } from '~/utils/chakra';
-import Categories from './categories';
-import { Project } from '..';
+import Categories from '.';
+import { Project } from '../';
 
 const Filters = ({
   projects,
