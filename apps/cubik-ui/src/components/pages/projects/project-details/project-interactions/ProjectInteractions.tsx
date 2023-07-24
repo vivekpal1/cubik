@@ -414,7 +414,7 @@ export const ProjectCreatorTeamMember = ({
           borderRadius={'8px'}
           width={{ base: '32px', md: '38px' }}
           height={{ base: '32px', md: '38px' }}
-          src={teamMember.user.profilePicture}
+          src={teamMember.user.profilePicture as string}
         />
         <Box color={'white'} as="p" textStyle={{ base: 'body4', md: 'body3' }}>
           @{teamMember.user.username}

@@ -219,21 +219,14 @@ const ProjectContributors = ({
   return (
     <VStack
       w="full"
-      align={
-        currentContributors?.length === 0
-          ? 'center'
-          : { base: 'start', md: 'end' }
-      }
+      align={currentContributors?.length === 0 ? 'center' : { base: 'start', md: 'end' }}
     >
       {currentContributors?.length === 0 ? (
         <ContributionsEmptyState />
       ) : (
         <>
           <Table w="full" minW="34rem" overflowX="scroll" variant="unstyled">
-            <Thead
-              color="neutral.8"
-              fontFamily={'Plus Jakarta Sans, sans-serif'}
-            >
+            <Thead color="neutral.8" fontFamily={'Plus Jakarta Sans, sans-serif'}>
               <Tr>
                 <Th w={'40%'} p="0px 18px">
                   <Text
@@ -312,15 +305,15 @@ const ProjectContributors = ({
                 {currentContributors.length === 0 ? (
                   <></>
                 ) : (
-                  currentContributors.map((contributor) => (
+                  currentContributors.map(contributor => (
                     <ContributorRow
                       key={contributor.id}
                       amount={contributor.total}
                       token={contributor.token}
                       timestamp={contributor.createdAt}
-                      avatar={contributor.user.profilePicture}
+                      avatar={contributor.user.profilePicture as string}
                       usd={contributor.usdTotal}
-                      username={contributor.user.username}
+                      username={contributor.user.username as string}
                       walletAddress={contributor.user.mainWallet}
                       id={contributor.user.id}
                       proof={contributor.user.proof as unknown as UserProof[]}

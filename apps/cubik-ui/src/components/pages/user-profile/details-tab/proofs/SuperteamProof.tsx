@@ -52,7 +52,7 @@ const SuperteamProof = ({ isClaimAble, claimed }: Props) => {
         });
       }, 2000);
       utils.user.findOne.invalidate({
-        username: authUser.user?.username,
+        username: authUser.user?.username as string,
       });
     } catch (error) {
       onClose();

@@ -38,8 +38,8 @@ const ProfileHeader: FC<profileHeaderType> = ({
             showBorder={true}
             backgroundColor="#FFFFFF30"
             border="2px solid #FFFFFF10"
-            src={user?.profilePicture}
-            name={user?.username}
+            src={user?.profilePicture as string}
+            name={user?.username as string}
             rounded="16%"
             borderRadius="16%"
             width={{ base: '56px', sm: '72px', md: '84px' }}
@@ -74,11 +74,7 @@ const ProfileHeader: FC<profileHeaderType> = ({
             opacity={isLoading ? '0.5' : '1'}
             isLoaded={!isLoading}
           >
-            <WalletAddress
-              walletAddress={user?.mainWallet || ''}
-              size="sm"
-              copy={true}
-            />
+            <WalletAddress walletAddress={user?.mainWallet || ''} size="sm" copy={true} />
           </Skeleton>
         </Center>
       </VStack>

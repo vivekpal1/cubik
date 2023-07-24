@@ -133,12 +133,7 @@ export const ProjectCTAs = ({
                 </Skeleton>
               );
             } else {
-              return (
-                <ProofsValidation
-                  username={user.username}
-                  isLoading={isLoading}
-                />
-              );
+              return <ProofsValidation username={user.username as string} isLoading={isLoading} />;
             }
           } else {
             return (
@@ -553,12 +548,7 @@ export const ProjectCTAsMobile = ({
                 </Skeleton>
               );
             } else {
-              return (
-                <ProofsValidation
-                  username={user.username}
-                  isLoading={isLoading}
-                />
-              );
+              return <ProofsValidation username={user.username as string} isLoading={isLoading} />;
             }
           } else {
             return (
