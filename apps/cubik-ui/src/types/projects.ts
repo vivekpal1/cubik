@@ -33,6 +33,7 @@ type ProjectNonMobile = ProjectCommon & {
         username: string;
       };
     }[];
+    contributionCount: number;
   };
 };
 

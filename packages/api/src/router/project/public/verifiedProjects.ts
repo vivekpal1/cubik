@@ -1,6 +1,6 @@
-import { z } from 'zod';
-import { publicProcedure } from '../../../trpc';
-import type { verifiedProjectsType } from '../../../types';
+import { z } from "zod";
+import { publicProcedure } from "../../../trpc";
+import type { verifiedProjectsType } from "../../../types";
 
 export const verifiedProjects = publicProcedure
   .input(
@@ -37,60 +37,86 @@ export const verifiedProjects = publicProcedure
       return array;
     }
 
-
-  
-  const result = await prisma.projectJoinRound.findMany({
-        where: {
-          status: 'APPROVED',
-        },
-        select: {
-          id: true,
-          status: true,
-          amountRaise: true,
-          fundingRound: {
-            select: {
-              id: true,
-              colorScheme: true,
-              active: true,
-              endTime: true,
-              roundName: true,
-              startTime: true,
-            },
+    const result = await prisma.projectJoinRound.findMany({
+      where: {
+        status: "APPROVED",
+      },
+      select: {
+        id: true,
+        status: true,
+        amountRaise: true,
+        fundingRound: {
+          select: {
+            id: true,
+            colorScheme: true,
+            active: true,
+            endTime: true,
+            roundName: true,
+            startTime: true,
           },
-          project: {
-            select: {
-              id: true,
-              industry: true,
-              logo: true,
-              name: true,
-              project_link: true,
-              short_description: true,
-              owner: {
-                select: {
-                  username: true,
-                },
+        },
+        project: {
+          select: {
+            id: true,
+            industry: true,
+            logo: true,
+            name: true,
+            project_link: true,
+            short_description: true,
+            owner: {
+              select: {
+                username: true,
               },
-              isArchive: true,
-              Contribution: input.mobile ? false : {
-                select: {
-                  id: true,
-                  user: {
-                    select: {
-                      profilePicture: true,
-                      username: true,
+            },
+            isArchive: true,
+            Contribution: input.mobile
+              ? false
+              : {
+                  select: {
+                    id: true,
+                    user: {
+                      select: {
+                        profilePicture: true,
+                        username: true,
+                      },
                     },
                   },
                 },
-              },
-            },
           },
+        },
+      },
+    });
+
+    var res = shuffleArray(result, (input.seed as number) ?? 0).filter(
+      (e) => e.project.isArchive === false
+    );
+
+    if (input.mobile) {
+      const contributerCountByProject = await prisma.contribution.findMany({
+        distinct: ["projectId"],
+        select: {
+          projectId: true,
+          count: true,
         },
       });
 
+      res = res.map((data) => {
+        const matchingProject = contributerCountByProject.find(
+          (countData) => countData.projectId === data.project.id
+        );
 
-    const res = shuffleArray(result, (input.seed as number) ?? 0).filter(
-      (e) => e.project.isArchive === false
-    );
+        return {
+          ...data,
+          project: {
+            ...data.project,
+            Contribution: {
+              ...data.project.Contribution,
+            },
+            contributionCount: matchingProject ? matchingProject.count : 0,
+          },
+        };
+      });
+    }
 
     // when both filter are working
     if (input.filter && input.round && input.round?.length > 0) {
@@ -122,6 +148,7 @@ export const verifiedProjects = publicProcedure
 
       return active;
     }
+
     // only round working
     if (input.round && input.round.length > 0 && !input.filter) {
       const active = res.filter((e) => {

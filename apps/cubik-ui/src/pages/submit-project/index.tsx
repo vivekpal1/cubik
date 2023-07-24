@@ -112,7 +112,7 @@ const SubmitProject: React.FC<SubmitProjectProps> = ({ onSubmit }) => {
   const handleStepTwoSubmit = async () => {
     goToNextStep();
   };
-
+    
   const handleStepThreeSubmit = async (editorData: string) => {
     try {
       const imageUrl = await uploadToCloudinary(getValues('logo')).catch(

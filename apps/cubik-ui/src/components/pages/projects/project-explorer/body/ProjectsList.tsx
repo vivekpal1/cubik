@@ -46,6 +46,7 @@ type ProjectCardProps = {
   projectDescription?: string;
   amountRaised: number;
   contributions?: ContributionType[];
+  contributionCount?: number;
 };
 
 const ProjectCard = (props: ProjectCardProps) => {
@@ -343,6 +344,7 @@ const ProjectCard = (props: ProjectCardProps) => {
                 <ProjectsContributorsNumber
                   projectId={props.projectId}
                   contributorsList={props.contributions}
+                  contributionCount={props.contributionCount || 1}
                 />
               </HStack>
               {isLargerThan767 && (
@@ -406,6 +408,8 @@ const ProjectsList = ({
 }: {
   allProjectsData: verifiedProjectsType;
 }) => {
+  console.log('all', allProjectsData);
+
   return (
     <Container maxW="7xl" overflow={'visible'} p="0">
       <Wrap
@@ -443,6 +447,8 @@ const ProjectsList = ({
                   // @ts-ignore
                   projectJoinRound?.project?.Contribution || undefined
                 }
+                // @ts-ignore
+                contributionCount={1}
               />
             );
           }

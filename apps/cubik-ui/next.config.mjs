@@ -24,6 +24,9 @@ const nextConfig = {
       'res.cloudinary.com',
     ],
   },
+  experimental: {
+    appDir: true,
+  },
 };
 
 export default nextConfig;

@@ -13,9 +13,11 @@ export type ContributionType = {
 const ProjectsContributorsNumber = ({
   projectId,
   contributorsList,
+  contributionCount,
 }: {
   projectId: string;
   contributorsList: ContributionType[];
+  contributionCount: number;
 }) => {
   const [contributors, setContributors] = useState<
     {
@@ -69,10 +71,10 @@ const ProjectsContributorsNumber = ({
             ))}
           </AvatarGroup>
           <Box as="p" color="white" textStyle={{ base: 'body6', md: 'body5' }}>
-            {contributors.length === 0
+            {contributionCount === 0
               ? '- -'
-              : contributors.length > 3
-              ? '+' + (contributors.length - 3)
+              : contributionCount > 3
+              ? '+' + (contributionCount - 3)
               : ''}
           </Box>
         </Flex>
