@@ -37,7 +37,7 @@ const DripProof = ({ claimed }: Props) => {
     onSuccess: () => {
       playerRef?.current?.play();
       utils.user.findOne.invalidate({
-        username: user?.username,
+        username: user?.username as string,
       });
       setTimeout(() => {
         onClose();

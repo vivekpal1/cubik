@@ -36,17 +36,14 @@ const VisitorView: FC<visitorViewType> = ({
           <TabPanel>
             <Flex direction="column" w="full" gap="32px">
               {user &&
-              user.project.filter(
-                (project) => project.status === ProjectVerifyStatus.VERIFIED
-              ).length ? (
+              user.project.filter(project => project.status === ProjectVerifyStatus.VERIFIED)
+                .length ? (
                 // filter verified projects only to show on user profile
                 user.project
-                  .filter(
-                    (project) => project.status === ProjectVerifyStatus.VERIFIED
-                  )
+                  .filter(project => project.status === ProjectVerifyStatus.VERIFIED)
                   .map((project, key) => (
                     <ProjectVisitorCard
-                      userName={user.username}
+                      userName={user.username as string}
                       project={project}
                       isLoading={isLoading}
                       key={key}

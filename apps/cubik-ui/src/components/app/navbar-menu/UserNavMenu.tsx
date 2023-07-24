@@ -181,23 +181,17 @@ const UserNavMenu = () => {
           width={{ base: '30px', md: '36px' }}
           height={{ base: '30px', md: '36px' }}
           borderRadius={6}
-          name={user?.username}
-          src={user?.profilePicture}
+          name={user?.username as string}
+          src={user?.profilePicture as string}
         />
       </Skeleton>
-      <Drawer
-        variant="cubik"
-        isOpen={isOpen}
-        placement="bottom"
-        onClose={onClose}
-      >
+      <Drawer variant="cubik" isOpen={isOpen} placement="bottom" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerBody>
             <VStack gap="16px" w="full" align={'start'}>
               <ProfileDetails />
-              <WalletBalance />{' '}
-              <Box w="full" h="1px" backgroundColor={'#1D1F1E'} />
+              <WalletBalance /> <Box w="full" h="1px" backgroundColor={'#1D1F1E'} />
               <VStack spacing="0px" align={'start'} w="full">
                 <NavMenuButtons />
               </VStack>
@@ -234,8 +228,8 @@ const UserNavMenu = () => {
               width={{ base: '28px', md: '36px' }}
               height={{ base: '28px', md: '36px' }}
               borderRadius={6}
-              name={user?.username}
-              src={user?.profilePicture}
+              name={user?.username as string}
+              src={user?.profilePicture as string}
             />
           </Skeleton>
         </MenuButton>

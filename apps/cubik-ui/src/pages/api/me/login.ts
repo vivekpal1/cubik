@@ -44,10 +44,10 @@ export default async function handler(
         id: user.id,
         wallet: user.mainWallet,
       },
-      env.NEXTAUTH_SECRET as string,
+      env.NEXT_PUBLIC_SECRET as string,
       {
         expiresIn: '6h',
-      }
+      },
     );
 
     return res.status(200).send({
