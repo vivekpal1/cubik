@@ -215,6 +215,7 @@ export const ProjectDiscussion = ({
               //  borderRadius={{ base: '4px', md: '8px' }}
               width={{ base: '38px', md: '40px' }}
               height={{ base: '38px', md: '40px' }}
+              src={user?.profilePicture as string}
             />
           )}
           <FormControl isInvalid={Boolean(errors.comment)}>

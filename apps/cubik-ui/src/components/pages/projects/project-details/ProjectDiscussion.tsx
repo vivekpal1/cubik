@@ -19,7 +19,7 @@ const Discussions = () => {
     <>
       <VStack position={'relative'} w={'full'} mt={6}>
         <HStack w="full" align={'top'} gap="18px">
-          <Avatar src={user?.profilePicture} width="54px" height="54px" />
+          <Avatar src={user?.profilePicture as string} width="54px" height="54px" />
           <Textarea
             h={32}
             minH={32}
@@ -38,7 +38,7 @@ const Discussions = () => {
               border: '1px solid #1D1F1E',
             }}
             value={message}
-            onChange={(e) => {
+            onChange={e => {
               setMessage(e.target.value);
             }}
           />
@@ -62,15 +62,13 @@ const Discussions = () => {
         </Button>
       </VStack>
       <VStack align={'start'} w={'full'}>
-        {comments?.map((el) => {
+        {comments?.map(el => {
           const date = new Date(el.date);
           return (
             <HStack key={el.id} align={'start'} px={6}>
               <Avatar
                 size={'sm'}
-                src={
-                  'https://solana.ghost.io/content/images/2022/06/solana-network-upgrades.png'
-                }
+                src={'https://solana.ghost.io/content/images/2022/06/solana-network-upgrades.png'}
               />
 
               <VStack align={'start'}>

@@ -201,8 +201,8 @@ const HackathonInteractions = (props: HackathonInteractionsProps) => {
                   return (
                     <Avatar
                       key={participant.User.id}
-                      name={participant.User.username}
-                      src={participant.User.profilePicture}
+                      name={participant.User.username as string}
+                      src={participant.User.profilePicture as string}
                     />
                   );
                 })}
@@ -229,33 +229,19 @@ const HackathonInteractions = (props: HackathonInteractionsProps) => {
           {props.team.map((team) => {
             return (
               <>
-                <HStack
-                  py="8px"
-                  as={Link}
-                  href={''}
-                  w="full"
-                  justify="space-between"
-                >
+                <HStack py="8px" as={Link} href={''} w="full" justify="space-between">
                   <HStack gap="0.6rem">
                     <Avatar
                       borderRadius={'8px'}
                       size={{ base: 'sm', md: 'sm' }}
                       border="1px solid #FFFFFF10"
-                      src={team.user.profilePicture}
+                      src={team.user.profilePicture as string}
                     />
-                    <Box
-                      color={'white'}
-                      as="p"
-                      textStyle={{ base: 'body4', md: 'body3' }}
-                    >
+                    <Box color={'white'} as="p" textStyle={{ base: 'body4', md: 'body3' }}>
                       @{team.user.username}
                     </Box>
                   </HStack>
-                  <Box
-                    color="#B4B0B2"
-                    as="p"
-                    textStyle={{ base: 'body5', md: 'body4' }}
-                  >
+                  <Box color="#B4B0B2" as="p" textStyle={{ base: 'body5', md: 'body4' }}>
                     {TruncatedAddr({
                       walletAddress: team.user.mainWallet,
                     })}

@@ -19,8 +19,8 @@ const ProfileDetails = () => {
           width="40px"
           height="40px"
           borderRadius={6}
-          name={user?.username}
-          src={user?.profilePicture}
+          name={user?.username as string}
+          src={user?.profilePicture as string}
         />
       </Skeleton>
       <VStack alignItems={'start'} justify="center" w="full" spacing="6px">

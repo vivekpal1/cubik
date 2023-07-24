@@ -65,7 +65,7 @@ const GithubProof = ({ minted, isLoading }: Props) => {
         });
       }, 2000);
       utils.user.findOne.invalidate({
-        username: authUser.user?.username,
+        username: authUser.user?.username as string,
       });
     }
 

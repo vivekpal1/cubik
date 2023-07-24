@@ -40,7 +40,7 @@ const VisitorView: FC<visitorViewType> = ({ user, isLoading }: visitorViewType) 
                   .filter(project => project.status === ProjectVerifyStatus.VERIFIED)
                   .map((project, key) => (
                     <ProjectVisitorCard
-                      userName={user.username}
+                      userName={user.username as string}
                       project={project}
                       isLoading={isLoading}
                       key={key}
