@@ -22,13 +22,13 @@ export interface Project {
     label: string;
     colorScheme: string;
   };
-  round: {
-    id: string;
-    active: string;
-    endTime: fundingRound.endTime;
-    roundName: fundingRound.roundName;
-    startTime: fundingRound.startTime;
-  };
+  // round: {
+  //   id: string;
+  //   active: string;
+  //   endTime: fundingRound.endTime;
+  //   roundName: fundingRound.roundName;
+  //   startTime: fundingRound.startTime;
+  // };
 }
 
 const Projects = ({ projects: _projects }: { projects: Project[] }) => {

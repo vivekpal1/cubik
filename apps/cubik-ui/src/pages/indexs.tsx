@@ -16,3 +16,10 @@
 // };
 
 // export default Home;
+import React from 'react';
+
+const indexs = () => {
+  return <div>indexs</div>;
+};
+
+export default indexs;

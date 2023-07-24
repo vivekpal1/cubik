@@ -83,7 +83,7 @@ const ProjectCard = ({
           </Center>
         )} */}
         {/* card Header */}
-        {isPast(startTime) && !isPast(endTime) && (
+        {/* {isPast(startTime) && !isPast(endTime) && (
           // if project is participating in a round then make it visible else don't show it
           <Center
             display={status === ProjectJoinRoundStatus.APPROVED ? 'flex' : 'none'}
@@ -124,7 +124,7 @@ const ProjectCard = ({
               </Box>
             </HStack>
           </Center>
-        )}
+        )} */}
         {/* cards footer */}
         <VStack w="full" alignItems={'start'} justifyContent="space-between" h="full">
           <VStack
