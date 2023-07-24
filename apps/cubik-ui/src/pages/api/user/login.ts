@@ -63,7 +63,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         path: '/',
       }),
     );
-    return res.end();
+    return res.status(200).send({
+      data: 'ok',
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: 'Internal server error' });

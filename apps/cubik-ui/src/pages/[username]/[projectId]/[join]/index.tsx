@@ -6,7 +6,7 @@ import ComponentErrors from '~/components/errors/ComponentErrors';
 import { ProjectInteractions } from '~/components/pages/projects/project-details/project-interactions/ProjectInteractions';
 import { ProjectDetailsAndTabs } from '~/components/pages/projects/project-details/ProjectDetailsAndTabs';
 import ProjectDetailsLiveRoundStatus from '~/components/pages/projects/project-details/ProjectDetailsLiveRoundStatus';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import { Mixpanel } from '~/utils/mixpanel';
 import { trpc } from '~/utils/trpc';
 

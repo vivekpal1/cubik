@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 
 import { Container, VStack } from '../utils/chakra';
 import theme from '~/config/chakra.config';
-import Head from 'next/head';
 
 const WalletContext: any = dynamic(() => import('../context/wallet-context'), {
   ssr: false,

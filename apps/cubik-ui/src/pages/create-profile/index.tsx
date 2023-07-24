@@ -2,7 +2,7 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Container } from '@chakra-ui/layout';
 import { Card, CardHeader } from '@chakra-ui/react';
 import { useState } from 'react';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import CreateProfileStepThree from '~/components/pages/create-profile/CreateProfileStepThree';
 
 const CreateProfile = () => {

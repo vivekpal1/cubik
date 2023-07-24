@@ -1,6 +1,6 @@
 import { Box, Center, Container, Heading } from '@chakra-ui/layout';
 import Link from 'next/link';
-import SEO from 'src/components/SEO';
+import SEO from '~/app/components/SEO';
 import ComponentErrors from '~/components/errors/ComponentErrors';
 import AdminView from '~/components/pages/user-profile/AdminView';
 import VisitorView from '~/components/pages/user-profile/VisitorView';

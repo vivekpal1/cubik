@@ -1,6 +1,6 @@
 import { Box, Container } from '@chakra-ui/layout';
 import { GetServerSideProps } from 'next';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import GrantDetailsBody from '~/components/pages/grants/details/GrantDetailsBody';
 import GrantDetailsHeader from '~/components/pages/grants/details/GrantDetailsHeader';
 import { GrantRoundAdminControls } from '~/components/pages/projects/admin/AdminControls';

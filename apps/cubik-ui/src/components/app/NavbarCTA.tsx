@@ -16,17 +16,11 @@ export interface UserContextProps {
 }
 
 const NavbarCTA = () => {
-  const [currentPath, setCurrentPath] = useState('');
   const [error, setError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { setUser, user } = useUserStore();
-  const { publicKey, disconnect, connected, disconnecting, connecting } =
-    useWallet();
+  const { publicKey, disconnect, connected, disconnecting, connecting } = useWallet();
   const router = useRouter();
-
-  useEffect(() => {
-    setCurrentPath(router.pathname);
-  }, [router.pathname]);
 
   useEffect(() => {
     const fetch = async () => {
@@ -68,20 +62,13 @@ const NavbarCTA = () => {
   }, [connected, publicKey]);
 
   // If on create-profile page, don't show anything
-  if (currentPath === '/create-profile') {
+  if (router.pathname === '/create-profile') {
     return null;
   }
   if (error) return <ComponentErrors />;
 
   if (connecting && !publicKey) {
-    return (
-      <Skeleton
-        isLoaded
-        fadeDuration={0.5}
-        startColor="#121219"
-        endColor="#37383E"
-      />
-    );
+    return <Skeleton isLoaded fadeDuration={0.5} startColor="#121219" endColor="#37383E" />;
   }
 
   if (connected && publicKey && user) {

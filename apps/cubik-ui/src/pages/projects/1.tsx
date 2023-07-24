@@ -1,5 +1,5 @@
 import { Container } from '@chakra-ui/layout';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import AdminControls from '~/components/pages/projects/admin/AdminControls';
 import ProjectsExplorer from '~/components/pages/projects/project-explorer/ProjectsExplorer';
 

@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { array, object, string } from 'yup';
 import withAuth from '~/components/HOC/WithAuth';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import CustomStepper from '~/components/common/stepper/CustomStepper';
 import { StepOne, StepThree, StepTwo } from '~/components/pages/create-project';
 import CreateProjectTransactionModal from '~/components/pages/create-project/TransactionSignModal';

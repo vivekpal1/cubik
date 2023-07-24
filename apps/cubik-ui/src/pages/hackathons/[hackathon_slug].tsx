@@ -3,7 +3,7 @@ import { Skeleton } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import HackathonDetails from '~/components/pages/hackathons/hackathonDetails/HackathonDetails';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import {
   HackathonHost,
   HackathonSchedule,

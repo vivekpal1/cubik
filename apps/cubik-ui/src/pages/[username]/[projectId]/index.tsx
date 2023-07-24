@@ -1,7 +1,7 @@
 import { Container, Stack } from '@chakra-ui/layout';
 import { ProjectsModel } from '@cubik/database';
 import { GetServerSideProps } from 'next';
-import SEO from '~/components/SEO';
+import SEO from '~/app/components/SEO';
 import ComponentErrors from '~/components/errors/ComponentErrors';
 import { ProjectDetailsAndTabs } from '~/components/pages/projects/project-details/ProjectDetailsAndTabs';
 import { ProjectInteractions } from '~/components/pages/projects/project-details/project-interactions/ProjectInteractions';

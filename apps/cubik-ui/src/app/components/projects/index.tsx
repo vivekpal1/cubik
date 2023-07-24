@@ -10,7 +10,7 @@ export interface Project {
   id: string;
   projectId: string;
   owner: {
-    username: string;
+    username: string | null;
   };
   status: ProjectJoinRoundStatus;
   name: string;
@@ -21,6 +21,13 @@ export interface Project {
     value: Category['value'];
     label: string;
     colorScheme: string;
+  };
+  round: {
+    id: string;
+    active: string;
+    endTime: fundingRound.endTime;
+    roundName: fundingRound.roundName;
+    startTime: fundingRound.startTime;
   };
 }
 

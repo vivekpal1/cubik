@@ -14,6 +14,7 @@ import {
 import Link from 'next/link';
 import { ProjectJoinRoundStatus } from '@cubik/database';
 import { Project } from '.';
+import { isPast } from 'date-fns';
 
 const ProjectCard = ({
   id,
@@ -28,9 +29,7 @@ const ProjectCard = ({
   return (
     <LinkBox
       as={Link}
-      href={`/${username}/${projectId}/${
-        status === ProjectJoinRoundStatus.APPROVED && id
-      }`}
+      href={`/${username}/${projectId}/${status === ProjectJoinRoundStatus.APPROVED && id}`}
       w="full"
       maxW={{
         base: '92vw',
@@ -84,12 +83,10 @@ const ProjectCard = ({
           </Center>
         )} */}
         {/* card Header */}
-        {/* {isPast(startTime) && !isPast(endTime) && (
+        {isPast(startTime) && !isPast(endTime) && (
           // if project is participating in a round then make it visible else don't show it
           <Center
-            display={
-              status === ProjectJoinRoundStatus.APPROVED ? 'flex' : 'none'
-            }
+            display={status === ProjectJoinRoundStatus.APPROVED ? 'flex' : 'none'}
             w="full"
             bg={`surface.${colorScheme}.3`}
             borderTopRadius={'16px'}
@@ -127,14 +124,9 @@ const ProjectCard = ({
               </Box>
             </HStack>
           </Center>
-        )} */}
+        )}
         {/* cards footer */}
-        <VStack
-          w="full"
-          alignItems={'start'}
-          justifyContent="space-between"
-          h="full"
-        >
+        <VStack w="full" alignItems={'start'} justifyContent="space-between" h="full">
           <VStack
             p={{ base: '14px', md: '24px' }}
             gap={{ base: '12px', md: '16px' }}
@@ -156,33 +148,15 @@ const ProjectCard = ({
                 height={{ base: '3.4rem', md: '4rem' }}
               />
               <VStack spacing="4px" w="full">
-                <HStack
-                  w="full"
-                  align="start"
-                  gap="14px"
-                  justify="space-between"
-                >
-                  <Box
-                    as="p"
-                    color="neutral.11"
-                    textStyle={{ base: 'title4', md: 'title3' }}
-                  >
+                <HStack w="full" align="start" gap="14px" justify="space-between">
+                  <Box as="p" color="neutral.11" textStyle={{ base: 'title4', md: 'title3' }}>
                     {name}
                   </Box>
-                  <Box
-                    as="p"
-                    color="#A8F0E6"
-                    textStyle={{ base: 'title4', md: 'title3' }}
-                  >
+                  <Box as="p" color="#A8F0E6" textStyle={{ base: 'title4', md: 'title3' }}>
                     ${amountRaised}
                   </Box>
                 </HStack>
-                <HStack
-                  w="full"
-                  align="start"
-                  gap="14px"
-                  justify="space-between"
-                >
+                <HStack w="full" align="start" gap="14px" justify="space-between">
                   <Center>
                     <Box
                       noOfLines={1}
@@ -197,11 +171,7 @@ const ProjectCard = ({
                       by @{username}
                     </Box>
                   </Center>
-                  <Box
-                    color="neutral.8"
-                    as="p"
-                    textStyle={{ base: 'body6', md: 'body5' }}
-                  >
+                  <Box color="neutral.8" as="p" textStyle={{ base: 'body6', md: 'body5' }}>
                     Est. Match
                   </Box>
                 </HStack>

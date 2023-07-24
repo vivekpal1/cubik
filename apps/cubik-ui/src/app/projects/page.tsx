@@ -1,7 +1,6 @@
 import { formatNumberWithK } from '~/utils/formatWithK';
 import { prisma } from '@cubik/database';
 import Projects, { Project } from '../components/projects';
-import { Category } from '../components/projects/filters/categories';
 
 const getProjects = async () => {
   const projects = await prisma.projectJoinRound.findMany({
@@ -53,10 +52,15 @@ const getProjects = async () => {
       name: project.name,
       logo: project.logo,
       description: project.short_description,
-      amountRaised: amountRaise
-        ? formatNumberWithK(parseInt(amountRaise.toFixed(2)))
-        : '0',
+      amountRaised: amountRaise ? formatNumberWithK(parseInt(amountRaise.toFixed(2))) : '0',
       industry: JSON.parse(project.industry) as Project['industry'],
+      round: {
+        id: fundingRound.id,
+        active: fundingRound.active,
+        endTime: fundingRound.endTime,
+        roundName: fundingRound.roundName,
+        startTime: fundingRound.startTime,
+      },
     };
   });
 };
