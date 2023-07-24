@@ -2,13 +2,7 @@ import { Avatar } from '@chakra-ui/avatar';
 import { Button, IconButton } from '@chakra-ui/button';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Center, HStack, Stack, VStack } from '@chakra-ui/layout';
-import {
-  Menu,
-  MenuButton,
-  MenuDivider,
-  MenuItem,
-  MenuList,
-} from '@chakra-ui/menu';
+import { Menu, MenuButton, MenuDivider, MenuItem, MenuList } from '@chakra-ui/menu';
 import {
   Drawer,
   DrawerBody,
@@ -116,12 +110,7 @@ const ProjectDetails = ({
           <Center display={{ base: 'flex', md: 'none' }}>
             <ProjectOptionsMenu />
           </Center>
-          <Stack
-            display={{ base: 'none', md: 'flex' }}
-            direction="row"
-            gap="8px"
-            h="fit-content"
-          >
+          <Stack display={{ base: 'none', md: 'flex' }} direction="row" gap="8px" h="fit-content">
             {project.status === 'VERIFIED' && (
               <>
                 <Button
@@ -140,11 +129,7 @@ const ProjectDetails = ({
         </HStack>
         <VStack gap={{ base: '4px', md: '16px' }} w="full" align="start">
           <HStack align={'start'} w="full">
-            <Box
-              as="p"
-              textStyle={{ base: 'headline4', md: 'headline3' }}
-              color="neutral.11"
-            >
+            <Box as="p" textStyle={{ base: 'headline4', md: 'headline3' }} color="neutral.11">
               {project?.name}
             </Box>
           </HStack>
@@ -179,21 +164,12 @@ const ProjectDetails = ({
                   {getDomain(project?.project_link)}
                 </Box>
               </Button>
-              <ProjectSocials
-                isLoading={isLoading}
-                hideTitle={true}
-                projectDetails={project}
-              />
+              <ProjectSocials isLoading={isLoading} hideTitle={true} projectDetails={project} />
             </HStack>
           </HStack>
         </VStack>
       </VStack>
-      <Stack
-        display={{ base: 'flex', md: 'none' }}
-        direction={'row'}
-        w="full"
-        h="fit-content"
-      >
+      <Stack display={{ base: 'flex', md: 'none' }} direction={'row'} w="full" h="fit-content">
         <Button
           variant="cubikFilled"
           size={'cubikSmall'}
@@ -226,7 +202,7 @@ const ProjectHeader = ({
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [drawerBodyView, setDrawerBodyView] = useState<drawerBodyViewEnum>(
-    drawerBodyViewEnum.PROJECT_DETAILS
+    drawerBodyViewEnum.PROJECT_DETAILS,
   );
   const btnRef = useRef();
   const headerSpacing = {
@@ -243,21 +219,19 @@ const ProjectHeader = ({
         gap={headerSpacing}
         w="full"
       >
-        <Stack
-          w="full"
-          direction="row"
-          gap={{ base: '8px', sm: '12px', md: '16px' }}
-        >
+        <Stack w="full" direction="row" gap={{ base: '8px', sm: '12px', md: '16px' }}>
           <SkeletonCircle
             isLoaded={!isLoading}
             fadeDuration={1.5}
             opacity={isLoading ? '0.5' : '1'}
+            borderRadius="12px"
             width={{ base: '36px', sm: '48px', md: '52px' }}
             height={{ base: '36px', sm: '48px', md: '52px' }}
           >
             <Avatar
               src={project?.logo}
               name={project?.name}
+              borderRadius="8px"
               width={{ base: '36px', sm: '48px', md: '52px' }}
               height={{ base: '36px', sm: '48px', md: '52px' }}
             />
@@ -284,10 +258,7 @@ const ProjectHeader = ({
                 {project?.name}
               </Box>
             </Skeleton>
-            <GetFormattedLink
-              isLoading={isLoading}
-              link={project?.project_link}
-            />
+            <GetFormattedLink isLoading={isLoading} link={project?.project_link} />
           </VStack>
         </Stack>
         <Center w="full" justifyContent={'end'}>
@@ -323,10 +294,7 @@ const ProjectHeader = ({
             //@ts-ignore
             finalFocusRef={btnRef}
           >
-            <DrawerOverlay
-              color="rgba(0, 0, 0, 0.72)"
-              backdropFilter="blur(8px)"
-            />
+            <DrawerOverlay color="rgba(0, 0, 0, 0.72)" backdropFilter="blur(8px)" />
             <DrawerContent
               borderColor={'#1D1F1E'}
               borderBottom={'none'}
@@ -344,10 +312,7 @@ const ProjectHeader = ({
 
               <DrawerBody maxH={'90vh'} p="0">
                 {drawerBodyView === drawerBodyViewEnum.GRANTS ? (
-                  <ApplyForGrant
-                    setDrawerBodyView={setDrawerBodyView}
-                    project={project}
-                  />
+                  <ApplyForGrant setDrawerBodyView={setDrawerBodyView} project={project} />
                 ) : drawerBodyView === drawerBodyViewEnum.EDIT ? (
                   <EditProjectDetails />
                 ) : drawerBodyView === drawerBodyViewEnum.PREVIEW ? (

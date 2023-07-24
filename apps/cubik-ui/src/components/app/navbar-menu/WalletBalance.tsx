@@ -26,7 +26,7 @@ const filterTokens = (tokens: TokenInfo[]) => {
   ];
 
   // filter all the tokens which contains tokenAccount of the array
-  return tokens.filter((token) => {
+  return tokens.filter(token => {
     // if the tokenAccount is not in the array, return true
     return tokenAddressesToFilter.includes(token.mint);
   });
@@ -34,7 +34,7 @@ const filterTokens = (tokens: TokenInfo[]) => {
 
 const getBalances = async (address: string) => {
   const { data } = await axios.get(
-    `https://api.helius.xyz/v0/addresses/${address}/balances?api-key=${env.NEXT_PUBLIC_HELIUS_API_KEY}`
+    `https://api.helius.xyz/v0/addresses/${address}/balances?api-key=${env.NEXT_PUBLIC_HELIUS_API_KEY}`,
   );
   return data;
 };
@@ -62,17 +62,13 @@ const WalletBalance = ({
   } = useQuery(
     ['balances', walletAddress],
     () =>
-      getBalances(
-        walletAddress
-          ? (walletAddress as string)
-          : (publicKey?.toBase58() as string)
-      ),
+      getBalances(walletAddress ? (walletAddress as string) : (publicKey?.toBase58() as string)),
     {
       staleTime: 3 * 60 * 1000,
       refetchIntervalInBackground: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
-    }
+    },
   );
 
   if (!user?.id) return <>no user</>;
@@ -89,13 +85,10 @@ const WalletBalance = ({
     if (data.nativeBalance / LAMPORTS_PER_SOL === 0) return 0;
 
     if (data.nativeBalance / LAMPORTS_PER_SOL < 0.01) {
-      return 0.01 * price?.find((p) => p.token === 'Sol')?.price! ?? 0;
+      return 0.01 * price?.find(p => p.token === 'Sol')?.price! ?? 0;
     }
 
-    return (
-      (data.nativeBalance / LAMPORTS_PER_SOL) *
-      price?.find((p) => p.token === 'Sol')?.price!
-    );
+    return (data.nativeBalance / LAMPORTS_PER_SOL) * price?.find(p => p.token === 'Sol')?.price!;
   };
   return (
     <VStack
@@ -122,7 +115,7 @@ const WalletBalance = ({
         Wallet Balance
       </Box>
       {data && (
-        <Skeleton w="full" fadeDuration={2.6} isLoaded={!priceLoading}>
+        <Skeleton py="4px" w="full" fadeDuration={2.6} isLoaded={!priceLoading}>
           <HStack p="0px 2px" gap="8px" w="full">
             <SOL
               size={
@@ -190,10 +183,10 @@ const WalletBalance = ({
           </HStack>
         </Skeleton>
       )}
-      {filteredData?.map((token) => {
+      {filteredData?.map(token => {
         const tokenBalance = token.amount / 10 ** token.decimals;
         return token.mint == 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' ? (
-          <HStack p="0px 2px" gap="8px" w="full" key={token.tokenAccount}>
+          <HStack p="4px 2px" gap="8px" w="full" key={token.tokenAccount}>
             <USDC
               size={
                 size
