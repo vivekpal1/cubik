@@ -1,7 +1,4 @@
 import {
-  Alert,
-  AlertDescription,
-  AlertIcon,
   Avatar,
   Box,
   Button,
@@ -38,23 +35,16 @@ import ComponentErrors from '~/components/errors/ComponentErrors';
 import { RoundDetailsWithProjectsWithContributionsType } from '~/types/round';
 import SelectProjectToApplyForGrant from '../SelectProjectToApplyForGrant';
 import { BiPlus } from 'react-icons/bi';
-import { WalletAddress } from '~/components/common/wallet/WalletAdd';
-import { publicKey } from '@coral-xyz/anchor/dist/cjs/utils';
-import { disconnect } from 'process';
-import { FailureToast } from '~/components/common/toasts/Toasts';
 import { Controller, useForm } from 'react-hook-form';
-import { HiCheck } from 'react-icons/hi';
-import FramerCarousel from '../../create-profile/FramerNFTCarousel';
-import ProfilePicture from '../../create-profile/ProfilePicture';
 import UploadImageInput from '~/components/common/inputs/UploadImageInput';
 import { AmountInput } from '../../projects/project-details/project-interactions/project-donation-simulator/form/DonationAmountInput';
 import { tokens } from '~/components/common/tokens/DonationTokens';
 import { trpc } from '~/utils/trpc';
-import FlipNumbers from 'react-flip-numbers';
 import { uploadToCloudinary } from '~/utils/upload';
 import { sendSPL } from '~/utils/spl';
 import { PublicKey, Transaction } from '@solana/web3.js';
 import { connection } from '~/utils/program/contract';
+import { isFuture } from 'date-fns';
 
 const sponsors = [
   {
@@ -91,10 +81,12 @@ type GrantSponsorsForm = {
 };
 
 const GrantSponsors = ({
+  endDate,
   grantName,
   grantId,
   isLoading,
 }: {
+  endDate: Date | undefined | null;
   grantName: string | undefined | null;
   grantId: string | undefined | null;
   isLoading: boolean;
@@ -139,7 +131,7 @@ const GrantSponsors = ({
       if (!imageUrl) return;
       if (!anchorWallet?.publicKey) return;
       if (!grantId) return;
-      console.log('token', data.amount);
+
       const ix = await sendSPL(
         'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
         anchorWallet?.publicKey,
@@ -182,6 +174,7 @@ const GrantSponsors = ({
         }}
       >
         <HStack
+          display={isFuture(endDate as Date) ? 'flex' : 'none'}
           cursor={'pointer'}
           onClick={onOpen}
           rounded="full"
@@ -337,7 +330,7 @@ const GrantSponsors = ({
                   Amount
                 </FormLabel>
                 <HStack>
-                  <InputGroup border="1px solid #141414" rounded={'8px'}>
+                  {/* <InputGroup border="1px solid #141414" rounded={'8px'}>
                     <Input
                       {...register('amount', {
                         required: true,
@@ -415,13 +408,23 @@ const GrantSponsors = ({
                         height={15}
                         width={10}
                         color="#636666"
-                        //background="black"
                         play
                         perspective={700}
                         numbers={watch('amount').toFixed(2)}
                       />
                     </InputRightAddon>
-                  </InputGroup>
+                  </InputGroup> */}
+
+                  <AmountInput
+                    control={control}
+                    errors={errors}
+                    register={register}
+                    seletedToken={'USDC'}
+                    setValue={() => {}}
+                    token={tokens}
+                    value={watch('amount')}
+                    key={watch('amount')}
+                  />
                 </HStack>
                 {errors.amount ? (
                   <>
@@ -714,6 +717,7 @@ const GrantDetailsHeader = ({
           </Box>
         </Skeleton>
         <GrantSponsors
+          endDate={data?.endTime}
           isLoading={false}
           grantName={data?.roundName}
           grantId={data?.id}
