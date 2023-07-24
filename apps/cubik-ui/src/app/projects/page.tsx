@@ -54,13 +54,6 @@ const getProjects = async () => {
       description: project.short_description,
       amountRaised: amountRaise ? formatNumberWithK(parseInt(amountRaise.toFixed(2))) : '0',
       industry: JSON.parse(project.industry) as Project['industry'],
-      round: {
-        id: fundingRound.id,
-        active: fundingRound.active,
-        endTime: fundingRound.endTime,
-        roundName: fundingRound.roundName,
-        startTime: fundingRound.startTime,
-      },
     };
   });
 };
