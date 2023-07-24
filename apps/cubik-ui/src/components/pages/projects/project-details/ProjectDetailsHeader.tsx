@@ -5,13 +5,7 @@ import { Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/menu';
 import { Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/skeleton';
 import React from 'react';
 import { BiChevronDown } from 'react-icons/bi';
-import {
-  FaDiscord,
-  FaGithub,
-  FaTelegramPlane,
-  FaTwitter,
-  FaYoutube,
-} from 'react-icons/fa';
+import { FaDiscord, FaGithub, FaTelegramPlane, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { HiLink } from 'react-icons/hi';
 import { MdReportGmailerrorred } from 'react-icons/md';
 import CustomTag from '~/components/common/tags/CustomTag';
@@ -58,6 +52,7 @@ const ProjectDetailsHeader = ({
       <SkeletonCircle
         isLoaded={!isLoading}
         fadeDuration={1.5}
+        borderRadius="12px"
         opacity={isLoading ? '0.6' : '1'}
         width={{ base: '4.4rem', md: '6.2rem' }}
         height={{ base: '4.4rem', md: '6.2rem' }}
@@ -65,6 +60,7 @@ const ProjectDetailsHeader = ({
         <Avatar
           backgroundColor={'#1C1C1C'}
           src={logo}
+          borderRadius="12px"
           width={{ base: '4.4rem', md: '6.2rem' }}
           height={{ base: '4.4rem', md: '6.2rem' }}
         />
@@ -115,12 +111,7 @@ const ProjectDetailsHeader = ({
                     p="8px 16px"
                     color="surface.yellow.2"
                     rounded="4px"
-                    icon={
-                      <MdReportGmailerrorred
-                        color="surface.yellow.2"
-                        size={22}
-                      />
-                    }
+                    icon={<MdReportGmailerrorred color="surface.yellow.2" size={22} />}
                   >
                     Report
                   </MenuItem>
@@ -128,11 +119,7 @@ const ProjectDetailsHeader = ({
               </Menu>
             </HStack>
           </Skeleton>
-          <Skeleton
-            isLoaded={!isLoading}
-            fadeDuration={2}
-            opacity={isLoading ? '0.4' : '1'}
-          >
+          <Skeleton isLoaded={!isLoading} fadeDuration={2} opacity={isLoading ? '0.4' : '1'}>
             <HStack
               overflow={'hidden'}
               alignItems="center"

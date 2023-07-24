@@ -1,20 +1,21 @@
 import { Avatar } from '@chakra-ui/avatar';
-import { Center, HStack, VStack } from '@chakra-ui/layout';
+import { Button } from '@chakra-ui/button';
+import { Box, Center, HStack, VStack } from '@chakra-ui/layout';
 import { Skeleton, SkeletonCircle } from '@chakra-ui/skeleton';
 import { FC, memo } from 'react';
 import Username from '~/components/common/username/Username';
 import { WalletAddress } from '~/components/common/wallet/WalletAdd';
 import { UserProof, UserWithProjectType } from '~/types/user';
+import { HiSparkles } from 'react-icons/hi';
+import ProfilePictureAvatar from '~/components/common/profile-picture/ProfilePicture';
 
 type profileHeaderType = {
+  admin: boolean | undefined;
   user: UserWithProjectType | null | undefined;
   isLoading: boolean;
 };
 
-const ProfileHeader: FC<profileHeaderType> = ({
-  user,
-  isLoading,
-}: profileHeaderType) => {
+const ProfileHeader: FC<profileHeaderType> = ({ admin, user, isLoading }: profileHeaderType) => {
   return (
     <HStack
       w="full"
@@ -32,18 +33,12 @@ const ProfileHeader: FC<profileHeaderType> = ({
           borderRadius="12px"
           size={{ base: '56px', sm: '72px', md: '84px' }}
         >
-          <Avatar
-            ignoreFallback={true}
-            loading="lazy"
-            showBorder={true}
-            backgroundColor="#FFFFFF30"
-            border="2px solid #FFFFFF10"
-            src={user?.profilePicture as string}
-            name={user?.username as string}
-            rounded="16%"
-            borderRadius="16%"
-            width={{ base: '56px', sm: '72px', md: '84px' }}
-            height={{ base: '56px', sm: '72px', md: '84px' }}
+          <ProfilePictureAvatar
+            asNFT={true}
+            profilePicture={user?.profilePicture as string}
+            username={user?.username as string}
+            width={{ base: '56px', sm: '72px', md: '84px', lg: '84px', xl: '84px' }}
+            height={{ base: '56px', sm: '72px', md: '84px', lg: '84px', xl: '84px' }}
           />
         </SkeletonCircle>
       </Center>

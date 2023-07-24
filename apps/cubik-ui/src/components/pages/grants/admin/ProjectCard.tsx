@@ -33,17 +33,8 @@ const ProjectRoundManagerCardPendingStatus = ({
       w="100%"
     >
       <CardBody>
-        <Stack
-          direction={{ base: 'column', sm: 'row' }}
-          px={''}
-          gap={'12px'}
-          w="full"
-        >
-          <Stack
-            w="full"
-            direction="row"
-            gap={{ base: '8px', sm: '12px', md: '16px' }}
-          >
+        <Stack direction={{ base: 'column', sm: 'row' }} px={''} gap={'12px'} w="full">
+          <Stack w="full" direction="row" gap={{ base: '8px', sm: '12px', md: '16px' }}>
             <Center>
               <Avatar
                 src={projectJoinRound.project.logo}
@@ -96,11 +87,7 @@ const ProjectRoundManagerCardPendingStatus = ({
                 onRejectModelOpen();
               }}
             >
-              <Box
-                as={RxCross2}
-                color="#ADB8B6"
-                boxSize={{ base: '18px', md: '26px' }}
-              />
+              <Box as={RxCross2} color="#ADB8B6" boxSize={{ base: '18px', md: '26px' }} />
             </Button>
             <Button
               w="fit-content"
@@ -111,11 +98,7 @@ const ProjectRoundManagerCardPendingStatus = ({
                 onAcceptModalOpen();
               }}
             >
-              <Box
-                as={BiCheck}
-                color="#31F579"
-                boxSize={{ base: '18px', md: '26px' }}
-              />
+              <Box as={BiCheck} color="#31F579" boxSize={{ base: '18px', md: '26px' }} />
             </Button>
           </HStack>
         </Stack>

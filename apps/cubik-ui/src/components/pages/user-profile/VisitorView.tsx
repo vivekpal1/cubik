@@ -14,13 +14,10 @@ type visitorViewType = {
   isLoading: boolean;
 };
 
-const VisitorView: FC<visitorViewType> = ({
-  user,
-  isLoading,
-}: visitorViewType) => {
+const VisitorView: FC<visitorViewType> = ({ user, isLoading }: visitorViewType) => {
   return (
     <Flex flexDir={'column'} gap="48px">
-      <ProfileHeader isLoading={isLoading} user={user} />
+      <ProfileHeader isLoading={isLoading} user={user} admin={false} />
       <Tabs variant={'cubik'} isLazy>
         <TabList>
           <Tab>Details</Tab>
@@ -61,4 +58,4 @@ const VisitorView: FC<visitorViewType> = ({
   );
 };
 
-export default memo(VisitorView);
+export default VisitorView;

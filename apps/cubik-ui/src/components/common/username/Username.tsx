@@ -10,13 +10,7 @@ type usernameProps = {
   size: size;
 };
 
-const CheckMarkIcon = ({
-  checkColor,
-  bgColor,
-}: {
-  checkColor?: string;
-  bgColor?: string;
-}) => (
+const CheckMarkIcon = ({ checkColor, bgColor }: { checkColor?: string; bgColor?: string }) => (
   <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       fillRule="evenodd"
@@ -48,19 +42,19 @@ const Username = ({ isLoading, username, proofs, size }: usernameProps) => {
       case 6:
         return (
           <Box as={Icon} boxSize={boxSize}>
-            <CheckMarkIcon checkColor="" bgColor="" />
+            <CheckMarkIcon checkColor="" bgColor="#FFD83D" />
           </Box>
         );
       case 5:
         return (
           <Box as={Icon} boxSize={boxSize}>
-            <CheckMarkIcon checkColor="" bgColor="" />
+            <CheckMarkIcon checkColor="" bgColor="#FFD83D" />
           </Box>
         );
       case 4:
         return (
           <Box as={Icon} boxSize={boxSize}>
-            <CheckMarkIcon checkColor="" bgColor="" />
+            <CheckMarkIcon checkColor="" bgColor="#FFD83D" />
           </Box>
         );
       case 3:
