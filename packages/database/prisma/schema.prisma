@@ -37,32 +37,29 @@ model Hackathon {
 }
 
 model HackathonRegistrations {
-  id          String    @id @default(uuid()) @map("_id")
-  hackathonId String
-  userId      String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  Hackathon   Hackathon @relation(fields: [hackathonId], references: [id])
-  User        UserModel @relation(fields: [userId], references: [id])
+  id                    String                  @id @default(uuid()) @map("_id")
+  hackathonId           String
+  userId                String
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime                @updatedAt
+  Hackathon             Hackathon               @relation(fields: [hackathonId], references: [id])
+  User                  UserModel               @relation(fields: [userId], references: [id])
 
   @@index([hackathonId])
   @@index([userId])
 }
 
 model ProjectJoinHackathons {
-  id            String        @id @default(uuid()) @map("_id")
-  hackathonId   String
-  projectId     String
-  tracks        Json?
-  mainTrack     String?
-  amount        Float         @default(0)
-  isArchive     Boolean       @default(false)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  hackathon     Hackathon     @relation(fields: [hackathonId], references: [id])
-  projectsModel ProjectsModel @relation(fields: [projectId], references: [id])
-  tx            String        @db.VarChar(500)
-
+  id                     String                 @id @default(uuid()) @map("_id")
+  hackathonId            String
+  projectId              String
+  amount                 Float                  @default(0)
+  isArchive              Boolean                @default(false)
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+  hackathon              Hackathon              @relation(fields: [hackathonId], references: [id])
+  projectsModel          ProjectsModel          @relation(fields: [projectId], references: [id])
+  tx                     String                 @db.VarChar(500)
   @@index([hackathonId])
   @@index([projectId])
 }
