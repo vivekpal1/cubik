@@ -8,8 +8,7 @@ export const verifiedProjects = publicProcedure
       filter: z.string().optional(),
       round: z.array(z.string()).optional(),
       seed: z.number().optional(),
-      mobile: z.boolean().optional(),
-    })
+    }),
   )
   .query(async ({ input, ctx: { prisma } }) => {
     function seededRandom(seed: number) {
@@ -39,7 +38,7 @@ export const verifiedProjects = publicProcedure
 
     const result = await prisma.projectJoinRound.findMany({
       where: {
-        status: "APPROVED",
+        status: 'APPROVED',
       },
       select: {
         id: true,
@@ -69,58 +68,27 @@ export const verifiedProjects = publicProcedure
               },
             },
             isArchive: true,
-            Contribution: input.mobile
-              ? false
-              : {
+            Contribution: {
+              select: {
+                id: true,
+                user: {
                   select: {
-                    id: true,
-                    user: {
-                      select: {
-                        profilePicture: true,
-                        username: true,
-                      },
-                    },
+                    profilePicture: true,
+                    username: true,
                   },
                 },
-          },
-        },
+          },},
+        },},
       },
     });
 
-    var res = shuffleArray(result, (input.seed as number) ?? 0).filter(
-      (e) => e.project.isArchive === false
+    const res: verifiedProjectsType[] = shuffleArray(result, (input.seed as number) ?? 0).filter(
+      e => e.project.isArchive === false,
     );
-
-    if (input.mobile) {
-      const contributerCountByProject = await prisma.contribution.findMany({
-        distinct: ["projectId"],
-        select: {
-          projectId: true,
-          count: true,
-        },
-      });
-
-      res = res.map((data) => {
-        const matchingProject = contributerCountByProject.find(
-          (countData) => countData.projectId === data.project.id
-        );
-
-        return {
-          ...data,
-          project: {
-            ...data.project,
-            Contribution: {
-              ...data.project.Contribution,
-            },
-            contributionCount: matchingProject ? matchingProject.count : 0,
-          },
-        };
-      });
-    }
 
     // when both filter are working
     if (input.filter && input.round && input.round?.length > 0) {
-      const active = res.filter((e) => {
+      const active = res.filter(e => {
         const industry = JSON.parse(e.project.industry) as {
           label: string;
           value: string;
@@ -128,7 +96,7 @@ export const verifiedProjects = publicProcedure
         }[];
 
         if (
-          industry.some((e) => e.value === input.filter) &&
+          industry.some(e => e.value === input.filter) &&
           input.round?.includes(e.fundingRound.id)
         ) {
           return e;
@@ -140,7 +108,7 @@ export const verifiedProjects = publicProcedure
 
     // only filter working
     if (input.round && input.round.length === 0 && input.filter) {
-      const active = res.filter((e) => {
+      const active = res.filter(e => {
         if (e.project.industry.includes(input.filter as string)) {
           return e;
         }
@@ -151,7 +119,7 @@ export const verifiedProjects = publicProcedure
 
     // only round working
     if (input.round && input.round.length > 0 && !input.filter) {
-      const active = res.filter((e) => {
+      const active = res.filter(e => {
         if (input.round?.includes(e.fundingRound.id)) {
           return e;
         }

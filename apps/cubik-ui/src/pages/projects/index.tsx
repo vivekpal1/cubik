@@ -22,7 +22,6 @@ const Projects = (_props: projectsPropsType) => {
         maxW="7xl"
         py={{ base: '24px', md: '40px' }}
       >
-        <AdminControls />
         <ProjectsExplorer />
       </Container>
     </>
