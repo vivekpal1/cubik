@@ -3,11 +3,16 @@ import type { NextPage } from "next";
 import LandingPage from "@/app/components/landing-page/landingPage";
 import { useUser } from "@/app//context/user";
 
-const Home: NextPage = () => {
-  const { user } = useUser();
+import { useWallet } from '@solana/wallet-adapter-react';
+import dynamic from 'next/dynamic';
 
-  console.log("user", user);
+const WalletMultiButton = dynamic(
+  async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
+  { ssr: false },
+);
 
+export default function Home() {
+  const {} = useWallet();
   return (
     <>
       <LandingPage />
@@ -15,4 +20,3 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
