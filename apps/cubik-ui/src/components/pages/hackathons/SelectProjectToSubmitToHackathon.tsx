@@ -104,10 +104,10 @@ const SelectProjectToSubmitToHackathon = ({
 
   const joinHackathonMutation = trpc.hackathon.projectJoinHackathon.useMutation({
     onSuccess: () => {
-       setsignTransactionLoading(false);
-       onClose();
-       setStep(0);
-       SuccessToast({ toast, message: 'Submission Successful' });
+      setsignTransactionLoading(false);
+      onClose();
+      setStep(0);
+      SuccessToast({ toast, message: 'Submission Successful' });
     },
   });
 
@@ -116,7 +116,6 @@ const SelectProjectToSubmitToHackathon = ({
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
-  // todo: update this
   const sendTransaction = async (projectUserCount: number) => {
     try {
       const tx = new anchor.web3.Transaction();
@@ -173,20 +172,21 @@ const SelectProjectToSubmitToHackathon = ({
   };
 
   const Tile: React.FC<{
+    isSelectAble: boolean;
     tileIndex: string;
     joinRoundStatus?: ProjectJoinRoundStatus | undefined;
     isHackathon: boolean | undefined;
     name: string;
     logo: string;
     status: ProjectVerifyStatus;
-  }> = ({ tileIndex, logo, joinRoundStatus, isHackathon = false, name }) => {
+  }> = ({ tileIndex, logo, joinRoundStatus, isHackathon = false, name, isSelectAble = true }) => {
     const isSelected = selectedProjectId === tileIndex;
 
     return (
       <HStack
-        border={isSelected ? '2px solid' : '2px dashed'}
-        borderColor={isSelected ? '#14665B' : '#ffffff10'}
-        backgroundColor={isSelected ? '#010F0D' : 'transparent'}
+        border={isSelectAble && isSelected ? '2px solid' : '2px dashed'}
+        borderColor={isSelectAble && isSelected ? '#14665B' : '#ffffff10'}
+        backgroundColor={isSelectAble && isSelected ? '#010F0D' : 'transparent'}
         p={{ base: '16px', md: '18px' }}
         w="full"
         gap="24px"
@@ -195,7 +195,7 @@ const SelectProjectToSubmitToHackathon = ({
         align="center"
         direction={{ base: 'column', md: 'row' }}
         onClick={() => {
-          if (isHackathon) {
+          if (isHackathon && isSelectAble) {
             setSelectedProjectId(tileIndex);
             return;
           }
@@ -216,7 +216,7 @@ const SelectProjectToSubmitToHackathon = ({
           transform: 'translate(0%, -50%)',
           width: '8rem',
           height: '8rem',
-          backgroundColor: isSelected ? '#14665B' : '#ffffff10',
+          backgroundColor: isSelectAble && isSelected ? '#14665B' : '#ffffff10',
           filter: 'blur(100px)',
           borderRadius: 'full',
         }}
@@ -236,15 +236,18 @@ const SelectProjectToSubmitToHackathon = ({
                 width={{ base: '36px', sm: '48px' }}
                 height={{ base: '36px', sm: '48px' }}
               />
-              <Box
-                as="p"
-                textStyle={{ base: 'title4', sm: 'title3', md: 'title2' }}
-                noOfLines={1}
-                textAlign="left"
-                color="white"
-              >
-                {name}
-              </Box>
+              <HStack gap="8px">
+                <Box
+                  as="p"
+                  textStyle={{ base: 'title4', sm: 'title3', md: 'title2' }}
+                  noOfLines={1}
+                  textAlign="left"
+                  color="white"
+                >
+                  {name}
+                </Box>
+                <Tag>Submitted</Tag>
+              </HStack>
             </Stack>
           </VStack>
         </VStack>
@@ -253,15 +256,22 @@ const SelectProjectToSubmitToHackathon = ({
           border="2px solid"
           w="22px"
           h="22px"
-          borderColor={isSelected ? '#14665B' : '#ADB8B6'}
+          borderColor={isSelectAble && isSelected ? '#14665B' : '#ADB8B6'}
           p="4px"
         >
-          <Center rounded="full" w="full" h="full" backgroundColor={isSelected ? '#14665B' : ''} />
+          <Center
+            rounded="full"
+            w="full"
+            h="full"
+            backgroundColor={isSelectAble && isSelected ? '#14665B' : ''}
+          />
         </Center>
       </HStack>
     );
   };
-
+  const selectedArray = trpc.project.projectIsValid.useQuery(undefined, {
+    staleTime: 1000,
+  });
   return (
     <>
       <Modal
