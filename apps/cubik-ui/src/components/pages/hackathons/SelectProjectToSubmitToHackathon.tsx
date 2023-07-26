@@ -248,7 +248,7 @@ const SelectProjectToSubmitToHackathon = ({
                 >
                   {name}
                 </Box>
-                <Tag>Submitted</Tag>
+                {!isSelectAble && <Tag>Submitted</Tag>}
               </HStack>
             </Stack>
           </VStack>
@@ -350,6 +350,7 @@ const SelectProjectToSubmitToHackathon = ({
                       <VStack w="full" gap="24px">
                         {userProjects.data?.map((project, index) => (
                           <Tile
+                          
                             key={project.id}
                             tileIndex={project.id}
                             logo={project.logo}
