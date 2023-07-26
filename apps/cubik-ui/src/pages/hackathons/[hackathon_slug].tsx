@@ -3,7 +3,6 @@ import { Skeleton } from '@chakra-ui/react';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import HackathonDetails from '~/components/pages/hackathons/hackathonDetails/HackathonDetails';
-import SEO from '~/app/components/SEO';
 import {
   HackathonHost,
   HackathonSchedule,
@@ -21,21 +20,14 @@ const HackathonDetail = (props: { slug: string; share: boolean }) => {
       refetchOnMount: false,
       refetchOnReconnect: false,
       refetchOnWindowFocus: false,
-    }
+    },
   );
+
+  console.log(data);
 
   return (
     <>
-      <SEO
-        title={data?.name || 'Hackathon'}
-        description={data?.short_description || 'Quadratically Voted Hackathon'}
-        image={
-          props.share
-            ? 'https://res.cloudinary.com/demonicirfan/image/upload/v1688145530/OG-Grant_11_mchdyq.png'
-            : data?.background ||
-              'https://res.cloudinary.com/demonicirfan/image/upload/v1688128772/OG-Grant_10_jlqdjx.png'
-        }
-      />
+   
       <Container p={'0'} maxW={'full'}>
         <VStack>
           <Skeleton isLoaded={!isLoading} opacity={isLoading ? '0.1' : '1'} fadeDuration={2}>
@@ -86,7 +78,7 @@ const HackathonDetail = (props: { slug: string; share: boolean }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const hackathon_slug = context.params?.hackathon_slug;
   const hasShare = context.query.share;
 
