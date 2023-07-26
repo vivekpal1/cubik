@@ -52,6 +52,7 @@ import { GroupBase, OptionsOrGroups, Select } from 'chakra-react-select';
 import { track } from 'mixpanel-browser';
 
 type FormData = {
+  mainTrack: string;
   selectedProjectId: string | null;
   tracks: {
     value: string;
@@ -154,7 +155,8 @@ const SelectProjectToSubmitToHackathon = ({
         hackathonId: hackathonId as string,
         projectId: selectedProject as string,
         tx: sig,
-        tracks: getValues('tracks'), // add tracks here
+        tracks: getValues('tracks'),
+        mainTracks: '',
       });
     } catch (error) {
       error;
@@ -251,21 +253,23 @@ const SelectProjectToSubmitToHackathon = ({
             </Stack>
           </VStack>
         </VStack>
-        <Center
-          rounded="full"
-          border="2px solid"
-          w="22px"
-          h="22px"
-          borderColor={isSelectAble && isSelected ? '#14665B' : '#ADB8B6'}
-          p="4px"
-        >
+        {isSelectAble && (
           <Center
             rounded="full"
-            w="full"
-            h="full"
-            backgroundColor={isSelectAble && isSelected ? '#14665B' : ''}
-          />
-        </Center>
+            border="2px solid"
+            w="22px"
+            h="22px"
+            borderColor={isSelectAble && isSelected ? '#14665B' : '#ADB8B6'}
+            p="4px"
+          >
+            <Center
+              rounded="full"
+              w="full"
+              h="full"
+              backgroundColor={isSelectAble && isSelected ? '#14665B' : ''}
+            />
+          </Center>
+        )}
       </HStack>
     );
   };
@@ -581,7 +585,7 @@ const SelectProjectToSubmitToHackathon = ({
                           </FormControl>
                         )}
                       />
-                    </>
+                    </VStack>
                   ) : (
                     <VStack
                       border="1px dashed"
