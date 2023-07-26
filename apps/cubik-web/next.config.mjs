@@ -1,0 +1,15 @@
+import "./src/env.mjs";
+
+/** @type {import("next").NextConfig} */
+const config = {
+  experimental: { serverActions: true },
+  images: {
+    domains: [
+      "d1yweukyu067aq.cloudfront.net",
+      "www.sandstormhackathon.com",
+      "media-fastly.hackerearth.com",
+      "res.cloudinary.com",
+    ],
+  },
+};
+export default config;
