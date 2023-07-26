@@ -350,7 +350,7 @@ const SelectProjectToSubmitToHackathon = ({
                       <VStack w="full" gap="24px">
                         {userProjects.data?.map((project, index) => (
                           <Tile
-                          
+                            isSelectAble={true}
                             key={project.id}
                             tileIndex={project.id}
                             logo={project.logo}
@@ -612,7 +612,7 @@ const SelectProjectToSubmitToHackathon = ({
                   )}
                 </VStack>
               ) : (
-                <VStack textAlign={'start'} align={'start'} spacing="24px">
+                <VStack textAlign={'start'} align={'start'} gap={'24px'}>
                   <VStack align={'start'} spacing="16px">
                     <Box
                       as="p"
