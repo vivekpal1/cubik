@@ -23,7 +23,6 @@ const HackathonDetail = (props: { slug: string; share: boolean }) => {
     },
   );
 
-  console.log(data);
 
   return (
     <>
