@@ -2,8 +2,6 @@ import { Box, Center, Container, Heading } from '@chakra-ui/layout';
 import Link from 'next/link';
 import SEO from '~/app/components/SEO';
 import ComponentErrors from '~/components/errors/ComponentErrors';
-import AdminView from '~/components/pages/user-profile/AdminView';
-import VisitorView from '~/components/pages/user-profile/VisitorView';
 import { useUserStore } from '~/store/userStore';
 import { trpc } from '~/utils/trpc';
 
@@ -49,7 +47,7 @@ const ProfilePage = ({ username }: { username: string }) => {
 
   return (
     <>
-      <SEO
+      {/* <SEO
         title={`@${data ? data.username : 'User'}`}
         description={`@${data ? data.username : 'User'}'s profile`}
         image={`https://res.cloudinary.com/demonicirfan/image/upload/v1684179451/cubik%20og.png`}
@@ -64,7 +62,7 @@ const ProfilePage = ({ username }: { username: string }) => {
         ) : (
           <VisitorView user={data} isLoading={isLoading} />
         )}
-      </Container>
+      </Container> */}
     </>
   );
 };

@@ -11,6 +11,9 @@ type profileHeaderType = {
   admin: boolean | undefined;
   user: UserWithProjectType | null | undefined;
   isLoading: boolean;
+  profilePicture: string | undefined;
+  username: string | undefined;
+  mainWallet: string | undefined;
 };
 
 const ProfileHeader: FC<profileHeaderType> = ({ admin, user, isLoading }: profileHeaderType) => {
@@ -50,14 +53,11 @@ const ProfileHeader: FC<profileHeaderType> = ({ admin, user, isLoading }: profil
       >
         <HStack gap="8px">
           <Username
-            username={user?.username}
+            username={username}
             isLoading={isLoading}
-            proofs={(user?.proof as unknown as UserProof[]) ?? []}
+            // proofs={(user?.proof as unknown as UserProof[]) ?? []}
             size="lg"
           />
-          {/* <HStack>
-            <Box as="p">Get Verified</Box>
-          </HStack> */}
         </HStack>
         <Center marginInline={'0 !important'} margin="0 !important">
           <Skeleton
@@ -75,4 +75,4 @@ const ProfileHeader: FC<profileHeaderType> = ({ admin, user, isLoading }: profil
   );
 };
 
-export default memo(ProfileHeader);
+export default ProfileHeader;
