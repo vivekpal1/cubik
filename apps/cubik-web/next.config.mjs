@@ -9,6 +9,7 @@ const config = {
       "www.sandstormhackathon.com",
       "media-fastly.hackerearth.com",
       "res.cloudinary.com",
+      "source.boringavatars.com",
     ],
   },
 };

@@ -88,13 +88,6 @@ const Footer = ({
             justify={"space-between"}
           >
             <Button
-              as={Link}
-              //   href={`/${props?.ownerUsername}/${props?.projectId}${
-              //     props.status === ProjectJoinRoundStatus.APPROVED
-              //       ? `/${props.joinRoundId}`
-              //       : ``
-              //   }`}
-              href="/"
               background={"#1D1F1E"}
               color="white"
               fontWeight={"700"}

@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Project } from "..";
 import Link from "next/link";
+import Image from "next/image";
 
 const Contributors = ({ count, images }: Project["contributors"]) => {
   return (
@@ -31,7 +32,10 @@ const Contributors = ({ count, images }: Project["contributors"]) => {
               outline="2px solid #0C0D0D"
               name={"hi"}
               src={image}
+              
             />
+
+            // <Image src={image} height={20} width={20} alt="profile picture" />
           ))}
         </AvatarGroup>
         {count > 3 && (
