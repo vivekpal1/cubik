@@ -12,7 +12,7 @@ import {
 import { Project } from "..";
 import Link from "next/link";
 
-const Contributors = async ({ count, images }: Project["contributors"]) => {
+const Contributors = ({ count, images }: Project["contributors"]) => {
   return (
     <div>
       <Flex
