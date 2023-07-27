@@ -5,6 +5,7 @@ import ProjectCard from "./card";
 import { ProjectJoinRoundStatus } from "@prisma/client";
 import { useState } from "react";
 import { Category } from "./filters/categories";
+import GrantsCarousel from "./carousel/grants";
 
 export interface Project {
   id: string;
@@ -29,6 +30,8 @@ const Projects = ({ projects: _projects }: { projects: Project[] }) => {
 
   return (
     <Box bg={"black"} w="full" h="full">
+      <GrantsCarousel />
+
       <Container
         px={{ base: "0.6rem", sm: "0.8rem", md: "2rem", xl: "0px" }}
         maxW="7xl"
