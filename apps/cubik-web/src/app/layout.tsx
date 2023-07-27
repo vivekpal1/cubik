@@ -7,8 +7,8 @@ import { Container, VStack } from "@/utils/chakra";
 import theme from "@/config/chakra.config";
 
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Header from "@/components/layout/header";
-import WalletContext from "@/components/wallet/context";
+import Header from "@/app/components/layout/header";
+import WalletContext from "@/app/components/wallet/context";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],

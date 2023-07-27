@@ -1,6 +1,6 @@
-import type { NextPage } from 'next';
-import LandingPage from '@/components/landing-page/landingPage';
-import SEO from '@/components/SEO';
+import type { NextPage } from "next";
+import LandingPage from "@/app/components/landing-page/landingPage";
+import SEO from "@/app/components/SEO";
 
 const Home: NextPage = () => {
   return (
