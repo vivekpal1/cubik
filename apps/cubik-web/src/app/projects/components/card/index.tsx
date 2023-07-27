@@ -246,15 +246,11 @@ const ProjectCard = ({
             </Box>
           </VStack>
 
-          {/* card footer */}
-
           <Footer
             isHovered={isHovered}
             industry={industry}
             contributors={contributors}
           />
-
-          {/* <Contributors {...contributors} /> */}
         </VStack>
       </Card>
     </LinkBox>
