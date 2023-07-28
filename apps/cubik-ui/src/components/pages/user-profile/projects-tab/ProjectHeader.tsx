@@ -24,6 +24,7 @@ import { ProjectLink } from '../../projects/project-details/ProjectDetailsHeader
 import { ProjectSocials } from '../../projects/project-details/project-interactions/ProjectInteractions';
 import ApplyForGrant from './project-admin-dashboard/ProjectAdminDetailsDrawer/ApplyForGrant';
 import EditProjectDetails from './project-admin-dashboard/ProjectAdminDetailsDrawer/EditProjectDetails';
+import { ProjectVerifyStatus } from '@prisma/client';
 
 export enum drawerBodyViewEnum {
   PROJECT_DETAILS = 'project_details',
@@ -34,11 +35,21 @@ export enum drawerBodyViewEnum {
 
 const ProjectDetails = ({
   isLoading,
-  project,
   setDrawerBodyView,
+  projectLogo,
+  status,
+  projectName,
+  shortDescription,
+  project_link,
+  long_description,
 }: {
+  long_description: string;
+  projectName: string;
+  project_link: string;
+  projectLogo: string;
+  status: ProjectVerifyStatus;
   isLoading: boolean;
-  project: projectWithFundingRoundType;
+  shortDescription: string;
   setDrawerBodyView: any;
 }) => {
   const ProjectOptionsMenu = () => {
@@ -101,8 +112,8 @@ const ProjectDetails = ({
       <VStack align={'start'} w="full" gap="24px">
         <HStack w="full" justifyContent={'space-between'} align="top">
           <Avatar
-            src={project?.logo}
-            name={project?.name}
+            src={projectLogo}
+            name={projectName}
             borderRadius="8px"
             width={{ base: '80px', md: '102px' }}
             height={{ base: '80px', md: '102px' }}
@@ -134,7 +145,7 @@ const ProjectDetails = ({
             </Box>
           </HStack>
           <Box as="p" textStyle={'body9'} color="neutral.9">
-            {project?.short_description}
+            {shortDescription}
           </Box>
           <HStack w="full">
             <HStack w="full">
@@ -152,7 +163,7 @@ const ProjectDetails = ({
                   backgroundColor: 'brand.teal3',
                 }}
                 as="a"
-                href={project?.project_link}
+                href={project_link}
                 target="_blank"
               >
                 <Box
@@ -161,7 +172,7 @@ const ProjectDetails = ({
                   color="brand.teal.6"
                   pb="0.1rem"
                 >
-                  {getDomain(project?.project_link)}
+                  {getDomain(project_link)}
                 </Box>
               </Button>
               <ProjectSocials isLoading={isLoading} hideTitle={true} projectDetails={project} />
@@ -183,7 +194,7 @@ const ProjectDetails = ({
       </Stack>
       <Center>
         <ProjectsDetailedDescription
-          description={project?.long_description}
+          description={long_description}
           maxH="full"
           overflow={'scroll'}
           isLoading={false}
@@ -195,10 +206,20 @@ const ProjectDetails = ({
 
 const ProjectHeader = ({
   isLoading,
-  project,
+  projectLogo,
+  projectName,
+  project_link,
+  shortdescription,
+  longDescription,
+  status,
 }: {
   isLoading: boolean;
-  project: projectWithFundingRoundType | null | undefined;
+  projectName: string;
+  projectLogo: string;
+  project_link: string;
+  shortdescription: string;
+  longDescription: string;
+  status: ProjectVerifyStatus;
 }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [drawerBodyView, setDrawerBodyView] = useState<drawerBodyViewEnum>(
@@ -255,7 +276,7 @@ const ProjectHeader = ({
                 textAlign="left"
                 color="white"
               >
-                {project?.name}
+                {projectName}
               </Box>
             </Skeleton>
             <GetFormattedLink isLoading={isLoading} link={project?.project_link} />
@@ -282,7 +303,7 @@ const ProjectHeader = ({
             </Button>
           </Skeleton>
         </Center>
-        {project && (
+        {projectName && (
           <Drawer
             maxW="40rem"
             isOpen={isOpen}
@@ -321,8 +342,13 @@ const ProjectHeader = ({
                   <>
                     <ProjectDetails
                       isLoading={false}
-                      project={project}
                       setDrawerBodyView={setDrawerBodyView}
+                      long_description={longDescription}
+                      projectLogo={projectLogo}
+                      status={status}
+                      projectName={projectName}
+                      project_link={project_link}
+                      shortDescription={shortdescription}
                     />
                   </>
                 )}
