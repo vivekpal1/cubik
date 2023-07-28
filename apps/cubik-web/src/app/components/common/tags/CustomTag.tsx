@@ -1,4 +1,4 @@
-import { Box, Tag } from "@chakra-ui/react";
+import { Box, Tag } from "@/utils/chakra";
 import React, { forwardRef } from "react";
 
 interface CustomTagProps {
