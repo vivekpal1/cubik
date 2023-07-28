@@ -34,4 +34,6 @@ const CustomTag = forwardRef<HTMLDivElement, CustomTagProps>(
   }
 );
 
+CustomTag.displayName = "CustomTag";
+
 export default CustomTag;
