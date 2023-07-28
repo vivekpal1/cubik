@@ -18,11 +18,11 @@ import {
   UnsafeBurnerWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
 import { clusterApiUrl } from "@solana/web3.js";
-import type { FC, ReactNode } from "react";
+import type { FC, ReactElement, ReactNode } from "react";
 import { useMemo } from "react";
 import { env } from "@/env.mjs";
 
-const WalletContext: FC<{ children: ReactNode }> = ({ children }) => {
+const WalletContext = ({ children }: { children: ReactElement }) => {
   const network =
     env.NEXT_PUBLIC_SOLANA_NETWORK === "mainnet-beta"
       ? WalletAdapterNetwork.Mainnet
