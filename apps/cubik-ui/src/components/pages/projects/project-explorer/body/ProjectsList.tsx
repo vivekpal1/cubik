@@ -28,6 +28,7 @@ import ProjectsContributorsNumber, { ContributionType } from './ProjectsContribu
 import { projectRouter } from '@cubik/api/src/router';
 import { ProjectExplorerType } from '@cubik/common-types';
 import Image from 'next/image';
+import EmptyProjectsState from './empty-state/ProjectsEmptyState';
 
 // In the ProjectsList component
 type ProjectsListProps = verifiedProjectsType[];
