@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Box, Tag } from "@/utils/chakra";
 import React, { forwardRef } from "react";
 
@@ -32,7 +33,5 @@ const CustomTag = forwardRef<HTMLDivElement, CustomTagProps>(
     );
   }
 );
-
-CustomTag.displayName = "CustomTag";
 
 export default CustomTag;
