@@ -9,6 +9,7 @@
     "db:push": "dotenv -- turbo run db:push",
     "ui:dev": "pnpm run dev --filter cubik-ui",
     "web:dev": "pnpm run dev --filter cubik-web",
+    "web:build": "dotenv -- turbo run build --filter cubik-web",
     "grants:dev": "pnpm run dev --filter cubik-grants",
     "backend": "pnpm run dev --filter backend",
     "backend:build": "turbo run build --filter backend",
