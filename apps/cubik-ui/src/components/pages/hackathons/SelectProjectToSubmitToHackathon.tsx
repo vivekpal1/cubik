@@ -40,7 +40,6 @@ import { useUserStore } from '~/store/userStore';
 import { HackathonTracks } from '~/types/hackathon';
 import EmptyStateHOC from '~/components/HOC/EmptyState';
 
-
 type FormData = {
   mainTrack: string;
   selectedProjectId: string | null;
@@ -107,6 +106,7 @@ const SelectProjectToSubmitToHackathon = ({
     refetchOnWindowFocus: false,
     refetchOnMount: false,
   });
+
   const sendTransaction = async (projectUserCount: number) => {
     try {
       const tx = new anchor.web3.Transaction();
@@ -136,7 +136,7 @@ const SelectProjectToSubmitToHackathon = ({
     try {
       setsignTransactionLoading(true);
       if (!hackathonId) return;
-
+      alert('signing transaction');
       const sig = await sendTransaction(
         userProjects.data?.find(e => e.id === selectedProject)?.projectUserCount as number,
       );
@@ -144,9 +144,9 @@ const SelectProjectToSubmitToHackathon = ({
       joinHackathonMutation.mutate({
         hackathonId: hackathonId as string,
         projectId: selectedProject as string,
-        tx: sig,
+        tx: 'sgfd',
         tracks: getValues('tracks'),
-        mainTracks: '',
+        mainTracks: 'sfg',
       });
     } catch (error) {
       error;

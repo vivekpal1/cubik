@@ -533,7 +533,24 @@ const HackathonHeader = ({
           </VStack>
           {/* <Button onClick={hackathonInit}>Init</Button> */}
           <Center w="full" alignItems="end" flex={1.5}>
-            {hasRegistered.data ? (
+            <Button
+              variant="cubikFilled"
+              size={{ base: 'cubikSmall', md: 'cubikMedium' }}
+              w="full"
+              isLoading={loading}
+              disabled={!hasSubmitted ? false : true}
+              isDisabled={!hasSubmitted ? false : true}
+              onClick={() => {
+                if (!connected) {
+                  setVisible(true);
+                  return;
+                }
+                submitForHackathonOnOpen();
+              }}
+            >
+              {hasSubmitted ? 'Submitted' : 'Submit Project'}
+            </Button>
+            {/* {hasRegistered.data ? (
               <VStack w="full" gap="16px">
                 {isPast(new Date(timelineValues[1].start as Date)) ? (
                   <Skeleton
@@ -651,7 +668,7 @@ const HackathonHeader = ({
                   </Button>
                 }
               </Skeleton>
-            )}
+            )} */}
           </Center>
         </Stack>
       </VStack>

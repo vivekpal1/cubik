@@ -15,10 +15,7 @@ const WalletContext: any = dynamic(() => import('../context/wallet-context'), {
 });
 
 const queryClient = new QueryClient();
-const MyApp: AppType = ({
-  Component,
-  pageProps: { ...pageProps },
-}: AppProps) => {
+const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }: AppProps) => {
   Mixpanel.track('root_load');
 
   return (
@@ -31,7 +28,7 @@ const MyApp: AppType = ({
             </AppLayout>
           </ChakraProvider>
         </WalletContext>
-        <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+        {/* <ReactQueryDevtools initialIsOpen={false} position="bottom-right" /> */}
       </QueryClientProvider>
     </>
   );

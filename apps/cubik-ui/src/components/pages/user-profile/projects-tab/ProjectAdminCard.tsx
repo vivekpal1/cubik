@@ -17,7 +17,7 @@ import { HackathonSchedule } from '@cubik/common-types';
 import AdminProjectHackathonCard from './AdminProjectHackathonCard';
 
 const ProjectAdminCard = ({ project }: { project: ProjectProfileCard }) => {
-  const [showVault, setShowVault] = useState(true);
+  const [showVault, setShowVault] = useState(false);
   const {
     data: projectData,
     isLoading,

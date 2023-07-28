@@ -388,6 +388,17 @@ const ProjectCard = ({ project }: { project: ProjectExplorerType }) => {
 const ProjectsList = ({ explorerProjects }: { explorerProjects: ProjectExplorerType[] }) => {
   return (
     <Container maxW="7xl" overflow={'visible'} p="0">
+      <Box
+        as="p"
+        color="neutral.11"
+        textStyle={{
+          base: 'title2',
+          md: 'title1',
+        }}
+        py="18px"
+      >
+        Projects
+      </Box>
       <Wrap
         overflow={'visible'}
         py="8px"
@@ -403,9 +414,9 @@ const ProjectsList = ({ explorerProjects }: { explorerProjects: ProjectExplorerT
             return <ProjectCard project={project} key={key} />;
           })
         ) : (
-          <>
+          <Center w="full" border="1px dashed" borderColor={'neutral.4'} rounded="12px">
             <EmptyProjectsState />
-          </>
+          </Center>
         )}
       </Wrap>
     </Container>

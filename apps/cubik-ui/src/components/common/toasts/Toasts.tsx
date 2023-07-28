@@ -42,11 +42,10 @@ const SuccessToast = ({ toast, message }: any) => {
   return toast({
     position: 'bottom',
     duration: 2100,
-
     render: () => (
       <Center>
         <HStack
-          gap="0.1rem"
+          gap="1rem"
           padding="1rem"
           bg="white"
           m="1rem"
@@ -78,7 +77,7 @@ const RemoveToast = ({ toast, message }: any) => {
     render: () => (
       <Center>
         <HStack
-          gap="0.1rem"
+          gap="1rem"
           padding="1rem"
           bg="white"
           m="1rem"
@@ -108,7 +107,7 @@ const FailureToast = ({ toast }: any) => {
     duration: 5000,
     render: () => (
       <HStack
-        gap="0.1rem"
+        gap="1rem"
         padding="1rem"
         bg="white"
         mx="auto"
