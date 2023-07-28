@@ -75,9 +75,9 @@ const Profile = async ({
                 {children}
               </Flex>
             </TabPanel>
-            <TabPanel>
+            {/* <TabPanel>
               <Flex direction="column" w="full" gap="32px">
-                {/* {user &&
+                 {user &&
                 user.project.filter(
                   (project) => project.status === ProjectVerifyStatus.VERIFIED
                 ).length ? (
@@ -97,12 +97,12 @@ const Profile = async ({
                     ))
                 ) : (
                   <VisitorProjectEmptyState />
-                )} */}
+                )} 
               </Flex>
             </TabPanel>
             <TabPanel>
-              {/* {user && <UserContributions userId={user.id} />} */}
-            </TabPanel>
+              {user && <UserContributions userId={user.id} />}
+            </TabPanel> */}
           </TabPanels>
         </Tabs>
       </Flex>

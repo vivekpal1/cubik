@@ -1,4 +1,3 @@
-
 import { Box, Center, HStack, VStack, Avatar, Button } from '@chakra-ui/layout';
 import { Skeleton, SkeletonCircle } from '@chakra-ui/skeleton';
 import { FC, memo } from 'react';
