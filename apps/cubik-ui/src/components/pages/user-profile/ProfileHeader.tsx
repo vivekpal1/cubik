@@ -1,6 +1,5 @@
-import { Avatar } from '@chakra-ui/avatar';
-import { Button } from '@chakra-ui/button';
-import { Box, Center, HStack, VStack } from '@chakra-ui/layout';
+
+import { Box, Center, HStack, VStack, Avatar, Button } from '@chakra-ui/layout';
 import { Skeleton, SkeletonCircle } from '@chakra-ui/skeleton';
 import { FC, memo } from 'react';
 import Username from '~/components/common/username/Username';
