@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   Container,
   HStack,
   Stack,
@@ -11,9 +12,53 @@ import {
   Tabs,
   VStack,
 } from "@/utils/chakra";
+import { prisma } from "@/utils/prisma";
 import React from "react";
+import { EmptyStateHOC } from "../components/common/empty-state/EmptyStateHOC";
+import { GrantCard } from "./components/grantCard";
 
-const GrantsPage = () => {
+export const getGrants = async () => {
+  const pastRound = prisma.round.findMany({
+    where: {
+      active: true,
+      endTime: {
+        lt: new Date(),
+      },
+    },
+    select: {
+      id: true,
+      endTime: true,
+      startTime: true,
+      matchedPool: true,
+      colorScheme: true,
+      short_description: true,
+      roundName: true,
+    },
+  });
+
+  const futureRound = prisma.round.findMany({
+    where: {
+      active: true,
+      endTime: {
+        gte: new Date(),
+      },
+    },
+    select: {
+      id: true,
+      endTime: true,
+      startTime: true,
+      matchedPool: true,
+      colorScheme: true,
+      short_description: true,
+      roundName: true,
+    },
+  });
+
+  return await Promise.all([pastRound, futureRound]);
+};
+
+const GrantsPage = async () => {
+  const [past, upcoming] = await getGrants();
   return (
     <>
       <Container
@@ -143,8 +188,72 @@ const GrantsPage = () => {
             />
 
             <TabPanels px="0" py={{ base: "12px", md: "16px" }}>
-              <TabPanel p="0">up</TabPanel>
-              <TabPanel p="0">old</TabPanel>
+              <TabPanel p="0">
+                {upcoming.length > 0 ? (
+                  upcoming.map((grant) => {
+                    return (
+                      <GrantCard
+                        endTime={grant.endTime}
+                        id={grant.id}
+                        startTime={grant.startTime}
+                        matchedPool={grant.matchedPool}
+                        roundName={grant.roundName}
+                        short_description={grant.short_description}
+                        key={grant.id}
+                      />
+                    );
+                  })
+                ) : (
+                  <>
+                    <Center
+                      w="full"
+                      border="1px dashed"
+                      borderColor={"neutral.6"}
+                      rounded="12px"
+                      flexDir={"column"}
+                    >
+                      <EmptyStateHOC
+                        heading={"ah, no grant round currently!"}
+                        subHeading={
+                          "There are no ongoing round and no upcoming rounds right now to view here, check previous grant rounds"
+                        }
+                      />
+                    </Center>
+                  </>
+                )}
+              </TabPanel>
+              <TabPanel p="0">
+                {past.length > 0 ? (
+                  past.map((grant) => {
+                    return (
+                      <GrantCard
+                        endTime={grant.endTime}
+                        id={grant.id}
+                        startTime={grant.startTime}
+                        matchedPool={grant.matchedPool}
+                        roundName={grant.roundName}
+                        short_description={grant.short_description}
+                        key={grant.id}
+                      />
+                    );
+                  })
+                ) : (
+                  <>
+                    <Center
+                      w="full"
+                      border="1px dashed"
+                      borderColor={"neutral.6"}
+                      rounded="12px"
+                      flexDir={"column"}
+                    >
+                      <EmptyStateHOC
+                        heading={"No Round History to View"}
+                        subHeading={"There are no previous rounds to view here"}
+                      />
+                    </Center>
+                  </>
+                )}
+              </TabPanel>
             </TabPanels>
           </Tabs>
         </VStack>
