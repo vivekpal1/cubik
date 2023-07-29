@@ -150,21 +150,36 @@ const ProjectContributors = ({
   projectId,
   roundId,
   isLoading,
+  isHackathon,
 }: {
   projectId: string;
   isLoading?: boolean;
   roundId: string;
+  isHackathon: boolean;
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortField, setSortField] = useState('timestamp');
   const [sortDirection, setSortDirection] = useState('desc');
 
+  let params = {};
+  if (isHackathon) {
+    params = {
+      hackathonId: roundId,
+    };
+  } else {
+    params = {
+      roundId,
+    };
+  }
   const {
     data: contributorsData,
     isLoading: loadingContributors,
     isError,
     error,
-  } = trpc.contribution.getProjectContributors.useQuery({ projectId, roundId });
+  } = trpc.contribution.getProjectContributors.useQuery({
+    projectId,
+    ...params,
+  });
 
   const pageSize = 15;
   const siblingCount = 1;
