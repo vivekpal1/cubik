@@ -559,36 +559,16 @@ const GrantDetailsHeader = ({
             opacity={isLoading ? '0.5' : '1'}
             rounded="full"
           >
-            <RoundStatus
-              show={true}
-              startDate={data?.startTime}
-              endDate={data?.endTime}
-            />
+            <RoundStatus show={true} startDate={data?.startTime} endDate={data?.endTime} />
           </Skeleton>
           <VStack align={'start'} spacing={{ base: '12px', md: '24px' }}>
-            <Skeleton
-              isLoaded={!isLoading}
-              fadeDuration={2}
-              opacity={isLoading ? '0.6' : '1'}
-            >
-              <Box
-                as="p"
-                textStyle={{ base: 'display5', md: 'display3' }}
-                color={'neutral.11'}
-              >
+            <Skeleton isLoaded={!isLoading} fadeDuration={2} opacity={isLoading ? '0.6' : '1'}>
+              <Box as="p" textStyle={{ base: 'display5', md: 'display3' }} color={'neutral.11'}>
                 {data?.roundName}
               </Box>
             </Skeleton>
-            <Skeleton
-              isLoaded={!isLoading}
-              fadeDuration={1.5}
-              opacity={isLoading ? '0.6' : '1'}
-            >
-              <Box
-                as="p"
-                textStyle={{ base: 'body2', md: 'body1' }}
-                color={'neutral.9'}
-              >
+            <Skeleton isLoaded={!isLoading} fadeDuration={1.5} opacity={isLoading ? '0.6' : '1'}>
+              <Box as="p" textStyle={{ base: 'body2', md: 'body1' }} color={'neutral.9'}>
                 {data?.short_description}
               </Box>
             </Skeleton>
@@ -609,61 +589,25 @@ const GrantDetailsHeader = ({
             pb={{ base: '12px', md: '0px' }}
             gap={{ base: '0px', md: '24px' }}
           >
-            <Skeleton
-              isLoaded={!isLoading}
-              fadeDuration={2}
-              opacity={isLoading ? '0.4' : '1'}
-            >
-              <Stack
-                direction={{ base: 'row', md: 'row' }}
-                spacing="4px"
-                align={'baseline'}
-              >
+            <Skeleton isLoaded={!isLoading} fadeDuration={2} opacity={isLoading ? '0.4' : '1'}>
+              <Stack direction={{ base: 'row', md: 'row' }} spacing="4px" align={'baseline'}>
                 <HStack gap="4px" align="center" justify="start">
-                  <Center
-                    w="10px"
-                    h="10px"
-                    backgroundColor="surface.green.2"
-                    rounded="full"
-                  />
-                  <Box
-                    as="p"
-                    textStyle={{ base: 'title5', md: 'title4' }}
-                    color={'neutral.11'}
-                  >
+                  <Center w="10px" h="10px" backgroundColor="surface.green.2" rounded="full" />
+                  <Box as="p" textStyle={{ base: 'title5', md: 'title4' }} color={'neutral.11'}>
                     ${data?.matchedPool}
                   </Box>
                 </HStack>
-                <Box
-                  as="p"
-                  textStyle={{ base: 'overline4', md: 'overline3' }}
-                  color={'neutral.11'}
-                >
+                <Box as="p" textStyle={{ base: 'overline4', md: 'overline3' }} color={'neutral.11'}>
                   Matching Pool
                 </Box>
               </Stack>
             </Skeleton>
-            <Skeleton
-              isLoaded={!isLoading}
-              fadeDuration={2}
-              opacity={isLoading ? '0.4' : '1'}
-            >
+            <Skeleton isLoaded={!isLoading} fadeDuration={2} opacity={isLoading ? '0.4' : '1'}>
               <HStack gap="4px" align="center" justify="start">
-                <Center
-                  w="10px"
-                  h="10px"
-                  backgroundColor="surface.teal.2"
-                  rounded="full"
-                />
+                <Center w="10px" h="10px" backgroundColor="surface.teal.2" rounded="full" />
                 <HStack spacing="4px" align={'baseline'}>
-                  <Box
-                    as="p"
-                    textStyle={{ base: 'title5', md: 'title4' }}
-                    color={'neutral.8'}
-                  >
-                    {data?.ProjectJoinRound.filter(
-                      (e) => e.status === 'APPROVED'
-                    ).length ?? 0}
+                  <Box as="p" textStyle={{ base: 'title5', md: 'title4' }} color={'neutral.8'}>
+                    {data?.ProjectJoinRound.filter(e => e.status === 'APPROVED').length ?? 0}
                   </Box>
                   <Box
                     as="p"
@@ -676,43 +620,11 @@ const GrantDetailsHeader = ({
               </HStack>
             </Skeleton>
           </Stack>
-          {/* <Skeleton
-            isLoaded={!isLoading}
-            fadeDuration={2.5}
-            opacity={isLoading ? '0.4' : '1'}
-          >
-            <Button
-              // display={
-              //   checkRoundStatus(
-              //     data?.startTime as Date,
-              //     data?.endTime as Date
-              //   ) === GRANT_STATUS.notStarted
-              //     ? 'block'
-              //     : 'none'
-              // }
-              variant={'cubikFilled'}
-              size={{ base: 'cubikSmall', md: 'cubikMedium' }}
-              onClick={() => {
-                setSelectedGrantRound(data as Round);
-                handleApplyForGrant();
-              }}
-            >
-              Apply For Grants
-            </Button>
-          </Skeleton> */}
         </Stack>
       </VStack>
       <VStack spacing="16px" align="start">
-        <Skeleton
-          isLoaded={!isLoading}
-          fadeDuration={2.5}
-          opacity={isLoading ? '0.3' : '1'}
-        >
-          <Box
-            as="p"
-            textStyle={{ base: 'overline4', md: 'overline2' }}
-            color={'neutral.11'}
-          >
+        <Skeleton isLoaded={!isLoading} fadeDuration={2.5} opacity={isLoading ? '0.3' : '1'}>
+          <Box as="p" textStyle={{ base: 'overline4', md: 'overline2' }} color={'neutral.11'}>
             Grant Sponsors
           </Box>
         </Skeleton>
