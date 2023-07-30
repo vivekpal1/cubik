@@ -8,10 +8,22 @@ import { GrantDetailsHeader } from "../components/GrantDetailsHeader";
 type GrantReturnType = Prisma.RoundGetPayload<{
   include: {
     ProjectJoinRound: {
-      include: {
+      select: {
+        id: true;
+        status: true;
         project: {
-          include: {
-            owner: true;
+          select: {
+            id: true;
+            name: true;
+            short_description: true;
+            logo: true;
+            industry: true;
+            project_links: true;
+            owner: {
+              select: {
+                username: true;
+              };
+            };
           };
         };
       };
@@ -32,7 +44,16 @@ const getGrant = async (
             status: "APPROVED",
           },
           select: {
-            project: {},
+            id: true,
+            status: true,
+            project: {
+              select: {
+                name: true,
+                short_description: true,
+                logo: true,
+                industry: true,
+              },
+            },
           },
         },
       },

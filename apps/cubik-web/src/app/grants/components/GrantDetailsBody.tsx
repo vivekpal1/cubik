@@ -21,47 +21,36 @@ import {
 } from "@/utils/chakra";
 import { ProjectJoinRoundStatus } from "@prisma/client";
 import React from "react";
-import { data } from "tailwindcss/defaultTheme";
-import {Prisma} from "@prisma/client"
+import { Prisma } from "@prisma/client";
+import { ErrorUI } from "@/app/components/common/errors/errorUI";
 
-type ProjectJoinRoundReturnType = Prisma.ProjectJoinRoundGetPayload<{
-
-    // include: {
-    //         project: {
-    //           include: {
-    //             owner: true,
-    //           },
-    //         },
-    //       }
-    include:{
-        project: {
-            
-        }
-    }
-}>
-
-
-
+export type ProjectJoinRoundReturnType = Prisma.ProjectJoinRoundGetPayload<{
+  select: {
+    id: true;
+    status: true;
+    project: {
+      select: {
+        id: true;
+        name: true;
+        short_description: true;
+        logo: true;
+        industry: true;
+        project_links: true;
+        owner: {
+          select: {
+            username: true;
+          };
+        };
+      };
+    };
+  };
+}>;
 
 interface Props {
   isLoading: boolean;
   isError: boolean;
-  projectJoinRound: 
+  projectJoinRound: ProjectJoinRoundReturnType[];
 }
-
-const ErrorUI = () => {
-  return (
-    <Center
-      w="full"
-      py={{ base: "16px", sm: "24px" }}
-      border="1px dashed"
-      borderColor={"#1D1F1E"}
-      rounded="12px"
-    >
-      <ComponentErrors />
-    </Center>
-  );
-};
 
 export const GrantDetailsBody = (props: Props) => {
   return (
@@ -102,17 +91,15 @@ export const GrantDetailsBody = (props: Props) => {
             {/* <GrantDetailsLeaderboard id={data?.id as string} /> */}
           </TabPanel>{" "}
           <TabPanel>
-            {/* <ProjectsDetailedDescription
+            <ProjectsDetailedDescription
               isError={isError}
               isLoading={isLoading}
               description={data?.description}
-            /> */}
+            />
           </TabPanel>
           <TabPanel>
             {props.isError && <ErrorUI />}
-            {data?.ProjectJoinRound.filter(
-              (round) => round.status === ProjectJoinRoundStatus.APPROVED
-            ).map((round) => (
+            {props?.projectJoinRound.map((round) => (
               <Skeleton
                 w="full"
                 isLoaded={!props.isLoading}
@@ -168,7 +155,9 @@ export const GrantDetailsBody = (props: Props) => {
                           >
                             {round.project.name}
                           </Box>
-                          <GetFormattedLink link={round.project.project_link} />
+                          <GetFormattedLink
+                            link={round.project.project_links}
+                          />
                         </VStack>
                       </Stack>
                       <HStack justifyContent={"end"}>
