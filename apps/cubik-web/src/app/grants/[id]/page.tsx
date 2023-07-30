@@ -1,29 +1,56 @@
 import SEO from "@/app/components/SEO";
 import { prisma } from "@/utils/prisma";
-import { Container } from "@/utils/chakra";
+import { Prisma } from "@prisma/client";
+import { Box, Container } from "@/utils/chakra";
 import React from "react";
+import { GrantDetailsHeader } from "../components/GrantDetailsHeader";
 
-const getGrant = async (id: string) => {
-  return await prisma.round.findFirst({
-    where: {
-      id: id,
-    },
-    include: {
-      ProjectJoinRound: {
-        include: {
-          project: {
-            include: {
-              owner: true,
+type GrantReturnType = Prisma.RoundGetPayload<{
+  include: {
+    ProjectJoinRound: {
+      include: {
+        project: {
+          include: {
+            owner: true;
+          };
+        };
+      };
+    };
+  };
+}>;
+const getGrant = async (
+  id: string
+): Promise<[GrantReturnType | null, boolean]> => {
+  try {
+    const res = await prisma.round.findFirst({
+      where: {
+        id: id,
+      },
+      include: {
+        ProjectJoinRound: {
+          where: {
+            status: "APPROVED",
+          },
+          include: {
+            project: {
+              include: {
+                owner: true,
+              },
             },
           },
         },
       },
-    },
-  });
+    });
+
+    return [res, false];
+  } catch (error) {
+    console.log(error);
+    return [null, true];
+  }
 };
 
 const GrantPage = async ({ params }: { params: { id: string } }) => {
-  const grant = await getGrant(params.id);
+  const [grant, error] = await getGrant(params.id);
   return (
     <>
       <SEO
@@ -40,7 +67,16 @@ const GrantPage = async ({ params }: { params: { id: string } }) => {
           flexDir={"column"}
           gap={{ base: "32px", md: "60px" }}
         >
-          {JSON.stringify(grant)}
+          <GrantDetailsHeader
+            endTime={grant?.endTime || new Date()}
+            isLoading={false}
+            matchingPool={grant?.matchedPool || 0}
+            roundName={grant?.roundName || ""}
+            shortDescription={grant?.short_description || ""}
+            startTime={grant?.startTime || new Date()}
+          />
+
+          <Box h="1px" backgroundColor="#1D1F1E90" w="full" />
         </Container>
       </main>
     </>
