@@ -1,4 +1,5 @@
-import ComponentErrors from "@/app/components/common/errors/componentErrors";
+"use client";
+
 import GetFormattedLink from "@/app/components/common/formatters/getFormattedLink";
 import {
   Avatar,
@@ -19,10 +20,10 @@ import {
   Tag,
   VStack,
 } from "@/utils/chakra";
-import { ProjectJoinRoundStatus } from "@prisma/client";
 import React from "react";
 import { Prisma } from "@prisma/client";
 import { ErrorUI } from "@/app/components/common/errors/errorUI";
+import { DetailedDescription } from "@/app/components/common/description";
 
 export type ProjectJoinRoundReturnType = Prisma.ProjectJoinRoundGetPayload<{
   select: {
@@ -50,6 +51,7 @@ interface Props {
   isLoading: boolean;
   isError: boolean;
   projectJoinRound: ProjectJoinRoundReturnType[];
+  description: string;
 }
 
 export const GrantDetailsBody = (props: Props) => {
@@ -61,8 +63,8 @@ export const GrantDetailsBody = (props: Props) => {
           overflowX={{ base: "scroll", md: "inherit" }}
           gap={{ base: "24px", md: "32px" }}
         >
-          <Tab>Leaderboard</Tab>
           <Tab>About</Tab>
+          <Tab>Leaderboard</Tab>
           <Tab gap="8px" display={"flex"}>
             <Box as="p" textStyle={{ base: "title5", md: "title4" }}>
               Participants
@@ -87,17 +89,17 @@ export const GrantDetailsBody = (props: Props) => {
         </TabList>
         <TabPanels p="0">
           <TabPanel>
-            {props.isError && <ErrorUI />}
-            {/* <GrantDetailsLeaderboard id={data?.id as string} /> */}
-          </TabPanel>{" "}
-          <TabPanel>
-            <ProjectsDetailedDescription
-              isError={isError}
-              isLoading={isLoading}
-              description={data?.description}
+            <DetailedDescription
+              isError={props.isError}
+              isLoading={props.isLoading}
+              description={props?.description}
             />
+            <TabPanel>
+              {props.isError && <ErrorUI />}
+              {/* <GrantDetailsLeaderboard id={data?.id as string} /> */}
+            </TabPanel>{" "}
           </TabPanel>
-          <TabPanel>
+          <TabPanel w="full">
             {props.isError && <ErrorUI />}
             {props?.projectJoinRound.map((round) => (
               <Skeleton

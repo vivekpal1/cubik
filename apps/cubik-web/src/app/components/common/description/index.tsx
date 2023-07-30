@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { ErrorUI } from "../errors/errorUI";
 import {
@@ -13,6 +14,7 @@ import {
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import ChakraUIRenderer from "chakra-ui-markdown-renderer";
 
 export const DetailedDescription = ({
   isError,

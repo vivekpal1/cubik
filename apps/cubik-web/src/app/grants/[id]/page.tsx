@@ -4,9 +4,19 @@ import { Prisma } from "@prisma/client";
 import { Box, Container } from "@/utils/chakra";
 import React from "react";
 import { GrantDetailsHeader } from "../components/GrantDetailsHeader";
+import {
+  GrantDetailsBody,
+  ProjectJoinRoundReturnType,
+} from "../components/GrantDetailsBody";
 
 type GrantReturnType = Prisma.RoundGetPayload<{
-  include: {
+  select: {
+    roundName: true;
+    startTime: true;
+    endTime: true;
+    matchedPool: true;
+    short_description: true;
+    description: true;
     ProjectJoinRound: {
       select: {
         id: true;
@@ -30,6 +40,7 @@ type GrantReturnType = Prisma.RoundGetPayload<{
     };
   };
 }>;
+
 const getGrant = async (
   id: string
 ): Promise<[GrantReturnType | null, boolean]> => {
@@ -38,7 +49,13 @@ const getGrant = async (
       where: {
         id: id,
       },
-      include: {
+      select: {
+        roundName: true,
+        endTime: true,
+        matchedPool: true,
+        startTime: true,
+        short_description: true,
+        description: true,
         ProjectJoinRound: {
           where: {
             status: "APPROVED",
@@ -48,10 +65,17 @@ const getGrant = async (
             status: true,
             project: {
               select: {
+                id: true,
                 name: true,
                 short_description: true,
                 logo: true,
                 industry: true,
+                project_link: true,
+                owner: {
+                  select: {
+                    username: true,
+                  },
+                },
               },
             },
           },
@@ -94,6 +118,15 @@ const GrantPage = async ({ params }: { params: { id: string } }) => {
           />
 
           <Box h="1px" backgroundColor="#1D1F1E90" w="full" />
+
+          <GrantDetailsBody
+            description={grant?.description || ""}
+            isError={error}
+            isLoading={false}
+            projectJoinRound={
+              (grant?.ProjectJoinRound as ProjectJoinRoundReturnType[]) ?? []
+            }
+          />
         </Container>
       </main>
     </>
