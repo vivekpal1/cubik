@@ -286,9 +286,8 @@ const ProjectCard = ({ project }: { project: ProjectExplorerType }) => {
                   </HStack>
                 </Box>
                 <ProjectsContributorsNumber
-                  projectId={props.projectId}
-                  contributorsList={props.contributions}
-                  contributionCount={props.contributionCount || 1}
+                  contributors={project.contributors as any[]}
+                  contributorsCount={project.contributorCount}
                 />
               </HStack>
               {isLargerThan767 && (
@@ -307,9 +306,7 @@ const ProjectCard = ({ project }: { project: ProjectExplorerType }) => {
                   >
                     <Button
                       as={Link}
-                      href={`/${project.ownerName}/${project.id}${
-                        project.projectEvent ? `/${project.projectEvent.id}` : ``
-                      }`}
+                      href={genrateLink()}
                       background={'#1D1F1E'}
                       color="white"
                       fontWeight={'700'}
