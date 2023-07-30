@@ -69,7 +69,6 @@ const SelectProjectToSubmitToHackathon = ({
   hackathonTracks,
   hackathonName,
 }: Props) => {
-  console.log('hackathonTracks', hackathonTracks);
   const { user } = useUserStore();
   const toast = useToast();
   const anchorWallet = useAnchorWallet();
@@ -85,7 +84,11 @@ const SelectProjectToSubmitToHackathon = ({
     getValues,
     setError,
     getFieldState,
-  } = useForm<FormData>();
+  } = useForm<FormData>({
+    defaultValues: {
+      mainTrack: 'fully_on_chain_game',
+    },
+  });
   const [step, setStep] = useState(0);
   const [signTransactionLoading, setsignTransactionLoading] = useState(false);
   const [transactionSignError, setTransactionSignError] = useState(null);
@@ -146,7 +149,7 @@ const SelectProjectToSubmitToHackathon = ({
         projectId: selectedProject as string,
         tx: sig,
         tracks: getValues('tracks'),
-        mainTracks: getValues('mainTrack'),
+        mainTracks: getValues('mainTrack') || 'fully_on_chain_game',
       });
     } catch (error) {
       error;
@@ -350,59 +353,73 @@ const SelectProjectToSubmitToHackathon = ({
                             joinRoundStatus={'APPROVED'}
                           />
                         ))}
-                      </VStack>{' '}
-                      <FormControl isRequired w="full">
-                        <VStack align="start" w="full">
-                          <FormLabel
-                            fontSize={{ base: '12px', md: '14px' }}
-                            pb="0.5rem"
-                            htmlFor="tracks"
-                            color="neutral.11"
-                          >
-                            Main Tracks
-                          </FormLabel>
-                          <ChakraSelect
-                            defaultValue={1}
-                            rounded="8px"
-                            h={{ base: '2.2rem', md: '2.5rem' }}
-                            textStyle={{ base: 'body5', md: 'body4' }}
-                            color="neutral.11"
-                            outline="none"
-                            w="full"
-                            border={'none'}
-                            boxShadow="none"
-                            _hover={{
-                              boxShadow: 'none !important',
-                              borderColor: '#ffffff10 !important',
-                              outline: '#ffffff10 !important',
-                            }}
-                            _focus={{
-                              boxShadow: 'none !important',
-                              borderColor: '#ffffff10 !important',
-                              outline: '#ffffff10 !important',
-                            }}
-                            _focusVisible={{
-                              boxShadow: 'none !important',
-                              borderColor: 'none !important',
-                              outline: 'none !important',
-                            }}
-                            _active={{
-                              boxShadow: 'none !important',
-                              borderColor: 'none !important',
-                              outline: 'none !important',
-                            }}
-                            _placeholder={{
-                              textAlign: 'start',
-                              fontSize: { base: '12px', md: '14px' },
-                              color: '#3B3D3D',
-                              px: '1rem',
-                            }}
-                          >
-                            <option value="option1">Fully On Chain Game</option>
-                            <option value="option1">Solana Integrated Game</option>
-                          </ChakraSelect>
-                        </VStack>
-                      </FormControl>
+                      </>
+                      <Controller
+                        control={control}
+                        name={'mainTrack'}
+                        render={({
+                          field: { onChange, onBlur, value, name, ref },
+                          fieldState: { error },
+                          formState,
+                        }) => (
+                          <FormControl isRequired w="full">
+                            <VStack align="start" w="full">
+                              <FormLabel
+                                fontSize={{ base: '12px', md: '14px' }}
+                                pb="0.5rem"
+                                htmlFor="tracks"
+                                color="neutral.11"
+                              >
+                                Main Tracks
+                              </FormLabel>
+                              <ChakraSelect
+                                defaultValue={1}
+                                rounded="8px"
+                                h={{ base: '2.2rem', md: '2.5rem' }}
+                                textStyle={{ base: 'body5', md: 'body4' }}
+                                color="neutral.11"
+                                outline="none"
+                                w="full"
+                                border={'none'}
+                                boxShadow="none"
+                                onChange={onChange}
+                                onBlur={onBlur}
+                                _hover={{
+                                  boxShadow: 'none !important',
+                                  borderColor: '#ffffff10 !important',
+                                  outline: '#ffffff10 !important',
+                                }}
+                                _focus={{
+                                  boxShadow: 'none !important',
+                                  borderColor: '#ffffff10 !important',
+                                  outline: '#ffffff10 !important',
+                                }}
+                                _focusVisible={{
+                                  boxShadow: 'none !important',
+                                  borderColor: 'none !important',
+                                  outline: 'none !important',
+                                }}
+                                _active={{
+                                  boxShadow: 'none !important',
+                                  borderColor: 'none !important',
+                                  outline: 'none !important',
+                                }}
+                                _placeholder={{
+                                  textAlign: 'start',
+                                  fontSize: { base: '12px', md: '14px' },
+                                  color: '#3B3D3D',
+                                  px: '1rem',
+                                }}
+                              >
+                                <option value="fully_on_chain_game">Fully On Chain Game</option>
+                                <option value="solana_integrated_game">
+                                  Solana Integrated Game
+                                </option>
+                              </ChakraSelect>
+                            </VStack>
+                          </FormControl>
+                        )}
+                      />
                       <Controller
                         control={control}
                         name="tracks"
@@ -706,6 +723,7 @@ const SelectProjectToSubmitToHackathon = ({
                 onClick={() => {
                   reset(undefined, { keepValues: false });
                   setStep(0);
+                  setsignTransactionLoading(false);
                   setSelectedProjectId(null);
                   onClose();
                 }}
