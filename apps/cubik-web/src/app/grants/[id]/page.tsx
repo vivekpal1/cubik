@@ -31,12 +31,8 @@ const getGrant = async (
           where: {
             status: "APPROVED",
           },
-          include: {
-            project: {
-              include: {
-                owner: true,
-              },
-            },
+          select: {
+            project: {},
           },
         },
       },

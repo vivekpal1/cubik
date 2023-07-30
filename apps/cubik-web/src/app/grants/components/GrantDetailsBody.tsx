@@ -26,13 +26,18 @@ import {Prisma} from "@prisma/client"
 
 type ProjectJoinRoundReturnType = Prisma.ProjectJoinRoundGetPayload<{
 
-    includes: {
-            project: {
-              include: {
-                owner: true,
-              },
-            },
-          }
+    // include: {
+    //         project: {
+    //           include: {
+    //             owner: true,
+    //           },
+    //         },
+    //       }
+    include:{
+        project: {
+            
+        }
+    }
 }>
 
 
