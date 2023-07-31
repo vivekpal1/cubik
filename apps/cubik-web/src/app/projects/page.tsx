@@ -1,5 +1,5 @@
 import { formatNumberWithK } from "@/utils/helpers/formatWithK";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@cubik/database";
 import Projects, { Project } from "./components";
 
 const getProjects = async () => {

@@ -12,7 +12,7 @@ import {
   Tabs,
   VStack,
 } from "@/utils/chakra";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@cubik/database";
 import React from "react";
 import { EmptyStateHOC } from "../components/common/empty-state/EmptyStateHOC";
 import { GrantCard } from "./components/grantCard";
