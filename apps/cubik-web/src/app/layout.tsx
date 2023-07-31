@@ -1,6 +1,6 @@
 "use client";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
 import { Container, VStack } from "@/utils/chakra";
@@ -27,7 +27,9 @@ export default function RootLayout({
           <ChakraProvider theme={theme}>
             <VStack maxW="full" w="100%" h="100vh" p="0" bg="black">
               <Header>123</Header>
-              {children}
+              <Box w="full" pt={10}>
+                {children}
+              </Box>
             </VStack>
           </ChakraProvider>
         </WalletContext>

@@ -26,33 +26,28 @@ import Logo from "../../common/logo";
 // import { MobileNavCollapsible } from "./MobileNav";
 // import { set } from "nprogress";
 // import SEO from "~/app/components/SEO";
+import { usePathname } from "next/navigation";
 
 const Header = ({ children }: { children?: React.ReactNode }) => {
   const { connected } = useWallet();
-  // const router = useRouter();
+
   const {
     isOpen: isOpenDrawer,
     onOpen: onOpenDrawer,
     onClose: onCloseDrawer,
   } = useDisclosure();
   const { isOpen, onToggle, onClose } = useDisclosure();
-  // const [isDesktop] = useMediaQuery("(min-width: 768px)");
+  const [isDesktop] = useMediaQuery("(min-width: 768px)");
   const [drawerOpenedOnce, setDrawerOpenedOnce] = useState(true);
-  // const isCreateProfilePage = router.pathname !== "/create-profile";
 
-  // const isActiveRoute = (route: string): boolean => {
-  //   return router.pathname === route;
-  // };
+  const path = usePathname();
 
-  // const landingPage = router.pathname === "/";
-
-  const isCreateProfilePage = true;
+  const isCreateProfilePage = path === "/create-profile";
   const isActiveRoute = (route: string): boolean => {
-    return false;
+    return path === route;
   };
 
-  const landingPage = true;
-  const isDesktop = true;
+  const landingPage = path === "/";
 
   const NavbarCTA: React.FC<any> = ({ children }) => {
     return (
@@ -90,7 +85,7 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
   }, 2000);
 
   const DeskNavbarItems = () => {
-    return isDesktop && isCreateProfilePage ? (
+    return isDesktop && !isCreateProfilePage ? (
       <>
         {/* <SearchBar
           display={landingPage ? "none" : "flex"}
