@@ -26,7 +26,7 @@ export default function RootLayout({
         <WalletContext>
           <ChakraProvider theme={theme}>
             <VStack maxW="full" w="100%" h="100vh" p="0" bg="black">
-              {/* <Header /> */}
+              <Header>123</Header>
               {children}
             </VStack>
           </ChakraProvider>
