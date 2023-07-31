@@ -161,16 +161,6 @@ const ProjectContributors = ({
   const [sortField, setSortField] = useState('timestamp');
   const [sortDirection, setSortDirection] = useState('desc');
 
-  let params = {};
-  if (isHackathon) {
-    params = {
-      hackathonId: roundId,
-    };
-  } else {
-    params = {
-      roundId,
-    };
-  }
   const {
     data: contributorsData,
     isLoading: loadingContributors,
@@ -178,7 +168,7 @@ const ProjectContributors = ({
     error,
   } = trpc.contribution.getProjectContributors.useQuery({
     projectId,
-    ...params,
+    hackthonId: roundId,
   });
 
   const pageSize = 15;
