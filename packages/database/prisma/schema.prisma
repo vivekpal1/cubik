@@ -12,13 +12,13 @@ datasource db {
 
 model UserModel {
   id                     String                   @id @default(uuid()) @map("_id")
-  username               String?                   @unique
+  username               String?                  @unique
   mainWallet             String                   @unique
   proof                  Json?
   email                  String?
   profileNft             Json?
-  profilePicture         String?                   @db.VarChar(500)
-  tx                     String?                   @db.VarChar(500)
+  profilePicture         String?                  @db.VarChar(500)
+  tx                     String?                  @db.VarChar(500)
   createdAt              DateTime                 @default(now())
   updatedAt              DateTime                 @updatedAt
   isActive               Boolean                  @default(true)
@@ -33,7 +33,6 @@ model UserModel {
 
   @@fulltext([username])
 }
-
 
 model UserKeys {
   id        String   @id @default(uuid()) @map("_id")
@@ -98,9 +97,6 @@ model ProjectJoinHackathons {
   @@index([projectId])
   @@index([registrationId])
 }
-
-
-
 
 model ProjectsModel {
   id                String                  @id @default(uuid()) @map("_id")
@@ -182,7 +178,7 @@ model Round {
   projectCount          Int                @default(0)
   active                Boolean            @default(true)
   userId                String
-  description           String             @default(dbgenerated("(_utf8mb4\\'\\')")) @db.Text
+  description           String             @default("") @db.Text
   endTime               DateTime           @default(now())
   startTime             DateTime           @default(now())
   registrationEndDate   DateTime           @default(now())

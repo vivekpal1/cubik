@@ -467,6 +467,9 @@ importers:
       '@chakra-ui/react':
         specifier: ^2.5.1
         version: 2.8.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.8)(framer-motion@10.13.1)(react-dom@18.2.0)(react@18.2.0)
+      '@coral-xyz/anchor':
+        specifier: ^0.27.0
+        version: 0.27.0
       '@prisma/client':
         specifier: ^4.14.1
         version: 4.16.2(prisma@4.16.2)
@@ -504,7 +507,7 @@ importers:
         specifier: ^10.3.2
         version: 10.13.1(react-dom@18.2.0)(react@18.2.0)
       next:
-        specifier: ^13.4.2
+        specifier: ^13.4.12
         version: 13.4.12(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: 18.2.0
@@ -527,6 +530,9 @@ importers:
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
+      tweetnacl:
+        specifier: ^1.0.3
+        version: 1.0.3
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -2534,7 +2540,7 @@ packages:
       '@emotion/react': '>=10.0.35'
       react: '>=18'
     dependencies:
-      '@emotion/react': 11.11.1(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.0.28)(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -3058,8 +3064,8 @@ packages:
       '@chakra-ui/react-env': 3.1.0(react@18.2.0)
       '@chakra-ui/system': 2.6.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(react@18.2.0)
       '@chakra-ui/utils': 2.0.15
-      '@emotion/react': 11.11.1(@types/react@18.2.8)(react@18.2.0)
-      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.0.28)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.0.28)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -3656,8 +3662,8 @@ packages:
       '@chakra-ui/styled-system': 2.9.1
       '@chakra-ui/theme-utils': 2.0.19
       '@chakra-ui/utils': 2.0.15
-      '@emotion/react': 11.11.1(@types/react@18.2.8)(react@18.2.0)
-      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/react': 11.11.1(@types/react@18.0.28)(react@18.2.0)
+      '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(@types/react@18.0.28)(react@18.2.0)
       react: 18.2.0
       react-fast-compare: 3.2.1
     dev: false
@@ -10399,7 +10405,7 @@ packages:
   /asn1.js@5.4.1:
     resolution: {integrity: sha512-+I//4cYPccV8LdmBLiX8CYvf9Sp3vQsrqu2QNXRcrbiWvcx/UdlFiqUJJzxRQxgsZmvhXhn4cSKeSmoFjVdupA==}
     dependencies:
-      bn.js: 4.11.6
+      bn.js: 4.12.0
       inherits: 2.0.4
       minimalistic-assert: 1.0.1
       safer-buffer: 2.1.2
@@ -11165,9 +11171,9 @@ packages:
       '@chakra-ui/react': ^1.6.1 || ^2
       react-markdown: ^7 || ^8
     dependencies:
-      '@chakra-ui/react': 2.8.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.8)(framer-motion@10.13.1)(react-dom@18.2.0)(react@18.2.0)
+      '@chakra-ui/react': 2.8.0(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.0.28)(framer-motion@10.13.1)(react-dom@18.2.0)(react@18.2.0)
       deepmerge: 4.3.1
-      react-markdown: 8.0.7(@types/react@18.2.8)(react@18.2.0)
+      react-markdown: 8.0.7(@types/react@18.0.28)(react@18.2.0)
     dev: false
 
   /chalk@2.4.2:

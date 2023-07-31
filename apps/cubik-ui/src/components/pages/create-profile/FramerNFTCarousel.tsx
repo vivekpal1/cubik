@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  IconButton,
-  Spinner,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Button, Center, HStack, IconButton, Spinner, Text, VStack } from '@chakra-ui/react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { motion } from 'framer-motion';
 import { memo, useEffect, useRef, useState } from 'react';
@@ -23,27 +14,17 @@ type CarouselPropsType = {
   PFP: string;
 };
 
-const FramerCarousel = memo(function FramerCarousel({
-  onClose,
-  setPFP,
-  PFP,
-}: CarouselPropsType) {
+const FramerCarousel = memo(function FramerCarousel({ onClose, setPFP, PFP }: CarouselPropsType) {
   const carousel = useRef<HTMLElement>();
   const [carouselWidth, setCarouselWidth] = useState(0);
   const { user } = useUserStore();
   const { publicKey } = useWallet();
 
-  const {
-    data: nftsData,
-    isLoading,
-    error,
-  } = useGetUserAssets(publicKey?.toBase58() ?? '');
+  const { data: nftsData, isLoading, error } = useGetUserAssets(publicKey?.toBase58() ?? '');
 
   useEffect(() => {
     if (carousel.current) {
-      setCarouselWidth(
-        carousel.current.scrollWidth - carousel.current.offsetWidth
-      );
+      setCarouselWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
     }
   }, [carouselWidth]);
 
@@ -93,16 +74,9 @@ const FramerCarousel = memo(function FramerCarousel({
           {!nftsData ? (PFP ? 'Select' : 'Cancel') : 'Close'}
         </Button>
       </HStack>
-      <HStack
-        w="full"
-        alignItems={'center'}
-        position={'relative'}
-        overflow="visible"
-      >
+      <HStack w="full" alignItems={'center'} position={'relative'} overflow="visible">
         <IconButton
-          display={
-            nftsData && nftsData?.length > 0 && !isLoading ? 'block' : 'none'
-          }
+          display={nftsData && nftsData?.length > 0 && !isLoading ? 'block' : 'none'}
           position={'absolute'}
           variant="unstyled"
           rounded="full"
@@ -133,12 +107,7 @@ const FramerCarousel = memo(function FramerCarousel({
           }}
         >
           {nftsData && nftsData?.length > 0 ? (
-            <Carousel
-              carouselWidth={carouselWidth}
-              nftsData={nftsData}
-              PFP={PFP}
-              setPFP={setPFP}
-            />
+            <Carousel carouselWidth={carouselWidth} nftsData={nftsData} PFP={PFP} setPFP={setPFP} />
           ) : (
             <VStack
               my="0.
@@ -162,8 +131,7 @@ const FramerCarousel = memo(function FramerCarousel({
                 <VStack gap="4px" p="0">
                   <BsImage size="22" />
                   <Text fontSize="xs" maxW="12rem" textAlign={'center'}>
-                    You do not have NFTs in your wallet to use as Profile
-                    Picture.
+                    You do not have NFTs in your wallet to use as Profile Picture.
                   </Text>
                 </VStack>
               )}
@@ -171,9 +139,7 @@ const FramerCarousel = memo(function FramerCarousel({
           )}
         </Box>
         <IconButton
-          display={
-            nftsData && nftsData?.length > 0 && !isLoading ? 'block' : 'none'
-          }
+          display={nftsData && nftsData?.length > 0 && !isLoading ? 'block' : 'none'}
           position={'absolute'}
           variant="unstyled"
           rounded="full"

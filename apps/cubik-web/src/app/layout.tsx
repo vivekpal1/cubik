@@ -8,6 +8,7 @@ import theme from "@/config/chakra.config";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/app/components/layout/header";
 import WalletContext from "@/app/components/wallet/context";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -19,6 +20,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // const { publicKey } = useWallet();
+
   return (
     <html lang="en">
       <body className={`${jakarta.className}`}>

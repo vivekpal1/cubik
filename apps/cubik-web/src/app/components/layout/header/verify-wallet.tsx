@@ -15,10 +15,43 @@ import {
 } from "@/utils/chakra";
 import { WalletAddress } from "../../common/wallet";
 import { useWallet } from "@solana/wallet-adapter-react";
+import { useState } from "react";
+import {
+  createMessage,
+  verifyMessage,
+} from "@/utils/helpers/getSignatureMessage";
+import * as anchor from "@coral-xyz/anchor";
+import { getOrCreateUser } from "./create-user";
+import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
+import { useTransition } from "react";
 
 const VerifyWallet = () => {
-  const { publicKey } = useWallet();
-  const [loading, setLoading] = useState(false);
+  const { publicKey, disconnect, signMessage } = useWallet();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const verify = async () => {
+    if (!publicKey && !signMessage) return;
+
+    try {
+      setIsLoading(true);
+
+      const msg = await createMessage();
+      const sig = anchor.utils.bytes.bs58.encode(await signMessage!(msg));
+
+      await verifyMessage(sig, publicKey!);
+      const userExists = await getOrCreateUser(publicKey!.toString());
+
+      console.log(userExists);
+
+      if (!userExists) {
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Modal
@@ -89,7 +122,7 @@ const VerifyWallet = () => {
           <Button
             variant={"cubikOutlined"}
             onClick={async () => {
-              //   await disconnect();
+              await disconnect();
               //   localStorage.removeItem("anon_sig");
               //   localStorage.removeItem("wallet_auth");
               //   setUser(null);
@@ -107,8 +140,8 @@ const VerifyWallet = () => {
           <Button
             variant={"cubikFilled"}
             loadingText="Verifying"
-            // onClick={VerifyWallet}
-            // isLoading={verifying}
+            onClick={verify}
+            isLoading={isLoading}
           >
             {"Verify Wallet"}
           </Button>

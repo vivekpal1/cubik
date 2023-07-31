@@ -28,10 +28,7 @@ export const AuthWrapper: React.FC<Props> = ({ children }) => {
       const walletAuth = localStorage.getItem('wallet_auth') as string;
 
       const payload = jwt.decode(walletAuth) as jwt.JwtPayload;
-      if (
-        payload.wallet !== publicKey.toBase58() ||
-        payload.exp! * 1000 < Date.now()
-      ) {
+      if (payload.wallet !== publicKey.toBase58() || payload.exp! * 1000 < Date.now()) {
         onOpen();
         return;
       }
@@ -42,10 +39,7 @@ export const AuthWrapper: React.FC<Props> = ({ children }) => {
       onOpen();
     }
     if (localStorage.getItem('anon_sig')) {
-      const sigCheck = await verifyMessage(
-        localStorage.getItem('anon_sig') as string,
-        publicKey
-      );
+      const sigCheck = await verifyMessage(localStorage.getItem('anon_sig') as string, publicKey);
       if (!sigCheck) {
         onOpen();
       }
