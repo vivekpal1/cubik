@@ -1,5 +1,5 @@
 import SEO from "@/app/components/SEO";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@cubik/database";
 import { Prisma } from "@prisma/client";
 import { Box, Container } from "@/utils/chakra";
 import React from "react";

@@ -1,7 +1,7 @@
 import React from "react";
 import { ContributionTable } from "../components/user/ContributionTable";
 import { ContributionRow } from "../components/user/ContributionRow";
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@cubik/database";
 
 const getContribution = async (username: string) => {
   return await prisma.contribution.findMany({

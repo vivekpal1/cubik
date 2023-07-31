@@ -1,4 +1,4 @@
-import { prisma } from "@/utils/prisma";
+import { prisma } from "@cubik/database";
 // import Details from "./components/details";
 import {
   Center,
