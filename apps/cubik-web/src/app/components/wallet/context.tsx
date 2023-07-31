@@ -1,5 +1,3 @@
-"use client";
-
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import {
   ConnectionProvider,
@@ -17,12 +15,15 @@ import {
   TorusWalletAdapter,
   UnsafeBurnerWalletAdapter,
 } from "@solana/wallet-adapter-wallets";
-import { clusterApiUrl } from "@solana/web3.js";
-import type { FC, ReactElement, ReactNode } from "react";
+// import { web3 } from "@coral-xyz/anchor";
+import type { FC, ReactNode } from "react";
 import { useMemo } from "react";
 import { env } from "@/env.mjs";
+import { clusterApiUrl } from "@solana/web3.js";
 
-const WalletContext = ({ children }: { children: ReactElement }) => {
+require("@solana/wallet-adapter-react-ui/styles.css");
+
+const WalletContext: FC<{ children: ReactNode }> = ({ children }) => {
   const network =
     env.NEXT_PUBLIC_SOLANA_NETWORK === "mainnet-beta"
       ? WalletAdapterNetwork.Mainnet
@@ -38,7 +39,6 @@ const WalletContext = ({ children }: { children: ReactElement }) => {
       new SolletExtensionWalletAdapter(),
       new TorusWalletAdapter(),
       new TokenaryWalletAdapter(),
-      new UnsafeBurnerWalletAdapter(),
     ],
     []
   );

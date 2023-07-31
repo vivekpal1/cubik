@@ -1,5 +1,4 @@
 "use client";
-
 import { ChakraProvider } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 
@@ -23,14 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${jakarta.className}`}>
-        <WalletContext>
-          <ChakraProvider theme={theme}>
+        <ChakraProvider theme={theme}>
+          <WalletContext>
             <VStack maxW="full" w="100%" h="100vh" p="0" bg="black">
-              {/* <Header /> */}
+              <Header />
               {children}
             </VStack>
-          </ChakraProvider>
-        </WalletContext>
+          </WalletContext>
+        </ChakraProvider>
       </body>
     </html>
   );
