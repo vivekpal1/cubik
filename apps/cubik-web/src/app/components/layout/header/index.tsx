@@ -27,10 +27,10 @@ import Logo from "../../common/logo";
 // import { set } from "nprogress";
 // import SEO from "~/app/components/SEO";
 import { usePathname } from "next/navigation";
+import ConnectWallet from "./connect-wallet";
 
-const Header = ({ children }: { children?: React.ReactNode }) => {
+const Header = () => {
   const { connected } = useWallet();
-
   const {
     isOpen: isOpenDrawer,
     onOpen: onOpenDrawer,
@@ -38,7 +38,6 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
   } = useDisclosure();
   const { isOpen, onToggle, onClose } = useDisclosure();
   const [isDesktop] = useMediaQuery("(min-width: 768px)");
-  const [drawerOpenedOnce, setDrawerOpenedOnce] = useState(true);
 
   const path = usePathname();
 
@@ -46,7 +45,6 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
   const isActiveRoute = (route: string): boolean => {
     return path === route;
   };
-
   const landingPage = path === "/";
 
   const NavbarCTA: React.FC<any> = ({ children }) => {
@@ -76,13 +74,6 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
       </Center>
     );
   };
-
-  setTimeout(() => {
-    if (!connected && drawerOpenedOnce) {
-      setDrawerOpenedOnce(false);
-      onOpenDrawer();
-    }
-  }, 2000);
 
   const DeskNavbarItems = () => {
     return isDesktop && !isCreateProfilePage ? (
@@ -165,7 +156,9 @@ const Header = ({ children }: { children?: React.ReactNode }) => {
               <Logo />
               <DeskNavbarItems />
             </HStack>
-            <NavbarCTA></NavbarCTA>
+            <NavbarCTA>
+              <ConnectWallet />
+            </NavbarCTA>
           </Flex>
           {/* <MobileNavCollapsible
             onClose={onClose}
