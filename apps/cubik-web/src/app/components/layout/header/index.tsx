@@ -67,7 +67,7 @@ const Header = () => {
                 boxSize={"26px"}
                 color="white"
                 onClick={onToggle}
-              />{" "}
+              />
             </Center>
           </HStack>
         )}

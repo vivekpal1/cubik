@@ -9,8 +9,9 @@
     "start": "next start"
   },
   "dependencies": {
-    "@cubik/database": "workspace:*",
     "@chakra-ui/react": "^2.5.1",
+    "@coral-xyz/anchor": "^0.27.0",
+    "@cubik/database": "workspace:*",
     "@solana/wallet-adapter-base": "^0.9.18",
     "@solana/wallet-adapter-react": "^0.15.24",
     "@solana/wallet-adapter-react-ui": "^0.9.22",
@@ -29,6 +30,7 @@
     "react-parallax-mouse": "^2.0.1",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
+    "tweetnacl": "^1.0.3",
     "zod": "^3.21.4"
   },
   "devDependencies": {
