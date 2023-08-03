@@ -1,9 +1,8 @@
 "use client";
 
 import { Box, ChakraProvider } from "@chakra-ui/react";
-import dynamic from "next/dynamic";
 
-import { Container, VStack } from "@/utils/chakra";
+import { VStack } from "@/utils/chakra";
 import theme from "@/config/chakra.config";
 
 import { Plus_Jakarta_Sans } from "next/font/google";
