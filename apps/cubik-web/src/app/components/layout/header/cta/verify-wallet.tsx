@@ -26,10 +26,12 @@ import { useRouter } from "next/router";
 import { redirect } from "next/navigation";
 import { useTransition } from "react";
 import { User } from ".";
+import { useUser } from "@/app/context/user";
 
-const VerifyWallet = ({ setUser }: { setUser: (user: User) => void }) => {
+const VerifyWallet = () => {
   const { publicKey, disconnect, signMessage } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
+  const { setUser } = useUser();
 
   const verify = async () => {
     if (!publicKey && !signMessage) return;

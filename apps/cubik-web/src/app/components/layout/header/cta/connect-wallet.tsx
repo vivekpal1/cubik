@@ -6,7 +6,7 @@ import { useState } from "react";
 import VerifyWallet from "./verify-wallet";
 import { User } from ".";
 
-const ConnectWallet = ({ setUser }: { setUser: (user: User) => void }) => {
+const ConnectWallet = () => {
   const { publicKey, connected } = useWallet();
   const { setVisible } = useWalletModal();
 
@@ -23,7 +23,7 @@ const ConnectWallet = ({ setUser }: { setUser: (user: User) => void }) => {
         </Button>
       ) : (
         <div>
-          <VerifyWallet setUser={setUser} />
+          <VerifyWallet />
         </div>
       )}
     </>

@@ -8,6 +8,7 @@ import theme from "@/config/chakra.config";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Header from "@/app/components/layout/header";
 import WalletContext from "@/app/components/wallet/context";
+import { AuthProvider } from "./context/user";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -23,14 +24,16 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${jakarta.className}`}>
         <WalletContext>
-          <ChakraProvider theme={theme}>
-            <VStack maxW="full" w="100%" h="100vh" p="0" bg="black">
-              <Header />
-              <Box w="full" pt={10}>
-                {children}
-              </Box>
-            </VStack>
-          </ChakraProvider>
+          <AuthProvider>
+            <ChakraProvider theme={theme}>
+              <VStack maxW="full" w="100%" h="100vh" p="0" bg="black">
+                <Header />
+                <Box w="full" pt={10}>
+                  {children}
+                </Box>
+              </VStack>
+            </ChakraProvider>
+          </AuthProvider>
         </WalletContext>
       </body>
     </html>

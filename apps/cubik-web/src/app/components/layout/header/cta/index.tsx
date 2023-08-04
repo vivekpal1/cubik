@@ -9,6 +9,7 @@ import ConnectWallet from "./connect-wallet";
 import VerifyWallet from "./verify-wallet";
 import { setCookie, deleteCookie } from "cookies-next";
 import { usePathname } from "next/navigation";
+import { useUser } from "@/app/context/user";
 
 export interface User {
   username: string;
@@ -17,27 +18,10 @@ export interface User {
 }
 
 const CTA = () => {
-  // user data for the dropdown
-  const [user, setUser] = useState<User>();
-  const { publicKey, connected, disconnect } = useWallet();
-  const { setVisible } = useWalletModal();
+  const { user } = useUser();
 
   const path = usePathname();
   const isCreateProfilePage = path === "/create/profile";
-
-  useEffect(() => {
-    if (user) {
-      // logout user on wallet change
-      if (publicKey?.toString() !== user.mainWallet) {
-        disconnect();
-        deleteCookie("publicKey");
-        setUser(undefined);
-        window.location.reload();
-      } else {
-        setCookie("publicKey", publicKey.toString());
-      }
-    }
-  }, [publicKey, user]);
 
   return (
     <Center
@@ -49,11 +33,7 @@ const CTA = () => {
     >
       {!isCreateProfilePage && (
         <Center w="fit-content">
-          {!user ? (
-            <ConnectWallet setUser={setUser} />
-          ) : (
-            <Text>hello, {user.username}</Text>
-          )}
+          {!user ? <ConnectWallet /> : <Text>hello, {user.username}</Text>}
         </Center>
       )}
       <Sidebar />
