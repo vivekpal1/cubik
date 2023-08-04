@@ -9,6 +9,7 @@ import {
   Spinner,
   Text,
   VStack,
+  useQuery,
 } from "@/utils/chakra";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { motion } from "framer-motion";
@@ -18,28 +19,47 @@ import { BsImage } from "react-icons/bs";
 import { assestsByOwner } from "./assestsByOwner";
 // import { useUserStore } from "~/store/userStore";
 import Carousel from "./Carousel";
+import { set } from "date-fns";
 
 type CarouselPropsType = {
   onClose: () => void;
   setPFP: (pfp: string) => void;
   PFP: string;
 };
-
-const FramerCarousel = memo(function FramerCarousel({
-  onClose,
-  setPFP,
-  PFP,
-}: CarouselPropsType) {
+interface NftResponse {
+  id: string;
+  name: string;
+  image: string;
+}
+const FramerCarousel = ({ onClose, setPFP, PFP }: CarouselPropsType) => {
   const carousel = useRef<HTMLElement>();
   const [carouselWidth, setCarouselWidth] = useState(0);
+  const [isLoading, setLoading] = useState(false);
+  const [isError, setError] = useState(false);
+  const [nftData, setNftData] = useState<NftResponse[]>([]);
   //   const { user } = useUserStore();
   const { publicKey } = useWallet();
 
-  //   const {
-  //     data: nftsData,
-  //     isLoading,
-  //     error,
-  //   } = useGetUserAssets(publicKey?.toBase58() ?? "");
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        setLoading(true);
+        const data = await assestsByOwner(publicKey?.toBase58() || "");
+        if (data[0]) {
+          setNftData(data[0]);
+        } else {
+          setNftData([]);
+          setError(true);
+        }
+
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setError(true);
+        setLoading(false);
+      }
+    };
+  });
 
   useEffect(() => {
     if (carousel.current) {
@@ -64,9 +84,10 @@ const FramerCarousel = memo(function FramerCarousel({
     }
   };
 
-  //   if (error) { // todo:- fix when we have assests implemented
-  //     return <div>Error</div>;
-  //   }
+  if (nftData[1]) {
+    // todo:- fix when we have assests implemented
+    return <div>Error</div>;
+  }
 
   return (
     <>
@@ -92,7 +113,7 @@ const FramerCarousel = memo(function FramerCarousel({
             // }
           }}
         >
-          {/* {!nftsData ? (PFP ? "Select" : "Cancel") : "Close"} */}
+          {!nftData[0] ? (PFP ? "Select" : "Cancel") : "Close"}
         </Button>
       </HStack>
       <HStack
@@ -102,9 +123,7 @@ const FramerCarousel = memo(function FramerCarousel({
         overflow="visible"
       >
         <IconButton
-          //   display={
-          //     nftsData && nftsData?.length > 0 && !isLoading ? "block" : "none"
-          //   }
+          display={nftData && nftData?.length > 0 ? "block" : "none"}
           position={"absolute"}
           variant="unstyled"
           rounded="full"
@@ -134,10 +153,10 @@ const FramerCarousel = memo(function FramerCarousel({
             msOverflowStyle: "none",
           }}
         >
-          {nftsData && nftsData?.length > 0 ? (
+          {nftData && nftData?.length > 0 ? (
             <Carousel
               carouselWidth={carouselWidth}
-              nftsData={nftsData}
+              nftsData={nftData}
               PFP={PFP}
               setPFP={setPFP}
             />
@@ -174,7 +193,7 @@ const FramerCarousel = memo(function FramerCarousel({
         </Box>
         <IconButton
           display={
-            nftsData && nftsData?.length > 0 && !isLoading ? "block" : "none"
+            nftData && nftData?.length > 0 && !isLoading ? "block" : "none"
           }
           position={"absolute"}
           variant="unstyled"
@@ -193,6 +212,6 @@ const FramerCarousel = memo(function FramerCarousel({
       </HStack>
     </>
   );
-});
+};
 
 export default FramerCarousel;

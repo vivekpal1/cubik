@@ -65,7 +65,7 @@ const Carousel = memo(function Carousel({
           loading="lazy"
           style={{
             // outline:
-            //   user?.profilePicture === nft.image ? "1px solid #fff" : "none", // todo: update when we have user store
+            //   user?.profilePicture === nft.image ? "1px solid #fff" : "none",
             pointerEvents: "none",
             borderRadius: "6px",
             width: "5rem",

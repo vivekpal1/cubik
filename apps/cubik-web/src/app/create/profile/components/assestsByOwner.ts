@@ -1,3 +1,5 @@
+import { env } from "@/env.mjs";
+
 interface Nft {
   id: string;
   name: string;
@@ -8,13 +10,20 @@ interface Nft {
   };
 }
 
-export const assestsByOwner = async (ownerAddress: string) => {
+interface NftResponse {
+  id: string;
+  name: string;
+  image: string;
+}
+export const assestsByOwner = async (
+  ownerAddress: string
+): Promise<[NftResponse[] | null, boolean]> => {
   if (!ownerAddress) {
     // Handle invalid ownerAddress
     throw new Error("Invalid owner address");
   }
 
-  const apiKey = process.env.NEXT_PUBLIC_HELIUS_API_KEY;
+  const apiKey = env.NEXT_PUBLIC_HELIUS_API_KEY;
   if (!apiKey) {
     // Handle missing API Key
     throw new Error("Missing API Key");
@@ -50,7 +59,7 @@ export const assestsByOwner = async (ownerAddress: string) => {
       throw new Error("Invalid API response");
     }
 
-    const myNfts = r.result.items.map((nft: Nft) => {
+    const myNfts: NftResponse[] = r.result.items.map((nft: Nft) => {
       const files = nft.content.files;
       const image =
         files && files.length > 0 ? files[0]?.uri : "default-image-url";
@@ -61,10 +70,10 @@ export const assestsByOwner = async (ownerAddress: string) => {
         image,
       };
     });
-    return [myNfts, null];
+    return [myNfts, false];
   } catch (error) {
     console.log(error);
 
-    return [null, error];
+    return [null, true];
   }
 };

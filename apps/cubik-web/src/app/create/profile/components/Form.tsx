@@ -19,6 +19,7 @@ import {
   InputRightElement,
   Spinner,
   VStack,
+  useDisclosure,
 } from "@/utils/chakra";
 import { Controller, useForm } from "react-hook-form";
 import { HiCheck } from "react-icons/hi";
@@ -27,6 +28,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserSchema } from "@/utils/schema/user";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import ProfilePicture from "./ProfilePicture";
+import FramerCarousel from "./FramerCarousel";
 export const Form = () => {
   const [userNameIsAvailable, setUserNameIsAvailable] =
     useState<boolean>(false);
@@ -36,6 +39,9 @@ export const Form = () => {
   const { publicKey } = useWallet();
   const { setVisible } = useWalletModal();
 
+  const [pfp, setPFP] = useState<string>(
+    `https://source.boringavatars.com/marble/120/${publicKey?.toBase58()}?square&?colors=05299E,5E4AE3,947BD3,F0A7A0,F26CA7,FFFFFF,CAF0F8,CCA43B`
+  );
   const {
     handleSubmit,
     trigger,
@@ -45,7 +51,7 @@ export const Form = () => {
   } = useForm({
     resolver: zodResolver(createUserSchema),
   });
-
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const onSubmit = async () => {};
   return (
     <>
@@ -65,16 +71,16 @@ export const Form = () => {
             >
               Profile Picture
             </FormLabel>
-            {/* <ProfilePicture
+            <ProfilePicture
               onOpen={onOpen}
               onClose={onClose}
               isOpen={isOpen}
-              pfp={UserProfilePicture}
-            /> */}
+              pfp={pfp}
+            />
           </FormControl>
-          {/* <Collapse in={isOpen} animateOpacity>
+          <Collapse in={isOpen} animateOpacity>
             <FramerCarousel onClose={onClose} setPFP={setPFP} PFP={pfp} />
-          </Collapse> */}
+          </Collapse>
           <FormControl
             variant={"outline"}
             colorScheme={"pink"}
