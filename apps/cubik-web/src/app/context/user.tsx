@@ -1,6 +1,8 @@
 import { publicKey } from "@coral-xyz/anchor/dist/cjs/utils";
 import { useWallet } from "@solana/wallet-adapter-react";
 import React, { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
+import { saveSession } from "@/utils/helpers/saveSession";
 
 export interface User {
   username: string;
@@ -24,7 +26,6 @@ export const useUser = () => useContext(UserContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-
   const { publicKey, disconnect } = useWallet();
 
   const logout = () => {
@@ -45,6 +46,21 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
     }
   }, [publicKey, user]);
+
+  const track = async () => {
+    const {
+      data: { ip, userAgent },
+    } = await axios.get("/api/track");
+
+    saveSession(user!.mainWallet, {
+      ip,
+      userAgent,
+    });
+  };
+
+  useEffect(() => {
+    user && track();
+  }, [user]);
 
   return (
     <UserContext.Provider value={{ user, setUser, logout }}>

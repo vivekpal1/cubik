@@ -107,7 +107,6 @@ model Session {
   id        String    @id @default(uuid())
   ipAddress String
   userAgent String
-  location  String
   createdAt DateTime  @default(now())
   user      UserModel @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId    String
