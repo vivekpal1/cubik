@@ -47,6 +47,7 @@ const FramerCarousel = ({ onClose, setPFP, PFP }: CarouselPropsType) => {
         const data = await assestsByOwner(publicKey?.toBase58() || "");
         if (data[0]) {
           setNftData(data[0]);
+          setError(false);
         } else {
           setNftData([]);
           setError(true);
@@ -59,7 +60,8 @@ const FramerCarousel = ({ onClose, setPFP, PFP }: CarouselPropsType) => {
         setLoading(false);
       }
     };
-  });
+    fetch();
+  }, [publicKey]);
 
   useEffect(() => {
     if (carousel.current) {
@@ -84,7 +86,7 @@ const FramerCarousel = ({ onClose, setPFP, PFP }: CarouselPropsType) => {
     }
   };
 
-  if (nftData[1]) {
+  if (isError) {
     // todo:- fix when we have assests implemented
     return <div>Error</div>;
   }
@@ -113,7 +115,7 @@ const FramerCarousel = ({ onClose, setPFP, PFP }: CarouselPropsType) => {
             // }
           }}
         >
-          {!nftData[0] ? (PFP ? "Select" : "Cancel") : "Close"}
+          {!nftData ? (PFP ? "Select" : "Cancel") : "Close"}
         </Button>
       </HStack>
       <HStack

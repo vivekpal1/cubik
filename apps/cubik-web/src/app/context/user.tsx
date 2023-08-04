@@ -1,4 +1,3 @@
-import { publicKey } from "@coral-xyz/anchor/dist/cjs/utils";
 import { useWallet } from "@solana/wallet-adapter-react";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
