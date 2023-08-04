@@ -15,8 +15,7 @@ export const getOrCreateUser = async (publicKey: string) => {
 
   if (!user?.username) return null;
   else if (user) return user;
-
-  if (!user) {
+  else {
     await prisma.userModel.create({
       data: {
         mainWallet: publicKey,

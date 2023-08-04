@@ -4,9 +4,9 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useState } from "react";
 import VerifyWallet from "./verify-wallet";
+import { User } from ".";
 
-const ConnectWallet = () => {
-  const [user, setUser] = useState<string>()
+const ConnectWallet = ({ setUser }: { setUser: (user: User) => void }) => {
   const { publicKey, connected } = useWallet();
   const { setVisible } = useWalletModal();
 
@@ -21,11 +21,11 @@ const ConnectWallet = () => {
         >
           Connect Wallet
         </Button>
-      ) : !user ? (
+      ) : (
         <div>
-          <VerifyWallet />
+          <VerifyWallet setUser={setUser} />
         </div>
-      ) : null}
+      )}
     </>
   );
 };

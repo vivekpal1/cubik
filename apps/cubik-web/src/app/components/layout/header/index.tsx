@@ -1,4 +1,3 @@
-"use client";
 import {
   Box,
   Button,
@@ -13,7 +12,7 @@ import {
   Stack,
   useDisclosure,
   useMediaQuery,
-} from "@chakra-ui/react";
+} from "@/utils/chakra";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Link from "next/link";
@@ -27,26 +26,11 @@ import Logo from "../../common/logo";
 // import { set } from "nprogress";
 // import SEO from "~/app/components/SEO";
 import { usePathname } from "next/navigation";
-import ConnectWallet from "./connect-wallet";
+import ConnectWallet from "./cta/connect-wallet";
+import Links from "./links";
+import CTA from "./cta";
 
 const Header = () => {
-  const { connected } = useWallet();
-  const {
-    isOpen: isOpenDrawer,
-    onOpen: onOpenDrawer,
-    onClose: onCloseDrawer,
-  } = useDisclosure();
-  const { isOpen, onToggle, onClose } = useDisclosure();
-  const [isDesktop] = useMediaQuery("(min-width: 768px)");
-
-  const path = usePathname();
-
-  const isCreateProfilePage = path === "/create-profile";
-  const isActiveRoute = (route: string): boolean => {
-    return path === route;
-  };
-  const landingPage = path === "/";
-
   const NavbarCTA: React.FC<any> = ({ children }) => {
     return (
       <Center
@@ -56,7 +40,7 @@ const Header = () => {
         w="full"
         zIndex="99"
       >
-        {isDesktop ? (
+        {/* {isDesktop ? (
           <Center w="fit-content">{children}</Center>
         ) : (
           <HStack justify="end" align="center" w="full" gap="12px">
@@ -70,60 +54,24 @@ const Header = () => {
               />
             </Center>
           </HStack>
-        )}
+        )} */}
       </Center>
     );
   };
 
-  const DeskNavbarItems = () => {
-    return isDesktop && !isCreateProfilePage ? (
-      <>
-        {/* <SearchBar
-          display={landingPage ? "none" : "flex"}
-          width={{ base: "full", sm: "full", md: "8rem", lg: "14rem" }}
-        /> */}
-        <HStack
-          gap={{ base: "28px", lg: "32px" }}
-          alignItems={"center"}
-          justifyContent={landingPage ? "center" : "flex-start"}
-          mx="auto"
-        >
-          <Link href="/projects">
-            <Box
-              as="p"
-              textStyle={"title4"}
-              color={isActiveRoute("/projects") ? "brand.teal5" : "neutral.8"}
-              cursor={"pointer"}
-            >
-              Projects
-            </Box>
-          </Link>
-          <Link href="/grants">
-            <Box
-              as="p"
-              textStyle={"title4"}
-              color={isActiveRoute("/grants") ? "brand.teal5" : "neutral.8"}
-              cursor={"pointer"}
-            >
-              Grants
-            </Box>
-          </Link>
-          <Link href="/hackathons">
-            <Box
-              as="p"
-              textStyle={"title4"}
-              color={isActiveRoute("/hackathons") ? "brand.teal5" : "neutral.8"}
-              cursor={"pointer"}
-            >
-              Hackathons
-            </Box>
-          </Link>
-        </HStack>
-      </>
-    ) : (
-      <></>
-    );
-  };
+  // const DeskNavbarItems = () => {
+  //   return isDesktop && !isCreateProfilePage ? (
+  //     <>
+  //       <SearchBar
+  //         display={landingPage ? "none" : "flex"}
+  //         width={{ base: "full", sm: "full", md: "8rem", lg: "14rem" }}
+  //       />
+
+  //     </>
+  //   ) : (
+  //     <></>
+  //   );
+  // };
 
   return (
     <>
@@ -154,11 +102,9 @@ const Header = () => {
           >
             <HStack w="full" gap={{ base: "28px", lg: "32px" }}>
               <Logo />
-              <DeskNavbarItems />
+              <Links />
             </HStack>
-            <NavbarCTA>
-              <ConnectWallet />
-            </NavbarCTA>
+            <CTA />
           </Flex>
           {/* <MobileNavCollapsible
             onClose={onClose}
@@ -167,6 +113,7 @@ const Header = () => {
           /> */}
         </Container>
       </main>
+
       {/* {router.pathname === '/' ? (
         ''
       ) : (

@@ -13,7 +13,7 @@ import {
   ModalOverlay,
   VStack,
 } from "@/utils/chakra";
-import { WalletAddress } from "../../common/wallet";
+import { WalletAddress } from "../../../common/wallet";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 import {
@@ -25,8 +25,9 @@ import { getOrCreateUser } from "./get-user";
 import { useRouter } from "next/router";
 import { redirect } from "next/navigation";
 import { useTransition } from "react";
+import { User } from ".";
 
-const VerifyWallet = () => {
+const VerifyWallet = ({ setUser }: { setUser: (user: User) => void }) => {
   const { publicKey, disconnect, signMessage } = useWallet();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,12 +41,18 @@ const VerifyWallet = () => {
       const sig = anchor.utils.bytes.bs58.encode(await signMessage!(msg));
 
       await verifyMessage(sig, publicKey!);
-      const userExists = await getOrCreateUser(publicKey!.toString());
+      const user = await getOrCreateUser(publicKey!.toString());
 
-      console.log(userExists);
+      console.log(user);
 
-      if (!userExists) {
+      if (user === null) {
         window.location.href = "/create-profile";
+      } else {
+        setUser({
+          username: user.username!,
+          profilePicture: user.profilePicture!,
+          mainWallet: publicKey!.toString(),
+        });
       }
     } catch (error) {
       await disconnect();
