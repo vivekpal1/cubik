@@ -2,7 +2,6 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Container } from '@chakra-ui/layout';
 import { Card, CardHeader } from '@chakra-ui/react';
 import { useState } from 'react';
-import SEO from '~/app/components/SEO';
 import CreateProfileStepThree from '~/components/pages/create-profile/CreateProfileStepThree';
 
 const CreateProfile = () => {
@@ -13,11 +12,6 @@ const CreateProfile = () => {
 
   return (
     <>
-      <SEO
-        title={`Create Cubik Profile`}
-        description={`Create a new profile on Cubik`}
-        image={`https://res.cloudinary.com/demonicirfan/image/upload/v1684179451/cubik%20og.png`}
-      />
       <Container maxW="full" py={{ base: '2rem', lg: '2vh' }}>
         <Card
           background={'#080808'}
@@ -49,18 +43,10 @@ const CreateProfile = () => {
           </Box>
           <>
             <CardHeader gap="8px">
-              <Box
-                as="p"
-                textStyle={{ base: 'title2', md: 'title1' }}
-                color="neutral.11"
-              >
+              <Box as="p" textStyle={{ base: 'title2', md: 'title1' }} color="neutral.11">
                 Create your account
               </Box>
-              <Box
-                as="p"
-                textStyle={{ base: 'body5', md: 'body4' }}
-                color="neutral.9"
-              >
+              <Box as="p" textStyle={{ base: 'body5', md: 'body4' }} color="neutral.9">
                 Create your Cubik account to get started.
               </Box>
             </CardHeader>
