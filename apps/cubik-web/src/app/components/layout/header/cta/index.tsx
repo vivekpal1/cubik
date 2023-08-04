@@ -8,6 +8,7 @@ import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import ConnectWallet from "./connect-wallet";
 import VerifyWallet from "./verify-wallet";
 import { setCookie, deleteCookie } from "cookies-next";
+import { usePathname } from "next/navigation";
 
 export interface User {
   username: string;
@@ -20,6 +21,9 @@ const CTA = () => {
   const [user, setUser] = useState<User>();
   const { publicKey, connected, disconnect } = useWallet();
   const { setVisible } = useWalletModal();
+
+  const path = usePathname();
+  const isCreateProfilePage = path === "/create/profile";
 
   useEffect(() => {
     if (user) {
@@ -43,13 +47,15 @@ const CTA = () => {
       w="full"
       zIndex="99"
     >
-      <Center w="fit-content">
-        {!user ? (
-          <ConnectWallet setUser={setUser} />
-        ) : (
-          <Text>hello, {user.username}</Text>
-        )}
-      </Center>
+      {!isCreateProfilePage && (
+        <Center w="fit-content">
+          {!user ? (
+            <ConnectWallet setUser={setUser} />
+          ) : (
+            <Text>hello, {user.username}</Text>
+          )}
+        </Center>
+      )}
       <Sidebar />
     </Center>
   );

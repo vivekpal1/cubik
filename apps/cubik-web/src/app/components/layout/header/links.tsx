@@ -8,7 +8,6 @@ const Links = () => {
 
   const path = usePathname();
 
-  const isCreateProfilePage = path === "/create-profile";
   const isActiveRoute = (route: string): boolean => {
     return path === route;
   };

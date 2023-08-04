@@ -46,7 +46,7 @@ const VerifyWallet = ({ setUser }: { setUser: (user: User) => void }) => {
       console.log(user);
 
       if (user === null) {
-        window.location.href = "/create-profile";
+        window.location.href = "/create/profile";
       } else {
         setUser({
           username: user.username!,
