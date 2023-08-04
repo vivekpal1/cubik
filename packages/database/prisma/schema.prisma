@@ -104,13 +104,13 @@ model UserKeys {
 }
 
 model Session {
-  id           String    @id @default(uuid())
-  sessionToken String    @unique
-  userId       String
-  expires      DateTime
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  user         UserModel @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id        String    @id @default(uuid())
+  ipAddress String
+  userAgent String
+  location  String
+  createdAt DateTime  @default(now())
+  user      UserModel @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
 
   @@index([userId])
 }
