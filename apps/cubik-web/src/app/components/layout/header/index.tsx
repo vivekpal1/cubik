@@ -59,20 +59,6 @@ const Header = () => {
     );
   };
 
-  // const DeskNavbarItems = () => {
-  //   return isDesktop && !isCreateProfilePage ? (
-  //     <>
-  //       <SearchBar
-  //         display={landingPage ? "none" : "flex"}
-  //         width={{ base: "full", sm: "full", md: "8rem", lg: "14rem" }}
-  //       />
-
-  //     </>
-  //   ) : (
-  //     <></>
-  //   );
-  // };
-
   return (
     <>
       <main>
@@ -100,7 +86,7 @@ const Header = () => {
             justifyContent={"space-between"}
             gap={"24px"}
           >
-            <HStack w="full" gap={{ base: "28px", lg: "32px" }}>
+            <HStack flexGrow="1" gap={{ base: "28px", lg: "128px" }}>
               <Logo />
               <Links />
             </HStack>

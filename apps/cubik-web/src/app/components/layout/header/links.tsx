@@ -17,8 +17,8 @@ const Links = () => {
     <HStack
       gap={{ base: "28px", lg: "32px" }}
       alignItems={"center"}
-      justifyContent={landingPage ? "center" : "flex-start"}
-      mx="auto"
+      justifyContent={"flex-start"}
+      // mx="auto"
     >
       <Link href="/projects">
         <Box

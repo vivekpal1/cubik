@@ -28,14 +28,16 @@ const CTA = () => {
       h={{ base: "2rem", md: "2.6rem" }}
       justifyContent="flex-end"
       alignItems="end"
-      w="full"
+      w="max"
       zIndex="99"
     >
-      {!isCreateProfilePage && (
-        <Center w="fit-content">
-          {!user ? <ConnectWallet /> : <Text>hello, {user.username}</Text>}
-        </Center>
-      )}
+      <Center w="fit-content">
+        {!isCreateProfilePage && (
+          <>
+            {!user ? <ConnectWallet /> : <Text>hello, {user.username}</Text>}{" "}
+          </>
+        )}
+      </Center>
       <Sidebar />
     </Center>
   );

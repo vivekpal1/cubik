@@ -1,14 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextResponse, NextRequest } from "next/server";
+import requestIp from "request-ip";
 
 export async function GET(req: NextRequest) {
-  console.log("req", req);
-
-  // NextResponse.json({
-  //   ip: req.headers["x-forwarded-for"] || req.connection.remoteAddress,
-  // });
+  const ip = requestIp.getClientIp(req);
 
   return NextResponse.json({
-    ip: req.ip,
+    ip,
   });
 }
