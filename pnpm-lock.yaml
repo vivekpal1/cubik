@@ -472,6 +472,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^2.9.11
         version: 2.9.11(react-hook-form@7.45.2)
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.0.0
+        version: 5.0.0
       '@solana/wallet-adapter-base':
         specifier: ^0.9.18
         version: 0.9.22(@solana/web3.js@1.78.0)
