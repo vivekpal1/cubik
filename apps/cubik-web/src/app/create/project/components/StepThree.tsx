@@ -1,3 +1,4 @@
+import MarkdownEditor from "@/app/components/editor/Editor";
 import {
   Box,
   Button,
@@ -8,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import { Dispatch, SetStateAction, useState } from "react";
 import { FiChevronLeft } from "react-icons/fi";
-// import MarkdownEditor from "~/components/common/editor/MarkdownEditor";
 
 const StepThree = ({
   setIncreasedSize,
@@ -49,12 +49,12 @@ const StepThree = ({
           border={"1px solid"}
           borderColor="neutral.3"
         >
-          {/* <MarkdownEditor
+          <MarkdownEditor
             setIncreasedSize={setIncreasedSize}
             editorData={editorData}
             setEditorData={setEditorData}
             componentSize="sm"
-          /> */}
+          />
         </CardBody>
       </VStack>
       <CardFooter>
