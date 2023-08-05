@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { array, object, string } from 'yup';
 import withAuth from '~/components/HOC/WithAuth';
-import SEO from '~/app/components/SEO';
 import CustomStepper from '~/components/common/stepper/CustomStepper';
 import { StepOne, StepThree, StepTwo } from '~/components/pages/create-project';
 import CreateProjectTransactionModal from '~/components/pages/create-project/TransactionSignModal';
@@ -133,11 +132,6 @@ const SubmitProject: React.FC<SubmitProjectProps> = ({ onSubmit }) => {
 
   return (
     <>
-      <SEO
-        title={`Submit Project - Cubik`}
-        description={`Submit a new project and start receiving grants on cubik`}
-        image={`https://res.cloudinary.com/demonicirfan/image/upload/v1684179451/cubik%20og.png`}
-      />
       <Container
         transition="all .25s ease"
         maxW="7xl"
@@ -156,20 +150,12 @@ const SubmitProject: React.FC<SubmitProjectProps> = ({ onSubmit }) => {
           {!(step === 4) && (
             <>
               <CardHeader maxW={{ base: '28rem', md: '36rem' }} mx="auto">
-                <Box
-                  as="h1"
-                  color="neutral.11"
-                  textStyle={{ base: 'title2', md: 'title1' }}
-                >
+                <Box as="h1" color="neutral.11" textStyle={{ base: 'title2', md: 'title1' }}>
                   Create New Project
                 </Box>
-                <Box
-                  as="p"
-                  textStyle={{ base: 'body5', md: 'body4' }}
-                  color="neutral.9"
-                >
-                  Bring your vision to life! Create a project, receive grants
-                  through public donations, and make an impact.
+                <Box as="p" textStyle={{ base: 'body5', md: 'body4' }} color="neutral.9">
+                  Bring your vision to life! Create a project, receive grants through public
+                  donations, and make an impact.
                 </Box>{' '}
                 <HStack
                   pt="18px"
