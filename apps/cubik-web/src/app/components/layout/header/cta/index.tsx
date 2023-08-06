@@ -10,6 +10,7 @@ import VerifyWallet from "./verify-wallet";
 import { setCookie, deleteCookie } from "cookies-next";
 import { usePathname } from "next/navigation";
 import { useUser } from "@/app/context/user";
+import UserNavbarMenuButton from "./user-navbar-menu";
 
 export interface User {
   username: string;
@@ -33,9 +34,7 @@ const CTA = () => {
     >
       <Center w="fit-content">
         {!isCreateProfilePage && (
-          <>
-            {!user ? <ConnectWallet /> : <Text>hello, {user.username}</Text>}{" "}
-          </>
+          <>{!user ? <ConnectWallet /> : <UserNavbarMenuButton />} </>
         )}
       </Center>
       <Sidebar />
