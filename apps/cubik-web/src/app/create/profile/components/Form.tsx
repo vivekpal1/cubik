@@ -26,20 +26,28 @@ import { HiCheck } from "react-icons/hi";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createUserSchema } from "@/utils/schema/user";
-import { useWallet } from "@solana/wallet-adapter-react";
+import { useAnchorWallet, useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import ProfilePicture from "./ProfilePicture";
 import FramerCarousel from "./FramerCarousel";
 import { prisma } from "@cubik/database";
+import { createUserIx } from "@/utils/contract";
+import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
+import { connection, web3 } from "@/utils/contract/sdk";
+import { TranscationModel } from "./TranscationModel";
 export const Form = () => {
   const [userNameIsAvailable, setUserNameIsAvailable] =
     useState<boolean>(false);
 
   const [loadingUserName, setLoadingUserName] = useState<boolean>(false);
-
+  const [transactionError, setTransactionError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [profileCreated, setProfileCreated] = useState(false);
+  // const [signingTransaction, setSigningTransaction] = useState(false);
   const { publicKey } = useWallet();
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const { setVisible } = useWalletModal();
-
+  const anchorWallet = useAnchorWallet();
   const [pfp, setPFP] = useState<string>(
     `https://source.boringavatars.com/marble/120/${publicKey?.toBase58()}?square&?colors=05299E,5E4AE3,947BD3,F0A7A0,F26CA7,FFFFFF,CAF0F8,CCA43B`
   );
@@ -53,10 +61,42 @@ export const Form = () => {
   } = useForm({
     resolver: zodResolver(createUserSchema),
   });
-  const { isOpen, onClose, onOpen } = useDisclosure();
-  const handleTx = async () => {};
-  const onSubmit = async () => {
+  const {
+    isOpen: transcationIsOpen,
+    onClose: transcationOnClose,
+    onOpen: transcationOnOpen,
+  } = useDisclosure();
+
+  const handleTx = async (): Promise<string | null> => {
     try {
+      const ix = await createUserIx(
+        anchorWallet as NodeWallet,
+        getValues("username")
+      );
+
+      const tx = new web3.Transaction();
+      const { blockhash } = await connection.getLatestBlockhash();
+      tx.add(ix);
+      tx.recentBlockhash = blockhash;
+      tx.feePayer = publicKey as web3.PublicKey;
+
+      const signed = await anchorWallet?.signTransaction(tx);
+
+      const txid = await connection.sendRawTransaction(signed?.serialize()!);
+      setIsLoading(false);
+      return txid;
+    } catch (error) {
+      const e = error as Error;
+      setTransactionError(e.message);
+      console.log(error);
+      return null;
+    }
+  };
+  const onSubmit = async (): Promise<void> => {
+    try {
+      setIsLoading(true);
+      const txId = await handleTx();
+      if (!txId) return;
       const res = await prisma.userModel.update({
         where: {
           mainWallet: publicKey?.toBase58(),
@@ -64,18 +104,39 @@ export const Form = () => {
         data: {
           username: getValues("username"),
           profilePicture: pfp,
-          profileNft: "test", // fix this
-          tx: "test", // fix this
+          profileNft: [],
+          tx: txId,
         },
       });
-      return res;
+      setProfileCreated(true);
+      setIsLoading(false);
+
+      return;
     } catch (error) {
       console.log(error);
-      return null;
+      setProfileCreated(false);
+      setIsLoading(false);
+
+      return;
     }
   };
   return (
     <>
+      {transcationIsOpen && (
+        <TranscationModel
+          isTransactionModalOpen={transcationIsOpen}
+          onTransactionModalClose={transcationOnClose}
+          pfp={pfp}
+          setIsLoading={setIsLoading}
+          profileCreated={profileCreated}
+          setTransactionError={setTransactionError}
+          signingTransaction={isLoading}
+          transactionError={transactionError}
+          userName={getValues("username")}
+          handleTx={onSubmit}
+        />
+      )}
+
       <CardBody>
         <form
           style={{
@@ -83,7 +144,7 @@ export const Form = () => {
             display: "flex",
             flexDirection: "column",
           }}
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(() => transcationOnOpen())}
         >
           <FormControl w="full" variant={"outline"} colorScheme={"pink"}>
             <FormLabel

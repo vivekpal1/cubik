@@ -4,6 +4,8 @@ import { SDK } from "cubik-main";
 import { web3 } from "@coral-xyz/anchor";
 import { env } from "@/env.mjs";
 
+export * from "@coral-xyz/anchor";
+
 const RPC_URL =
   env.NEXT_PUBLIC_SOLANA_NETWORK === "mainnet-beta"
     ? env.NEXT_PUBLIC_RPC_MAINNET_URL
@@ -21,7 +23,9 @@ export const getSdk = (
     {
       commitment: "confirmed",
     },
-    "mainnet-beta"
+    env.NEXT_PUBLIC_SOLANA_NETWORK === "mainnet-beta"
+      ? "mainnet-beta"
+      : "devnet"
   );
 
   return sdk;
