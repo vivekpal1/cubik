@@ -27,7 +27,7 @@ const AdminView: FC<adminViewType> = ({ user, isLoading }: adminViewType) => {
         flexDir={'column'}
         gap={{ base: '32px', sm: '40px', md: '56px' }}
       >
-        <ProfileHeader admin={true} isLoading={isLoading} user={user} />
+        {/* <ProfileHeader isLoading={isLoading} user={user} /> */}
         <Tabs variant={'cubik'}>
           <TabList>
             <Tab>Details</Tab>

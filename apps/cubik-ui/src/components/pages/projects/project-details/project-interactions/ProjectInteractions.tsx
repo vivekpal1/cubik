@@ -183,7 +183,7 @@ export const ProjectFundingData = ({
           >
             <circle cx="50" cy="50" r="50" fill="#ADB8B640" />
           </Box>
-          <HStack zIndex={0} w="full" align={'start'}>
+          <HStack zIndex={1} w="full" align={'start'}>
             <VStack align={'start'} gap="8px">
               <Box as="p" textStyle={'headline4'} color={'neutral.11'}>
                 ${communityContributions}
@@ -378,12 +378,11 @@ export const ProjectCreatorTeamMember = ({
       px="16px"
     >
       <HStack gap="0.6rem">
-        <ProfilePictureAvatar
-          asNFT={true}
-          profilePicture={teamMember.user.profilePicture as string}
-          username={teamMember.user.username as string}
-          width={{ base: '32px', sm: '34px', md: '38px', lg: '38px', xl: '38px' }}
-          height={{ base: '32px', sm: '34px', md: '38px', lg: '38px', xl: '38px' }}
+        <Avatar
+          borderRadius={'8px'}
+          width={{ base: '32px', md: '38px' }}
+          height={{ base: '32px', md: '38px' }}
+          src={teamMember.user.profilePicture}
         />
         <Box color={'white'} as="p" textStyle={{ base: 'body4', md: 'body3' }}>
           @{teamMember.user.username}
@@ -481,7 +480,7 @@ export const SimilarProject = () => {
             p="16px"
             align={'start'}
           >
-            <Avatar borderRadius={'8px'} size="md" src={project.logo} />
+            <Avatar size="md" src={project.logo} />
             <VStack w="full" alignItems={'start'} textAlign="start">
               <Box as="p" textStyle={'title4'} color="white">
                 {project.name}
@@ -581,15 +580,6 @@ export const ProjectInteractions = ({
 }: ProjectInteractionsProps) => {
   return (
     <Stack w="full" maxW="26rem" flex="1" gap="48px" flexDir="column" justifyContent="start">
-      {/* <ProjectCTAs
-        joinId={joinId}
-        round={round}
-        projectDetails={projectDetails}
-        isLoading={isLoading}
-        projectJoinRoundId={round?.id as string}
-        roundName={round?.roundName as string}
-        roundId={round?.id as string}
-      /> */}
       <ProjectCreatorAndLinks
         team={team}
         projectDetails={projectDetails}

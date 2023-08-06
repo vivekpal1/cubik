@@ -11,17 +11,19 @@ export type ContributionType = {
 };
 
 const ProjectsContributorsNumber = ({
-  projectId,
-  contributorsList,
-  contributionCount,
+  contributors,
+  contributorsCount,
 }: {
-  projectId: string;
-  contributorsList: ContributionType[];
-  contributionCount: number;
+  contributors: {
+    user: {
+      profilePicture: string;
+    };
+  }[];
+  contributorsCount: number;
 }) => {
   return (
     <>
-      {contributorsList.length > 0 ? (
+      {contributors.length > 0 ? (
         <Flex
           justify="end"
           align={'center'}
@@ -32,17 +34,23 @@ const ProjectsContributorsNumber = ({
           zIndex="1"
         >
           <AvatarGroup size="xs" max={3}>
-            {contributorsList.slice(-3).map((user, id) => (
+            {contributors.slice(-3).map((user, id) => (
               <Avatar key={id} outline="2px solid #0C0D0D" src={user.user.profilePicture} />
             ))}
           </AvatarGroup>
-          <Box as="p" color="white" textStyle={{ base: 'body6', md: 'body5' }}>
-            {contributionCount === 0
-              ? '- -'
-              : contributionCount > 3
-              ? '+' + (contributionCount - 3)
-              : ''}
-          </Box>
+          {contributorsCount > 0 ? (
+            <Box
+              noOfLines={1}
+              minW={7}
+              as="p"
+              color="white"
+              textStyle={{ base: 'body6', md: 'body5' }}
+            >
+              + {contributorsCount}
+            </Box>
+          ) : (
+            '- -'
+          )}
         </Flex>
       ) : (
         <Box as="p" color="white" textStyle={{ base: 'body6', md: 'body5' }} fontWeight="600">

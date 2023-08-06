@@ -24,7 +24,7 @@ import Logo from '~/components/common/logo/Logo';
 import { SearchBar } from '~/components/common/searchbar';
 import { MobileNavCollapsible } from './MobileNav';
 import { set } from 'nprogress';
-import SEO from '~/app/components/SEO';
+import SEO from '~/components/SEO';
 
 export const Header = memo(function Header({
   children,

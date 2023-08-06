@@ -129,14 +129,27 @@ export const RecentContributions = ({
                 <Avatar
                   alignSelf={'center'}
                   size="sm"
-                  name={contributor.user.username as string}
-                  src={contributor.user.profilePicture as string}
+                  name={contributor.user.username}
+                  src={contributor.user.profilePicture}
                 />
-                <VStack w="full" alignItems={'start'} textAlign="start" spacing="4px">
-                  <Box as="p" textStyle={{ sm: 'title6', md: 'title5' }} color="white">
+                <VStack
+                  w="full"
+                  alignItems={'start'}
+                  textAlign="start"
+                  spacing="4px"
+                >
+                  <Box
+                    as="p"
+                    textStyle={{ sm: 'title6', md: 'title5' }}
+                    color="white"
+                  >
                     @{contributor.user.username}
                   </Box>
-                  <Box as="p" color="#B4B0B2" textStyle={{ base: 'body6', md: 'body5' }}>
+                  <Box
+                    as="p"
+                    color="#B4B0B2"
+                    textStyle={{ base: 'body6', md: 'body5' }}
+                  >
                     {'asd..asdf'}
                   </Box>
                 </VStack>
@@ -193,21 +206,61 @@ export const RecentContributions = ({
         <AvatarGroup size="sm" max={5} gap={'0.3rem'}>
           {isLoading && (
             <HStack spacing="-10px">
-              <Center rounded="full" border="3px solid black" bgColor={'black'} zIndex={'4'}>
-                <SkeletonCircle fadeDuration={1.5} opacity={0.4} height="2rem" width="2rem" />
+              <Center
+                rounded="full"
+                border="3px solid black"
+                bgColor={'black'}
+                zIndex={'4'}
+              >
+                <SkeletonCircle
+                  fadeDuration={1.5}
+                  opacity={0.4}
+                  height="2rem"
+                  width="2rem"
+                />
               </Center>
-              <Center rounded="full" border="3px solid black" bgColor={'black'} zIndex={'3'}>
-                <SkeletonCircle fadeDuration={1.5} opacity={0.4} height="2rem" width="2rem" />
+              <Center
+                rounded="full"
+                border="3px solid black"
+                bgColor={'black'}
+                zIndex={'3'}
+              >
+                <SkeletonCircle
+                  fadeDuration={1.5}
+                  opacity={0.4}
+                  height="2rem"
+                  width="2rem"
+                />
               </Center>
-              <Center rounded="full" border="3px solid black" bgColor={'black'} zIndex={'2'}>
-                <SkeletonCircle fadeDuration={1.5} opacity={0.4} height="2rem" width="2rem" />
+              <Center
+                rounded="full"
+                border="3px solid black"
+                bgColor={'black'}
+                zIndex={'2'}
+              >
+                <SkeletonCircle
+                  fadeDuration={1.5}
+                  opacity={0.4}
+                  height="2rem"
+                  width="2rem"
+                />
               </Center>
-              <Center rounded="full" border="3px solid black" bgColor={'black'} zIndex={'1'}>
-                <SkeletonCircle fadeDuration={1.5} opacity={0.4} height="2rem" width="2rem" />
+              <Center
+                rounded="full"
+                border="3px solid black"
+                bgColor={'black'}
+                zIndex={'1'}
+              >
+                <SkeletonCircle
+                  fadeDuration={1.5}
+                  opacity={0.4}
+                  height="2rem"
+                  width="2rem"
+                />
               </Center>
             </HStack>
           )}
-          {contributorsData?.slice(-5).map(contribution => (
+          {contributorsData?.slice(-5).map((contribution) => (
             <Avatar
               key={contribution.id}
               outline="2px solid #0C0D0D"

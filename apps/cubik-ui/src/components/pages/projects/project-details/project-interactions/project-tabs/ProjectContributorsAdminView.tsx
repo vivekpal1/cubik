@@ -96,16 +96,24 @@ export const ContributorRow: React.FC<ContributorRowProps> = ({
           <Avatar
             width={{ base: '36px', md: '44px' }}
             height={{ base: '36px', md: '44px' }}
-            src={user.profilePicture as string}
+            src={user.profilePicture}
           />
-          <VStack align={'start'} justify="center" spacing={{ base: '8px', md: '8px' }}>
+          <VStack
+            align={'start'}
+            justify="center"
+            spacing={{ base: '8px', md: '8px' }}
+          >
             <Username
               isLoading={false}
               username={user?.username}
               proofs={(user?.proof as unknown as UserProof[]) ?? []}
               size="sm"
             />
-            <Box as="p" textStyle={{ base: 'body6', md: 'body5' }} color="neutral.7">
+            <Box
+              as="p"
+              textStyle={{ base: 'body6', md: 'body5' }}
+              color="neutral.7"
+            >
               {TruncatedAddr({
                 walletAddress: user.mainWallet,
               })}
@@ -116,7 +124,11 @@ export const ContributorRow: React.FC<ContributorRowProps> = ({
       <Td p={{ base: '10px', md: '16px' }}>
         <HStack gap="8px" align={'center'}>
           <Center>
-            {contribution.token.includes('sol') ? <SOL size={'28px'} /> : <USDC size={'28px'} />}
+            {contribution.token.includes('sol') ? (
+              <SOL size={'28px'} />
+            ) : (
+              <USDC size={'28px'} />
+            )}
           </Center>
           <VStack justify={'center'} spacing="2px" align={'start'}>
             <HStack align={'baseline'} color="white">
@@ -127,14 +139,22 @@ export const ContributorRow: React.FC<ContributorRowProps> = ({
                 {contribution.token.toLocaleUpperCase()}
               </Box>
             </HStack>
-            <Box as="p" color="neutral.8" textStyle={{ base: 'body6', md: 'body5' }}>
+            <Box
+              as="p"
+              color="neutral.8"
+              textStyle={{ base: 'body6', md: 'body5' }}
+            >
               {formatNumberWithK(contribution.currentusdTotal)}$
             </Box>
           </VStack>
         </HStack>
       </Td>
       <Td p={{ base: '10px', md: '16px' }}>
-        <Box as="p" textStyle={{ base: 'body5', md: 'body4' }} color="neutral.11">
+        <Box
+          as="p"
+          textStyle={{ base: 'body5', md: 'body4' }}
+          color="neutral.11"
+        >
           {timeSince(new Date(contribution.createdAt))}
         </Box>
       </Td>

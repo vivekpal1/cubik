@@ -30,25 +30,75 @@ import { ProjectExplorerType } from '@cubik/common-types';
 import Image from 'next/image';
 import EmptyProjectsState from './empty-state/ProjectsEmptyState';
 
-// In the ProjectsList component
-type ProjectsListProps = verifiedProjectsType[];
-
-type ProjectCardProps = {
-  industry: string;
-  projectId: string;
-  ownerUsername: string;
-  status: ProjectJoinRoundStatus;
-  joinRoundId: string;
-  startTime: Date;
-  endTime: Date;
-  colorScheme: string;
-  roundName: string;
-  projectName: string;
-  projectLogo: string;
-  projectDescription?: string;
-  amountRaised: number;
-  contributions?: ContributionType[];
-  contributionCount?: number;
+const ProjectEventBanner = ({ name, bg, color }: { name: string; bg?: string; color?: string }) => {
+  console.log('backgroundImge', bg);
+  return (
+    <Center
+      w="full"
+      bg={color ? `surface.${color}.3` : 'transparent'}
+      borderTopRadius={'16px'}
+      position={'relative'}
+      overflow={'hidden'}
+    >
+      {bg && (
+        <Center
+          zIndex={'0'}
+          alignItems={'end'}
+          bg="red"
+          w="28rem"
+          h="8.5rem"
+          transform={'translateY(31%)'}
+          position={'absolute'}
+          overflow={'hidden'}
+        >
+          <Image
+            src={bg as string}
+            alt={name as string}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+          />
+        </Center>
+      )}
+      <HStack
+        zIndex={'1'}
+        w="full"
+        gap="8px"
+        padding={'12px 24px'}
+        borderTopRadius={'16px'}
+        justifyContent="space-between"
+      >
+        <Box
+          w="full"
+          as="p"
+          noOfLines={2}
+          whiteSpace={'nowrap'}
+          color={color ? `surface.${color}.1` : 'transparent'}
+          textStyle={'overline4'}
+          overflow="visible"
+          pt="0.1rem"
+          lineHeight={'auto'}
+          textTransform="uppercase"
+          letterSpacing={'0.2em'}
+          fontSize={{ base: '8px', md: '10px' }}
+          textShadow={'0px 5px 7px rgb(0 0 0)'}
+        >
+          Participating In
+        </Box>
+        <Box
+          overflow="visible"
+          as="p"
+          w="fit-content"
+          whiteSpace={'nowrap'}
+          textStyle={{ base: 'title6', md: 'title5' }}
+          color={`surface.${color}.1`}
+          textShadow={'0px 5px 7px rgb(0 0 0)'}
+        >
+          {name}
+        </Box>
+      </HStack>
+    </Center>
+  );
 };
 
 const ProjectCard = ({ project }: { project: ProjectExplorerType }) => {
@@ -342,57 +392,28 @@ const ProjectCard = ({ project }: { project: ProjectExplorerType }) => {
   );
 };
 
-const ProjectsList = ({
-  allProjectsData,
-}: {
-  allProjectsData: verifiedProjectsType;
-}) => {
-
+const ProjectsList = ({ explorerProjects }: { explorerProjects: ProjectExplorerType[] }) => {
   return (
-    <Container maxW="7xl" overflow={'visible'} p="0">
-      <Wrap
-        overflow={'visible'}
-        py="8px"
-        spacing={{ base: '1.8rem', md: '1.5rem' }}
-        w="100%"
-        margin="0"
-        justify={'center'}
-        align="center"
-        direction={{ base: 'column', sm: 'row', md: 'row' }}
-      >
-        {allProjectsData.map(
-          (projectJoinRound, key: React.Key | null | undefined) => {
-            return (
-              <ProjectCard
-                key={key}
-                endTime={projectJoinRound?.fundingRound.endTime}
-                industry={projectJoinRound?.project.industry}
-                projectId={projectJoinRound?.project.id}
-                joinRoundId={projectJoinRound?.id}
-                ownerUsername={projectJoinRound?.project.owner.username}
-                status={projectJoinRound?.status}
-                startTime={projectJoinRound?.fundingRound.startTime}
-                amountRaised={projectJoinRound?.amountRaise ?? 0}
-                projectDescription={
-                  // @ts-ignore
-                  projectJoinRound?.project?.short_description || undefined
-                }
-                projectLogo={projectJoinRound?.project.logo}
-                projectName={projectJoinRound?.project.name}
-                colorScheme={projectJoinRound?.fundingRound.colorScheme}
-                roundName={projectJoinRound?.fundingRound.roundName}
-                contributions={
-                  // @ts-ignore
-                  projectJoinRound?.project?.Contribution || undefined
-                }
-                // @ts-ignore
-                contributionCount={1}
-              />
-            );
-          }
-        )}
-      </Wrap>
-    </Container>
+    <Wrap
+      overflow={'visible'}
+      py="8px"
+      spacing={{ base: '1.8rem', md: '1.5rem' }}
+      w="100%"
+      margin="0"
+      justify={'center'}
+      align="center"
+      direction={{ base: 'column', sm: 'row', md: 'row' }}
+    >
+      {explorerProjects.length > 0 ? (
+        explorerProjects.map((project, key: React.Key | null | undefined) => {
+          return <ProjectCard project={project} key={key} />;
+        })
+      ) : (
+        <>
+          <EmptyProjectsState />
+        </>
+      )}
+    </Wrap>
   );
 };
 

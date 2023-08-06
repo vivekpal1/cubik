@@ -21,7 +21,6 @@ import { useState } from 'react';
 import { BiChevronDown, BiChevronRight, BiChevronUp } from 'react-icons/bi';
 import ContributionsEmptyState from '~/components/common/empty-state/ContributionsEmptyState';
 import Pagination from '~/components/common/pagination/Pagination';
-import ProfilePictureAvatar from '~/components/common/profile-picture/ProfilePicture';
 import { SOL, USDC } from '~/components/common/tokens/token';
 import Username from '~/components/common/username/Username';
 import { TruncatedAddr } from '~/components/common/wallet/WalletAdd';
@@ -77,35 +76,40 @@ export const TableLoading = () => {
   );
 };
 
-export const ContributorRow: React.FC<Props> = props => {
+export const ContributorRow: React.FC<Props> = (props) => {
   const router = useRouter();
   return (
     <Tr
       w={'full'}
-      // onClick={() => {
-      //   router.push(`/${props?.username}`);
-      // }}
-      // cursor="pointer"
+      onClick={() => {
+        router.push(`/${props?.username}`);
+      }}
+      cursor="pointer"
       _hover={{ backgroundColor: '#0C0D0D' }}
     >
       <Td p="18px">
         <HStack align={'start'} gap={{ base: '8px', md: '16px' }}>
-          <ProfilePictureAvatar
-            asNFT={true}
-            profilePicture={props.avatar}
-            username={props.username}
-            rounded="full"
-            width={{ base: '36px', sm: '40px', md: '44px', lg: '44px', xl: '44px' }}
-            height={{ base: '36px', sm: '40px', md: '44px', lg: '44px', xl: '44px' }}
+          <Avatar
+            width={{ base: '36px', md: '44px' }}
+            height={{ base: '36px', md: '44px' }}
+            src={props.avatar}
           />
-          <VStack align={'start'} justify="center" spacing={{ base: '8px', md: '8px' }}>
+          <VStack
+            align={'start'}
+            justify="center"
+            spacing={{ base: '8px', md: '8px' }}
+          >
             <Username
               isLoading={false}
               username={props?.username}
               proofs={(props?.proof as unknown as UserProof[]) ?? []}
               size="sm"
             />
-            <Box as="p" textStyle={{ base: 'body6', md: 'body5' }} color="neutral.7">
+            <Box
+              as="p"
+              textStyle={{ base: 'body6', md: 'body5' }}
+              color="neutral.7"
+            >
               {TruncatedAddr({
                 walletAddress: props.walletAddress,
               })}
@@ -116,7 +120,11 @@ export const ContributorRow: React.FC<Props> = props => {
       <Td p="18px">
         <HStack gap="8px" align={'center'}>
           <Center>
-            {props.token.includes('sol') ? <SOL size={'28px'} /> : <USDC size={'28px'} />}
+            {props.token.includes('sol') ? (
+              <SOL size={'28px'} />
+            ) : (
+              <USDC size={'28px'} />
+            )}
           </Center>
           <VStack justify={'center'} spacing="2px" align={'start'}>
             <HStack align={'baseline'} color="white">
@@ -128,14 +136,22 @@ export const ContributorRow: React.FC<Props> = props => {
               </Box>
             </HStack>
 
-            <Box as="p" color="neutral.8" textStyle={{ base: 'body6', md: 'body5' }}>
+            <Box
+              as="p"
+              color="neutral.8"
+              textStyle={{ base: 'body6', md: 'body5' }}
+            >
               ${formatNumberWithK(props.usd)}
             </Box>
           </VStack>
         </HStack>
       </Td>
       <Td p="18px">
-        <Box as="p" textStyle={{ base: 'body5', md: 'body4' }} color="neutral.11">
+        <Box
+          as="p"
+          textStyle={{ base: 'body5', md: 'body4' }}
+          color="neutral.11"
+        >
           {timeSince(new Date(props.timestamp))}
         </Box>
       </Td>
@@ -300,9 +316,9 @@ const ProjectContributors = ({
                       amount={contributor.total}
                       token={contributor.token}
                       timestamp={contributor.createdAt}
-                      avatar={contributor.user.profilePicture as string}
+                      avatar={contributor.user.profilePicture}
                       usd={contributor.usdTotal}
-                      username={contributor.user.username as string}
+                      username={contributor.user.username}
                       walletAddress={contributor.user.mainWallet}
                       id={contributor.user.id}
                       proof={contributor.user.proof as unknown as UserProof[]}

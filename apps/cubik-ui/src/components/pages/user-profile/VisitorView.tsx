@@ -14,10 +14,13 @@ type visitorViewType = {
   isLoading: boolean;
 };
 
-const VisitorView: FC<visitorViewType> = ({ user, isLoading }: visitorViewType) => {
+const VisitorView: FC<visitorViewType> = ({
+  user,
+  isLoading,
+}: visitorViewType) => {
   return (
     <Flex flexDir={'column'} gap="48px">
-      <ProfileHeader isLoading={isLoading} user={user} admin={false} />
+      {/* <ProfileHeader isLoading={isLoading} user={user} /> */}
       <Tabs variant={'cubik'} isLazy>
         <TabList>
           <Tab>Details</Tab>
@@ -40,7 +43,7 @@ const VisitorView: FC<visitorViewType> = ({ user, isLoading }: visitorViewType) 
                   .filter(project => project.status === ProjectVerifyStatus.VERIFIED)
                   .map((project, key) => (
                     <ProjectVisitorCard
-                      userName={user.username as string}
+                      userName={user.username}
                       project={project}
                       isLoading={isLoading}
                       key={key}
@@ -58,4 +61,4 @@ const VisitorView: FC<visitorViewType> = ({ user, isLoading }: visitorViewType) 
   );
 };
 
-export default VisitorView;
+export default memo(VisitorView);

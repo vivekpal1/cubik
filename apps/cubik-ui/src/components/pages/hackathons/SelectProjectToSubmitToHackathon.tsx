@@ -325,25 +325,24 @@ const SelectProjectToSubmitToHackathon = ({
                       <Spinner />
                     </Center>
                   ) : userProjects.data && userProjects.data.length > 0 ? (
-                    <>
-                      <Box
-                        fontSize={{ base: '12px', md: '14px' }}
-                        as="p"
-                        textStyle="title2"
-                        color="neutral.11"
-                        _after={{
-                          content: "'*'",
-                          color: '#E53E3E',
-                          display: 'inline-block',
-                          pl: '4px',
-                        }}
-                      >
-                        Choose Project
-                      </Box>
-                      <VStack w="full" gap="24px">
+                    <VStack align={'start'} w="full" gap={'24px'}>
+                      <>
+                        {' '}
+                        <Box
+                          as="p"
+                          fontSize={{ base: '12px', md: '14px' }}
+                          pb="0.5rem"
+                          color="neutral.11"
+                        >
+                          Projects
+                        </Box>
                         {userProjects.data?.map((project, index) => (
                           <Tile
-                            isSelectAble={true}
+                            isSelectAble={
+                              selectedArray.data?.find(e => e.projectsModel.id === project.id)
+                                ? false
+                                : true
+                            }
                             key={project.id}
                             tileIndex={project.id}
                             logo={project.logo}

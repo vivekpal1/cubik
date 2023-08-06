@@ -166,69 +166,12 @@ const AnimatedArrowIcon = (props: IconProps & { animate: boolean }) => {
 //             );
 //           }
 
-  const DonationStatus = () => {
-    if (joinId && round) {
-      // if round is going on show donation button
-      // if user has already donated show donate again
-      // if user has not donated show donate
-      if (isFuture(round?.startTime))
-        return (
-          <RoundStartingSoon
-            startDate={round.startTime}
-            isLoading={isLoading}
-          />
-        );
-      else if (isPast(round.startTime)) {
-        if (isPast(round.endTime))
-          return (
-            <RoundEndedBanner endDate={round.endTime} isLoading={isLoading} />
-          );
-        else if (isFuture(round.endTime))
-          if (user) {
-            const proof = user.proof as unknown as UserProof[];
-            if (proof.length >= 1) {
-              if (projectDetails?.owner_publickey === user?.mainWallet) {
-                return <></>;
-              }
-              return (
-                <Skeleton
-                  opacity={isLoading ? '0.5' : 1}
-                  fadeDuration={2}
-                  isLoaded={!isLoading}
-                  w="full"
-                >
-                  <Button
-                    onClick={onDonateHandler}
-                    variant="cubikFilled"
-                    size="md"
-                    w="full"
-                  >
-                    Donate
-                  </Button>
-                </Skeleton>
-              );
-            } else {
-              return <ProofsValidation username={user.username as string} isLoading={isLoading} />;
-            }
-          } else {
-            return (
-              <Skeleton
-                opacity={isLoading ? '0.5' : 1}
-                fadeDuration={2}
-                isLoaded={!isLoading}
-                w="full"
-              >
-                <Button
-                  onClick={() => setVisible(true)}
-                  variant="cubikFilled"
-                  size="md"
-                  w="full"
-                >
-                  Connect Wallet
-                </Button>
-              </Skeleton>
-            );
-          }
+//         return <></>;
+//       } else {
+//         return <></>;
+//       }
+//     } else return <></>;
+//   };
 
 //   return (
 //     <>
@@ -526,95 +469,6 @@ export const ProjectCTAsMobile = (props: {
     } else {
       setVisible(true);
     }
-  };
-
-  const DonationStatus = () => {
-    if (joinId && round) {
-      // if round is going on show donation button
-      // if user has already donated show donate again
-      // if user has not donated show donate
-      if (isFuture(round?.startTime))
-        return (
-          <RoundStartingSoon
-            startDate={round.startTime}
-            isLoading={isLoading}
-          />
-        );
-      // all conditions after the round start time
-      else if (isPast(round.startTime)) {
-        if (isPast(round.endTime))
-          return (
-            <RoundEndedBanner endDate={round.endTime} isLoading={isLoading} />
-          );
-        else if (isFuture(round.endTime))
-          if (user) {
-            const proof = user.proof as unknown as UserProof[];
-            if (proof.length >= 1) {
-              if (projectDetails?.owner_publickey === user?.mainWallet) {
-                return <></>;
-              }
-              return (
-                <Skeleton
-                  opacity={isLoading ? '0.5' : 1}
-                  fadeDuration={2}
-                  isLoaded={!isLoading}
-                  w="full"
-                >
-                  <Button
-                    onClick={onDonateHandler}
-                    variant="cubikFilled"
-                    size="cubikSmall"
-                    w="full"
-                  >
-                    Donate
-                  </Button>
-                </Skeleton>
-              );
-            } else {
-              return <ProofsValidation username={user.username as string} isLoading={isLoading} />;
-            }
-          } else {
-            return (
-              <Skeleton
-                opacity={isLoading ? '0.5' : 1}
-                fadeDuration={2}
-                isLoaded={!isLoading}
-                w="full"
-              >
-                <Button
-                  onClick={() => setVisible(true)}
-                  variant="cubikFilled"
-                  size={{ base: 'cubikMini', md: 'cubikSmall' }}
-                  w="full"
-                  minH="2.5rem"
-                >
-                  Donate
-                </Button>
-              </Skeleton>
-            );
-          }
-        // return (
-        //   <Skeleton
-        //     opacity={isLoading ? '0.5' : 1}
-        //     fadeDuration={2}
-        //     isLoaded={!isLoading}
-        //     w="full"
-        //   >
-        //     <Button
-        //       onClick={onDonateHandler}
-        //       variant="cubikFilled"
-        //       size="cubikSmall"
-        //       w="full"
-        //     >
-        //       Donate
-        //     </Button>
-        //   </Skeleton>
-        // );
-        return <></>;
-      } else {
-        return <></>;
-      }
-    } else return <></>; // query does not have round id so it is a preview page
   };
 
   return (

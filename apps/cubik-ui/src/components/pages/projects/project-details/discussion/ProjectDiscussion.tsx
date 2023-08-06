@@ -26,7 +26,6 @@ import { useForm } from 'react-hook-form';
 import { BiChevronDown } from 'react-icons/bi';
 import { v4 as uuid } from 'uuid';
 import { NoComments } from '~/components/common/empty-state/NoInformation';
-import ProfilePictureAvatar from '~/components/common/profile-picture/ProfilePicture';
 import ComponentErrors from '~/components/errors/ComponentErrors';
 import { useUserStore } from '~/store/userStore';
 import { getCommentType } from '~/types/comments';
@@ -75,7 +74,13 @@ const HighlightedCommentBox = ({ text }: { text: string }) => {
   );
 };
 
-const CommentComponent = ({ ownerName, el }: { ownerName: string; el: any }) => {
+const CommentComponent = ({
+  ownerName,
+  el,
+}: {
+  ownerName: string;
+  el: any;
+}) => {
   const date = new Date(el?.createdAt);
 
   return (
@@ -87,17 +92,20 @@ const CommentComponent = ({ ownerName, el }: { ownerName: string; el: any }) => 
       align={'start'}
       spacing={{ base: '12px', md: '16px' }}
     >
-      <ProfilePictureAvatar
-        asNFT={true}
-        profilePicture={el.user?.profilePicture}
-        username={el.user?.name}
-        rounded="full"
-        width={{ base: '38px', sm: '42px', md: '48px', lg: '48px', xl: '48px' }}
-        height={{ base: '38px', sm: '42px', md: '48px', lg: '48px', xl: '48px' }}
+      <Avatar
+        as={Link}
+        href={`/profile/${el?.user?.username}`}
+        mt="4px"
+        size={{ base: 'sm', md: 'md' }}
+        src={el.user?.profilePicture}
       />
       <VStack align={'start'} spacing={{ base: '4px', md: '8px' }}>
         <HStack>
-          <Box as="p" textStyle={{ base: 'title5', md: 'title4' }} color="neutral.11">
+          <Box
+            as="p"
+            textStyle={{ base: 'title5', md: 'title4' }}
+            color="neutral.11"
+          >
             @{el?.user.username}
           </Box>
           {el?.user.username === ownerName && (
@@ -113,7 +121,11 @@ const CommentComponent = ({ ownerName, el }: { ownerName: string; el: any }) => 
               Owner
             </Tag>
           )}
-          <Box as="p" textStyle={{ base: 'body5', md: 'body4' }} color="neutral.7">
+          <Box
+            as="p"
+            textStyle={{ base: 'body5', md: 'body4' }}
+            color="neutral.7"
+          >
             {date.toLocaleTimeString('en-US', {
               hour: '2-digit',
               minute: '2-digit',
@@ -136,7 +148,9 @@ export const ProjectDiscussion = ({
   const { setVisible } = useWalletModal();
   const { user } = useUserStore();
   const { publicKey } = useWallet();
-  const [loadMoreComments, setLoadMoreComments] = useState<getCommentType[]>([]);
+  const [loadMoreComments, setLoadMoreComments] = useState<getCommentType[]>(
+    []
+  );
   const [cannotLoadMore, setCannotLoadMore] = useState<boolean>(false);
   const [counter, setCounter] = useState<number>(0);
 
@@ -160,13 +174,13 @@ export const ProjectDiscussion = ({
 
   // create a new comment
   const createComment = trpc.comment.createComment.useMutation({
-    onSuccess: data => {
+    onSuccess: (data) => {
       utils.comment.getComments.invalidate({ id: projectId });
     },
   });
   // load more comments
   const loadMoreCommentsMutation = trpc.comment.getCommetsLoadMore.useMutation({
-    onSuccess: data => {
+    onSuccess: (data) => {
       setLoadMoreComments([...loadMoreComments, ...data]);
       if (data.length === 0) {
         setCannotLoadMore(true);
@@ -215,18 +229,29 @@ export const ProjectDiscussion = ({
               //  borderRadius={{ base: '4px', md: '8px' }}
               width={{ base: '38px', md: '40px' }}
               height={{ base: '38px', md: '40px' }}
-              src={user?.profilePicture as string}
+              src={user?.profilePicture}
             />
           )}
           <FormControl isInvalid={Boolean(errors.comment)}>
-            <Skeleton isLoaded={!commentsIsLoading} w="full" opacity={commentsIsLoading ? 0.2 : 1}>
+            <Skeleton
+              isLoaded={!commentsIsLoading}
+              w="full"
+              opacity={commentsIsLoading ? 0.2 : 1}
+            >
               <InputGroup>
                 <Input
                   id="comment"
                   placeholder="write a comment"
-                  color={watch('comment')?.length > 200 ? 'surface.red.2' : 'neutral.9'}
+                  color={
+                    watch('comment')?.length > 200
+                      ? 'surface.red.2'
+                      : 'neutral.9'
+                  }
                   _hover={{
-                    color: watch('comment')?.length > 200 ? 'surface.red.2' : 'neutral.9',
+                    color:
+                      watch('comment')?.length > 200
+                        ? 'surface.red.2'
+                        : 'neutral.9',
                   }}
                   type="text"
                   {...register('comment', {
@@ -255,7 +280,9 @@ export const ProjectDiscussion = ({
                       }
                       fontWeight={'600'}
                     >
-                      {watch('comment') ? watch('comment').length + '/320' : '0/320'}
+                      {watch('comment')
+                        ? watch('comment').length + '/320'
+                        : '0/320'}
                     </Box>
                   </Center>
                 </InputRightAddon>
@@ -289,12 +316,18 @@ export const ProjectDiscussion = ({
       </form>
       <VStack gap="8px" align={'start'} w={'full'}>
         {comments ? (
-          comments?.map(el => {
-            return <CommentComponent ownerName={ownerName} key={el.id} el={el} />;
+          comments?.map((el) => {
+            return (
+              <CommentComponent ownerName={ownerName} key={el.id} el={el} />
+            );
           })
         ) : (
           <>
-            <HStack w="full" align={'start'} spacing={{ base: '12px', md: '16px' }}>
+            <HStack
+              w="full"
+              align={'start'}
+              spacing={{ base: '12px', md: '16px' }}
+            >
               <SkeletonCircle
                 opacity={0.5}
                 borderRadius={{ base: '4px', md: '8px' }}
@@ -315,7 +348,11 @@ export const ProjectDiscussion = ({
                 />
               </VStack>
             </HStack>
-            <HStack w="full" align={'start'} spacing={{ base: '12px', md: '16px' }}>
+            <HStack
+              w="full"
+              align={'start'}
+              spacing={{ base: '12px', md: '16px' }}
+            >
               <SkeletonCircle
                 opacity={0.5}
                 borderRadius={{ base: '4px', md: '8px' }}
@@ -338,7 +375,7 @@ export const ProjectDiscussion = ({
             </HStack>
           </>
         )}
-        {loadMoreComments?.map(el => {
+        {loadMoreComments?.map((el) => {
           const date = new Date(el?.createdAt);
           return <CommentComponent ownerName={ownerName} key={el.id} el={el} />;
         })}
@@ -360,7 +397,9 @@ export const ProjectDiscussion = ({
               _hover={{
                 bg: 'transparent',
               }}
-              rightIcon={<Box as={BiChevronDown} boxSize={{ base: '2px', md: '22px' }} />}
+              rightIcon={
+                <Box as={BiChevronDown} boxSize={{ base: '2px', md: '22px' }} />
+              }
               onClick={() => {
                 loadMoreCommentsMutation.mutate({
                   id: projectId,

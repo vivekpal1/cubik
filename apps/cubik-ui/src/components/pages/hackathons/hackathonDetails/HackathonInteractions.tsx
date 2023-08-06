@@ -176,8 +176,8 @@ const HackathonInteractions = (props: HackathonInteractionsProps) => {
                   return (
                     <Avatar
                       key={participant.User.id}
-                      name={participant.User.username as string}
-                      src={participant.User.profilePicture as string}
+                      name={participant.User.username}
+                      src={participant.User.profilePicture}
                     />
                   );
                 })}
@@ -205,7 +205,7 @@ const HackathonInteractions = (props: HackathonInteractionsProps) => {
                       borderRadius={'8px'}
                       size={{ base: 'sm', md: 'sm' }}
                       border="1px solid #FFFFFF10"
-                      src={team.user.profilePicture as string}
+                      src={team.user.profilePicture}
                     />
                     <Box color={'white'} as="p" textStyle={{ base: 'body4', md: 'body3' }}>
                       @{team.user.username}

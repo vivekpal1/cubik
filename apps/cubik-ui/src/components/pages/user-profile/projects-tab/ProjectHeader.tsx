@@ -2,7 +2,13 @@ import { Avatar } from '@chakra-ui/avatar';
 import { Button, IconButton } from '@chakra-ui/button';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { Box, Center, HStack, Stack, VStack } from '@chakra-ui/layout';
-import { Menu, MenuButton, MenuDivider, MenuItem, MenuList } from '@chakra-ui/menu';
+import {
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
+} from '@chakra-ui/menu';
 import {
   Drawer,
   DrawerBody,
@@ -122,7 +128,7 @@ const ProjectDetails = ({
             <ProjectOptionsMenu />
           </Center>
           <Stack display={{ base: 'none', md: 'flex' }} direction="row" gap="8px" h="fit-content">
-            {project.status === 'VERIFIED' && (
+            {status === 'VERIFIED' && (
               <>
                 <Button
                   variant="cubikFilled"
@@ -141,7 +147,7 @@ const ProjectDetails = ({
         <VStack gap={{ base: '4px', md: '16px' }} w="full" align="start">
           <HStack align={'start'} w="full">
             <Box as="p" textStyle={{ base: 'headline4', md: 'headline3' }} color="neutral.11">
-              {project?.name}
+              {projectName}
             </Box>
           </HStack>
           <Box as="p" textStyle={'body9'} color="neutral.9">
@@ -175,7 +181,7 @@ const ProjectDetails = ({
                   {getDomain(project_link)}
                 </Box>
               </Button>
-              <ProjectSocials isLoading={isLoading} hideTitle={true} projectDetails={project} />
+              {/* <ProjectSocials isLoading={isLoading} hideTitle={true} projectDetails={project} /> */}
             </HStack>
           </HStack>
         </VStack>
@@ -245,14 +251,12 @@ const ProjectHeader = ({
             isLoaded={!isLoading}
             fadeDuration={1.5}
             opacity={isLoading ? '0.5' : '1'}
-            borderRadius="12px"
             width={{ base: '36px', sm: '48px', md: '52px' }}
             height={{ base: '36px', sm: '48px', md: '52px' }}
           >
             <Avatar
-              src={project?.logo}
-              name={project?.name}
-              borderRadius="8px"
+              src={projectLogo}
+              name={projectName}
               width={{ base: '36px', sm: '48px', md: '52px' }}
               height={{ base: '36px', sm: '48px', md: '52px' }}
             />
@@ -279,7 +283,7 @@ const ProjectHeader = ({
                 {projectName}
               </Box>
             </Skeleton>
-            <GetFormattedLink isLoading={isLoading} link={project?.project_link} />
+            <GetFormattedLink isLoading={isLoading} link={project_link} />
           </VStack>
         </Stack>
         <Center w="full" justifyContent={'end'}>
@@ -333,8 +337,9 @@ const ProjectHeader = ({
 
               <DrawerBody maxH={'90vh'} p="0">
                 {drawerBodyView === drawerBodyViewEnum.GRANTS ? (
-                  <ApplyForGrant setDrawerBodyView={setDrawerBodyView} project={project} />
-                ) : drawerBodyView === drawerBodyViewEnum.EDIT ? (
+                  <></>
+                ) : // <ApplyForGrant setDrawerBodyView={setDrawerBodyView} project={project} />
+                drawerBodyView === drawerBodyViewEnum.EDIT ? (
                   <EditProjectDetails />
                 ) : drawerBodyView === drawerBodyViewEnum.PREVIEW ? (
                   <></>

@@ -1,6 +1,6 @@
 import { Box, Center, Container, Flex, Heading } from '@chakra-ui/layout';
 import Link from 'next/link';
-import SEO from '~/app/components/SEO';
+import SEO from 'src/components/SEO';
 import ComponentErrors from '~/components/errors/ComponentErrors';
 import UserDetails from '~/components/pages/user-profile/details-tab/UserDetails';
 import UserProofs from '~/components/pages/user-profile/details-tab/UserProofs';

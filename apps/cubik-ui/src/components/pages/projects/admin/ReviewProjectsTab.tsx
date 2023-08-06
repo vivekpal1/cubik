@@ -222,7 +222,7 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
     </Center>;
   return (
     <VStack spacing={4} w="full">
-      {projects?.map(project => (
+      {projects?.map((project) => (
         <>
           <Card
             key={project.id}
@@ -234,8 +234,17 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
             w="100%"
           >
             <CardBody>
-              <Stack direction={{ base: 'column', sm: 'row' }} px={''} gap={'12px'} w="full">
-                <Stack w="full" direction="row" gap={{ base: '8px', sm: '12px', md: '16px' }}>
+              <Stack
+                direction={{ base: 'column', sm: 'row' }}
+                px={''}
+                gap={'12px'}
+                w="full"
+              >
+                <Stack
+                  w="full"
+                  direction="row"
+                  gap={{ base: '8px', sm: '12px', md: '16px' }}
+                >
                   <Center>
                     <Avatar
                       src={project.logo}
@@ -277,9 +286,9 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
                       handleAction(
                         'reject',
                         project.id,
-                        project.owner.username as string,
-                        project.projectUserCount as number,
-                        project.owner_publickey,
+                        project.owner.username,
+                        project.projectUserCount,
+                        project.owner_publickey
                       )
                     }
                   >
@@ -295,9 +304,9 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
                       handleAction(
                         'accept',
                         project.id,
-                        project.owner.username as string,
+                        project.owner.username,
                         project.projectUserCount,
-                        project.owner_publickey,
+                        project.owner_publickey
                       )
                     }
                   >
@@ -310,7 +319,11 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
         </>
       ))}
 
-      <Modal variant={'cubik'} isOpen={isActionModalOpen} onClose={onActionModalClose}>
+      <Modal
+        variant={'cubik'}
+        isOpen={isActionModalOpen}
+        onClose={onActionModalClose}
+      >
         <ModalOverlay opacity={'1%'} />
         <ModalContent
           minW={{ base: '24rem', md: '36rem' }}
@@ -337,7 +350,9 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
             <VStack w="full" spacing="8px" align={'center'} justify="center">
               <Box as="p" textStyle="title1" color="neutral.11">
                 {currentAction &&
-                  (currentAction.type === 'accept' ? 'Accept Project' : 'Reject Project')}
+                  (currentAction.type === 'accept'
+                    ? 'Accept Project'
+                    : 'Reject Project')}
               </Box>
               <Box as="p" textStyle="body4" color="neutral.9">
                 Sign transaction to Perform the action
@@ -357,16 +372,28 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
                     height={{ base: '60px', md: '80px' }}
                   />
                   <VStack textAlign={'start'} align={'start'} gap="8px">
-                    <Box as="p" textStyle={{ base: 'title3', md: 'title2' }} color="neutral.11">
+                    <Box
+                      as="p"
+                      textStyle={{ base: 'title3', md: 'title2' }}
+                      color="neutral.11"
+                    >
                       {selectedProject?.name}
                     </Box>
-                    <Box as="p" textStyle={{ base: 'title6', md: 'title5' }} color="neutral.8">
+                    <Box
+                      as="p"
+                      textStyle={{ base: 'title6', md: 'title5' }}
+                      color="neutral.8"
+                    >
                       {selectedProject?.short_description}
                     </Box>
                   </VStack>
                 </HStack>
               </VStack>
-              <Stack justify={'start'} gap="32px" direction={{ base: 'column', md: 'row' }}>
+              <Stack
+                justify={'start'}
+                gap="32px"
+                direction={{ base: 'column', md: 'row' }}
+              >
                 <VStack align={'start'} textAlign="start" spacing="8px">
                   <Box
                     as="p"
@@ -376,7 +403,11 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
                   >
                     Email Address
                   </Box>
-                  <Box as="p" textStyle={{ base: 'title6', md: 'title5' }} color="neutral.11">
+                  <Box
+                    as="p"
+                    textStyle={{ base: 'title6', md: 'title5' }}
+                    color="neutral.11"
+                  >
                     hashtag.irfan@gmail.com
                   </Box>
                 </VStack>
@@ -389,11 +420,16 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
                   >
                     Creator
                   </Box>
-                  <Box as="p" textStyle={{ base: 'title6', md: 'title5' }} color="neutral.11">
+                  <Box
+                    as="p"
+                    textStyle={{ base: 'title6', md: 'title5' }}
+                    color="neutral.11"
+                  >
                     @{selectedProject?.username}{' '}
                     <Box px="0.5rem" as="span" color="neutral.6">
                       {TruncatedAddr({
-                        walletAddress: (selectedProject?.publickey as string) ?? '',
+                        walletAddress:
+                          (selectedProject?.publickey as string) ?? '',
                       })}
                     </Box>
                   </Box>
@@ -446,7 +482,11 @@ const ReviewProjectsTab = ({ setProjectsNumberByStatus }: any) => {
               </VStack>
             </VStack>
           </ModalBody>
-          <ModalFooter display="flex" h={'fit-content'} justifyContent="space-between">
+          <ModalFooter
+            display="flex"
+            h={'fit-content'}
+            justifyContent="space-between"
+          >
             <Button
               w="8rem"
               size={{ base: 'cubikMini', md: 'cubikSmall' }}

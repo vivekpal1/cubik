@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/layout';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
-import AdminControls from '~/components/pages/projects/admin/AdminControls';
+import SEO from '~/components/SEO';
 import ProjectsExplorer from '~/components/pages/projects/project-explorer/ProjectsExplorer';
 import { env } from '~/env.mjs';
 import { explorerType } from '@cubik/common-types';
@@ -10,11 +10,11 @@ const Projects = (props: explorerType) => {
   console.log('props -', props);
   return (
     <>
-      {/* <SEO
+      <SEO
         title={`Projects - Cubik`}
         description={`Browse projects and Cubik and support them`}
         image={`https://res.cloudinary.com/demonicirfan/image/upload/v1684179451/cubik%20og.png`}
-      /> */}
+      />
       <Container
         px={{ base: '0.6rem', sm: '0.8rem', md: '2rem', xl: '0px' }}
         maxW="7xl"
