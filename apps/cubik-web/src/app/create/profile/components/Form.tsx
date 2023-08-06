@@ -30,6 +30,7 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import ProfilePicture from "./ProfilePicture";
 import FramerCarousel from "./FramerCarousel";
+import { prisma } from "@cubik/database";
 export const Form = () => {
   const [userNameIsAvailable, setUserNameIsAvailable] =
     useState<boolean>(false);
@@ -47,12 +48,32 @@ export const Form = () => {
     trigger,
     control,
     clearErrors,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(createUserSchema),
   });
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const onSubmit = async () => {};
+  const handleTx = async () => {};
+  const onSubmit = async () => {
+    try {
+      const res = await prisma.userModel.update({
+        where: {
+          mainWallet: publicKey?.toBase58(),
+        },
+        data: {
+          username: getValues("username"),
+          profilePicture: pfp,
+          profileNft: "test", // fix this
+          tx: "test", // fix this
+        },
+      });
+      return res;
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
   return (
     <>
       <CardBody>
