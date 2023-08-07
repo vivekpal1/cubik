@@ -4,6 +4,6 @@ module.exports = {
   extends: ["custom"],
   ignorePatterns: ["**/*.js"],
   parserOptions: {
-    project: ["./tsconfig.eslint.json", "./packages/*/tsconfig.json"],
+    project: ["./packages/*/tsconfig.json"],
   },
 };
