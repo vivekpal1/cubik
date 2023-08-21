@@ -181,7 +181,7 @@ export default function Home() {
                 fontWeight={"800"}
                 textStyle={{ base: "title1", md: "display5" }}
               >
-                100k+
+                {hackathonOverview.data?.hackathonSponsors}
               </Box>
               <Box
                 color="#ADB8B6"
