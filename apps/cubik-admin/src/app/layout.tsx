@@ -3,6 +3,8 @@ import WalletContext from "@/context/walletContext";
 import { Provider } from "@/layouts/Provider";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "../styles/global.css";
+
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800"],

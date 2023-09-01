@@ -24,6 +24,7 @@ import { HomeLayout } from "@/layouts/HomeLayout";
 import HackathonProjectsView from "@/components/Hackathon/Projects/HackathonProjectsView";
 import { useQuery } from "@tanstack/react-query";
 import { fetchDetails } from "./fetch";
+import { Button } from "@cubik/ui";
 
 const generateFakeData = (dates: Date[]): [number, number][] => {
   return dates.map((date) => {
@@ -127,6 +128,7 @@ export default function Home() {
             >
               Hackathon Overview
             </Box>
+            <Button variant={"link"}>asd</Button>
           </HStack>
           <HStack
             flexWrap={"wrap"}
