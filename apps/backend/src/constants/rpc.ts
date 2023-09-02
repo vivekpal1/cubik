@@ -1,0 +1,1 @@
+export const MAINNET_RPC_URL = process.env.NEXT_PUBLIC_RPC_MAINNET_URL;

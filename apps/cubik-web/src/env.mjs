@@ -4,13 +4,10 @@ import { z } from 'zod';
 export const env = createEnv({
   server: {
     PROD_DATABASE_URL: z.string().url(),
-    NODE_ENV: z.enum(['development', 'test', 'production']),
-
-    NEXT_PUBLIC_SECRET:
-      process.env.NODE_ENV === 'production' ? z.string().min(1) : z.string().min(1).optional(),
+    NODE_ENV: z.enum(["development", "test", "production"]),
     NEXTAUTH_URL: z.preprocess(
-      str => process.env.VERCEL_URL ?? str,
-      process.env.VERCEL ? z.string().min(1) : z.string().url(),
+      (str) => process.env.VERCEL_URL ?? str,
+      process.env.VERCEL ? z.string().min(1) : z.string().url()
     ),
   },
   client: {
@@ -31,12 +28,13 @@ export const env = createEnv({
     NEXT_PUBLIC_GA_TRACKING_ID: z.string().min(1),
     NEXT_PUBLIC_WEB3STORAGE_TOKEN: z.string().min(1),
     NEXT_PUBLIC_IMAGE_SERVER_URL: z.string().min(1),
+    NEXT_PUBLIC_SECRET: z.string().min(1),
   },
   runtimeEnv: {
     PROD_DATABASE_URL: process.env.PROD_DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_SECRET: process.env.NEXT_PUBLIC_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    NEXT_PUBLIC_SECRET: process.env.NEXT_PUBLIC_SECRET,
     NEXT_PUBLIC_RPC_MAINNET_URL: process.env.NEXT_PUBLIC_RPC_MAINNET_URL,
     NEXT_PUBLIC_RPC_DEVNET_URL: process.env.NEXT_PUBLIC_RPC_DEVNET_URL,
     NEXT_PUBLIC_CLOUDINARY: process.env.NEXT_PUBLIC_CLOUDINARY,
