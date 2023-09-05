@@ -4,33 +4,34 @@ generator client {
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("PROD_DATABASE_URL")
-  relationMode      = "prisma"
+  provider     = "mysql"
+  url          = env("PROD_DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model User {
-  id             String          @id @default(uuid()) @map("_id")
-  username       String?         @unique
-  mainWallet     String          @unique
-  email          String?
-  profileNft     Json?
-  userSybil      UserSybilStatus @default(NONE)
-  profilePicture String?         @db.VarChar(500)
-  tx             String?         @db.VarChar(500)
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
-  isActive       Boolean         @default(true)
-  isArchive      Boolean         @default(false)
-  session        Session[]
-  comments       Comments[]
-  reply          Reply[]
-  round          Round[]
-  contribution   Contribution[]
-  team           Team[]
-  proof          Proof[]
-  project        Project[]
-  AdminAccess    AdminAccess[]
+  id               String             @id @default(uuid()) @map("_id")
+  username         String?            @unique
+  mainWallet       String             @unique
+  email            String?
+  profileNft       Json?
+  userSybil        UserSybilStatus    @default(NONE)
+  profilePicture   String?            @db.VarChar(500)
+  tx               String?            @db.VarChar(500)
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  isActive         Boolean            @default(true)
+  isArchive        Boolean            @default(false)
+  session          Session[]
+  comments         Comments[]
+  reply            Reply[]
+  round            Round[]
+  contribution     Contribution[]
+  team             Team[]
+  proof            Proof[]
+  project          Project[]
+  AdminAccess      AdminAccess[]
+  CommunityMembers CommunityMembers[]
 
   @@fulltext([username])
 }
@@ -45,7 +46,6 @@ model Proof {
   isActive  Boolean   @default(true)
   isArchive Boolean   @default(false)
   user      User      @relation(fields: [userId], references: [id])
-
 
   @@index([userId])
 }
@@ -349,6 +349,40 @@ model AdminAccess {
   @@index([userId])
   @@index([hackathonId])
   @@index([roundId])
+}
+
+model Communities {
+  id               String   @id @default(uuid()) @map("_id")
+  name             String
+  logo             String   @db.VarChar(500)
+  background       String   @db.VarChar(500)
+  shortDescription String   @db.VarChar(2000)
+  method           COMM
+  collection       Json? // {collection:string}[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  isArchive        Boolean  @default(true)
+  CommunityMembers CommunityMembers[]
+}
+
+model CommunityMembers {
+  id          String      @id @default(uuid()) @map("_id")
+  userId      String
+  communityId String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  user        User        @relation(fields: [userId], references: [id])
+  community   Communities @relation(fields: [communityId], references: [id])
+  isActive    Boolean     @default(true)
+
+  @@index([userId])
+  @@index([communityId])
+}
+
+enum COMM {
+  DISCORD
+  MINT_ADD
+  LIST_ADD
 }
 
 enum SponsorShipTier {
