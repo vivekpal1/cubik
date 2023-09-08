@@ -16,6 +16,7 @@ export default async function handler(req: any, res: NextApiResponse) {
           project: {
             select: {
               name: true,
+              ownerPublickey: true,
               mutliSigAddress: true,
               createKey: true,
             },
@@ -36,12 +37,11 @@ export default async function handler(req: any, res: NextApiResponse) {
       mutliSigAddress: e.project.mutliSigAddress,
       createKey: e.project.createKey,
       amount: e.amount,
+      ownerPublickey: e.project.ownerPublickey,
     };
   });
 
   res.status(200).json({
-    totalBlze: ss?.reduce((a, b) => a + b.blze, 0),
-    totalUSD: ss?.reduce((a, b) => a + b.usdc, 0),
     data: ss,
   });
 }
