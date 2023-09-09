@@ -40,7 +40,6 @@ Cubik is built on the Solana blockchain, which allows for fast, secure, and low-
 ### Built with
 
 - [Next.js](https://nextjs.org/?ref=cal.com)
-- [tRPC](https://trpc.io/?ref=cal.com)
 - [React.js](https://reactjs.org/?ref=cal.com)
 - [Chakra UI](https://tailwindcss.com/?ref=cal.com)
 - [Prisma.io](https://prisma.io/?ref=cal.com)
@@ -58,38 +57,11 @@ Here is what you need to be able to run cubik.so.
 - pnpm _(recommended)_
 
 
+## Repo Activity
 
-## Development
+![Alt](https://repobeats.axiom.co/api/embed/3d7d0cecfd3695e0560746ed790462b97aa860a7.svg "Repobeats analytics image")
+<!-- CONTRIBUTING -->
 
-### Folder 
-       .
-    ├── app            
-    │   ├── cubik-ui                        # Frontend for cubik app          
-    │   ├── backend                         # Shared backend for cubik app          
-    ├── packages  
-    │   ├── api (@cubik/api)                # TRPC based API service
-    │   ├── database (@cubik/database)      # Prisma base database config
-    │   ├── eslint-config-custom            # eslint config
-    │   ├── tsconfig                        # base tsconfig 
-    ├── LICENSE
-    └── README.md
-
-### Setup
-
-1. Fork and clone the repository.
-
-2. Install dependencies:
-```bash
-    pnpm install  
-```
-3. Genrate prisma schema.
-``` bash
-    pnpm run generate 
-```
-4. Run the frontend 
-```bash
-    pnpm run ui:dev
-```
 
 ### Vercel
 
@@ -99,10 +71,7 @@ Currently Vercel Pro Plan is required to be able to Deploy this application with
 
 <!-- RORADMAP -->
 
-## Repo Activity
 
-![Alt](https://repobeats.axiom.co/api/embed/3d7d0cecfd3695e0560746ed790462b97aa860a7.svg "Repobeats analytics image")
-<!-- CONTRIBUTING -->
 
 ## Contributing
 
