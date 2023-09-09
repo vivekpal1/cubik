@@ -958,6 +958,24 @@ importers:
         specifier: ^5.1.3
         version: 5.1.3
 
+  packages/email-templates:
+    dependencies:
+      '@cubik/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
+      '@types/react':
+        specifier: ^18.2.21
+        version: 18.2.21
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
+
   packages/eslint-config-custom:
     dependencies:
       '@next/eslint-plugin-next':
@@ -2849,7 +2867,7 @@ packages:
       '@emotion/react': '>=10.0.35'
       react: '>=18'
     dependencies:
-      '@emotion/react': 11.10.6(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/react': 11.10.6(@types/react@18.0.28)(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -3487,8 +3505,8 @@ packages:
       '@chakra-ui/react-env': 3.1.0(react@18.2.0)
       '@chakra-ui/system': 2.6.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(react@18.2.0)
       '@chakra-ui/utils': 2.0.15
-      '@emotion/react': 11.10.6(@types/react@18.2.8)(react@18.2.0)
-      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/react': 11.10.6(@types/react@18.0.28)(react@18.2.0)
+      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.0.28)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -4243,8 +4261,8 @@ packages:
       '@chakra-ui/styled-system': 2.9.1
       '@chakra-ui/theme-utils': 2.0.19
       '@chakra-ui/utils': 2.0.15
-      '@emotion/react': 11.10.6(@types/react@18.2.8)(react@18.2.0)
-      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.2.8)(react@18.2.0)
+      '@emotion/react': 11.10.6(@types/react@18.0.28)(react@18.2.0)
+      '@emotion/styled': 11.10.6(@emotion/react@11.10.6)(@types/react@18.0.28)(react@18.2.0)
       react: 18.2.0
       react-fast-compare: 3.2.1
     dev: false
@@ -11005,7 +11023,7 @@ packages:
     resolution: {integrity: sha512-ELYyX3lb3K1WltqdlF1hbnaDGgzlF6PIR5T4W38cSEcfrQDIrPE+Ioq5pwRe/KEJ+ihHMjvTVZQkwJx0pWMNHQ==}
     dependencies:
       '@popperjs/core': 2.11.8
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
       date-fns: 2.30.0
       react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
@@ -11016,36 +11034,36 @@ packages:
   /@types/react-dom@18.0.11:
     resolution: {integrity: sha512-O38bPbI2CWtgw/OoQoY+BRelw7uysmXbWvw3nLWO21H1HSh+GOlqPuXshJfjmpNlKiiSDG9cc1JZAaMmVdcTlw==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
     dev: true
 
   /@types/react-dom@18.2.4:
     resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
     dev: true
 
   /@types/react-dom@18.2.7:
     resolution: {integrity: sha512-GRaAEriuT4zp9N4p1i8BDBYmEyfo+xQ3yHjJU4eiK5NDa1RmUZG+unZABUTK4/Ox/M+GaHwb6Ow8rUITrtjszA==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
 
   /@types/react-reconciler@0.26.7:
     resolution: {integrity: sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
     dev: false
 
   /@types/react-reconciler@0.28.2:
     resolution: {integrity: sha512-8tu6lHzEgYPlfDf/J6GOQdIc+gs+S2yAqlby3zTsB3SP2svlqTYe5fwZNtZyfactP74ShooP2vvi1BOp9ZemWw==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
     dev: false
 
   /@types/react-transition-group@4.4.6:
     resolution: {integrity: sha512-VnCdSxfcm08KjsJVQcfBmhEQAPnLB8G08hAxn39azX1qYBQ/5RVQuoHuKIcfKOdncuaUvEpFKFzEvbtIMsfVew==}
     dependencies:
-      '@types/react': 18.2.20
+      '@types/react': 18.2.21
     dev: false
 
   /@types/react@18.0.28:
@@ -11057,6 +11075,14 @@ packages:
 
   /@types/react@18.2.20:
     resolution: {integrity: sha512-WKNtmsLWJM/3D5mG4U84cysVY31ivmyw85dE84fOCk5Hx78wezB/XEjVPWl2JTZ5FkEeaTJf+VgUAUn3PE7Isw==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.3
+      csstype: 3.1.2
+    dev: false
+
+  /@types/react@18.2.21:
+    resolution: {integrity: sha512-neFKG/sBAwGxHgXiIxnbm3/AAVQ/cMRS93hvBpg8xYRbeQSPVABp9U2bRnPf0iI4+Ucdv3plSxKK+3CW2ENJxA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -12910,9 +12936,9 @@ packages:
       '@chakra-ui/react': ^1.6.1 || ^2
       react-markdown: ^7 || ^8
     dependencies:
-      '@chakra-ui/react': 2.8.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.2.8)(framer-motion@10.3.2)(react-dom@18.2.0)(react@18.2.0)
+      '@chakra-ui/react': 2.8.0(@emotion/react@11.10.6)(@emotion/styled@11.10.6)(@types/react@18.0.28)(framer-motion@10.3.2)(react-dom@18.2.0)(react@18.2.0)
       deepmerge: 4.3.1
-      react-markdown: 8.0.6(@types/react@18.2.8)(react@18.2.0)
+      react-markdown: 8.0.6(@types/react@18.0.28)(react@18.2.0)
     dev: false
 
   /chalk@2.4.2:
