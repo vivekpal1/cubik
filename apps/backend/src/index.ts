@@ -8,7 +8,6 @@ import { tokenRouter } from "routes";
 import morgan from "morgan";
 import morganBody from "morgan-body";
 import helmet from "helmet";
-import { authRouter } from "routes/auth.router";
 import bodyParser from "body-parser";
 import { envConfig } from "config";
 
@@ -41,7 +40,6 @@ const main = async () => {
   });
 
   app.use(basePath + "/token", tokenRouter);
-  app.use(basePath + "/auth", authRouter);
 
   app.listen(PORT, () => {
     logger.log("info", `Server is running on Port:${PORT}`);
