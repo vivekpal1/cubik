@@ -16,7 +16,6 @@ type PropsType = {
 export const WalletAddress: FC<PropsType> = ({
   size,
   color,
-  copy,
   walletAddress,
   children,
 }: PropsType) => {
