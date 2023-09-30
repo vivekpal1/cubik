@@ -5,6 +5,7 @@
   "scripts": {},
   "dependencies": {
     "@cubik/database": "workspace:*",
+    "@sqds/sdk": "^2.0.4",
     "@types/jsonwebtoken": "^9.0.2",
     "dotenv": "^16.3.1",
     "dotenv-cli": "latest",

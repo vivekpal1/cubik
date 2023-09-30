@@ -11,6 +11,7 @@ import helmet from "helmet";
 import { authRouter } from "routes/auth.router";
 import bodyParser from "body-parser";
 import { envConfig } from "config";
+import { squadsRouter } from "routes/squads.router";
 
 const main = async () => {
   config();
@@ -42,6 +43,7 @@ const main = async () => {
 
   app.use(basePath + "/token", tokenRouter);
   app.use(basePath + "/auth", authRouter);
+  app.use(basePath + "/squads", squadsRouter);
 
   app.listen(PORT, () => {
     logger.log("info", `Server is running on Port:${PORT}`);
