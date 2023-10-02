@@ -1,12 +1,7 @@
 import type { Request, Response } from "express";
 import * as anchor from "@coral-xyz/anchor";
 import fs from "fs";
-// import type NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
-// import type { PublicKey } from "@solana/web3.js";
-// import Squads, { getTxPDA, getIxPDA } from "@sqds/sdk";
-// import type { TransactionAccount, InstructionAccount } from "@sqds/sdk";
-import { getVault, getMsAddress, getAllTx, getSquads } from "utils/squads";
-// const RPC_URL = process.env.RPC_URL || "https://rpc.cubik.so";
+import { getVault, getMsAddress, getAllTx } from "utils/squads";
 
 const keyPair = anchor.web3.Keypair.fromSecretKey(
   Uint8Array.from(JSON.parse(fs.readFileSync(process.env.KEYPAIR!).toString()))
@@ -23,7 +18,7 @@ export const getSquadsTxs = async (req: Request, res: Response) => {
     4. get all ixs for each txs
     */
     const { createKey } = req.query;
-    const squads = await getSquads(wallet);
+    // const squads = await getSquads(wallet);
     const multiSigAccount = await getMsAddress(wallet, createKey as string);
     const vault = await getVault(wallet, multiSigAccount);
     const txs = await getAllTx(wallet, createKey as string);
