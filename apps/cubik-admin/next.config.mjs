@@ -14,7 +14,7 @@ const config = {
     return config;
   },
   transpilePackages: ["@cubik/database"],
-  experimental: { serverActions: true, appDir: true },
+  experimental: { serverActions: true },
   images: {
     remotePatterns: [
       {

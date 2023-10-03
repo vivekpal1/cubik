@@ -4,17 +4,8 @@ import {
   WalletProvider,
 } from "@solana/wallet-adapter-react";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
-import {
-  BackpackWalletAdapter,
-  CoinbaseWalletAdapter,
-  GlowWalletAdapter,
-  PhantomWalletAdapter,
-  SolflareWalletAdapter,
-  SolletExtensionWalletAdapter,
-  TokenaryWalletAdapter,
-  TorusWalletAdapter,
-} from "@solana/wallet-adapter-wallets";
-import type { FC, ReactNode } from "react";
+
+import type { FC, JSX } from "react";
 import { useMemo } from "react";
 import { clusterApiUrl } from "@solana/web3.js";
 
@@ -25,14 +16,7 @@ const WalletContext: FC<{ children: JSX.Element }> = ({ children }) => {
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
   const wallets = useMemo(
     () => [
-      new BackpackWalletAdapter(),
-      new CoinbaseWalletAdapter(),
-      new GlowWalletAdapter(),
-      new PhantomWalletAdapter(),
-      new SolflareWalletAdapter(),
-      new SolletExtensionWalletAdapter(),
-      new TorusWalletAdapter(),
-      new TokenaryWalletAdapter(),
+   
     ],
     []
   );
