@@ -6,5 +6,9 @@ interface Props {
   children: React.JSX.Element;
 }
 export const Provider = ({ children }: Props) => {
-  return <ChakraProvider theme={theme}>{children}</ChakraProvider>;
+  return <ChakraProvider theme={theme}> <CacheProvider>
+    
+    {children}
+    </CacheProvider>
+    </ChakraProvider>;
 };

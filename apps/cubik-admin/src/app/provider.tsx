@@ -10,10 +10,12 @@ export const ProviderContext = ({children}:Props) => {
   const queryClient = new QueryClient();
 
   return (
+    <>
        <QueryClientProvider client={queryClient}>
           <WalletContext>
             <Provider>{children}</Provider>
           </WalletContext>
         </QueryClientProvider>
+    </>
   )
 }
