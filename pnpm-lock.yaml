@@ -546,8 +546,8 @@ importers:
         specifier: ^8
         version: 8.48.0
       eslint-config-next:
-        specifier: 13.5.4
-        version: 13.5.4(eslint@8.48.0)(typescript@5.2.2)
+        specifier: 13.5.3
+        version: 13.5.3(eslint@8.48.0)(typescript@5.2.2)
       postcss:
         specifier: ^8
         version: 8.4.24
@@ -6547,8 +6547,8 @@ packages:
       glob: 7.1.7
     dev: false
 
-  /@next/eslint-plugin-next@13.5.4:
-    resolution: {integrity: sha512-vI94U+D7RNgX6XypSyjeFrOzxGlZyxOplU0dVE5norIfZGn/LDjJYPHdvdsR5vN1eRtl6PDAsOHmycFEOljK5A==}
+  /@next/eslint-plugin-next@13.5.3:
+    resolution: {integrity: sha512-lbZOoEjzSuTtpk9UgV9rOmxYw+PsSfNR+00mZcInqooiDMZ1u+RqT1YQYLsEZPW1kumZoQe5+exkCBtZ2xn0uw==}
     dependencies:
       glob: 7.1.7
     dev: true
@@ -10953,7 +10953,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       get-intrinsic: 1.2.1
       is-string: 1.0.7
@@ -10967,7 +10967,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       es-shim-unscopables: 1.0.0
       get-intrinsic: 1.2.1
@@ -10977,7 +10977,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       es-shim-unscopables: 1.0.0
 
@@ -10986,7 +10986,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       es-shim-unscopables: 1.0.0
 
@@ -10994,7 +10994,7 @@ packages:
     resolution: {integrity: sha512-pZYPXPRl2PqWcsUs6LOMn+1f1532nEoPTYowBtqLwAW+W8vSVhkIGnmOX1t/UQjD6YGI0vcD2B1U7ZFGQH9jnQ==}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       es-shim-unscopables: 1.0.0
       get-intrinsic: 1.2.1
@@ -12909,13 +12909,6 @@ packages:
       gopd: 1.0.1
       has-property-descriptors: 1.0.0
 
-  /define-properties@1.2.0:
-    resolution: {integrity: sha512-xvqAVKGfT1+UAvPwKTVw/njhdQ8ZhXK4lI0bCIuCMrp2up9nPnaDftrLtmpTazqd1o+UY4zgzU+avtMbDP+ldA==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      has-property-descriptors: 1.0.0
-      object-keys: 1.1.1
-
   /define-properties@1.2.1:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
@@ -13549,8 +13542,8 @@ packages:
     dev: false
     optional: true
 
-  /eslint-config-next@13.5.4(eslint@8.48.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-FzQGIj4UEszRX7fcRSJK6L1LrDiVZvDFW320VVntVKh3BSU8Fb9kpaoxQx0cdFgf3MQXdeSbrCXJ/5Z/NndDkQ==}
+  /eslint-config-next@13.5.3(eslint@8.48.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-VN2qbCpq2DMWgs7SVF8KTmc8bVaWz3s4nmcFqRLs7PNBt5AXejOhJuZ4zg2sCEHOvz5RvqdwLeI++NSCV6qHVg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -13558,7 +13551,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.5.4
+      '@next/eslint-plugin-next': 13.5.3
       '@rushstack/eslint-patch': 1.5.1
       '@typescript-eslint/parser': 6.5.0(eslint@8.48.0)(typescript@5.2.2)
       eslint: 8.48.0
@@ -18070,7 +18063,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
 
   /object.fromentries@2.0.6:
@@ -18078,21 +18071,21 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
 
   /object.groupby@1.0.1:
     resolution: {integrity: sha512-HqaQtqLnp/8Bn4GL16cj+CUYbnpe1bh0TtEaWvybszDG4tgxCJuRpV8VGuvNaI1fAnI4lUJzDG55MXcOH4JZcQ==}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       get-intrinsic: 1.2.1
 
   /object.hasown@1.1.2:
     resolution: {integrity: sha512-B5UIT3J1W+WuWIU55h0mjlwaqxiE5vYENJXIXZ4VFe05pNYrkKuK0U/6aFcb0pKywYJh7IhfoqUfKVmrJJHZHw==}
     dependencies:
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
 
   /object.omit@3.0.0:
@@ -18114,7 +18107,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
 
   /oblivious-set@1.0.0:
@@ -20900,7 +20893,7 @@ packages:
     resolution: {integrity: sha512-6zOCOcJ+RJAQshcTvXPHoxoQGONa3e/Lqx90wUA+wEzX78sg5Bo+1tQo4N0pohS0erG9qtCqJDjNCQBjeWVxyg==}
     dependencies:
       call-bind: 1.0.2
-      define-properties: 1.2.0
+      define-properties: 1.2.1
       es-abstract: 1.22.1
       get-intrinsic: 1.2.1
       has-symbols: 1.0.3
@@ -22727,7 +22720,7 @@ packages:
     dev: false
 
   github.com/Bundlr-Network/avsc/a730cc8018b79e114b6a3381bbb57760a24c6cef:
-    resolution: {tarball: https://codeload.github.com/Bundlr-Network/avsc/tar.gz/a730cc8018b79e114b6a3381bbb57760a24c6cef}
+    resolution: {commit: a730cc8018b79e114b6a3381bbb57760a24c6cef, repo: git+ssh://git@github.com/Bundlr-Network/avsc.git, type: git}
     name: avsc
     version: 5.4.7
     engines: {node: '>=0.11'}
