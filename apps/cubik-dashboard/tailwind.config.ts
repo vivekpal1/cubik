@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss'
-
+import colors from "tailwindcss/colors";
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -7,8 +7,8 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    blue: {
-      950: "#17275c",
+    colors: {
+      ...colors,
     },
   },
   plugins: [],

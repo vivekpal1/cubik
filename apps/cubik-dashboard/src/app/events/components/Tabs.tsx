@@ -1,5 +1,5 @@
 import React from "react";
 
 export const Tabs = () => {
-  return <div className="bg-blue-950">Tabs</div>;
+  return <div className="bg-neutral-800">Tabs</div>;
 };
