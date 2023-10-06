@@ -3,7 +3,7 @@ import React from "react";
 export const Headers = () => {
   return (
     <>
-      <div className="w-full dark:bg-[#262626]">
+      <div className="w-full dark:bg-neutral-800">
         <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between">
           <p className="text-2xl font-bold uppercase tracking-[0.4rem] text-black dark:text-white  ">
             CUBIK

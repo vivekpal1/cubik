@@ -1,4 +1,4 @@
-module.exports = {
+const config = {
   plugins: ["prettier-plugin-tailwindcss"],
   tailwindAttributes: ["myClassList"],
 };
