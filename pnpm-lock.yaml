@@ -523,6 +523,15 @@ importers:
       '@coral-xyz/anchor':
         specifier: ^0.27.0
         version: 0.27.0
+      '@cubik/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
+      '@cubik/common-types':
+        specifier: workspace:*
+        version: link:../../packages/common-types
+      '@prisma/nextjs-monorepo-workaround-plugin':
+        specifier: ^5.4.1
+        version: 5.4.1
       '@solana/wallet-adapter-base':
         specifier: ^0.9.18
         version: 0.9.23(@solana/web3.js@1.78.4)
@@ -532,6 +541,9 @@ importers:
       '@solana/wallet-adapter-react-ui':
         specifier: ^0.9.22
         version: 0.9.22(@solana/web3.js@1.78.4)(bs58@4.0.1)(react-dom@18.2.0)(react-native@0.72.3)(react@18.2.0)
+      '@t3-oss/env-nextjs':
+        specifier: ^0.7.0
+        version: 0.7.0(typescript@5.2.2)(zod@3.21.4)
       '@tanstack/react-query':
         specifier: ^4.26.1
         version: 4.26.1(react-dom@18.2.0)(react-native@0.72.3)(react@18.2.0)
@@ -6893,6 +6905,10 @@ packages:
     resolution: {integrity: sha512-LQJGZJzy/ZV5g4YdH3HQ0hJiY0AFSskvnGvwu/3b3qzsu5A96RdbIrgUXf9BqkcP9zM1Gvwac00KF0Rg1hLssQ==}
     dev: false
 
+  /@prisma/nextjs-monorepo-workaround-plugin@5.4.1:
+    resolution: {integrity: sha512-VCs2FNQTezqDHnaZPmfrcoY8VQhuIhb3xIwOoSekk2C2koLZxtMcODJucran2ePyqa9K/PDdBlv2EGhvl9qTkQ==}
+    dev: false
+
   /@project-serum/sol-wallet-adapter@0.2.6(@solana/web3.js@1.74.0):
     resolution: {integrity: sha512-cpIb13aWPW8y4KzkZAPDgw+Kb+DXjCC6rZoH74MGm3I/6e/zKyGnfAuW5olb2zxonFqsYgnv7ev8MQnvSgJ3/g==}
     engines: {node: '>=10'}
@@ -9001,6 +9017,19 @@ packages:
       zod: 3.21.4
     dev: false
 
+  /@t3-oss/env-core@0.7.0(typescript@5.2.2)(zod@3.21.4):
+    resolution: {integrity: sha512-cgunN82CqgQOOyuMOK/bGtujX5/ooXQTwGMJVWI6mCowq6WE5EgRLOqF/DRcrElI0gSFGA9i9GrxzCnk73HZLQ==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.2.2
+      zod: 3.21.4
+    dev: false
+
   /@t3-oss/env-nextjs@0.3.1(typescript@4.9.5)(zod@3.21.4):
     resolution: {integrity: sha512-W1OgOn5xtpdEGraAQesyLzO2aNLRfSJEyK6qjQFfEUnrPbkvB+WxABX2bPMqfn4KJQ8pziLCSdBFiUN8OagqAg==}
     peerDependencies:
@@ -9020,6 +9049,20 @@ packages:
     dependencies:
       '@t3-oss/env-core': 0.6.1(typescript@4.9.5)(zod@3.21.4)
       typescript: 4.9.5
+      zod: 3.21.4
+    dev: false
+
+  /@t3-oss/env-nextjs@0.7.0(typescript@5.2.2)(zod@3.21.4):
+    resolution: {integrity: sha512-rjQIt6P3tac2eRx4BNQLNaJ+AIb2P8wXw4uFvYbEekqMGShikkUALnX3hUn1twYiGVGHXRm6UbU+LqtjIktuGg==}
+    peerDependencies:
+      typescript: '>=4.7.2'
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@t3-oss/env-core': 0.7.0(typescript@5.2.2)(zod@3.21.4)
+      typescript: 5.2.2
       zod: 3.21.4
     dev: false
 
