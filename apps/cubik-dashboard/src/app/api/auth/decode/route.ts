@@ -38,7 +38,7 @@ export const GET = async () => {
       error: null,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
 
     return NextResponse.json(
       {

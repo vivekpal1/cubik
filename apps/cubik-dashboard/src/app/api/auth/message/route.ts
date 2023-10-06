@@ -12,7 +12,7 @@ export async function POST() {
       hash: check,
     });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     NextResponse.json(
       {
         data: false,
