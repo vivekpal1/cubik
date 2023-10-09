@@ -1,20 +1,8 @@
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@cubik/ui";
 import React from "react";
-import { TableRows } from "./TableRow";
-
-
 export const PendingTable = () => {
   return (
     <>
-      <Table className="mt-5 ">
+      {/* <Table className="mt-5 ">
         <TableHeader>
           <TableRow className="text-base">
             <TableHead className="pl-10">Project</TableHead>
@@ -27,7 +15,7 @@ export const PendingTable = () => {
         <TableBody>
           <TableRows />
         </TableBody>
-      </Table>
+      </Table> */}
     </>
   );
 };

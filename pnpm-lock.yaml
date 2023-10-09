@@ -526,9 +526,6 @@ importers:
       '@cubik/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@cubik/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
       '@prisma/nextjs-monorepo-workaround-plugin':
         specifier: ^5.4.1
         version: 5.4.1

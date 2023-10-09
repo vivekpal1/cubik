@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cubik/ui";
 import { RegistrationsSection } from "./sections/registration-section/Registrations";
 
 export const TabsSection = () => {
   return (
     <div className="mx-auto w-full  text-white">
-      <Tabs defaultValue="details" className="">
+      {/* <Tabs defaultValue="details" className="">
         <TabsList className="bg-neutral-800 w-full overflow-x-auto whitespace-nowrap">
           <div className="w-full max-w-7xl">
             <TabsTrigger value="details">Details</TabsTrigger>
@@ -31,7 +30,7 @@ export const TabsSection = () => {
             Change your password here.
           </TabsContent>
         </div>
-      </Tabs>
+      </Tabs> */}
     </div>
   );
 };

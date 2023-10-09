@@ -1,6 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cubik/ui";
 import React from "react";
-import { PendingTable } from "./tables/PendingTable";
 
 export const TableCard = () => {
   return (
@@ -34,7 +32,7 @@ export const TableCard = () => {
             </div>
           </div>
           <div>
-            <Tabs defaultValue="pending" className="my-6">
+            {/* <Tabs defaultValue="pending" className="my-6">
               <TabsList className="bg-neutral-800 w-full overflow-x-auto whitespace-nowrap">
                 <div className="w-full max-w-7xl border-b border-b-surface-neutral-800 px-10">
                   <TabsTrigger value="pending">Pending</TabsTrigger>
@@ -53,7 +51,7 @@ export const TableCard = () => {
                   Change your password here.
                 </TabsContent>
               </div>
-            </Tabs>
+            </Tabs> */}
           </div>
         </div>
       </div>
