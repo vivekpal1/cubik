@@ -1,4 +1,4 @@
-import { TableCell, TableRow } from "@/components/ui/table";
+import { TableCell, TableRow } from "@cubik/ui";
 import React from "react";
 
 export const TableRows = () => {

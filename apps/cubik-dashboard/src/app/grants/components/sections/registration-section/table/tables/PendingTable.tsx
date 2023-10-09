@@ -6,9 +6,10 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@cubik/ui";
 import React from "react";
 import { TableRows } from "./TableRow";
+
 
 export const PendingTable = () => {
   return (

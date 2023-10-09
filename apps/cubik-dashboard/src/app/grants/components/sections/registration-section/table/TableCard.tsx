@@ -1,4 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cubik/ui";
 import React from "react";
 import { PendingTable } from "./tables/PendingTable";
 
