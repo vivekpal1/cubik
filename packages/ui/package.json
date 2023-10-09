@@ -29,5 +29,11 @@
     "lucide-react": "^0.244.0",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6"
+  },
+  "prettier": "@cubik/config/prettier",
+  "eslintConfig": {
+    "extends":[
+      "@cubik/config/eslint/base"
+    ]
   }
 }
