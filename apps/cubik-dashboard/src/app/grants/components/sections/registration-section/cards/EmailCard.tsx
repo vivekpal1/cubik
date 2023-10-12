@@ -1,3 +1,4 @@
+import { cn } from "@cubik/ui/lib/utils";
 import React from "react";
 
 interface Props {
@@ -10,7 +11,7 @@ export const EmailCard = (props: Props) => {
     <div className="bg-neutral-800 w-full p-3 h-28 rounded-md flex-col flex gap-3">
       <div className="flex justify-between">
         <div className="flex justify-start items-center gap-2">
-          {/* <div className={cn("w-3 h-3 rounded-full", props.color)} /> */}
+          <div className={cn("w-3 h-3 rounded-full", props.color)} />
           <p className="text-surface-neutral-500">{props.type}</p>
         </div>
         <div className="flex justify-center items-center gap-1">

@@ -1,9 +1,10 @@
+import { TableCell, TableRow } from "@cubik/ui";
 import React from "react";
 
 export const TableRows = () => {
   return (
     <>
-      {/* <TableRow className="hover:bg-surface-neutral-820">
+      <TableRow className="hover:bg-surface-neutral-820">
         <TableCell className="font-medium pl-10">
           <div className="flex justify-start items-center gap-3">
             <div className="w-10 h-10 rounded-md bg-red-500" />
@@ -34,7 +35,7 @@ export const TableRows = () => {
         <TableCell className="text-white font-medium text-sm">
           1 day ago
         </TableCell>
-      </TableRow> */}
+      </TableRow>
     </>
   );
 };
