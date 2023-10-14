@@ -38,6 +38,6 @@ jobs:
         uses: ./tooling/gh-actions/setup
 
       - name: Format
-        run: pnpm format:check
+        run: pnpm format
 
 
