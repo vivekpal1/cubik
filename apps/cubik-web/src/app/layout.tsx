@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${PlusJakartaSans.className}`}>
-        <button className="bg-red-400 p-3 text-2xl">asdf</button>
+        <div className="h-10 bg-red-500">asdfasdf</div>
         <WalletContext>
           <AuthProvider>
             <Providers>
