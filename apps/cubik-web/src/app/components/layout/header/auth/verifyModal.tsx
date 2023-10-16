@@ -89,11 +89,13 @@ export const VerifyModal = ({
       setIsLoading(false);
     } else {
       const nonce = Math.random().toString(36).substring(2, 15);
-      const msg = await getMessage(nonce);
-      if (!msg) {
+      const hash = await getMessage(nonce);
+      if (!hash) {
         throw new Error("Message is undefined");
       }
-      const sig = utils.bytes.bs58.encode(await signMessage!(msg));
+      const msg = createMessage(hash);
+      const sigBuffer = await signMessage!(msg!);
+      const sig = utils.bytes.bs58.encode(sigBuffer);
       localStorage.setItem("wallet_sig", sig);
       localStorage.setItem("wallet_nonce", nonce);
 

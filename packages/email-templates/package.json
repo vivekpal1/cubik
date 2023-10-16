@@ -3,9 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "main": "index.tsx",
-  "prettier": "@cubik/prettier-config",
   "dependencies": {
-    "@cubik/prettier-config": "workspace:*",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "react": "^18.2.0",
