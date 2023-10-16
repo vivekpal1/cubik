@@ -17,11 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${PlusJakartaSans.className}`}>
-        <div className="h-10 bg-red-500">asdfasdf</div>
         <WalletContext>
           <AuthProvider>
             <Providers>
-              {/* <Header /> */}
+              <Header />
               {children}
             </Providers>
           </AuthProvider>
