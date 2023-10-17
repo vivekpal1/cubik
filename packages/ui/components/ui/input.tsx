@@ -2,13 +2,14 @@ import * as React from "react"
 
 import { cn } from "../../lib/utils"
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   rightIcon?: React.JSX.Element;
   leftIcon?: React.JSX.Element;
   leftElement?: React.JSX.Element;
   rightElement?: React.JSX.Element;
-
   helperText?: string;
+  labelText?: string;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -16,7 +17,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="flex flex-col gap-1">
         <div>
-          <label className="text-black font-normal text-base">Label Text</label>
+          {props.labelText && (
+            <label className="text-black font-normal text-base">
+              {props.labelText}
+            </label>
+          )}
         </div>
         <input
           type={type}
@@ -27,7 +32,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        <p className="text-surface-neutral-500 text-xs">{props.helperText}</p>
+        {props.helperText && (
+          <p className="text-surface-neutral-500 text-xs">{props.helperText}</p>
+        )}
       </div>
     );
   }
