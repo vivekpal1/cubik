@@ -1,9 +1,9 @@
 "use client";
 import { Container } from "@chakra-ui/react";
-import { FC } from "react"
+import { FC } from "react";
 import Projects from "./Projects";
 import { Input } from '@ui/components/input';
-
+import { Switch } from '@ui/components/Switch';  // Import the Switch component
 
 export const Explorer: FC = () => {
     return (
@@ -25,7 +25,9 @@ export const Explorer: FC = () => {
                             </svg>
                         </div>
                     </div>
-
+                    <div className="mt-4">   {/* Added some margin for spacing */}
+                        <Switch labelText="Enable Notifications" helperText="Turn on to receive notifications" />
+                    </div>
                 </div>
             </div>
         </Container>
