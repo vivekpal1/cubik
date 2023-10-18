@@ -2,6 +2,7 @@
 import { Box, HStack, Stack, VStack } from "@/utils/chakra";
 import FlipNumbers from "react-flip-numbers";
 import { StatusBanner } from "./StatusBanner";
+import { formatNumberWithComma } from "@/utils/helpers/formatNumberWithK";
 
 // import { FiInfo } from "react-icons/fi";
 // import RoundStatus from "~/components/common/dates/Status";
@@ -185,6 +186,7 @@ const FundingRoundBanner = ({
   name,
   description,
   event,
+  matchingPool,
 }: {
   submissionEndDate: Date;
   startDate: Date;
@@ -327,8 +329,7 @@ const FundingRoundBanner = ({
                 </Box>
                 <HStack>
                   <Box as="p" textStyle={{ base: "body5", md: "title3" }}>
-                    {/* ${formatNumberWithComma(matchingPool)} */}
-                    $1K BLZE + $1K USDC
+                    ${formatNumberWithComma(matchingPool)}
                   </Box>
                 </HStack>
               </HStack>

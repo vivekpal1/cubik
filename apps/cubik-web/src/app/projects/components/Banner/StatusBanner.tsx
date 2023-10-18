@@ -59,6 +59,35 @@ export const StatusBanner = ({
   const daysToEnd = differenceInDays(endDate, now);
   const daysSinceEnd = differenceInDays(now, endDate);
 
+
+  return (
+    <HStack
+      rounded="full"
+      backgroundColor="#1D1F1E"
+      p="0px 12px"
+      spacing="8px"
+      minH={"22px"}
+      mx={1}
+    >
+      <Center
+        width={["12px", "14px", "16px"]}
+        height={["12px", "14px", "16px"]}
+      >
+        <CircleRipple />
+        {/* <Clock color="#fff" /> */}
+      </Center>
+      <Box
+        p="8px 12px"
+        ps="0px"
+        as="p"
+        whiteSpace="pre"
+        color="neutral.11"
+        textStyle={{ base: "body6", md: "body5" }}
+      >
+        Live
+      </Box>
+    </HStack>
+  );
   if (isFuture(startDate)) {
     return (
       <HStack
