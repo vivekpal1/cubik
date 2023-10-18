@@ -1,9 +1,6 @@
 import { Box, Center, HStack, chakra, keyframes } from "@chakra-ui/react";
-import { differenceInDays, isFuture, isPast } from "date-fns";
 // import { AiTwotoneClock } from "react-icons/ai";
 // import { BiInfoCircle } from "react-icons/bi";
-import Clock from "@/theme/icons/clock.svg";
-import InfoCircle from "@/theme/icons/info_circle.svg";
 
 const random = () => Math.floor(Math.random() * 10);
 
@@ -33,9 +30,7 @@ const CircleRipple = chakra(Box, {
 });
 
 export const StatusBanner = ({
-  isHackathon,
   submissionEndDate,
-  show,
   startDate,
   endDate,
 }: {
@@ -46,7 +41,6 @@ export const StatusBanner = ({
   endDate: Date | undefined | null;
 }) => {
   if (!startDate || !endDate || !submissionEndDate) return null;
-  const now = new Date();
 
   // const daysToSubmissionEnd =
   //   differenceInDays(submissionEndDate, now) > 1
@@ -56,9 +50,6 @@ export const StatusBanner = ({
   //   differenceInDays(startDate, now) > 1
   //     ? differenceInDays(startDate, now) + " days"
   //     : differenceInHours(startDate, now) + " hours";
-  const daysToEnd = differenceInDays(endDate, now);
-  const daysSinceEnd = differenceInDays(now, endDate);
-
 
   return (
     <HStack
@@ -88,94 +79,94 @@ export const StatusBanner = ({
       </Box>
     </HStack>
   );
-  if (isFuture(startDate)) {
-    return (
-      <HStack
-        rounded="full"
-        backgroundColor="#1D1F1E"
-        p="0px 12px"
-        spacing="8px"
-        minH={"22px"}
-        mx={1}
-      >
-        <Center
-          width={["12px", "14px", "16px"]}
-          height={["12px", "14px", "16px"]}
-        >
-          <Clock color="#fff" />
-        </Center>
-        <Box
-          p="8px 12px"
-          ps="0px"
-          as="p"
-          whiteSpace="pre"
-          color="neutral.11"
-          textStyle={{ base: "body6", md: "body5" }}
-        >
-          {isFuture(submissionEndDate)
-            ? "Submissions" + ` at 07:30 AM PST`
-            : "Contributions Period Starts" + ` at 7:30 AM PST`}
-        </Box>
-      </HStack>
-    );
-  } else if (isFuture(endDate)) {
-    return (
-      <HStack
-        rounded={"full"}
-        backgroundColor="#071A0F"
-        mx={1}
-        spacing="0"
-        overflow={"hidden"}
-        w={"fit-content"}
-      >
-        <Center rounded="full" p={{ base: "6px", md: "8px" }}>
-          <CircleRipple />
-        </Center>
-        <Box
-          p="8px"
-          ps="0px"
-          pe="12px"
-          as="p"
-          whiteSpace="pre"
-          color="neutral.11"
-          textStyle={{ base: "body6", md: "overline3" }}
-          display={{ base: show ? "block" : "none", md: "block" }}
-        >
-          {isHackathon ? "Voting" : "Round"}
-          {daysToEnd > 1
-            ? `Live - ends in ${daysToEnd + 1} days`
-            : "Live - ending in a day"}
-        </Box>
-      </HStack>
-    );
-  } else if (isPast(endDate)) {
-    return (
-      <HStack
-        rounded="full"
-        backgroundColor="#1D1F1E"
-        p={{ base: "7px", md: "8px 12px" }}
-        spacing="8px"
-        mx={1}
-      >
-        <Center
-          width={["12px", "14px", "18px"]}
-          height={["12px", "14px", "18px"]}
-        >
-          <InfoCircle color="#fff" />
-        </Center>
-        <Box
-          as="p"
-          whiteSpace="pre"
-          color="neutral.11"
-          textStyle={{ base: "body6", md: "body5" }}
-          display={{ base: show ? "block" : "none", md: "block" }}
-        >
-          {isHackathon ? "Voting" : "Round"}
-          {daysSinceEnd > 1 ? ` ended ${daysSinceEnd} days ago` : " ended"}
-        </Box>
-      </HStack>
-    );
-  }
+  // if (isFuture(startDate)) {
+  //   return (
+  //     <HStack
+  //       rounded="full"
+  //       backgroundColor="#1D1F1E"
+  //       p="0px 12px"
+  //       spacing="8px"
+  //       minH={"22px"}
+  //       mx={1}
+  //     >
+  //       <Center
+  //         width={["12px", "14px", "16px"]}
+  //         height={["12px", "14px", "16px"]}
+  //       >
+  //         <Clock color="#fff" />
+  //       </Center>
+  //       <Box
+  //         p="8px 12px"
+  //         ps="0px"
+  //         as="p"
+  //         whiteSpace="pre"
+  //         color="neutral.11"
+  //         textStyle={{ base: "body6", md: "body5" }}
+  //       >
+  //         {isFuture(submissionEndDate)
+  //           ? "Submissions" + ` at 07:30 AM PST`
+  //           : "Contributions Period Starts" + ` at 7:30 AM PST`}
+  //       </Box>
+  //     </HStack>
+  //   );
+  // } else if (isFuture(endDate)) {
+  //   return (
+  //     <HStack
+  //       rounded={"full"}
+  //       backgroundColor="#071A0F"
+  //       mx={1}
+  //       spacing="0"
+  //       overflow={"hidden"}
+  //       w={"fit-content"}
+  //     >
+  //       <Center rounded="full" p={{ base: "6px", md: "8px" }}>
+  //         <CircleRipple />
+  //       </Center>
+  //       <Box
+  //         p="8px"
+  //         ps="0px"
+  //         pe="12px"
+  //         as="p"
+  //         whiteSpace="pre"
+  //         color="neutral.11"
+  //         textStyle={{ base: "body6", md: "overline3" }}
+  //         display={{ base: show ? "block" : "none", md: "block" }}
+  //       >
+  //         {isHackathon ? "Voting" : "Round"}
+  //         {daysToEnd > 1
+  //           ? `Live - ends in ${daysToEnd + 1} days`
+  //           : "Live - ending in a day"}
+  //       </Box>
+  //     </HStack>
+  //   );
+  // } else if (isPast(endDate)) {
+  //   return (
+  //     <HStack
+  //       rounded="full"
+  //       backgroundColor="#1D1F1E"
+  //       p={{ base: "7px", md: "8px 12px" }}
+  //       spacing="8px"
+  //       mx={1}
+  //     >
+  //       <Center
+  //         width={["12px", "14px", "18px"]}
+  //         height={["12px", "14px", "18px"]}
+  //       >
+  //         <InfoCircle color="#fff" />
+  //       </Center>
+  //       <Box
+  //         as="p"
+  //         whiteSpace="pre"
+  //         color="neutral.11"
+  //         textStyle={{ base: "body6", md: "body5" }}
+  //         display={{ base: show ? "block" : "none", md: "block" }}
+  //       >
+  //         {isHackathon ? "Voting" : "Round"}
+  //         {daysSinceEnd > 1 ? ` ended ${daysSinceEnd} days ago` : " ended"}
+  //       </Box>
+  //     </HStack>
+  //   );
+  // }
 
-  return <></>;
+  // return <></>;
 };
