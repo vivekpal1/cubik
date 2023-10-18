@@ -68,8 +68,8 @@ export const HackathonBody = async ({ slug }: Props) => {
                 gap={{ base: "24px", md: "32px" }}
               >
                 <Tab>Details</Tab>
-                <Tab>Schedule</Tab>
-                <Tab>Tracks</Tab>
+                {/* <Tab>Schedule</Tab> */}
+                {/* <Tab>Tracks</Tab> */}
               </TabList>
               <TabPanels p="0 !important">
                 <TabPanel>

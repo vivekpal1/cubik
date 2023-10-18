@@ -27,7 +27,7 @@ export const HackathonInteractions = ({
                 borderRadius={"8px"}
                 size={{ base: "sm", md: "md" }}
                 src={
-                  "https://pbs.twimg.com/profile_images/1669101939164954624/AROCJGg5_400x400.jpg"
+                  "https://pbs.twimg.com/profile_images/1696176972085215232/_sb_Y5fR_400x400.jpg"
                 }
               />
               <Box
@@ -35,7 +35,7 @@ export const HackathonInteractions = ({
                 as="p"
                 textStyle={{ base: "title5", md: "title4" }}
               >
-                Lamport DAO
+                Monaco Protocol
               </Box>
             </HStack>
           </VStack>
