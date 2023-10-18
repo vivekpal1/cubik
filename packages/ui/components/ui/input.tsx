@@ -8,7 +8,7 @@ export interface InputProps
   leftIcon?: React.JSX.Element;
   leftElement?: React.JSX.Element;
   rightElement?: React.JSX.Element;
-  helperText?: string;
+  helperText?: React.JSX.Element;
   labelText?: string;
 }
 
@@ -32,9 +32,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           {...props}
         />
-        {props.helperText && (
-          <p className="text-surface-neutral-500 text-xs">{props.helperText}</p>
-        )}
+        {props.helperText}
       </div>
     );
   }
