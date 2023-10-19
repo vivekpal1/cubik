@@ -1,44 +1,59 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { Checkbox } from "./Checkbox";
 
-const BaseCheckbox = () => {
-    const [states, setStates] = useState({
-        checkbox1: false,
-        checkbox2: true,
-        checkbox3: 'minus',
-    });
+const variants = [
+    { label: "Default (Unchecked)", state: "default", isChecked: false },
+    { label: "Default (Checked)", state: "default", isChecked: true },
+    { label: "Default (Indeterminate)", state: "default", isChecked: true, indeterminate: true },
+    { label: "Hovered (Unchecked)", state: "hover", isChecked: false },
+    { label: "Hovered (Checked)", state: "hover", isChecked: true },
+    { label: "Hovered (Indeterminate)", state: "hover", isChecked: true, indeterminate: true },
+    { label: "Focused (Unchecked)", state: "focus", isChecked: false },
+    { label: "Focused (Checked)", state: "focus", isChecked: true },
+    { label: "Focused (Indeterminate)", state: "focus", isChecked: true, indeterminate: true },
+    { label: "Disabled (Unchecked)", state: "default", isChecked: false, isDisabled: true },
+    { label: "Disabled (Checked)", state: "default", isChecked: true, isDisabled: true },
+    { label: "Disabled (Indeterminate)", state: "default", isChecked: true, isDisabled: true, indeterminate: true }
+];
 
-    const handleToggle = (name, newValue) => {
-        setStates(prevStates => ({ ...prevStates, [name]: newValue }));
-    };
-
+const BaseCheckbox: React.FC = () => {
     return (
-        <div className="w-[415px] h-[177px] relative rounded-[5px] border border-purple-500 p-4 grid grid-cols-2 gap-4">
-            {/* Default State */}
-            <div className="flex items-center">
-                <Checkbox isChecked={states.checkbox1} onChange={(value) => handleToggle('checkbox1', value)} />
-                <span className="ml-4">Unchecked</span>
-            </div>
-            <div className="flex items-center">
-                <Checkbox isChecked={states.checkbox2} onChange={(value) => handleToggle('checkbox2', value)} />
-                <span className="ml-4">Checked</span>
-            </div>
-            <div className="flex items-center">
-                <Checkbox isChecked={states.checkbox3} onChange={(value) => handleToggle('checkbox3', value)} variant={['checked', 'minus']} />
-                <span className="ml-4">Minus</span>
-            </div>
-
-            {/* Disabled State */}
-            <div className="flex items-center">
-                <Checkbox isChecked={false} isDisabled={true} />
-                <span className="ml-4 text-gray-500">Disabled Unchecked</span>
-            </div>
-            <div className="flex items-center">
-                <Checkbox isChecked={false} isDisabled={true} />
-                <span className="ml-4 text-gray-500">Disabled Checked</span>
-            </div>
+        <div className="w-[415px] h-auto relative rounded-[5px] border border-purple-500 p-4 grid grid-cols-2 gap-4">
+            {["md", "sm"].map(size => 
+                variants.map(variant => 
+                    <CheckboxVariant 
+                        key={`${size}-${variant.label}`} 
+                        label={`${variant.label} ${size}`} 
+                        size={size} 
+                        {...variant} 
+                    />
+                )
+            )}
         </div>
     );
+}
+
+const CheckboxVariant: React.FC<CheckboxVariantProps> = ({ label, size, isChecked, state, indeterminate, isDisabled }) => {
+    return (
+        <div className={`flex items-center ${state === "hover" ? "hover:bg-gray-200" : ""} ${state === "focus" ? "focus:bg-gray-300" : ""}`}>
+            <Checkbox
+                size={size}
+                isChecked={isChecked}
+                isDisabled={isDisabled}
+                variant={indeterminate ? "minus" : "checked"}
+            />
+            <span className={`ml-4 ${isDisabled ? "text-gray-400" : ""}`}>{label}</span>
+        </div>
+    );
+}
+
+interface CheckboxVariantProps {
+    label: string;
+    size: "sm" | "md";
+    isChecked: boolean;
+    state?: "default" | "hover" | "focus";
+    indeterminate?: boolean;
+    isDisabled?: boolean;
 }
 
 export { BaseCheckbox };

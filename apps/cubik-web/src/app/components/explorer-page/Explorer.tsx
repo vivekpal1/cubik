@@ -3,7 +3,8 @@ import { Container } from "@chakra-ui/react";
 import { FC } from "react";
 import Projects from "./Projects";
 import { Input } from '@ui/components/input';
-import { Switch } from '@ui/components/Switch';  // Import the Switch component
+import { Switch } from '@ui/components/Switch';
+import { BaseCheckboxGroup } from '@ui/components/BaseCheckboxGroup';
 
 export const Explorer: FC = () => {
     return (
@@ -25,8 +26,19 @@ export const Explorer: FC = () => {
                             </svg>
                         </div>
                     </div>
-                    <div className="mt-4">   {/* Added some margin for spacing */}
+                    <div className="mt-4">
                         <Switch labelText="Enable Notifications" helperText="Turn on to receive notifications" />
+                        <div className="mt-4">
+                            <BaseCheckboxGroup
+                                items={[
+                                    { id: '1', label: 'Checkbox 1', isChecked: false },
+                                    { id: '2', label: 'Checkbox 2', isChecked: false, indeterminate: true },
+                                    { id: '3', label: 'Checkbox 3', isChecked: false, isDisabled: true }
+                                ]}
+                                onChange={updatedItems => console.log(updatedItems)}
+                            />
+
+                        </div>
                     </div>
                 </div>
             </div>
