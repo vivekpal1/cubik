@@ -8,9 +8,6 @@ import {
   Box,
   Button,
   Center,
-  FormControl,
-  FormErrorMessage,
-  FormLabel,
   HStack,
   Link,
   Modal,
@@ -31,10 +28,9 @@ import type {
   ProjectVerifyStatus,
 } from "@cubik/database";
 import { useQuery } from "@tanstack/react-query";
-import { Select } from "chakra-react-select";
 import React, { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   createJoinHackathon,
   getUserProjects,
@@ -68,16 +64,8 @@ export const SubmitNowModal = ({
   hackathonId,
   hackathonName,
   onClose,
-  hackathonTracks,
 }: Props) => {
-  const {
-    control,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-    getValues,
-  } = useForm<FormData>({
+  const { handleSubmit, reset, getValues } = useForm<FormData>({
     defaultValues: {
       mainTrack: "fully_on_chain_game",
     },
@@ -116,7 +104,7 @@ export const SubmitNowModal = ({
       await createJoinHackathon(
         hackathonId,
         selectedProjectId as string,
-        getValues("tracks")
+        getValues("tracks") || []
       );
       setsignTransactionLoading(false);
       onClose();
@@ -349,7 +337,7 @@ export const SubmitNowModal = ({
                         </VStack>
                       </VStack>
 
-                      <Controller
+                      {/* <Controller
                         control={control}
                         name="tracks"
                         render={({
@@ -526,7 +514,7 @@ export const SubmitNowModal = ({
                             </FormErrorMessage>
                           </FormControl>
                         )}
-                      />
+                      /> */}
                     </VStack>
                   ) : (
                     <VStack
