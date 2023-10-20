@@ -27,7 +27,7 @@ import type {
   ProjectJoinRoundStatus,
   ProjectVerifyStatus,
 } from "@cubik/database";
-import { useQuery } from "@tanstack/react-query";
+import { QueryClient, useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import type { SubmitHandler } from "react-hook-form";
 import { useForm } from "react-hook-form";
@@ -90,7 +90,7 @@ export const SubmitNowModal = ({
     queryFn: ({ queryKey }) => isValidProject(queryKey[1] as string),
     enabled: user ? true : false,
   });
-
+  const queryClient = new QueryClient();
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   const signTransactionHandler = async () => {
     try {
@@ -109,6 +109,12 @@ export const SubmitNowModal = ({
       setsignTransactionLoading(false);
       onClose();
       setStep(0);
+      queryClient.invalidateQueries({
+        queryKey: ["userProjects", user?.mainWallet],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ["selectArray", user?.mainWallet],
+      });
       SuccessToast({ toast, message: "Submission Successful" });
     } catch (error) {
       error;
