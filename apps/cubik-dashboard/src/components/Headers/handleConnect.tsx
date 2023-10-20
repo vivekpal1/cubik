@@ -14,7 +14,7 @@ interface AuthDecodeResponse {
 }
 export const HandleConnect = () => {
   const { setVisible } = useWalletModal();
-  const { publicKey, connected } = useWallet();
+  const { publicKey, connected, disconnect } = useWallet();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const { user, setUser } = useUser();
@@ -50,7 +50,7 @@ export const HandleConnect = () => {
     return (
       <>
         <VerifyModal setOpen={setOpen} open={open} />
-        <div role="status">
+        <div role="status" onClick={disconnect}>
           <svg
             aria-hidden="true"
             className="w-4 h-4 mr-2 text-gray-600 animate-spin  fill-black"
