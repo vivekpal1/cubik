@@ -159,6 +159,8 @@ export const CreateProjectTransactionModal = (props: Props) => {
           telegramLink: props.getValues().telegram,
           tx: sig,
           updatedAt: new Date(),
+          slides: [],
+          slug: props.getValues().projectName,
         },
         finalTeam
       );
@@ -378,7 +380,7 @@ export const CreateProjectTransactionModal = (props: Props) => {
                 >
                   <VStack align="center">
                     <Box as="p" textStyle={"title4"} color="white">
-                      Submit to OPOS
+                      Submit to Monacode
                     </Box>
                     <Box
                       textAlign="center"
@@ -405,7 +407,10 @@ export const CreateProjectTransactionModal = (props: Props) => {
                     as="a"
                     target="_blank"
                   >
-                    <Link style={{ width: "full" }} href={"/hackathons/opos"}>
+                    <Link
+                      style={{ width: "full" }}
+                      href={"/hackathons/monacode"}
+                    >
                       <Box fontWeight="400" as="p" fontSize={"16px"}>
                         Go to Hackathon Page
                       </Box>

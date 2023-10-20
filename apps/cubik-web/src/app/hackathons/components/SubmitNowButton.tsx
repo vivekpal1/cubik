@@ -22,7 +22,7 @@ export const SubmitNowButton = ({
   logo,
   tracks,
 }: Props) => {
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const { user } = useUser();
   const { setVisible } = useWalletModal();
 
@@ -37,13 +37,7 @@ export const SubmitNowButton = ({
 
   return (
     <>
-      <Button
-        isDisabled
-        disabled
-        onClick={() => {}}
-        variant={"cubikFilled"}
-        w="full"
-      >
+      <Button onClick={() => onOpen()} variant={"cubikFilled"} w="full">
         Submit Project
       </Button>
       <SubmitNowModal
