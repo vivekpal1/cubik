@@ -159,8 +159,6 @@ export const CreateProjectTransactionModal = (props: Props) => {
           telegramLink: props.getValues().telegram,
           tx: sig,
           updatedAt: new Date(),
-          slides: [],
-          slug: props.getValues().projectName,
         },
         finalTeam
       );
