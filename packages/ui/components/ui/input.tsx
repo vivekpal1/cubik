@@ -30,7 +30,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className
           )}
           ref={ref}
-          {...props}
         />
         {props.helperText && (
           <p className="text-surface-neutral-500 text-xs">{props.helperText}</p>

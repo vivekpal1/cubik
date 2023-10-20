@@ -1,6 +1,7 @@
 import { env } from "@/env.mjs";
 import { utils, web3 } from "@coral-xyz/anchor";
 import { verifyMessage } from "@cubik/auth";
+import { prisma } from "@cubik/database";
 import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -40,6 +41,14 @@ export const POST = async (req: NextRequest) => {
         }
       );
     }
+
+    const user = await prisma.adminAccess.findFirst({
+      where: {
+        user: {
+          mainWallet: publicKey,
+        },
+      },
+    });
   } catch (error) {
     console.error(error);
     NextResponse.json(
