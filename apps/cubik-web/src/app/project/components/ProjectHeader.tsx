@@ -16,9 +16,6 @@ import {
 } from "@/utils/chakra";
 import React, { useState } from "react";
 import ChevronDown from "@/theme/icons/chevron_down.svg";
-import { DonationStatus } from "./DonationStatus";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
-import { useUser } from "@/app/context/user";
 import { DonationModal } from "./DonationModal";
 import type { Team } from "@cubik/database";
 
@@ -46,26 +43,14 @@ export const ProjectHeader = ({
   type = "preview",
   projectLink,
   owner,
-  endTime,
-  startTime,
   eventId,
   userCount,
   projectId,
   multiSig,
-  team,
 }: Props) => {
-  const { user } = useUser();
-  const { setVisible } = useWalletModal();
   const [donationSuccessful, setDonationSuccessful] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen, onClose } = useDisclosure();
 
-  const handleDonate = () => {
-    if (user?.id) {
-      onOpen();
-    } else {
-      setVisible(true);
-    }
-  };
   return (
     <>
       {isOpen && (
