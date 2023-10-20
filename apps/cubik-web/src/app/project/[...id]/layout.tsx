@@ -155,45 +155,13 @@ const ProjectPageLayout = async ({ params, children }: Props) => {
           mt={10}
           justifyContent={"start"}
         >
-          {/* {params.id[1] === "hackathon" && (
-            <ProjectDetailsLiveHackathonStatus
-              endTime={
-                (project?.projectJoinHackathon &&
-                  project?.projectJoinHackathon[0]?.hackathon.votingEndDate) ||
-                new Date()
-              }
-              hackathonName={
-                (project?.projectJoinHackathon &&
-                  project?.projectJoinHackathon[0]?.hackathon.name) ||
-                ""
-              }
-              startTime={
-                (project?.projectJoinHackathon &&
-                  project?.projectJoinHackathon[0]?.hackathon
-                    .votingStartDate) ||
-                new Date()
-              }
-              status={ProjectVerifyStatus.REVIEW}
-              show={true}
-            />
-          )} */}
           <ProjectHeader
             team={project.team}
             multiSig={project.mutliSigAddress}
             projectId={project.id}
             userCount={project.projectUserCount}
-            endTime={
-              project.projectJoinHackathon
-                ? project.projectJoinHackathon[0]?.hackathon.votingEndDate ??
-                  new Date()
-                : project.projectJoinRound?.round.endTime ?? new Date()
-            }
-            startTime={
-              project.projectJoinHackathon
-                ? project.projectJoinHackathon[0]?.hackathon.votingStartDate ??
-                  new Date()
-                : new Date()
-            }
+            endTime={new Date()}
+            startTime={new Date()}
             projectLink={project.projectLink}
             eventId={params.id[2]} // optional
             type={(params.id[1] as Event) || "preview"} // optional

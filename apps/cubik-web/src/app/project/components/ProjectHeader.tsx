@@ -195,7 +195,7 @@ export const ProjectHeader = ({
             alignItems={{ base: "center", lg: "start" }}
           >
             <VStack gap="16px" align={"end"} spacing="0" w="full" pb="0.5rem">
-              <DonationStatus
+              {/* <DonationStatus
                 team={team}
                 loading={false}
                 projectJoinId={type === "round" ? eventId : undefined}
@@ -206,7 +206,7 @@ export const ProjectHeader = ({
                 endTime={endTime}
                 onDonateHandler={handleDonate}
                 owner={owner}
-              />
+              /> */}
               <Button
                 // rightIcon={
                 //   <AnimatedArrowIcon
