@@ -1,13 +1,9 @@
 "use client";
-import { Button } from "@/utils/ui";
 import React, { useState } from "react";
 import { VerifyModal } from "../modals/verifyModal";
-import { useWallet } from "@solana/wallet-adapter-react";
-import { useWalletModal } from "@solana/wallet-adapter-react-ui";
+import { HandleConnect } from "./handleConnect";
 
 export const Header = () => {
-  const { setVisible } = useWalletModal();
-  const { publicKey } = useWallet();
   const [open, setOpen] = useState<boolean>(false);
   return (
     <>
@@ -17,7 +13,7 @@ export const Header = () => {
           <p className="text-2xl font-bold uppercase tracking-[0.4rem] text-black dark:text-white  ">
             CUBIK
           </p>
-          <Button onClick={() => setVisible(true)}>Connect Wallet</Button>
+          <HandleConnect />
         </div>
       </div>
     </>
