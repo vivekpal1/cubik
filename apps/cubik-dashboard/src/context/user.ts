@@ -1,5 +1,16 @@
+import { User } from "@/types/auth";
 import { create } from "zustand";
 
-interface UserState {}
+interface UserState {
+  user: User | null;
+  setUser: (user: User | null) => void;
+}
 
-const useBearStore = create<UserState>()((set) => ({}));
+export const useUser = create<UserState>()((set) => ({
+  setUser: (user) => {
+    return set({
+      user,
+    });
+  },
+  user: null,
+}));

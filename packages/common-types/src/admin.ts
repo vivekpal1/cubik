@@ -9,7 +9,7 @@ export type AuthPayload = {
   accessScope: AccessScope[];
 } & JwtPayload;
 
-interface AccessScope {
+export interface AccessScope {
   event_name: string;
   event_id: string;
   event_type: "hackathon" | "grant";
