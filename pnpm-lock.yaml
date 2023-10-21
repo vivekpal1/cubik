@@ -527,7 +527,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/common-types
       '@cubik/config':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../packages/config
       '@cubik/database':
         specifier: workspace:*

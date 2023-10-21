@@ -12,7 +12,7 @@
     "@coral-xyz/anchor": "^0.27.0",
     "@cubik/auth": "workspace:*",
     "@cubik/common-types": "workspace:*",
-    "@cubik/config": "workspace:*",
+    "@cubik/config": "*",
     "@cubik/database": "workspace:*",
     "@cubik/ui": "workspace:*",
     "@headlessui/react": "^1.7.17",
