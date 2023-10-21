@@ -7,6 +7,8 @@ import React, { useEffect, useState } from "react";
 import { VerifyModal } from "../modals/verifyModal";
 import { UserInteraction } from "./userInteraction";
 import { AuthPayload } from "@cubik/common-types/src/admin";
+import { useStore } from "zustand";
+import { AccessStore } from "@/context/scope";
 
 interface AuthDecodeResponse {
   data: AuthPayload | null;
@@ -18,6 +20,7 @@ export const HandleConnect = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const { user, setUser } = useUser();
+  const { setAccessScope } = AccessStore();
   useEffect(() => {
     const fetchUser = async () => {
       setIsLoading(true);
@@ -27,6 +30,7 @@ export const HandleConnect = () => {
           (await userResponse.json()) as unknown as AuthDecodeResponse;
 
         if (userRes.data) {
+          setAccessScope(userRes.data.accessScope[0], user?.accessType);
           return setUser(userRes.data);
         }
         if (publicKey && connected && !user) {
