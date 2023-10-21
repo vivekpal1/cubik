@@ -14,3 +14,10 @@ export interface AccessScope {
   event_id: string;
   event_type: "hackathon" | "grant";
 }
+
+
+export interface AuthAdminVerifyReturn {
+  error: string | null;
+  data: boolean;
+  user: AuthPayload;
+}

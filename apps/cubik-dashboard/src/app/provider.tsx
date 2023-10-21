@@ -21,7 +21,7 @@ export const Provider = ({ children }: Props) => {
   return (
     <>
       <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect={true}>
+        <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
             <QueryClientProvider client={client}>
               {children}

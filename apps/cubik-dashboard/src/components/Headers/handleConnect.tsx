@@ -22,15 +22,14 @@ export const HandleConnect = () => {
     const fetchUser = async () => {
       setIsLoading(true);
       try {
+        const userResponse = await fetch("/api/auth/decode");
+        const userRes =
+          (await userResponse.json()) as unknown as AuthDecodeResponse;
+
+        if (userRes.data) {
+          return setUser(userRes.data);
+        }
         if (publicKey && connected && !user) {
-          const user = (await fetch(
-            "/api/auth/decode"
-          )) as unknown as AuthDecodeResponse;
-
-          if (user.data) {
-            return setUser(user.data);
-          }
-
           return setOpen(true);
         }
       } catch (error) {
@@ -41,7 +40,7 @@ export const HandleConnect = () => {
       }
     };
     fetchUser();
-  }, [publicKey]);
+  }, [publicKey, connected]);
 
   if (!connected && !publicKey && !user) {
     return <Button onClick={() => setVisible(true)}>Login</Button>;
@@ -71,5 +70,5 @@ export const HandleConnect = () => {
       </>
     );
   }
-  return <>{JSON.stringify(isLoading)}</>;
+  return <UserInteraction />;
 };

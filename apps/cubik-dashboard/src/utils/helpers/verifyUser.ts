@@ -1,6 +1,8 @@
 import { utils } from "@coral-xyz/anchor";
 import { createMessage } from "@cubik/auth";
 import { getMessage } from "../auth";
+import { AuthVerifyReturn } from "@cubik/common-types";
+import { AuthAdminVerifyReturn } from "@cubik/common-types/src/admin";
 
 interface VerifyUser {
   signMessage: ((message: Uint8Array) => Promise<Uint8Array>) | undefined;
@@ -28,6 +30,9 @@ export const verifyUser = async ({ signMessage, publicKey }: VerifyUser) => {
       },
       cache: "no-cache",
     });
+    const verifyResponse = (await verifyRes.json()) as AuthAdminVerifyReturn;
+
+    return verifyResponse;
   } catch (error) {
     console.log(error);
     return null;

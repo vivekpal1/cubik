@@ -1,14 +1,12 @@
 "use client";
 import React, { Dispatch, SetStateAction } from "react";
-import { Fragment, useRef, useState } from "react";
+import { useRef } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { utils } from "@coral-xyz/anchor";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { createMessage } from "@cubik/auth";
-import { getMessage } from "@/utils/auth";
 import { useMutation } from "@tanstack/react-query";
 import { verifyUser } from "@/utils/helpers/verifyUser";
+import { useUser } from "@/context/user";
 
 interface Props {
   open: boolean;
@@ -17,10 +15,29 @@ interface Props {
 export const VerifyModal = ({ open, setOpen }: Props) => {
   const cancelButtonRef = useRef(null);
   const { signMessage, publicKey } = useWallet();
+  const { setUser } = useUser();
 
   const verifyMutation = useMutation({
     mutationFn: verifyUser,
     mutationKey: ["verify", "user"],
+    onSuccess: (data) => {
+      if (data?.error === "User Doesn't have access") {
+        // when user does'nt have
+      }
+      if (data?.user) {
+        setUser({
+          accessScope: data.user.accessScope,
+          accessType: data.user.accessType,
+          id: data.user.id,
+          mainWallet: data.user.mainWallet,
+          profilePicture: data.user.profilePicture,
+          username: data.user.username,
+        });
+      }
+    },
+    onError: (error) => {
+      const e = error as Error;
+    },
   });
 
   return (
