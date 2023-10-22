@@ -20,7 +20,7 @@ const AcceptProjectModal = ({
     <Dialog.Root open={isAcceptDialogOpen}>
       <Dialog.Trigger />
       <Dialog.Portal>
-        <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0" />
+        <Dialog.Overlay className="bg-blackA6 data-[state=open]:animate-overlayShow fixed inset-0 bg-[rgba(0,0,0,0.7)]" />
         <Dialog.Content className="data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-md bg-neutral-900  shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
           <Dialog.Title className="text-black top-0 rounded-t-md text-base font-medium bg-neutral-600 h-12 flex items-center space-x-6">
             <svg
@@ -89,13 +89,9 @@ const AcceptProjectModal = ({
                 </clipPath>
               </defs>
             </svg>
-
-            <Icon
-              name="doubleTick"
-              fill="none"
-              stroke="#45F562"
-              strokeWidth={1}
-            />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="#45F562" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8.073 11.012 4.013 4.01a21.936 21.936 0 0 1 8.692-9.393L21 5.5m-5-1.563a9 9 0 1 0 4.842 6.376" />
+            </svg>
             <p className="text-white text-xl">Accept Application</p>
           </Dialog.Title>
           <Dialog.Description className="text-gray-500 text-xs px-6 py-4  leading-normal">
