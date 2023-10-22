@@ -6,3 +6,6 @@ export * from "./components/ui/input";
 export * from "./components/ui/accordion";
 export * from "./components/ui/sidePannel";
 export * from "./icons/icon";
+export * from "./components/ui/helperText";
+export * from "./components/ui/InputField";
+export * from "./components/ui/Avatar/TitleWithIcon";
