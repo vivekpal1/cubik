@@ -46,23 +46,23 @@ const Checkbox: React.FC<CheckboxProps> = ({
 
     const MinusSVG: React.FC<{ className?: string }> = ({ className }) => (
         <svg width="12" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-            <rect width="100%" height="100%" fill="white"/>
+            <rect width="100%" height="100%" fill="white" />
         </svg>
     );
-    
-    
+
+
 
     return (
-        <div 
+        <div
             tabIndex={0}
             role="checkbox"
             aria-checked={isChecked}
             className={`${currentStyle.container} p-2 relative rounded 
-                        ${isChecked === true ? 'bg-blue-600 border-blue-600' : 
-                        isChecked === 'minus' ? 'bg-neutral-600 border-neutral-600' : 
+                        ${isChecked === true ? 'bg-blue-600 border-blue-600' :
+                    isChecked === 'minus' ? 'bg-neutral-600 border-neutral-600' :
                         'bg-zinc-800 border-zinc-800'} 
                         ${isDisabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'} 
-                        focus:outline-none focus:ring-2 focus:ring-blue-500`} 
+                        focus:outline-none focus:ring-2 focus:ring-blue-500`}
             onClick={handleToggle}
         >
             {isChecked === true && (
