@@ -1,10 +1,10 @@
 "use client";
 import { TableCell, TableRow, SidePannel, Button, Icon } from "@cubik/ui";
 import React, { useState } from "react";
-import { ProjectInfo } from "../../ProjectInfo";
+import { ProjectInfo } from "../ProjectInfo";
 
-import DeclineProjectModal from "../../modals/DeclineProjectModal";
-import AcceptProjectModal from "../../modals/AcceptProjectModal";
+import DeclineProjectModal from "../modals/DeclineProjectModal";
+import AcceptProjectModal from "../modals/AcceptProjectModal";
 
 export const TableRows = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

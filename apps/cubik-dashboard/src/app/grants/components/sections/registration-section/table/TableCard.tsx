@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@cubik/ui";
 import React from "react";
-import { PendingTable } from "./tables/PendingTable";
+import { PendingTable } from "./PendingTable";
 
 export const TableCard = () => {
   return (
