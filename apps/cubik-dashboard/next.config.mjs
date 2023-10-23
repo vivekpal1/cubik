@@ -3,7 +3,7 @@ import "./src/env.mjs"
 import { PrismaPlugin } from "@prisma/nextjs-monorepo-workaround-plugin";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+  reactStrictMode: true,
   swcMinify: true,
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -18,7 +18,22 @@ const nextConfig = {
     });
     return config;
   },
+  experimental: {
+    serverActions: true,
+  },
+  images: {
+    domains: [
+      "d1yweukyu067aq.cloudfront.net",
+      "www.sandstormhackathon.com",
+      "media-fastly.hackerearth.com",
+      "res.cloudinary.com",
+      "source.boringavatars.com",
+      "uploadthing.com",
+      "media.discordapp.net",
+      "pbs.twimg.com",
+    ],
+  },
   transpilePackages: ["@cubik/database"],
-}
+};
 
 export default nextConfig

@@ -1,13 +1,16 @@
+"use client";
+
 import React from "react";
 import { EmailCard } from "./cards/EmailCard";
 import { TableCard } from "./table/TableCard";
-
+import { AccessStore } from "@/context/scope";
 export const RegistrationsSection = () => {
   const segments = [
     { color: "bg-surface-orange-500", width: 10 },
     { color: "bg-surface-blue-400", width: 10 },
     { color: "bg-surface-red-600", width: 10 },
   ];
+  const { scope } = AccessStore();
   return (
     <>
       <div>
@@ -90,7 +93,7 @@ export const RegistrationsSection = () => {
             </button>
           </div>
         </div>
-        <TableCard />
+        <TableCard scope={scope} />
       </div>
     </>
   );

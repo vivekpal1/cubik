@@ -1,12 +1,19 @@
 "use client";
-import { TableCell, TableRow, SidePannel, Button, Icon } from "@cubik/ui";
+import { TableCell, TableRow, SidePanel, Button, Icon } from "@cubik/ui";
 import React, { useState } from "react";
 import { ProjectInfo } from "../ProjectInfo";
 
 import DeclineProjectModal from "../modals/DeclineProjectModal";
 import AcceptProjectModal from "../modals/AcceptProjectModal";
+import { GetProjectsReturnType } from "./getProjects";
+import Image from "next/image";
 
-export const TableRows = () => {
+interface Props {
+  project: GetProjectsReturnType;
+  tableType: "pending" | "accepted" | "rejected";
+}
+
+export const TableRows = ({ project }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isDeclineDialogOpen, setIsDeclineDialogOpen] =
     useState<boolean>(false);
@@ -25,29 +32,42 @@ export const TableRows = () => {
       >
         <TableCell className="font-medium pl-10">
           <div className="flex justify-start items-center gap-3">
-            <div className="w-10 h-10 rounded-md bg-red-500" />
+            <Image
+              src={project.logo || ""}
+              alt="project logo"
+              width={40}
+              height={40}
+            />
             <div className="flex flex-col justify-start items-start">
-              <p className="text-white text-base">Superteam Earn</p>
+              <p className="text-white text-base">{project.name}</p>
               <p className="text-surface-neutral-500 text-sm">
-                earn@superteam.fun
+                {project.projectLink.slice(0, 40)}
               </p>
             </div>
           </div>
         </TableCell>
         <TableCell>
           <p className="text-surface-blue-500 text-sm font-medium underline underline-offset-4">
-            earn.superteam.fun
+            {project.projectLink.slice(0, 30)}
           </p>
         </TableCell>
         <TableCell>
           <div className="flex gap-2 justify-start items-center">
-            <div className="w-5 h-5 bg-red-600 rounded-full" />
-            <p className="text-white text-base font-semibold">@dhruv</p>
+            {/* <div className="w-5 h-5 bg-red-600 rounded-full" /> */}
+            <Image
+              src={project.owner.avatar || ""}
+              alt="user avatar"
+              width={20}
+              height={20}
+            />
+            <p className="text-white text-base font-semibold">
+              @{project.owner.username}
+            </p>
           </div>
         </TableCell>
         <TableCell className="">
           <button className="text-white font-normal px-8 py-1 text-sm bg-violet-700 rounded-full">
-            pending
+            {project.status}
           </button>
         </TableCell>
         <TableCell className="text-white font-medium text-sm">
@@ -56,7 +76,7 @@ export const TableRows = () => {
       </TableRow>
 
       {isModalOpen && (
-        <SidePannel open={isModalOpen} setOpen={setIsModalOpen}>
+        <SidePanel open={isModalOpen} setOpen={setIsModalOpen}>
           <div className="flex h-full flex-col divide-y divide-gray-200 bg-[#141414] shadow-xl ">
             <div onClick={() => setIsModalOpen(false)}>
               <Icon
@@ -107,7 +127,7 @@ export const TableRows = () => {
               </div>
             </div>
           </div>
-        </SidePannel>
+        </SidePanel>
       )}
 
       <DeclineProjectModal

@@ -9,7 +9,7 @@ type Props = {
 
 const DialogPrimitive = Transition.Root;
 
-const SidePannel = ({ open, setOpen, children, ...props }: Props) => {
+const SidePanel = ({ open, setOpen, children, ...props }: Props) => {
   return (
     <DialogPrimitive show={open}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -38,4 +38,4 @@ const SidePannel = ({ open, setOpen, children, ...props }: Props) => {
   );
 };
 
-export { SidePannel };
+export { SidePanel };

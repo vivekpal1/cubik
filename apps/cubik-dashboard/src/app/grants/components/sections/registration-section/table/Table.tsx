@@ -1,7 +1,13 @@
 import { Table, TableHeader, TableRow, TableHead, TableBody } from "@cubik/ui";
 import React from "react";
 import { TableRows } from "./TableRow";
-export const PendingTable = () => {
+import { GetProjectsReturnType } from "./getProjects";
+
+interface Props {
+  projects: GetProjectsReturnType[];
+  tableType: "pending" | "accepted" | "rejected";
+}
+export const RegistrationTable = ({ projects, tableType }: Props) => {
   return (
     <>
       <Table className="mt-5 ">
@@ -15,7 +21,13 @@ export const PendingTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRows />
+          {projects.map((project) => {
+            return (
+              <>
+                <TableRows tableType={tableType} project={project} />
+              </>
+            );
+          })}
         </TableBody>
       </Table>
     </>

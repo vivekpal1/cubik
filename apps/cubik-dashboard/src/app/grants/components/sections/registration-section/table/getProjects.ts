@@ -7,15 +7,20 @@ export interface GetProjectsReturnType {
   name: string;
   projectLink: string;
   logo: string;
-  owner: User;
-  status: ProjectJoinRoundStatus;
+  owner: {
+    username: string;
+    avatar: string;
+  };
+  status?: ProjectJoinRoundStatus;
   appliedTime: Date;
 }
 
 export const getProjects = async (
-  scope: AccessScope
+  scope: AccessScope | null
 ): Promise<GetProjectsReturnType[]> => {
   try {
+    if (!scope) throw Error("Scope not found");
+    const projects: GetProjectsReturnType[] = [];
     if (scope.event_type === "grant") {
       const data = await prisma.round.findFirst({
         where: {
@@ -24,16 +29,84 @@ export const getProjects = async (
         select: {
           projectJoinRound: {
             select: {
-              project: true,
+              status: true,
+              createdAt: true,
+              project: {
+                select: {
+                  id: true,
+                  logo: true,
+                  name: true,
+                  projectLink: true,
+                  owner: {
+                    select: {
+                      profilePicture: true,
+                      username: true,
+                    },
+                  },
+                },
+              },
             },
           },
         },
       });
-      return [];
+      data?.projectJoinRound.forEach((e) =>
+        projects.push({
+          appliedTime: e.createdAt,
+          id: e.project.id,
+          logo: e.project.logo,
+          name: e.project.name,
+          owner: {
+            avatar: e.project.owner.profilePicture as string,
+            username: e.project.owner.username as string,
+          },
+          projectLink: e.project.projectLink,
+          status: e.status,
+        })
+      );
+      return projects;
     } else if (scope.event_type === "hackathon") {
-      return [];
+      const data = await prisma.hackathon.findFirst({
+        where: {
+          id: scope.event_id,
+        },
+        select: {
+          projectJoinHackathon: {
+            select: {
+              createdAt: true,
+              project: {
+                select: {
+                  id: true,
+                  logo: true,
+                  name: true,
+                  projectLink: true,
+                  owner: {
+                    select: {
+                      profilePicture: true,
+                      username: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      });
+      data?.projectJoinHackathon.forEach((e) =>
+        projects.push({
+          appliedTime: e.createdAt,
+          id: e.project.id,
+          logo: e.project.logo,
+          name: e.project.name,
+          owner: {
+            avatar: e.project.owner.profilePicture as string,
+            username: e.project.owner.username as string,
+          },
+          projectLink: e.project.projectLink,
+        })
+      );
+      return projects;
     } else {
-      return [];
+      return projects;
     }
   } catch (error) {
     console.log(error);
