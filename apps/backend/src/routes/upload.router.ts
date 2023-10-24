@@ -5,4 +5,4 @@ import { uploadFromURLSchema } from "schema/upload";
 
 export const uploadRouter = Router();
 
-uploadRouter.post("/urls", validate(uploadFromURLSchema), uploadFromURL);
+uploadRouter.post("/urls", uploadFromURL);
