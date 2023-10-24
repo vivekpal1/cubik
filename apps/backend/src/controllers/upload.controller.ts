@@ -5,12 +5,29 @@ import {
 } from "types/response";
 import { utapi } from "utils/upload";
 
+
 export const uploadFromURL = async (req: Request, res: Response) => {
   try {
     const { urls } = req.body as { urls: string[] };
     const uploadedFiles = await utapi.uploadFilesFromUrl(urls);
+    const urlChanges: {
+      oldLink: string;
+      newLink: string;
+    }[] = [];
 
-    return res.status(200).send(createSuccessResponse(200, uploadedFiles));
+    urls.forEach((url) => {
+      let newUrl = new URL(url);
+      const filename = newUrl.pathname.split("/").pop() ?? "unknown-filename";
+
+      const newfile = uploadedFiles.find((e) => e.data?.name === filename);
+
+      urlChanges.push({
+        newLink: newfile?.data?.url || url,
+        oldLink: url,
+      });
+    });
+
+    return res.status(200).send(createSuccessResponse(200, urlChanges));
   } catch (error) {
     console.log(error);
 
