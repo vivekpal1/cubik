@@ -16,30 +16,26 @@ export const uploadFromURL = async (req: Request, res: Response) => {
         },
       },
     });
-    const logos: string[] = [];
 
-    data.forEach((e) => {
+    const up: any[] = [];
+    data.forEach(async (e) => {
       if (e.profilePicture) {
-        logos.push(e.profilePicture);
+        const urlChanges = await UploadURLs([e.profilePicture]);
+
+        const u = await prisma.user.update({
+          where: {
+            id: e?.id,
+          },
+          data: {
+            profilePicture: urlChanges![0].newLink,
+          },
+        });
+        console.log(u);
+        up.push(u);
       }
     });
 
-    const urlChanges = await UploadURLs(logos);
-
-    urlChanges?.forEach(async (changes) => {
-      const userInfo = data.find((e) => e.profilePicture === changes.oldLink);
-      if (!userInfo) return;
-      await prisma.user.update({
-        where: {
-          id: userInfo?.id,
-        },
-        data: {
-          profilePicture: changes.newLink,
-        },
-      });
-    });
-
-    return res.status(200).send(createSuccessResponse(200, data));
+    return res.status(200).send(createSuccessResponse(200, up));
   } catch (error) {
     console.log(error);
 
