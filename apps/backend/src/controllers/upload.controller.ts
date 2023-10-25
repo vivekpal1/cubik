@@ -55,4 +55,3 @@ export const uploadFromURL = async (req: Request, res: Response) => {
       .send(createFailureResponseData(500, "Error while uploading", null));
   }
 };
-
