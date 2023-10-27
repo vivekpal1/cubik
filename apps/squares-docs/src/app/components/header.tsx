@@ -1,8 +1,11 @@
+"use client";
+
+import { cn } from "@cubik/ui/lib/utils";
 import { Fragment } from "react";
 
 export default function Header() {
   return (
-    <header className="bg-white fixed top-0 left-0 z-10 border lg:static lg:overflow-y-visible">
+    <header className="bg-white  fixed top-0 left-0 z-10 border lg:static lg:overflow-y-visible">
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
         <div className="relative flex justify-between">
           <div className="flex flex-shrink-0 items-center">
@@ -53,6 +56,19 @@ export default function Header() {
             <div>hello</div>
             <div>world</div>
           </div>
+          <button
+            onClick={() => {
+              const ele = document.querySelector("html");
+              if (!ele?.className) return;
+              if (ele.className === "dark") {
+                ele.className = "light";
+              } else {
+                ele.className = "dark";
+              }
+            }}
+          >
+            Theme
+          </button>
         </div>
       </div>
     </header>

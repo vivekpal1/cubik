@@ -4,32 +4,32 @@ export default function Home() {
   return (
     <main className="flex  gap-5 items-center flex-wrap justify-center p-24">
       <Link href={"/com/avatar"}>
-        <button className="h-8 bg-violet-500 text-white px-7 rounded">
+        <button className="h-8 bg-violet-500 dark:bg-red-500 text-white px-7 rounded">
           Avatar
         </button>
       </Link>
       <Link href={"/com/tag"}>
-        <button className="h-8 bg-violet-500 text-white px-7 rounded">
+        <button className="h-8 bg-violet-500 dark:bg-red-500 text-white px-7 rounded">
           Tag
         </button>
       </Link>
       <Link href={"/com/tabs"}>
-        <button className="h-8 bg-violet-500 text-white px-7 rounded">
+        <button className="h-8 bg-violet-500 dark:bg-red-500 text-white px-7 rounded">
           Tabs
         </button>
       </Link>
       <Link href={"/com/alerts"}>
-        <button className="h-8 bg-violet-500 text-white px-7 rounded">
+        <button className="h-8 bg-violet-500 dark:bg-red-500 text-white px-7 rounded">
           Alerts
         </button>
       </Link>
       <Link href={"/com/subhead"}>
-        <button className="h-8 bg-violet-500 text-white px-7 rounded">
+        <button className="h-8 bg-violet-500 text-white px-7 rounded dark:bg-red-500">
           Sub Head
         </button>
       </Link>
       <Link href={"/com/subhead"}>
-        <button className="h-8 bg-violet-500 text-white px-7 rounded">
+        <button className="h-8 bg-violet-500 text-white px-7 rounded dark:bg-red-500">
           Sub Head
         </button>
       </Link>
