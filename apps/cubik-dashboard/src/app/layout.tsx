@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: JSX.Element }) {
   return (
     <html className="dark" lang="en">
-      <body className={`bg-white dark:bg-[#141414] ${inter.className}`}>
+      <body className={`dark:bg-[var(--background)] ${inter.className}`}>
         <Provider>
           <>
             <Header />

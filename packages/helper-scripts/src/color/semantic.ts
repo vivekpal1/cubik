@@ -7,7 +7,7 @@ function convertStringToPrimitive(s: string) {
   if (split.length === 3) {
     return "--" + result;
   } else if (split.length > 3) {
-    return "--" + split[0] + "-" + split[1] + "-" + split[2];
+    return "--" + split[0] + "-" + split[1] + "-" + split[3];
   } else {
     return "--" + split[0];
   }
@@ -74,6 +74,12 @@ export const generateSemantic = () => {
     }
   });
 
-  fs.writeFileSync("lightColors.styles.css", convertToCSS(finalLight));
-  fs.writeFileSync("darkColors.styles.css", convertToCSS(finalDark));
+  fs.writeFileSync(
+    "/Users/dhruvraj/Documents/cubik/frontend/cubik/packages/presets/styles/lightColor.style.css",
+    convertToCSS(finalLight)
+  );
+  fs.writeFileSync(
+    "/Users/dhruvraj/Documents/cubik/frontend/cubik/packages/presets/styles/darkColors.styles.css",
+    convertToCSS(finalDark)
+  );
 };
