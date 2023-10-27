@@ -148,55 +148,6 @@ importers:
         specifier: 4.9.5
         version: 4.9.5
 
-  apps/component-show:
-    dependencies:
-      '@cubik/config':
-        specifier: workspace:*
-        version: link:../../packages/config
-      '@cubik/presets':
-        specifier: workspace:*
-        version: link:../../packages/presets
-      '@cubik/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-      next:
-        specifier: 13.4.19
-        version: 13.4.19(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
-      react:
-        specifier: ^18
-        version: 18.2.0
-      react-dom:
-        specifier: ^18
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@types/node':
-        specifier: ^20
-        version: 20.8.3
-      '@types/react':
-        specifier: ^18
-        version: 18.2.21
-      '@types/react-dom':
-        specifier: ^18
-        version: 18.2.7
-      autoprefixer:
-        specifier: ^10
-        version: 10.4.14(postcss@8.4.31)
-      eslint:
-        specifier: ^8
-        version: 8.48.0
-      eslint-config-next:
-        specifier: 13.5.6
-        version: 13.5.6(eslint@8.48.0)(typescript@5.2.2)
-      postcss:
-        specifier: ^8
-        version: 8.4.31
-      tailwindcss:
-        specifier: ^3
-        version: 3.3.3
-      typescript:
-        specifier: ^5
-        version: 5.2.2
-
   apps/cubik-dashboard:
     dependencies:
       '@coral-xyz/anchor':
@@ -573,6 +524,55 @@ importers:
       typescript:
         specifier: 4.9.5
         version: 4.9.5
+
+  apps/squares-docs:
+    dependencies:
+      '@cubik/config':
+        specifier: workspace:*
+        version: link:../../packages/config
+      '@cubik/presets':
+        specifier: workspace:*
+        version: link:../../packages/presets
+      '@cubik/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      next:
+        specifier: 13.4.19
+        version: 13.4.19(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: ^18
+        version: 18.2.0
+      react-dom:
+        specifier: ^18
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@types/node':
+        specifier: ^20
+        version: 20.8.3
+      '@types/react':
+        specifier: ^18
+        version: 18.2.21
+      '@types/react-dom':
+        specifier: ^18
+        version: 18.2.7
+      autoprefixer:
+        specifier: ^10
+        version: 10.4.14(postcss@8.4.31)
+      eslint:
+        specifier: ^8
+        version: 8.48.0
+      eslint-config-next:
+        specifier: 13.5.6
+        version: 13.5.6(eslint@8.48.0)(typescript@5.2.2)
+      postcss:
+        specifier: ^8
+        version: 8.4.31
+      tailwindcss:
+        specifier: ^3
+        version: 3.3.5
+      typescript:
+        specifier: ^5
+        version: 5.2.2
 
   apps/workshop:
     dependencies:
@@ -19782,7 +19782,6 @@ packages:
       sucrase: 3.34.0
     transitivePeerDependencies:
       - ts-node
-    dev: false
 
   /tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
