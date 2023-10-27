@@ -49,8 +49,9 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="hidden lg:flex">
-            {/* Rest of the header items can go here */}
+          <div className="flex border flex-row align-middle">
+            <div>hello</div>
+            <div>world</div>
           </div>
         </div>
       </div>

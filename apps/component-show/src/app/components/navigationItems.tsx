@@ -2,14 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC, useState } from "react";
-
-interface NavItem {
-  id: number;
-  name: string;
-  link?: string;
-  icon?: string;
-  children?: NavItem[];
-}
+import navigationData from "../navigationData";
 
 const DropdownIcon = ({ isOpen }: { isOpen: boolean }) => (
   <svg
@@ -28,73 +21,6 @@ const DropdownIcon = ({ isOpen }: { isOpen: boolean }) => (
     />
   </svg>
 );
-
-const navigationData: NavItem[] = [
-  {
-    id: 1,
-    name: "Foundations",
-    children: [
-      { id: 11, name: "Colors", link: "/foundations/colors" },
-      { id: 12, name: "Border Radius", link: "/foundations/border-radius" },
-      { id: 13, name: "Spacing", link: "/foundations/spacing" },
-      { id: 14, name: "Typography", link: "/foundations/typography" },
-    ],
-  },
-  {
-    id: 2,
-    name: "Components",
-    children: [
-      {
-        id: 21,
-        name: "Data Display",
-        children: [{ id: 211, name: "Tag", link: "/com/data-display/tag" }],
-      },
-      {
-        id: 22,
-        name: "Disclosure",
-        children: [
-          { id: 221, name: "Tabs", link: "/com/disclosure/tabs" },
-          { id: 222, name: "Accordion", link: "/com/disclosure/accordion" },
-        ],
-      },
-      {
-        id: 23,
-        name: "Feedback",
-        children: [
-          {
-            id: 231,
-            name: "Alert",
-            link: "/com/feedback/alert",
-          },
-          {
-            id: 132,
-            name: "Toast",
-            link: "/com/feedback/toast",
-          },
-        ],
-      },
-      {
-        id: 24,
-        name: "Media & Icons",
-        children: [
-          { id: 241, name: "Avatar", link: "/com/media/avatar" },
-          { id: 242, name: "Icons", link: "/com/media/icons" },
-          { id: 243, name: "Images", link: "/com/media/images" },
-        ],
-      },
-      {
-        id: 25,
-        name: "Overlay",
-        children: [
-          { id: 251, name: "Avatar", link: "/com/overlay/avatar" },
-          { id: 252, name: "Icons", link: "/com/overlay/icons" },
-          { id: 253, name: "Images", link: "/com/overlay/images" },
-        ],
-      },
-    ],
-  },
-];
-
 const NavigationItems: FC = () => {
   const pathname = usePathname();
   const [toggledItem, setToggledItem] = useState<number | null>(null);
