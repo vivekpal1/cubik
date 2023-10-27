@@ -94,7 +94,7 @@ export const HackathonHeader = async ({ slug }: Props) => {
             </Box>
           </VStack>
           <VStack w={"full"} alignItems="start" flex={1.5} spacing="16px">
-            <SubmitNowButton
+            {/* <SubmitNowButton
               id={hackathon?.id as string}
               logo={hackathon?.logo as string}
               name={hackathon?.name as string}
@@ -107,7 +107,7 @@ export const HackathonHeader = async ({ slug }: Props) => {
                   };
                 }) || []
               }
-            />
+            /> */}
           </VStack>
         </Stack>
       </VStack>
