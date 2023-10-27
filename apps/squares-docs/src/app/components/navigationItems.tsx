@@ -28,28 +28,33 @@ const NavigationItems: FC = () => {
   const [toggledThirdItem, setToggledThirdItem] = useState<number | null>(null);
 
   return (
-    <ul className="list-none pl-0">
+    <ul className="list-none pl-0 w-fit flex flex-col gap-4">
       {navigationData.map((item) => (
-        <li key={item.id} className="my-2">
-          <div className={`block px-4 py-2 rounded `}>
+        <li key={item.id} className="flex flex-col gap-2">
+          {/* top level element */}
+          <div className={`block rounded gap-4`}>
             {item.children && (
-              <span className="text-gray-400 uppercase tracking-widest text-md">
+              <span className="text-[#808080] uppercase tracking-[3px] font-medium text-[14px]">
                 {item.name}
               </span>
             )}
           </div>
-          <ul className="list-none pl-4">
+          <ul className="list-none flex flex-col gap-2">
             {item.children &&
               item.children.map((subItem) => (
-                <li key={subItem.id} className="my-1 ">
+                <li
+                  key={subItem.id}
+                  className="flex flex-col gap-2 min-w-[220px]"
+                >
                   <Link href={subItem.link ? subItem.link : ""}>
                     <div
                       className={`block px-4 py-2 rounded ${
                         pathname === subItem.link
-                          ? "bg-blue-100"
+                          ? "bg-purple-100"
                           : "hover:bg-gray-100"
                       }`}
                     >
+                      {/* 2nd level element */}
                       {subItem.children ? (
                         <button
                           onClick={() =>
@@ -59,7 +64,7 @@ const NavigationItems: FC = () => {
                           }
                           className="mr-2 flex flex-row items-center justify-between w-full"
                         >
-                          <span className="text-gray-700 text-sm">
+                          <span className="text-black text-[14px] font-regular">
                             {subItem.name}
                           </span>
                           <DropdownIcon
@@ -68,7 +73,7 @@ const NavigationItems: FC = () => {
                         </button>
                       ) : (
                         <div className="mr-2 flex flex-row items-center justify-between w-full">
-                          <span className="text-gray-700 text-sm">
+                          <span className="text-black text-[14px] font-regular">
                             {subItem.name}
                           </span>
                         </div>
@@ -83,11 +88,12 @@ const NavigationItems: FC = () => {
                             <div
                               className={`block px-4 py-2 rounded ${
                                 pathname === thirdItem.link
-                                  ? "bg-gray-100 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300"
+                                  ? "bg-purple-50 text-purple-700 font-medium focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition duration-300"
                                   : "hover:bg-gray-100"
                               }`}
                             >
                               {thirdItem.children ? (
+                                // this is of no use rn
                                 <button
                                   onClick={() =>
                                     setToggledThirdItem(
@@ -96,9 +102,15 @@ const NavigationItems: FC = () => {
                                         : thirdItem.id
                                     )
                                   }
-                                  className="mr-2 border-2"
+                                  className="mr-2"
                                 >
-                                  <span className="border text-gray-700 text-sm">
+                                  <span
+                                    className={`${
+                                      pathname === thirdItem.link
+                                        ? "text-purple-500"
+                                        : "text-black"
+                                    } text-[14px]`}
+                                  >
                                     {thirdItem.name}
                                   </span>{" "}
                                   <DropdownIcon
@@ -106,8 +118,15 @@ const NavigationItems: FC = () => {
                                   />
                                 </button>
                               ) : (
+                                // this is where you change to change the final children
                                 <div className="mr-2 flex flex-row items-center justify-between w-full">
-                                  <span className=" text-gray-700 text-sm">
+                                  <span
+                                    className={`${
+                                      pathname === thirdItem.link
+                                        ? "text-purple-500"
+                                        : "text-black"
+                                    } text-[14px]`}
+                                  >
                                     {thirdItem.name}
                                   </span>
                                 </div>

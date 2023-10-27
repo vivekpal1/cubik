@@ -8,6 +8,7 @@ import "@cubik/presets/styles/component.style.css";
 
 import Sidebar from "./components/sidebar";
 import Header from "./components/header";
+import Background from "./components/background";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html className="light" lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-[#F7F7F7]`}>
+        <Background />
         <Header />
-        <div className="flex flex-row w-full">
+        <div className="Z-1 flex flex-row w-full">
           <Sidebar />
           {children}
         </div>

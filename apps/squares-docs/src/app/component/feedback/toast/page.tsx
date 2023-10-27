@@ -6,11 +6,11 @@ const page = () => {
     <PageHOC
       pages={[
         { name: "Component", href: "/component", current: false },
-        { name: "Accordion", href: "/component/accordion", current: true },
+        { name: "Toast", href: "/component/toast", current: true },
       ]}
-      heading={"Accordion"}
+      heading={"Toast"}
       description={
-        "Use the accordion component to display collapsible content."
+        "Use the toast component to display important messages to users."
       }
     >
       <></>

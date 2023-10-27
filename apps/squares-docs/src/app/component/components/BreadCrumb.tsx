@@ -4,11 +4,14 @@ export default function BreadCrumb({
   pages: { name: string; href: string; current: boolean }[];
 }) {
   return (
-    <nav className="flex mb-14" aria-label="Breadcrumb">
+    <nav className="flex" aria-label="Breadcrumb">
       <ol role="list" className="flex items-center space-x-2">
         <li>
           <div>
-            <a href={""} className="text-md text-gray-500 hover:text-blue-600">
+            <a
+              href={""}
+              className="text-md text-gray-500 hover:text-purple-500"
+            >
               Home
             </a>
           </div>
@@ -26,8 +29,8 @@ export default function BreadCrumb({
               </svg>
               <a
                 href={page.href}
-                className={`ml-4 text-md hover:text-blue-600 ${
-                  page.current ? "text-blue-600" : "text-gray-500"
+                className={`ml-4 text-md hover:text-purple-500 ${
+                  page.current ? "text-purple-500" : "text-gray-500"
                 }`}
                 aria-current={page.current ? "page" : undefined}
               >
