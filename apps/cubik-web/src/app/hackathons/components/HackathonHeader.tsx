@@ -3,7 +3,6 @@ import React from "react";
 import { HackathonStatus } from "./HackathonStatus";
 import { prisma } from "@cubik/database";
 import Image from "next/image";
-import { SubmitNowButton } from "./SubmitNowButton";
 interface Props {
   slug: string;
 }
