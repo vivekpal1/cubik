@@ -1,22 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "@cubik/presets/styles/styles"
+
 
 @layer base {
-
-
-html[data-theme="dark"] {
- @import "@cubik/presets/styles/darkColor.style.css";
-}
-
-
-html[data-theme="light"] {
-  @import "@cubik/presets/styles/lightColor.style.css";
-}
-
   :root {
-    --background: 0 0% 100%;
+    --background: #000000;
     --foreground: 0 0% 3.9%;
 
     --card: 0 0% 100%;
