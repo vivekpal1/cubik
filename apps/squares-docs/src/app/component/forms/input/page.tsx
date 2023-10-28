@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { InputField } from "@cubik/ui";
-import React from "react";
+import React from 'react';
+
+import { InputField } from '@cubik/ui';
 
 const Input = () => {
   return (
@@ -10,14 +11,14 @@ const Input = () => {
 
       <div className="space-y-2">
         <div className="font-lg font-semibold">Normal Input Field</div>
-        <InputField inputSize={"sm"} />
-        <InputField inputSize={"md"} />
+        <InputField inputSize={'sm'} />
+        <InputField inputSize={'md'} />
       </div>
 
       <div className="space-y-2">
         <div className="font-lg font-semibold">Placeholder Input Field</div>
-        <InputField inputSize={"sm"} placeholderVariant placeholder="input" />
-        <InputField inputSize={"md"} placeholderVariant placeholder="input" />
+        <InputField inputSize={'sm'} placeholderVariant placeholder="input" />
+        <InputField inputSize={'md'} placeholderVariant placeholder="input" />
       </div>
 
       <div className="space-y-2">
@@ -25,14 +26,14 @@ const Input = () => {
           Placeholder left element Input Field
         </div>
         <InputField
-          inputSize={"sm"}
+          inputSize={'sm'}
           placeholderVariant
           placeholder="input"
           leftElement
           leftElementContent="USDC"
         />
         <InputField
-          inputSize={"md"}
+          inputSize={'md'}
           placeholderVariant
           placeholder="input"
           leftElement
@@ -45,13 +46,13 @@ const Input = () => {
           Placeholder right element Input Field
         </div>
         <InputField
-          inputSize={"sm"}
+          inputSize={'sm'}
           placeholderVariant
           placeholder="input"
           rightElement
         />
         <InputField
-          inputSize={"md"}
+          inputSize={'md'}
           placeholderVariant
           placeholder="input"
           rightElement
@@ -63,7 +64,7 @@ const Input = () => {
           Placeholder right and left element Input Field
         </div>
         <InputField
-          inputSize={"sm"}
+          inputSize={'sm'}
           placeholderVariant
           placeholder="input"
           leftElement
@@ -71,7 +72,7 @@ const Input = () => {
           leftElementContent="USDC"
         />
         <InputField
-          inputSize={"md"}
+          inputSize={'md'}
           placeholderVariant
           placeholder="input"
           leftElement

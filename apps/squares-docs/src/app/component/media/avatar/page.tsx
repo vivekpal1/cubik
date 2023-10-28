@@ -1,7 +1,10 @@
-"use client";
-import React from "react";
-import { Avatar, AvatarGroup, Icon } from "@cubik/ui";
-import TitleWithIcon from "@cubik/ui/components/ui/Avatar/TitleWithIcon";
+'use client';
+
+import React from 'react';
+
+import { Avatar, AvatarGroup, Icon } from '@cubik/ui';
+import TitleWithIcon from '@cubik/ui/components/ui/Avatar/TitleWithIcon';
+
 const Page = () => {
   return (
     <>
@@ -135,19 +138,19 @@ const Page = () => {
                 size="xs"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -155,19 +158,19 @@ const Page = () => {
                 size="sm"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -175,19 +178,19 @@ const Page = () => {
                 size="md"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -195,19 +198,19 @@ const Page = () => {
                 size="lg"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -215,19 +218,19 @@ const Page = () => {
                 size="xl"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -235,19 +238,19 @@ const Page = () => {
                 size="2xl"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -255,19 +258,19 @@ const Page = () => {
                 size="3xl"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -278,19 +281,19 @@ const Page = () => {
                 shape="square"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -299,19 +302,19 @@ const Page = () => {
                 shape="square"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -320,19 +323,19 @@ const Page = () => {
                 size="md"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -341,19 +344,19 @@ const Page = () => {
                 size="lg"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -362,19 +365,19 @@ const Page = () => {
                 size="xl"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -383,19 +386,19 @@ const Page = () => {
                 size="2xl"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />
@@ -404,19 +407,19 @@ const Page = () => {
                 size="3xl"
                 avatars={[
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                   {
-                    src: "https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg",
+                    src: 'https://pbs.twimg.com/profile_images/1694008102709055488/ESkPDhR-_400x400.jpg',
                   },
                 ]}
               />

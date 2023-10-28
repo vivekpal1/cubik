@@ -1,6 +1,7 @@
-import React from "react";
-import BreadCrumb from "./BreadCrumb";
-import ComponentHeading from "./ComponentHeading";
+import React from 'react';
+
+import BreadCrumb from './BreadCrumb';
+import ComponentHeading from './ComponentHeading';
 
 const PageHOC = ({
   children,

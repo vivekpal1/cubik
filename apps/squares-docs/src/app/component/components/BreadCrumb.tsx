@@ -9,7 +9,7 @@ export default function BreadCrumb({
         <li>
           <div>
             <a
-              href={""}
+              href={''}
               className="text-md text-gray-500 hover:text-purple-500"
             >
               Home
@@ -30,9 +30,9 @@ export default function BreadCrumb({
               <a
                 href={page.href}
                 className={`ml-4 text-md hover:text-purple-500 ${
-                  page.current ? "text-purple-500" : "text-gray-500"
+                  page.current ? 'text-purple-500' : 'text-gray-500'
                 }`}
-                aria-current={page.current ? "page" : undefined}
+                aria-current={page.current ? 'page' : undefined}
               >
                 {page.name}
               </a>

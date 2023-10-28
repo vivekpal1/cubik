@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { Textarea } from "@cubik/ui";
-import React from "react";
+import React from 'react';
+
+import { Textarea } from '@cubik/ui';
 
 const Textareas = () => {
   return (

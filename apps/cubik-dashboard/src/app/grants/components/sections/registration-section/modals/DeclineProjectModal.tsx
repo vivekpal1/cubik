@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-import * as Switch from "@radix-ui/react-switch";
-import { Icon } from "@cubik/ui";
+import React from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
+import * as Switch from '@radix-ui/react-switch';
+
+import { Icon } from '@cubik/ui';
 
 type Props = {
   isDeclineDialogOpen: boolean;

@@ -1,10 +1,12 @@
-"use client";
-import { TableCell, TableRow, SidePannel, Button, Icon } from "@cubik/ui";
-import React, { useState } from "react";
-import { ProjectInfo } from "../../ProjectInfo";
+'use client';
 
-import DeclineProjectModal from "../../modals/DeclineProjectModal";
-import AcceptProjectModal from "../../modals/AcceptProjectModal";
+import React, { useState } from 'react';
+
+import { Button, Icon, SidePannel, TableCell, TableRow } from '@cubik/ui';
+
+import AcceptProjectModal from '../../modals/AcceptProjectModal';
+import DeclineProjectModal from '../../modals/DeclineProjectModal';
+import { ProjectInfo } from '../../ProjectInfo';
 
 export const TableRows = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -21,7 +23,7 @@ export const TableRows = () => {
     <>
       <TableRow
         className="hover:bg-surface-neutral-820"
-        onClick={() => openModal("Superteam Earn")}
+        onClick={() => openModal('Superteam Earn')}
       >
         <TableCell className="font-medium pl-10">
           <div className="flex justify-start items-center gap-3">

@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
-import { cn } from "@cubik/ui/lib/utils";
-import { Fragment } from "react";
+import { Fragment } from 'react';
+
+import { cn } from '@cubik/ui/lib/utils';
 
 export default function Header() {
   return (
@@ -58,12 +59,12 @@ export default function Header() {
           </div>
           <button
             onClick={() => {
-              const ele = document.querySelector("html");
+              const ele = document.querySelector('html');
               if (!ele?.className) return;
-              if (ele.className === "dark") {
-                ele.className = "light";
+              if (ele.className === 'dark') {
+                ele.className = 'light';
               } else {
-                ele.className = "dark";
+                ele.className = 'dark';
               }
             }}
           >

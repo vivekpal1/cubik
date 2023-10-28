@@ -1,5 +1,6 @@
-import React from "react";
-import NavigationItems from "./navigationItems";
+import React from 'react';
+
+import NavigationItems from './navigationItems';
 
 const SideMenu: React.FC = () => {
   return (
