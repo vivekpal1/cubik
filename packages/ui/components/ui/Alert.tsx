@@ -29,13 +29,13 @@ const Alert: React.FC<AlertProps> = ({
   crossButton = true,
   size = "large"
 }) => {
-  const icons = {
+  const icons: Record<AlertVariants, "infoCircle" | "Spinner" | "doubleTick" | "infoTriangle" | "danger"> = {
     Info: 'infoCircle',
-    Loading: 'spinner',
+    Loading: 'Spinner',
     Success: 'doubleTick',
     Warning: 'infoTriangle',
     Error: 'danger'
-  };
+  };  
 
   const colorClasses = {
     Purple: {
@@ -82,8 +82,8 @@ const Alert: React.FC<AlertProps> = ({
     small: "w-4 h-4 sm:w-5 sm:h-5",
     large: "w-6 h-6 sm:w-8 sm:h-8"
   };
-  
-  
+
+
   return (
     <div className={`flex flex-col sm:flex-row items-center gap-2 sm:gap-4 ${typeStyles[type]} ${alertClasses.text} ${sizeStyles[size]}`}>
       <Icon name={icons[variant]} className={`${alertClasses.text} ${iconStyles[size]}`} fill="none" />

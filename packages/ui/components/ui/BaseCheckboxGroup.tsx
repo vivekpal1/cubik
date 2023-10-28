@@ -6,7 +6,7 @@ import { InputLabel } from './inputLabel';
 interface CheckboxItem {
   id: string;
   label: string;
-  isChecked: boolean;
+  isChecked: boolean | 'minus';
   isDisabled?: boolean;
   indeterminate?: boolean;
 }
