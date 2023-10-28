@@ -3,10 +3,10 @@ import { Alert, AlertColors, AlertTypes, AlertVariants } from '@cubik/ui/compone
 import PageHOC from '@/app/home-page-components/components/pageHOC';
 
 const page = () => {
-  const alertVariants = ["Info", "Loading", "Success", "Warning", "Error"];
-  const alertTypes = ["Inline", "Text", "Border"];
-  const alertColors = ["Purple", "Red", "Green", "Blue", "Yellow"];
-  const alertSizes = ["small", "large"];
+  const alertVariants: AlertVariants[] = ["Info", "Loading", "Success", "Warning", "Error"];
+  const alertTypes: AlertTypes[] = ["Inline", "Text", "Border"];
+  const alertColors: AlertColors[] = ["Purple", "Red", "Green", "Blue", "Yellow"];
+  const alertSizes: Array<'small' | 'large'> = ['small', 'large'];
 
   return (
     <>
