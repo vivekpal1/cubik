@@ -13,7 +13,7 @@ export const TableRows = () => {
   const [isDeclineDialogOpen, setIsDeclineDialogOpen] =
     useState<boolean>(false);
   const [isAcceptDialogOpen, setIsAcceptDialogOpen] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<any>(null);
+  const [_modalContent, setModalContent] = useState<any>(null);
 
   const openModal = (content: any) => {
     setModalContent(content);
@@ -78,8 +78,7 @@ export const TableRows = () => {
                   variant="destructive"
                   className="flex-1 space-x-2"
                   size="sm"
-                  onClick={(e) => {
-                    // e.preventDefault();
+                  onClick={() => {
                     setIsDeclineDialogOpen(true);
                     setIsModalOpen(false);
                   }}
@@ -92,7 +91,6 @@ export const TableRows = () => {
                   className="bg-green-500 text-black flex-1 space-x-2"
                   size="sm"
                   onClick={() => {
-                    // e.preventDefault();
                     setIsAcceptDialogOpen(true);
                     setIsModalOpen(false);
                   }}

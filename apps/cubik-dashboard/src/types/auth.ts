@@ -1,4 +1,3 @@
-import { NFTProfile } from '@cubik/common-types';
 import { AccessScope } from '@cubik/common-types/src/admin';
 
 export interface User {

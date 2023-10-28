@@ -4,7 +4,6 @@ import { useUser } from '@/context/user';
 import { Button } from '@/utils/ui';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useWalletModal } from '@solana/wallet-adapter-react-ui';
-import { useStore } from 'zustand';
 
 import { AuthPayload } from '@cubik/common-types/src/admin';
 

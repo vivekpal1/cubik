@@ -1,8 +1,7 @@
 import { utils } from '@coral-xyz/anchor';
 
 import { createMessage } from '@cubik/auth';
-import { AuthVerifyReturn } from '@cubik/common-types';
-import { AuthAdminVerifyReturn } from '@cubik/common-types/src/admin';
+import type { AuthAdminVerifyReturn } from '@cubik/common-types/src/admin';
 
 import { getMessage } from '../auth';
 

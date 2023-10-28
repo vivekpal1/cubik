@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  AvatarGroup,
   AvatarLabelGroup,
   TableCell,
   TableRow,
