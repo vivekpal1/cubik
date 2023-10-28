@@ -1,9 +1,9 @@
-import React from 'react';
-import Link from 'next/link';
-
-import navigationData from '../navigationData';
-import BreadCrumb from './components/BreadCrumb';
-import ComponentHeading from './components/ComponentHeading';
+import React from "react";
+import BreadCrumb from "./components/BreadCrumb";
+import navigationData from "../navigationData";
+import Link from "next/link";
+import ComponentHeading from "./components/ComponentHeading";
+import Image from "next/image";
 
 export default function ComponentPage() {
   console.log('navigation data - ', navigationData);
@@ -35,8 +35,17 @@ export default function ComponentPage() {
                       href={thirdItem.link ? thirdItem.link : '#'}
                     >
                       <li className="flex flex-col gap-3">
-                        <div className="border border-[#E6E6E6] w-[230px] h-[180px] rounded-[8px] bg-white"></div>
-                        <span className=" text-[#0D0D0D] text-md">
+                        {/*add a image here using next image */}
+
+                        <div className="flex-1 overflow-hidden bg-[var(--color-surface-primary)] border border-[var(--color-border-primary)] rounded-[8px] min-w-0">
+                          <Image
+                            src={thirdItem.image ? thirdItem.image : ''}
+                            alt="My Image"
+                            width={230}
+                            height={180}
+                          />
+                        </div>
+                        <span className=" text-[var(--color-fg-primary)] text-md">
                           {thirdItem.name}
                         </span>
                         {/* Implement logic for fourth level here if needed */}

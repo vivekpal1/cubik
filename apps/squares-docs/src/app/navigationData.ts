@@ -2,6 +2,7 @@ export interface INavigationData {
   id: number;
   name: string;
   link?: string;
+  image?: string;
   description?: string;
   children?: INavigationData[];
 }
@@ -39,9 +40,11 @@ const navigationData: INavigationData[] = [
         children: [
           {
             id: 221,
-            name: 'Tabs',
-            link: '/component/disclosure/tabs',
-            description: '',
+            name: "Tabs",
+            image:
+              "https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/84633e96-2577-40b8-ffec-19f3b2bc0e00/public",
+            link: "/component/disclosure/tabs",
+            description: "",
           },
           {
             id: 222,

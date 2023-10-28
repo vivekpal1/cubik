@@ -4,10 +4,8 @@ import NavigationItems from './navigationItems';
 
 const SideMenu: React.FC = () => {
   return (
-    <div className="bg-white flex flex-col w-fit h-screen border-r p-8">
-      <nav>
-        <NavigationItems />
-      </nav>
+    <div className="bg-[var(--color-surface-secondary)] flex w-fit h-screen border-r border-[var(--color-border-primary)] p-8">
+      <NavigationItems />
     </div>
   );
 };

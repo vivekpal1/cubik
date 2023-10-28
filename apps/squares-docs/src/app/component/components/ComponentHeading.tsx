@@ -11,8 +11,10 @@ const ComponentHeading = ({
 }) => {
   return (
     <div className="w-full flex flex-col gap-6">
-      <p className="text-5xl">{heading}</p>
-      <div className="text-md text-[#4D4D4D]">{description}</div>
+      <p className="text-5xl text-[var(--color-fg-primary)]">{heading}</p>
+      <div className="text-md text-[var(--color-fg-secondary)]">
+        {description}
+      </div>
     </div>
   );
 };

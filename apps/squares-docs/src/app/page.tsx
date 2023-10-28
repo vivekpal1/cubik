@@ -1,4 +1,22 @@
-import Link from 'next/link';
+import Link from "next/link";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = {
+  title: "Squares Design System",
+  description: "The Design System that powers Cubik",
+  openGraph: {
+    images: [
+      "https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/f44a705b-fa53-45d3-9a44-937593ac6a00/public",
+    ],
+  },
+  twitter: {
+    title: "Squares Design System",
+    card: "summary_large_image",
+    images: [
+      "https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/f44a705b-fa53-45d3-9a44-937593ac6a00/public",
+    ],
+  },
+};
 
 export default function Home() {
   return (

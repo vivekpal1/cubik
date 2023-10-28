@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html className="light" lang="en">
-      <body className={`${inter.className} bg-[#F7F7F7]`}>
+      <body className={`${inter.className} bg-[var(--color-bg-secondary)]`}>
         <Background />
         <Header />
         <div className="Z-1 flex flex-row w-full">
