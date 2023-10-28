@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useRef } from 'react';
+import { Dispatch, SetStateAction, useRef } from 'react';
 import { useUser } from '@/context/user';
 import { verifyUser } from '@/utils/helpers/verifyUser';
 import { Dialog, Transition } from '@headlessui/react';
@@ -36,7 +36,6 @@ export const VerifyModal = ({ open, setOpen }: Props) => {
       }
     },
     onError: (error) => {
-      const e = error as Error;
     },
   });
 

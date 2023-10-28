@@ -1,5 +1,4 @@
 import { decodeToken } from '@cubik/auth/src/admin';
-import { AuthPayload } from '@cubik/common-types/src/admin';
 
 export const IsUserLoginServer = async (token: string) => {
   try {

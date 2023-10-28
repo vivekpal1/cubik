@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { AccessScope, AccessType } from '@cubik/common-types/src/admin';
+import type { AccessScope, AccessType } from '@cubik/common-types/src/admin';
 
 interface AccessScopeType {
   scope: AccessScope | null;

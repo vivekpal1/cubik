@@ -18,7 +18,7 @@ export const SponsorsTableRows = () => {
 
         <TableCell>
           <div className="">
-            <h3 className="flex font-mono items-end">
+            <h3 className="flex items-end font-mono">
               <h6 className="text-xs">$</h6> 25,000
             </h3>
           </div>
@@ -45,7 +45,7 @@ export const SponsorsTableRows = () => {
 
         <TableCell>
           <div className="">
-            <h3 className="flex font-mono items-end">
+            <h3 className="flex items-end font-mono">
               <h6 className="text-xs">$</h6> 25,000
             </h3>
           </div>
