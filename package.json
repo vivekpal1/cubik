@@ -3,8 +3,8 @@
   "scripts": {
     "build": "dotenv -- turbo run build",
     "dev": "dotenv -- turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\" --ignore-path .prettierignore",
+    "lint": "dotenv -- run lint",
+    "format": "prettier  --write \"**/*.{ts,tsx,md}\" --ignore-path .prettierignore",
     "generate": "dotenv -- turbo run db:generate",
     "db:push": "dotenv -- turbo run db:push",
     "db:studio": "dotenv -- pnpm -F @cubik/database dev",
@@ -23,8 +23,8 @@
     "@turbo/gen": "^1.9.7",
     "eslint": "^7.32.0",
     "prettier": "^2.8.8",
-    "turbo": "^1.10.15"
+    "turbo": "^1.10.16"
   },
-  "packageManager": "pnpm@7.15.0",
+  "packageManager": "pnpm@8.6.10",
   "name": "cubik"
 }

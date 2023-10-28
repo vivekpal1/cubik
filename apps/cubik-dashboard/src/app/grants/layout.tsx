@@ -1,5 +1,4 @@
-import { Headers } from "@/components/Headers";
-import React from "react";
+import React from 'react';
 
 interface Props {
   children: React.JSX.Element;
@@ -7,10 +6,7 @@ interface Props {
 const EventLayout = ({ children }: Props) => {
   return (
     <>
-      <div>
-        <Headers />
-        {children}
-      </div>
+      <div>{children}</div>
     </>
   );
 };
