@@ -1,17 +1,17 @@
 import React from 'react';
 
-import PageHOC from '../../components/pageHOC';
+import PageHOC from '../../../home-page-components/components/pageHOC';
 
 const page = () => {
   return (
     <PageHOC
       pages={[
         { name: 'Component', href: '/component', current: false },
-        { name: 'Alert', href: '/component/alert', current: true },
+        { name: 'Toast', href: '/component/toast', current: true },
       ]}
-      heading={'Alert'}
+      heading={'Toast'}
       description={
-        'Use the alert component to display important messages to users.'
+        'Use the toast component to display important messages to users.'
       }
     >
       <></>

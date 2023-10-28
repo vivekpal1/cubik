@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageHOC from '../../components/pageHOC';
+import PageHOC from '../../../home-page-components/components/pageHOC';
 
 const page = () => {
   return (

@@ -5,6 +5,11 @@ export interface INavigationData {
   image?: string;
   description?: string;
   children?: INavigationData[];
+  pages?: {
+    name: string;
+    href: string;
+    current: boolean;
+  }[];
 }
 
 const navigationData: INavigationData[] = [
@@ -12,10 +17,114 @@ const navigationData: INavigationData[] = [
     id: 1,
     name: 'Foundations',
     children: [
-      { id: 11, name: 'Colors', link: '/foundations/colors' },
-      { id: 12, name: 'Border Radius', link: '/foundations/border-radius' },
-      { id: 13, name: 'Spacing', link: '/foundations/spacing' },
-      { id: 14, name: 'Typography', link: '/foundations/typography' },
+      {
+        id: 13,
+        name: 'Design Tokens',
+        link: '/foundations/design-tokens',
+        image: 'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/e352cd92-3205-46cd-22db-74d21331be00/public',
+        pages: [
+          {
+            name: 'Foundations',
+            href: '/foundations',
+            current: false,
+          },
+          {
+            name: 'Design Tokens',
+            href: '/foundations/design-tokens',
+            current: true,
+          },
+        ],
+      },
+      {
+        id: 11,
+        name: 'Colors',
+        link: '/foundations/colors',
+        image: 'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/41fb2c5e-6b14-4fc2-ca95-95acde8f3a00/public',
+        pages: [
+          {
+            name: 'Foundations',
+            href: '/foundations',
+            current: false,
+          },
+          {
+            name: 'Colors',
+            href: '/foundations/colors',
+            current: true,
+          },
+        ],
+      },
+      {
+        id: 12,
+        name: 'Border Radius',
+        link: '/foundations/border-radius',
+        image: 'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/55a9cc2a-aa3c-4ce2-88a7-ded977843900/public',
+        pages: [
+          {
+            name: 'Foundations',
+            href: '/foundations',
+            current: false,
+          },
+          {
+            name: 'Border Radius',
+            href: '/foundations/border-radius',
+            current: true,
+          },
+        ],
+      },
+      {
+        id: 13,
+        name: 'Spacing',
+        link: '/foundations/spacing',
+        image: 'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/3413745c-f202-4188-8e91-b55c1850f000/public',
+        pages: [
+          {
+            name: 'Foundations',
+            href: '/foundations',
+            current: false,
+          },
+          {
+            name: 'Spacing',
+            href: '/foundations/spacing',
+            current: true,
+          },
+        ],
+      },
+      {
+        id: 13,
+        name: 'Dimensions',
+        link: '/foundations/dimensions',
+        image: 'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/8828e05d-0c88-457e-da7b-7b3cc756e800/public',
+        pages: [
+          {
+            name: 'Foundations',
+            href: '/foundations',
+            current: false,
+          },
+          {
+            name: 'Dimensions',
+            href: '/foundations/dimensions',
+            current: true,
+          },
+        ],
+      },
+      {
+        id: 14,
+        name: 'Typography',
+        link: '/foundations/typography',
+        image: 'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/bc608900-2deb-4c7c-ee67-52141cf12800/public',
+        pages: [
+          {
+            name: 'Foundations',
+            href: '/foundations',
+            current: false,
+          },
+          {
+            name: 'Typography',
+            href: '/foundations/typography',
+            current: true,
+          },
+        ],
+      },
     ],
   },
   {
@@ -40,11 +149,11 @@ const navigationData: INavigationData[] = [
         children: [
           {
             id: 221,
-            name: "Tabs",
+            name: 'Tabs',
             image:
-              "https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/84633e96-2577-40b8-ffec-19f3b2bc0e00/public",
-            link: "/component/disclosure/tabs",
-            description: "",
+              'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/84633e96-2577-40b8-ffec-19f3b2bc0e00/public',
+            link: '/component/disclosure/tabs',
+            description: '',
           },
           {
             id: 222,
