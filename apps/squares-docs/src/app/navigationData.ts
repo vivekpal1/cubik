@@ -138,7 +138,7 @@ const navigationData: INavigationData[] = [
           {
             id: 211,
             name: 'Tag',
-            link: '/component/data-display/tag',
+            link: '/components/data-display/tag',
             description: '',
           },
         ],
@@ -152,13 +152,13 @@ const navigationData: INavigationData[] = [
             name: 'Tabs',
             image:
               'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/84633e96-2577-40b8-ffec-19f3b2bc0e00/public',
-            link: '/component/disclosure/tabs',
+            link: '/components/disclosure/tabs',
             description: '',
           },
           {
             id: 222,
             name: 'Accordion',
-            link: '/component/disclosure/accordion',
+            link: '/components/disclosure/accordion',
             description: '',
           },
         ],
@@ -170,13 +170,13 @@ const navigationData: INavigationData[] = [
           {
             id: 231,
             name: 'Alert',
-            link: '/component/feedback/alert',
+            link: '/components/feedback/alert',
             description: '',
           },
           {
             id: 132, // Should this be 232?
             name: 'Toast',
-            link: '/component/feedback/toast',
+            link: '/components/feedback/toast',
             description: '',
           },
         ],
@@ -188,19 +188,19 @@ const navigationData: INavigationData[] = [
           {
             id: 241,
             name: 'Avatar',
-            link: '/component/media/avatar',
+            link: '/components/media/avatar',
             description: '',
           },
           {
             id: 242,
             name: 'Icons',
-            link: '/component/media/icons',
+            link: '/components/media/icons',
             description: '',
           },
           {
             id: 243,
             name: 'Images',
-            link: '/component/media/images',
+            link: '/components/media/images',
             description: '',
           },
         ],
@@ -212,19 +212,19 @@ const navigationData: INavigationData[] = [
           {
             id: 251,
             name: 'Avatar',
-            link: '/component/overlay/avatar',
+            link: '/components/overlay/avatar',
             description: '',
           },
           {
             id: 252,
             name: 'Icons',
-            link: '/component/overlay/icons',
+            link: '/components/overlay/icons',
             description: '',
           },
           {
             id: 253,
             name: 'Images',
-            link: '/component/overlay/images',
+            link: '/components/overlay/images',
             description: '',
           },
         ],
