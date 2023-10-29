@@ -27,10 +27,10 @@ export default function RootLayout({
 }) {
   return (
     <html className="light" lang="en">
-      <body className={`${inter.className} bg-[var(--color-bg-secondary)]`}>
+      <body className={`${inter.className}`}>
         <Background />
         <Header />
-        <div className="Z-1 flex w-full flex-row">
+        <div className="Z-1 flex w-full flex-row bg-[var(--color-bg-secondary)] ">
           <Sidebar />
           {children}
         </div>
