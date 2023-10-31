@@ -121,15 +121,24 @@ const config: Config = {
           to: { opacity: '1', transform: 'translate(-50%, -50%) scale(1)' },
         },
       },
+      fadeIn: {
+        from: { opacity: '0' },
+        to: { opacity: '1' },
+      },
+      fadeOut: {
+        from: { opacity: '1' },
+        to: { opacity: '0' },
+      },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        'fade-in': 'fadeIn 0.3s forwards',
+        'fade-out': 'fadeOut 0.3s forwards',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
   darkMode: 'class',
 };
-export default config;
