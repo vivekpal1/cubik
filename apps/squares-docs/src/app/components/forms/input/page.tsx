@@ -1,87 +1,86 @@
 'use client';
 
 import React from 'react';
+import CodeComponent from '@/app/home-page-components/code-component';
+import PageHOC from '@/app/home-page-components/components/pageHOC';
 
-import { InputField } from '@cubik/ui';
+import { HelperText, Input, InputLabel } from '@cubik/ui';
 
-const Input = () => {
+const InputPage = () => {
   return (
-    <div className="flex flex-col justify-start gap-5 px-10">
-      <div className="font-2xl font-semibold">Input Field</div>
-
-      <div className="space-y-2">
-        <div className="font-lg font-semibold">Normal Input Field</div>
-        <InputField inputSize={'sm'} />
-        <InputField inputSize={'md'} />
+    <PageHOC
+      pages={[
+        { name: 'Component', href: '/component', current: false },
+        {
+          name: 'Input',
+          href: '/component/input',
+          current: true,
+        },
+      ]}
+      heading={'Input'}
+      description=""
+    >
+      <div className="border-[var(--color-border-primary) overflow-hidden rounded-[8px] border bg-[var(--white)] px-6 py-4">
+        <CodeComponent codeString='import { Input } from "@cubik/ui"' />
       </div>
-
-      <div className="space-y-2">
-        <div className="font-lg font-semibold">Placeholder Input Field</div>
-        <InputField inputSize={'sm'} placeholderVariant placeholder="input" />
-        <InputField inputSize={'md'} placeholderVariant placeholder="input" />
-      </div>
-
-      <div className="space-y-2">
-        <div className="font-lg font-semibold">
-          Placeholder left element Input Field
-        </div>
-        <InputField
-          inputSize={'sm'}
-          placeholderVariant
-          placeholder="input"
-          leftElement
-          leftElementContent="USDC"
+      <div className="flex flex-col gap-10">
+        <Input
+          inputvariant="md"
+          isError={false}
+          InputLabel={
+            <InputLabel maxCounterValue={100} counterValue={10} isRequired>
+              Hello world
+            </InputLabel>
+          }
+          helperText={
+            <HelperText variant={'success'} fontSize={'md'}>
+              hello
+            </HelperText>
+          }
         />
-        <InputField
-          inputSize={'md'}
-          placeholderVariant
-          placeholder="input"
-          leftElement
-          leftElementContent="USDC"
+        <Input
+          inputvariant="md"
+          isError={true}
+          InputLabel={
+            <InputLabel maxCounterValue={100} counterValue={10} isRequired>
+              Hello world
+            </InputLabel>
+          }
+          helperText={
+            <HelperText variant={'error'} fontSize={'md'}>
+              hello
+            </HelperText>
+          }
         />
-      </div>
-
-      <div className="space-y-2">
-        <div className="font-lg font-semibold">
-          Placeholder right element Input Field
-        </div>
-        <InputField
-          inputSize={'sm'}
-          placeholderVariant
-          placeholder="input"
-          rightElement
+        <Input
+          inputvariant="md"
+          isError={true}
+          leftElement={<>https://</>}
+          InputLabel={<InputLabel isRequired>Hello world</InputLabel>}
+          helperText={
+            <HelperText variant={'error'} fontSize={'md'}>
+              hello
+            </HelperText>
+          }
         />
-        <InputField
-          inputSize={'md'}
-          placeholderVariant
-          placeholder="input"
-          rightElement
-        />
-      </div>
-
-      <div className="space-y-2">
-        <div className="font-lg font-semibold">
-          Placeholder right and left element Input Field
-        </div>
-        <InputField
-          inputSize={'sm'}
-          placeholderVariant
-          placeholder="input"
-          leftElement
-          rightElement
-          leftElementContent="USDC"
-        />
-        <InputField
-          inputSize={'md'}
-          placeholderVariant
-          placeholder="input"
-          leftElement
-          rightElement
-          leftElementContent="USDC"
+        <Input
+          inputvariant="md"
+          isError={false}
+          rightElement={<>USDC</>}
+          InputLabel={
+            <InputLabel maxCounterValue={100} counterValue={10} isRequired>
+              Hello world
+            </InputLabel>
+          }
+          helperText={
+            <HelperText variant={'error'} fontSize={'md'}>
+              hello
+            </HelperText>
+          }
         />
       </div>
-    </div>
+    </PageHOC>
   );
 };
 
-export default Input;
+export default InputPage;
