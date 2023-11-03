@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react';
 import type {
   Adapter,
   SendTransactionOptions,
