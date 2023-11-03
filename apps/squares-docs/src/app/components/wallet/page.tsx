@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
 import React, { useMemo } from 'react';
@@ -96,7 +97,7 @@ const Page = () => {
           lang: 'en',
         },
       }),
-      [wallets],
+      [notificationCallback, wallets],
     );
 
   return (
