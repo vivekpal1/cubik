@@ -10,7 +10,7 @@ import {
 } from '@solana/wallet-adapter-base';
 import { useToggle } from 'react-use';
 
-import { Icon } from '@cubik/ui';
+import { Icon, Modal, ModalHeader } from '@cubik/ui';
 
 import {
   ICubikTheme,
@@ -310,11 +310,14 @@ const sortByPrecedence =
   };
 
 const CubikWalletModal: React.FC<ICubikWalletModal> = ({ onClose }) => {
+  const { t } = useTranslation();
   const { wallets } = useCubikWallet();
   const { walletPrecedence, handleConnectClick, walletlistExplanation, theme } =
     useCubikWalletContext();
   const [isOpen, onToggle] = useToggle(false);
   const previouslyConnected = usePreviouslyConnected();
+
+  const headingSize = 'md';
 
   const list: {
     highlightedBy: HIGHLIGHTED_BY;
@@ -427,13 +430,20 @@ const CubikWalletModal: React.FC<ICubikWalletModal> = ({ onClose }) => {
   useOutsideClick(contentRef, onClose);
 
   return (
-    <div
-      ref={contentRef}
-      className={`max-w-md w-full relative flex flex-col overflow-hidden rounded-xl max-h-[90vh] lg:max-h-[576px] transition-height duration-500 ease-in-out ${themeClasses.container[theme]}`}
-    >
-      <Header onClose={onClose} theme={theme} />
-      <div className="border-t-[1px] border-white/10" />
-      <ListOfWallets list={list} onToggle={onToggle} isOpen={isOpen} />
+    <div className="z-500">
+      <Modal
+        open={true}
+        onClose={onClose}
+        heading={t('Connect Wallet')}
+        headingSize={headingSize}
+        dialogSize="md"
+        IconComponent={<Icon name={'wallet'} fill="none" />}
+        // RingSVG={<YourRingSVG />}
+      >
+        {/* <Header onClose={onClose} theme={theme} /> */}
+        <div className="border-t-[1px] border-white/10" />
+        <ListOfWallets list={list} onToggle={onToggle} isOpen={isOpen} />
+      </Modal>
     </div>
   );
 };

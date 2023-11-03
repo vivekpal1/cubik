@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useMemo } from 'react';
+import CodeComponent from '@/app/home-page-components/code-component';
 import PageHOC from '@/app/home-page-components/components/pageHOC';
 import {
   CoinbaseWalletAdapter,
@@ -111,6 +112,9 @@ const Page = () => {
         description=""
       >
         <div tw="flex flex-col items-start">
+          <div className="border-[var(--color-border-primary) overflow-hidden rounded-[8px] border bg-[var(--white)] px-6 py-4">
+            <CodeComponent codeString='import { ConnectWalletButton, CubikWalletProvider, WalletAdapterNetwork } from "@cubik/wallet"' />
+          </div>
           <CubikWalletProvider {...params}>
             <ConnectWalletButton />
           </CubikWalletProvider>

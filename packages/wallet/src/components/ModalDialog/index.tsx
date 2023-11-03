@@ -56,20 +56,14 @@ const ModalDialog: React.FC<
       role="dialog"
       aria-modal="true"
       style={{
-        top: 0,
-        left: 0,
-        height: '100%',
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        backdropFilter: 'blur(4px)',
-        borderRadius: '8px',
-        animation: `${isLocalOpen && !open ? 'fade-out' : 'fade-in'} 3s`,
-        cursor: 'auto',
-        zIndex: 50,
-        overflow: 'hidden',
+        zIndex: '-100',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        // backdropFilter: 'blur(4px)',
+        // borderRadius: '8px',
+        // animation: `${isLocalOpen && !open ? 'fade-out' : 'fade-in'} 3s`,
+        // cursor: 'auto',
       }}
       ref={ref}
     >
