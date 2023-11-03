@@ -295,6 +295,18 @@ const navigationData: INavigationData[] = [
           },
         ],
       },
+      {
+        id: 26,
+        name: 'Wallet',
+        children: [
+          {
+            id: 261,
+            name: 'Wallet',
+            link: '/components/wallet',
+            description: '',
+          },
+        ],
+      },
     ],
   },
 ];

@@ -1,22 +1,32 @@
 {
-  "extends": "@cubik/config/tsconfig/react-library.json",
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "removeComments": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "lib": ["dom", "es2015", "es2017.object"],
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "target": "ESNext",
+    "module": "ESNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "isolatedModules": true,
+    "jsxImportSource": "@emotion/react",
+    "noUnusedParameters": false,
+    "noUnusedLocals": false,
+    "noImplicitReturns": false,
+    "noImplicitAny": false,
     "baseUrl": ".",
-    "resolveJsonModule": true
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "paths": {
+      "*": ["node_modules/*"]
+    }
   },
-  "include": ["src/**/*.ts*"],
-  "exclude": ["node_modules", "dist", "lib"]
+  "include": ["src/**/*.tsx", "index.tsx", "types", "lib/index.tsx"],
+  "exclude": ["node_modules", "dist"]
 }

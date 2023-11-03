@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/ban-types */
 import { RefObject, useEffect, useRef } from 'react';
 import { Decimal } from 'decimal.js';
 
@@ -122,7 +124,7 @@ export function useOutsideClick(
   }, [ref, handler]);
 }
 
-export function useDebouncedEffect(fn: () => void, deps: any[], time: number) {
+export function useDebouncedEffect(fn: Function, deps: any[], time: number) {
   const dependencies = [...deps, fn, time];
   useEffect(() => {
     const timeout = setTimeout(fn, time);

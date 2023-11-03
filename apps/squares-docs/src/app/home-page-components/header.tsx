@@ -41,6 +41,12 @@ export default function Header() {
             </div>
           </div>
           <HeaderButtons />
+          <Button 
+          // @ts-ignore
+          onClick={setIsOpen} className='border border-violet-500 dark:text-white' size="sm">Menu</Button>
+          <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
+            <NavigationItems/>
+          </Drawer>
         </div>
       </div>
     </header>

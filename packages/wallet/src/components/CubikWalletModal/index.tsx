@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+'use client';
+
 import React, { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { SolanaMobileWalletAdapterWalletName } from '@solana-mobile/wallet-adapter-mobile';
 import {
@@ -9,61 +12,80 @@ import { useToggle } from 'react-use';
 
 import { Icon } from '@cubik/ui';
 
-import { usePreviouslyConnected } from '../contexts/previouslyConnectedProvider';
-import { useTranslation } from '../contexts/TranslationProvider';
-import { UseWallet, useWalletContext } from '../contexts/WalletContext';
-import { isMobile, useOutsideClick } from '../utils';
-import Collapse from './Collapse';
-import OnboardingFlow from './OnboardingFlow';
+import {
+  ICubikTheme,
+  useCubikWallet,
+  useCubikWalletContext,
+} from '../../contexts/CubikWalletContext';
+import { useTranslation } from '../../contexts/TranslationProvider';
+import { usePreviouslyConnected } from '../../contexts/WalletConnectionProvider/previouslyConnectedProvider';
+import { isMobile, useOutsideClick } from '../../libs/utils';
+import Collapse from '../Collapse';
+import { OnboardingFlow } from './OnboardingFlow';
 import { WalletIcon, WalletListItem } from './WalletListItem';
 
-const styles = {
+const themeClasses = {
   container: {
-    light: 'text-black bg-white shadow-xl',
-    dark: 'text-white bg-[#3A3B43] border border-white/10',
-    jupiter: 'text-white bg-[rgb(49,62,76)]',
+    light: 'text-black bg-transparent shadow-xl',
+    dark: 'text-gray-200 bg-[#3A3B43] border border-white/10',
+    cubik: 'text-white bg-[rgb(49, 62, 76)]',
   },
   shades: {
-    light: 'bg-gradient-to-t from-[#ffffff] to-transparent pointer-events-none',
+    light: 'bg-gradient-to-t from-white to-transparent pointer-events-none',
     dark: 'bg-gradient-to-t from-[#3A3B43] to-transparent pointer-events-none',
-    jupiter:
-      'bg-gradient-to-t from-[rgb(49,62,76)] to-transparent pointer-events-none',
+    cubik:
+      'bg-gradient-to-t from-[rgb(49, 62, 76)] to-transparent pointer-events-none',
   },
   walletItem: {
     light: 'bg-gray-50 hover:shadow-lg hover:border-black/10',
     dark: 'hover:shadow-2xl hover:bg-white/10',
-    jupiter: 'hover:shadow-2xl hover:bg-white/10',
+    cubik: 'hover:shadow-2xl hover:bg-white/10',
   },
   subtitle: {
     light: 'text-black/50',
     dark: 'text-white/50',
-    jupiter: 'text-white/50',
+    cubik: 'text-white/50',
   },
   header: {
     light: 'border-b',
     dark: '',
-    jupiter: '',
+    cubik: '',
   },
 };
 
-const Header = ({ onClose }) => {
-  const { theme } = useWalletContext();
+type HeaderProps = {
+  onClose: () => void;
+  theme: ICubikTheme;
+};
+
+const Header: React.FC<HeaderProps> = ({ onClose, theme }) => {
   const { t } = useTranslation();
 
   return (
     <div
-      className={`px-5 py-6 flex justify-between leading-none ${styles.header[theme]}`}
+      className={`px-5 py-6 flex justify-between items-center ${
+        theme === 'light' ? 'border-b' : ''
+      }`}
     >
       <div>
         <div className="font-semibold">
           <span>{t(`Connect Wallet`)}</span>
         </div>
-        <div className={`text-xs mt-1 ${styles.subtitle[theme]}`}>
+        <div
+          className={`text-xs mt-1 ${
+            theme === 'light'
+              ? 'text-black/50'
+              : theme === 'dark'
+              ? 'text-white/50'
+              : 'text-white/50'
+          }`}
+        >
           <span>{t(`You need to connect a Solana wallet.`)}</span>
         </div>
       </div>
+
       <button className="absolute top-4 right-4" onClick={onClose}>
-        <Icon name="cross" width={12} height={12} />
+        <Icon name="cross" fill="none" width={12} height={12} />
       </button>
     </div>
   );
@@ -79,7 +101,7 @@ const ListOfWallets: React.FC<{
   isOpen: boolean;
 }> = ({ list, onToggle, isOpen }) => {
   const { handleConnectClick, walletlistExplanation, theme } =
-    useWalletContext();
+    useCubikWalletContext();
   const { t } = useTranslation();
   const [showOnboarding, setShowOnboarding] = useState(false);
 
@@ -87,16 +109,14 @@ const ListOfWallets: React.FC<{
     () => (
       <div>
         <div className="mt-4 grid gap-2 grid-cols-2 pb-4" translate="no">
-          {list.others.map((adapter, index) => {
-            return (
-              <ul key={index}>
-                <WalletListItem
-                  handleClick={(event) => handleConnectClick(event, adapter)}
-                  wallet={adapter}
-                />
-              </ul>
-            );
-          })}
+          {list.others.map((adapter, index) => (
+            <ul key={index}>
+              <WalletListItem
+                handleClick={(event) => handleConnectClick(event, adapter)}
+                wallet={adapter}
+              />
+            </ul>
+          ))}
         </div>
         {list.highlightedBy !== 'Onboarding' && walletlistExplanation ? (
           <div
@@ -115,7 +135,13 @@ const ListOfWallets: React.FC<{
         ) : null}
       </div>
     ),
-    [handleConnectClick, list.others],
+    [
+      handleConnectClick,
+      list.highlightedBy,
+      list.others,
+      t,
+      walletlistExplanation,
+    ],
   );
 
   const hasNoWallets = useMemo(() => {
@@ -153,23 +179,22 @@ const ListOfWallets: React.FC<{
         </span>
         <div className="mt-4 flex flex-col lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
           {list.highlight.map((adapter, idx) => {
-            const adapterName = (() => {
-              if (adapter.name === SolanaMobileWalletAdapterWalletName)
-                return t(`Mobile`);
-              return adapter.name;
-            })();
+            const adapterName =
+              adapter.name === SolanaMobileWalletAdapterWalletName
+                ? t(`Mobile`)
+                : adapter.name;
 
             return (
               <div
                 key={idx}
                 onClick={(event) => handleConnectClick(event, adapter)}
-                className={`p-4 lg:p-5 border border-white/10 rounded-lg flex lg:flex-col items-center lg:justify-center cursor-pointer flex-1 lg:max-w-[33%] hover:backdrop-blur-xl transition-all ${styles.walletItem[theme]}`}
+                className={`p-4 lg:p-5 border border-white/10 rounded-lg flex lg:flex-col items-center lg:justify-center cursor-pointer flex-1 lg:max-w-[33%] hover:backdrop-blur-xl transition-all ${themeClasses.walletItem[theme]}`}
               >
-                {isMobile() ? (
-                  <WalletIcon wallet={adapter} width={24} height={24} />
-                ) : (
-                  <WalletIcon wallet={adapter} width={30} height={30} />
-                )}
+                <WalletIcon
+                  wallet={adapter}
+                  width={isMobile() ? 24 : 30}
+                  height={isMobile() ? 24 : 30}
+                />
                 <span className="font-semibold text-xs ml-4 lg:ml-0 lg:mt-3">
                   {adapterName}
                 </span>
@@ -201,11 +226,11 @@ const ListOfWallets: React.FC<{
               </span>
 
               <div className="flex items-center">
-                <span className="w-10 h-6">
+                <span className="w-[10px] h-[6px]">
                   {isOpen ? (
-                    <Icon name="chevronUp" />
+                    <Icon name="chevronUp" fill="none" />
                   ) : (
-                    <Icon name="chevronDown" />
+                    <Icon name="chevronDown" fill="none" />
                   )}
                 </span>
               </div>
@@ -227,7 +252,7 @@ const ListOfWallets: React.FC<{
       {isOpen && list.others.length > 6 ? (
         <>
           <div
-            className={`block w-full h-20 absolute left-0 bottom-7 z-50 ${styles.shades[theme]}`}
+            className={`block w-full h-20 absolute left-0 bottom-7 z-50 ${themeClasses.shades[theme]}`}
           />
         </>
       ) : null}
@@ -260,8 +285,7 @@ const TOP_WALLETS: WalletName[] = [
   'Backpack' as WalletName<'Backpack'>,
 ];
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface IUnifiedWalletModal {
+interface ICubikWalletModal {
   onClose: () => void;
 }
 
@@ -285,10 +309,10 @@ const sortByPrecedence =
     return 0;
   };
 
-const WalletModal = ({ onClose }) => {
-  const { wallets } = UseWallet();
+const CubikWalletModal: React.FC<ICubikWalletModal> = ({ onClose }) => {
+  const { wallets } = useCubikWallet();
   const { walletPrecedence, handleConnectClick, walletlistExplanation, theme } =
-    useWalletContext();
+    useCubikWalletContext();
   const [isOpen, onToggle] = useToggle(false);
   const previouslyConnected = usePreviouslyConnected();
 
@@ -369,6 +393,7 @@ const WalletModal = ({ onClose }) => {
         others,
       };
     }
+
     if (filteredAdapters.installed.length > 0) {
       const { installed, ...rest } = filteredAdapters;
       const highlight = filteredAdapters.installed.slice(0, 3);
@@ -396,7 +421,7 @@ const WalletModal = ({ onClose }) => {
       .sort((a, b) => PRIORITISE[a.readyState] - PRIORITISE[b.readyState])
       .sort(sortByPrecedence(walletPrecedence || []));
     return { highlightedBy: 'TopWallet', highlight: top3, others };
-  }, [wallets, previouslyConnected]);
+  }, [wallets, walletPrecedence, previouslyConnected]);
 
   const contentRef = useRef<HTMLDivElement>(null);
   useOutsideClick(contentRef, onClose);
@@ -404,13 +429,13 @@ const WalletModal = ({ onClose }) => {
   return (
     <div
       ref={contentRef}
-      className={`max-w-md w-full relative flex flex-col overflow-hidden rounded-xl max-h-[90vh] lg:max-h-[576px] transition-height duration-500 ease-in-out ${styles.container[theme]}`}
+      className={`max-w-md w-full relative flex flex-col overflow-hidden rounded-xl max-h-[90vh] lg:max-h-[576px] transition-height duration-500 ease-in-out ${themeClasses.container[theme]}`}
     >
-      <Header onClose={onClose} />
+      <Header onClose={onClose} theme={theme} />
       <div className="border-t-[1px] border-white/10" />
       <ListOfWallets list={list} onToggle={onToggle} isOpen={isOpen} />
     </div>
   );
 };
 
-export default WalletModal;
+export default CubikWalletModal;

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useMemo } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 
-import { WRAPPED_SOL_MINT } from '../constants';
 import { useAccounts } from '../contexts/accounts';
-import { shortenAddress } from '../utils';
+import { WRAPPED_SOL_MINT } from '../libs/constants';
+import { shortenAddress } from '../libs/utils';
 
 export const CurrentUserBadge: React.FC<{
   onClick?: () => void;
@@ -12,13 +13,12 @@ export const CurrentUserBadge: React.FC<{
   const { wallet, publicKey } = useWallet();
   const { accounts } = useAccounts();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const solBalance = useMemo(() => {
     if (accounts[WRAPPED_SOL_MINT.toString()]) {
       return accounts[WRAPPED_SOL_MINT.toString()].balance;
     }
     return 0;
-  }, [publicKey, accounts]);
+  }, [accounts]);
 
   if (!wallet || !publicKey) {
     return null;

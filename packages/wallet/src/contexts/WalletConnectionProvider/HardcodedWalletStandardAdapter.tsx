@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
   BaseSignerWalletAdapter,
   isVersionedTransaction,
@@ -19,13 +20,18 @@ export interface IHardcodedWalletStandardAdapter {
   icon: string;
 }
 
+enum LocalTransactionVersion {
+  Legacy = 'legacy',
+  Version0 = 0,
+}
+
 export default class HardcodedWalletStandardAdapter extends BaseSignerWalletAdapter {
   name = '' as WalletName;
   url = '';
   icon = '';
-  supportedTransactionVersions: ReadonlySet<TransactionVersion> = new Set([
-    'legacy',
-    0,
+  supportedTransactionVersions: ReadonlySet<LocalTransactionVersion> = new Set([
+    LocalTransactionVersion.Legacy,
+    LocalTransactionVersion.Version0,
   ]);
 
   /**

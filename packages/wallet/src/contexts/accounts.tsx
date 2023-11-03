@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   PropsWithChildren,
   useContext,
@@ -9,8 +10,8 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { PublicKey } from '@solana/web3.js';
 import BN from 'bn.js';
 
-import { WRAPPED_SOL_MINT } from '../constants';
-import { fromLamports } from '../utils';
+import { WRAPPED_SOL_MINT } from '../libs/constants';
+import { fromLamports } from '../libs/utils';
 
 export interface IAccountsBalance {
   balance: number;
@@ -111,6 +112,7 @@ const AccountsProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const refresh = async () => {
     if (!publicKey) return;
 
+    // Fetch all tokens balance
     const [nativeAccount, accounts] = await Promise.all([
       fetchNative(),
       fetchAllTokens(),

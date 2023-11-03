@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { FC, PropsWithChildren, useMemo } from 'react';
 import {
   createDefaultAddressSelector,
@@ -14,8 +15,8 @@ import {
 import { WalletProvider } from '@solana/wallet-adapter-react';
 import { Cluster } from '@solana/web3.js';
 
+import { ICubikTheme } from '../CubikWalletContext';
 import { AllLanguage } from '../TranslationProvider/i18n';
-import { ITheme } from '../WalletContext';
 import HardcodedWalletStandardAdapter, {
   IHardcodedWalletStandardAdapter,
 } from './HardcodedWalletStandardAdapter';
@@ -37,10 +38,10 @@ export interface IWalletNotification {
   };
 }
 
-export interface IWalletConfig {
+export interface ICubikWalletConfig {
   autoConnect: boolean;
-  metadata: IWalletMetadata;
-  env: Cluster;
+  metadata?: any;
+  env?: any;
   walletPrecedence?: WalletName[];
   hardcodedWallets?: IHardcodedWalletStandardAdapter[];
   notificationCallback?: {
@@ -55,11 +56,11 @@ export interface IWalletConfig {
     href: string;
   };
   // Default to light
-  theme?: ITheme;
+  theme: string;
   lang?: AllLanguage;
 }
 
-export interface IWalletMetadata {
+export interface ICubikWalletMetadata {
   name: string;
   url: string;
   description: string;
@@ -70,7 +71,7 @@ export interface IWalletMetadata {
 const WalletConnectionProvider: FC<
   PropsWithChildren & {
     wallets: Adapter[];
-    config: IWalletConfig;
+    config: ICubikWalletConfig;
   }
 > = ({ wallets: passedWallets, config, children }) => {
   const wallets = useMemo(() => {
@@ -93,7 +94,13 @@ const WalletConnectionProvider: FC<
         (item) => new HardcodedWalletStandardAdapter(item),
       ),
     ];
-  }, []);
+  }, [
+    config.env,
+    config.hardcodedWallets,
+    config.metadata.name,
+    config.metadata.url,
+    passedWallets,
+  ]);
 
   return (
     <WalletProvider

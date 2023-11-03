@@ -1,55 +1,69 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useRef, useState } from 'react';
 
 import { Icon } from '@cubik/ui';
 
-import { HARDCODED_WALLET_STANDARDS } from '../constants';
-import { useTranslation } from '../contexts/TranslationProvider';
-import { ITheme, useWalletContext } from '../contexts/WalletContext';
+import {
+  ICubikTheme,
+  useCubikWalletContext,
+} from '../../contexts/CubikWalletContext';
+import { useTranslation } from '../../contexts/TranslationProvider';
+import { HARDCODED_WALLET_STANDARDS } from '../../libs/constants';
 
-const styles: Record<string, { [key in ITheme]: string }> = {
+const themeClasses = {
   subtitle: {
-    light: 'text-black/70',
-    dark: 'text-white/50',
-    cubik: 'text-white/50',
+    light: ['text-color-light', 'other-light-styles'],
+    dark: ['text-color-dark', 'other-dark-styles'],
+    cubik: ['text-color-cubik', 'other-cubik-styles'],
   },
   button: {
-    light: 'bg-[#31333B] text-white hover:bg-black',
-    dark: 'bg-[#31333B] hover:bg-black/30',
-    cubik: 'bg-black hover:bg-black/50',
+    light: ['button-styles-light', 'other-button-styles'],
+    dark: ['button-styles-dark', 'other-button-styles'],
+    cubik: ['button-styles-cubik', 'other-cubik-styles'],
   },
   walletButton: {
-    light: 'bg-[#F9FAFB] hover:bg-black/5',
-    dark: 'bg-white/10 hover:bg-white/20 border border-white/10 shadow-lg',
-    cubik: 'bg-white/5 hover:bg-white/20 border border-white/10 shadow-lg',
+    light: ['wallet-button-styles-light', 'other-wallet-button-styles'],
+    dark: ['wallet-button-styles-dark', 'other-wallet-button-styles'],
+    cubik: ['wallet-button-styles-cubik', 'other-cubik-styles'],
   },
-  Icon: {
-    light: 'text-black/30',
-    dark: 'text-white/30',
-    cubik: 'text-white/30',
+  externalIcon: {
+    light: ['external-icon-styles-light', 'other-external-icon-styles'],
+    dark: ['external-icon-styles-dark', 'other-external-icon-styles'],
+    cubik: ['external-icon-styles-cubik', 'other-cubik-styles'],
   },
 };
 
-export const OnboardingIntro: React.FC<{
+type OnboardingIntroProps = {
   flow: IOnboardingFlow;
   setFlow: (flow: IOnboardingFlow) => void;
   onClose: () => void;
   showBack: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-}> = ({ flow, setFlow, onClose, showBack }) => {
-  const { theme } = useWalletContext();
+};
+
+export const OnboardingIntro = ({
+  flow,
+  setFlow,
+  onClose,
+  showBack,
+}: OnboardingIntroProps) => {
+  const { theme } = useCubikWalletContext();
   const { t } = useTranslation();
 
   return (
     <div className="flex flex-col justify-center items-center p-10">
       <img
-        src={'https://unified.jup.ag/new_user_onboarding.png'}
+        src={'https://Cubik.jup.ag/new_user_onboarding.png'}
         width={160}
         height={160}
       />
 
       <div className="mt-4 flex flex-col justify-center items-center text-center">
         <span className="text-lg font-semibold">{t(`New here?`)}</span>
-        <span className={`mt-3 text-sm ${styles.subtitle[theme]}`}>
+        <span
+          className={`mt-3 text-sm ${themeClasses.subtitle[theme].join(' ')}`}
+        >
           {t(`Welcome to DeFi! Create a crypto wallet to get started!`)}
         </span>
       </div>
@@ -57,7 +71,9 @@ export const OnboardingIntro: React.FC<{
       <div className="mt-6 w-full">
         <button
           type="button"
-          className={`text-white font-semibold text-base w-full rounded-lg border border-white/10 py-5 leading-none ${styles.button[theme]}`}
+          className={`text-white font-semibold text-base w-full rounded-lg border border-white/10 py-5 leading-none ${themeClasses.button[
+            theme
+          ].join(' ')}`}
           onClick={() => setFlow('Get Wallet')}
         >
           {t(`Get Started`)}
@@ -66,8 +82,10 @@ export const OnboardingIntro: React.FC<{
       {showBack && (
         <button
           type="button"
-          className={`mt-3 text-xs text-white/50 font-semibold ${styles.subtitle[theme]}`}
-          onClick={() => onClose()}
+          className={`mt-3 text-xs text-white/50 font-semibold ${themeClasses.subtitle[
+            theme
+          ].join(' ')}`}
+          onClick={onClose}
         >
           {'← ' + t(`Go back`)}
         </button>
@@ -76,15 +94,11 @@ export const OnboardingIntro: React.FC<{
   );
 };
 
-export const OnboardingGetWallets: React.FC<{
+const OnboardingGetWallets: React.FC<{
   flow: IOnboardingFlow;
   setFlow: (flow: IOnboardingFlow) => void;
-}> = ({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  flow,
-  setFlow,
-}) => {
-  const { theme } = useWalletContext();
+}> = ({ flow, setFlow }) => {
+  const { theme } = useCubikWalletContext();
   const { t } = useTranslation();
 
   return (
@@ -99,7 +113,9 @@ export const OnboardingGetWallets: React.FC<{
               href={item.url}
               key={idx}
               target="_blank"
-              className={`px-5 py-4 flex space-x-4 w-full rounded-lg text-sm font-semibold items-center ${styles.walletButton[theme]}`}
+              className={`px-5 py-4 flex space-x-4 w-full rounded-lg text-sm font-semibold items-center ${themeClasses.walletButton[
+                theme
+              ].join(' ')}`}
             >
               <img src={item.icon} width={20} height={20} alt={item.name} />
               <span>{item.name}</span>
@@ -110,10 +126,14 @@ export const OnboardingGetWallets: React.FC<{
         <a
           href={'https://station.jup.ag/partners?category=Wallets'}
           target="_blank"
-          className={`px-5 py-4 flex space-x-4 w-full rounded-lg text-sm font-semibold items-center ${styles.walletButton[theme]}`}
+          className={`px-5 py-4 flex space-x-4 w-full rounded-lg text-sm font-semibold items-center ${themeClasses.walletButton[
+            theme
+          ].join(' ')}`}
         >
           <div
-            className={`fill-current w-5 h-5 flex items-center p-0.5 ${styles.externalIcon[theme]}`}
+            className={`fill-current w-5 h-5 flex items-center p-0.5 ${themeClasses.externalIcon[
+              theme
+            ].join(' ')}`}
           >
             <Icon name="externalLink2" width={16} height={16} />
           </div>
@@ -121,12 +141,18 @@ export const OnboardingGetWallets: React.FC<{
         </a>
       </div>
 
-      <span className={`mt-3 text-center text-xs ${styles.subtitle[theme]}`}>
+      <span
+        className={`mt-3 text-center text-xs ${themeClasses.subtitle[
+          theme
+        ].join(' ')}`}
+      >
         {t(`Once installed, refresh this page`)}
       </span>
       <button
         type="button"
-        className={`mt-3 text-xs text-white/50 font-semibold ${styles.subtitle[theme]}`}
+        className={`mt-3 text-xs text-white/50 font-semibold ${themeClasses.subtitle[
+          theme
+        ].join(' ')}`}
         onClick={() => setFlow('Onboarding')}
       >
         {'← ' + t(`Go back`)}
@@ -160,8 +186,8 @@ export const OnboardingFlow = ({
   return (
     <div
       ref={contentRef}
-      className={`duration-500 animate-fade-in overflow-y-scroll ${
-        animateOut ? 'animate-fade-out opacity-0' : ''
+      className={`duration-500 overflow-y-scroll ${
+        animateOut ? 'animate-fade-out opacity-0' : 'animate-fade-in'
       } hideScrollbar`}
     >
       {flow === 'Onboarding' ? (
@@ -178,5 +204,3 @@ export const OnboardingFlow = ({
     </div>
   );
 };
-
-export default OnboardingFlow;

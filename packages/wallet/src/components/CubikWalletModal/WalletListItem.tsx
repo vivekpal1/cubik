@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+'use client';
+
 import React, {
   DetailedHTMLProps,
   FC,
@@ -11,9 +15,12 @@ import { Adapter } from '@solana/wallet-adapter-base';
 
 import { Icon } from '@cubik/ui';
 
-import { useTranslation } from '../contexts/TranslationProvider';
-import { ITheme, useWalletContext } from '../contexts/WalletContext';
-import { isMobile } from '../utils';
+import {
+  ICubikTheme,
+  useCubikWalletContext,
+} from '../../contexts/CubikWalletContext';
+import { useTranslation } from '../../contexts/TranslationProvider';
+import { isMobile } from '../../libs/utils';
 
 export interface WalletIconProps
   extends DetailedHTMLProps<
@@ -25,11 +32,11 @@ export interface WalletIconProps
   height?: number;
 }
 
-const styles: Record<string, { [key in ITheme]: string[] }> = {
+const styles = {
   container: {
-    light: ['bg-gray-50', 'hover:shadow-lg', 'hover:border-black/10'],
-    dark: ['hover:shadow-2xl', 'hover:bg-white/10'],
-    cubik: ['hover:shadow-2xl', 'hover:bg-white/10'],
+    light: 'bg-gray-50 hover:shadow-lg hover:border-black/10',
+    dark: 'hover:shadow-2xl hover:bg-white/10',
+    cubik: 'hover:shadow-2xl hover:bg-white/10',
   },
 };
 
@@ -51,7 +58,7 @@ export const WalletIcon: FC<WalletIconProps> = ({
           height={height}
           src={wallet.icon}
           alt={`${wallet.name} icon`}
-          className="object-contain"
+          tw="object-contain"
           onError={onError}
         />
       </div>
@@ -74,21 +81,25 @@ export const WalletListItem = ({
   handleClick,
   wallet,
 }: WalletListItemProps) => {
-  const { theme } = useWalletContext();
+  const { theme } = useCubikWalletContext();
   const { t } = useTranslation();
 
   const adapterName = useMemo(() => {
     if (!wallet) return '';
     if (wallet.name === SolanaMobileWalletAdapterWalletName) return t(`Mobile`);
     return wallet.name;
-  }, [wallet?.name]);
+  }, [t, wallet]);
 
   return (
     <li
       onClick={handleClick}
-      className={`flex items-center px-5 py-4 space-x-5 cursor-pointer border border-white/10 rounded-lg hover:bg-white/10 hover:backdrop-blur-xl hover:shadow-2xl transition-all ${styles.container[
-        theme
-      ].join(' ')}`}
+      className={`flex items-center px-5 py-4 space-x-5 cursor-pointer border border-white/10 rounded-lg hover:bg-white/10 hover:backdrop-blur-xl hover:shadow-2xl transition-all ${
+        theme === 'light'
+          ? 'bg-gray-50 hover:shadow-lg hover:border-black/10'
+          : theme === 'dark'
+          ? 'hover:shadow-2xl hover:bg-white/10'
+          : 'hover:shadow-2xl hover:bg-white/10' // assuming 'cubik' theme has the same style as 'dark'
+      }`}
     >
       {isMobile() ? (
         <WalletIcon wallet={wallet} width={24} height={24} />

@@ -1,3 +1,5 @@
+'use client';
+
 import React, {
   PropsWithChildren,
   useCallback,
@@ -7,7 +9,7 @@ import React, {
 } from 'react';
 
 const ModalDialog: React.FC<
-  { open: boolean; onClose: () => void } & PropsWithChildren<any>
+  { open: boolean; onClose: () => void } & PropsWithChildren
 > = ({ open, onClose: onCloseFunc, children }) => {
   const ref = useRef<HTMLDialogElement>(null);
 
@@ -20,7 +22,7 @@ const ModalDialog: React.FC<
         setIsLocalOpen(open);
       }, 150);
     }
-  }, [open]);
+  }, [isLocalOpen, open]);
 
   const onClose = useCallback(() => {
     ref.current?.close();
@@ -28,38 +30,34 @@ const ModalDialog: React.FC<
   }, [onCloseFunc, ref]);
 
   useEffect(() => {
-    if (ref.current) {
+    const refNode = ref.current;
+    if (refNode) {
       if (isLocalOpen) {
-        if (!ref.current.open) {
-          ref.current.showModal();
+        if (!refNode.open) {
+          refNode.showModal();
         }
       } else {
-        ref.current.close();
+        refNode.close();
       }
-    }
 
-    // Make sure when `ESC` (browser default) is clicked, we close the dialog
-    if (isLocalOpen) {
-      const refNode = ref.current;
-      refNode?.addEventListener('close', onClose);
+      // Add the event listener when the modal is open
+      refNode.addEventListener('close', onClose);
+
+      // Clean-up function to remove the event listener
       return () => {
-        refNode?.removeEventListener('close', onClose);
+        refNode.removeEventListener('close', onClose);
       };
     }
   }, [onClose, isLocalOpen]);
 
-  const baseClasses =
-    'top-0 left-0 h-full w-full flex items-center justify-center bg-black bg-opacity-25 backdrop-blur-sm cursor-auto z-50';
-  const animationClasses =
-    isLocalOpen && !open ? 'animate-fade-out opacity-0' : 'animate-fade-in';
-
   if (!isLocalOpen) return null;
-
   return (
     <dialog
       role="dialog"
       aria-modal="true"
-      className={`${baseClasses} ${animationClasses}`}
+      className={`top-0 left-0 h-full w-full flex items-center justify-center bg-white opacity-40 backdrop-blur-sm animate-fade-in cursor-auto z-50 ${
+        isLocalOpen && !open ? 'animate-fade-out opacity-40' : ''
+      }`}
       ref={ref}
     >
       {children}

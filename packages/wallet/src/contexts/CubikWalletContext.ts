@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, useContext } from 'react';
 import type {
   Adapter,
@@ -11,24 +12,24 @@ import type {
   VersionedTransaction,
 } from '@solana/web3.js';
 
-import { IWalletConfig } from './WalletConnectionProvider';
+import { ICubikWalletConfig } from './WalletConnectionProvider';
 
 export const MWA_NOT_FOUND_ERROR = 'MWA_NOT_FOUND_ERROR';
-export type ITheme = 'light' | 'dark' | 'cubik';
+export type ICubikTheme = 'light' | 'dark' | 'cubik';
 
-export interface IWalletContext {
-  walletPrecedence: IWalletConfig['walletPrecedence'];
+export interface ICubikWalletContext {
+  walletPrecedence: ICubikWalletConfig['walletPrecedence'];
   handleConnectClick: (
     event: React.MouseEvent<HTMLElement, globalThis.MouseEvent>,
     wallet: Adapter,
   ) => Promise<void>;
   showModal: boolean;
   setShowModal: (showModal: boolean) => void;
-  walletlistExplanation: IWalletConfig['walletlistExplanation'];
-  theme: ITheme;
+  walletlistExplanation: ICubikWalletConfig['walletlistExplanation'];
+  theme: ICubikTheme;
 }
 
-export const WalletContext = createContext<IWalletContext>({
+export const CubikWalletContext = createContext<ICubikWalletContext>({
   walletPrecedence: [],
   handleConnectClick: async (
     event: React.MouseEvent<HTMLElement, globalThis.MouseEvent>,
@@ -55,7 +56,7 @@ function constructMissingProviderErrorMessage(
   );
 }
 
-export const WALLET_VALUE_DEFAULT_CONTEXT = {
+export const Cubik_WALLET_VALUE_DEFAULT_CONTEXT = {
   autoConnect: false,
   connecting: false,
   connected: false,
@@ -105,15 +106,15 @@ export const WALLET_VALUE_DEFAULT_CONTEXT = {
   },
 } as WalletContextState;
 
-export const WalletValueContext = createContext<WalletContextState>(
-  WALLET_VALUE_DEFAULT_CONTEXT,
+export const CubikWalletValueContext = createContext<WalletContextState>(
+  Cubik_WALLET_VALUE_DEFAULT_CONTEXT,
 );
 
 // Interal context for use within the library
-export const useWalletContext = (): IWalletContext => {
-  return useContext(WalletContext);
+export const useCubikWalletContext = (): ICubikWalletContext => {
+  return useContext(CubikWalletContext);
 };
 
-export const UseWallet = (): WalletContextState => {
-  return useContext(WalletValueContext);
+export const useCubikWallet = (): WalletContextState => {
+  return useContext(CubikWalletValueContext);
 };

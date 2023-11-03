@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useContext, useEffect } from 'react';
 import { useLocalStorage, useWallet } from '@solana/wallet-adapter-react';
 
@@ -15,7 +17,7 @@ const PreviouslyConnectedProvider: React.FC<{ children: React.ReactNode }> = ({
     if (connected && wallet) {
       // make sure the most recently connected wallet is first
       const combined = new Set([wallet.adapter.name, ...previouslyConnected]);
-      setPreviouslyConnected([...combined]);
+      setPreviouslyConnected(Array.from(combined));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [wallet, connected]);
