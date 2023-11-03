@@ -6,7 +6,7 @@ export const metadata = {
   url: 'https://cubik.so',
   iconUrls: ['https://cubik.so/favicon.ico'],
   additionalInfo: '',
-  walletConnectProjectId: '4a4e231c4004ef7b77076a87094fba61',
+  walletConnectProjectId: 'a1ff171476359193e707245dedb0a333',
 };
 
 export type WalletAdapterWithMutableSupportedTransactionVersions<T> = Omit<

@@ -93,7 +93,7 @@ const Page = () => {
           walletlistExplanation: {
             href: 'https://squaredocs.cubik.so/wallet/wallet-list',
           },
-          theme: 'dark',
+          theme: 'cubik',
           lang: 'en',
         },
       }),

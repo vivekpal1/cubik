@@ -53,12 +53,7 @@ export const OnboardingIntro = ({
 
   return (
     <div className="flex flex-col justify-center items-center p-10">
-      <img
-        src={'https://Cubik.jup.ag/new_user_onboarding.png'}
-        width={160}
-        height={160}
-      />
-
+      <img src={'/sol-wallet.png'} width={160} height={160} />
       <div className="mt-4 flex flex-col justify-center items-center text-center">
         <span className="text-lg font-semibold">{t(`New here?`)}</span>
         <span

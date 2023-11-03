@@ -55,9 +55,22 @@ const ModalDialog: React.FC<
     <dialog
       role="dialog"
       aria-modal="true"
-      className={`top-0 left-0 h-full w-full flex items-center justify-center bg-white opacity-40 backdrop-blur-sm animate-fade-in cursor-auto z-50 ${
-        isLocalOpen && !open ? 'animate-fade-out opacity-40' : ''
-      }`}
+      style={{
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        backdropFilter: 'blur(4px)',
+        borderRadius: '8px',
+        animation: `${isLocalOpen && !open ? 'fade-out' : 'fade-in'} 3s`,
+        cursor: 'auto',
+        zIndex: 50,
+        overflow: 'hidden',
+      }}
       ref={ref}
     >
       {children}
