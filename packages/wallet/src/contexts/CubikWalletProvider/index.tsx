@@ -246,20 +246,17 @@ const CubikWalletContextProvider: React.FC<CubikWalletContextProviderProps> = ({
   return (
     <CubikWalletContext.Provider
       value={{
-        // ... (other context values)
         handleConnectClick,
-        showModal: showCubikWalletModal, // Change to control CubikWalletModal independently
-        setShowModal: setShowCubikWalletModal, // Change to control CubikWalletModal independently
+        showModal: showCubikWalletModal,
+        setShowModal: setShowCubikWalletModal,
         walletlistExplanation: config.walletlistExplanation,
-        theme: 'cubik',
+        theme: config.theme as ICubikTheme,
+        walletPrecedence: config.walletPrecedence,
       }}
     >
-      {/* You can remove ModalDialog or set it to not display based on your requirements */}
       {/* <ModalDialog open={showModal} onClose={handleCloseModal}>
         {/* ModalDialog content would go here if needed */}
       {/* </ModalDialog> */}
-
-      {/* Render CubikWalletModal independently */}
       {showCubikWalletModal && <CubikWalletModal onClose={handleCloseModal} />}
 
       {children}
