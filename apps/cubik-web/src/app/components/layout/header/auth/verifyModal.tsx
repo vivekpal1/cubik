@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { WalletAddress } from '@/app/components/common/wallet';
 import type { User } from '@/app/context/user';
 import type { AuthVerifyReturn } from '@/types/auth';
