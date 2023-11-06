@@ -442,20 +442,16 @@ const CubikWalletModal: React.FC<ICubikWalletModal> = ({ onClose }) => {
   useOutsideClick(contentRef, onClose);
 
   return (
-    <div>
-      <Modal
-        open={true}
-        onClose={onClose}
+    <Modal open={true} onClose={onClose} dialogSize="md">
+      <ModalHeader
         heading={t('Connect Wallet')}
         headingSize={headingSize}
-        dialogSize="md"
+        onClose={onClose}
         IconComponent={<Icon name={'wallet'} fill="none" />}
-      >
-        {/* <Header onClose={onClose} theme={theme} /> */}
-        <div className="border-t-[1px] border-white/10" />
-        <ListOfWallets list={list} onToggle={onToggle} isOpen={isOpen} />
-      </Modal>
-    </div>
+      />
+      <div className="border-t-[1px] border-white/10" />
+      <ListOfWallets list={list} onToggle={onToggle} isOpen={isOpen} />
+    </Modal>
   );
 };
 
