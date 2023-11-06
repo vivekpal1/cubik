@@ -170,14 +170,19 @@ const ListOfWallets: React.FC<{
           isOpen ? 'mb-7' : ''
         }`}
       >
-        <span className="mt-6 text-xs font-semibold">
+        {/* Title */}
+        <span className="mt-6 text-xs font-semibold block">
           {list.highlightedBy === 'PreviouslyConnected'
             ? t(`Recently used`)
-            : null}
-          {list.highlightedBy === 'Installed' ? t(`Installed wallets`) : null}
-          {list.highlightedBy === 'TopWallet' ? t(`Popular wallets`) : null}
+            : list.highlightedBy === 'Installed'
+            ? t(`Installed wallets`)
+            : list.highlightedBy === 'TopWallet'
+            ? t(`Popular wallets`)
+            : ''}
         </span>
-        <div className="mt-4 flex flex-col lg:flex-row lg:space-x-2 space-y-2 lg:space-y-0">
+
+        {/* Wallets displayed in a single column */}
+        <div className="mt-4 flex flex-col gap-4">
           {list.highlight.map((adapter, idx) => {
             const adapterName =
               adapter.name === SolanaMobileWalletAdapterWalletName
@@ -188,14 +193,14 @@ const ListOfWallets: React.FC<{
               <div
                 key={idx}
                 onClick={(event) => handleConnectClick(event, adapter)}
-                className={`p-4 lg:p-5 border border-white/10 rounded-lg flex lg:flex-col items-center lg:justify-center cursor-pointer flex-1 lg:max-w-[33%] hover:backdrop-blur-xl transition-all ${themeClasses.walletItem[theme]}`}
+                className={`p-4 border border-gray-300 dark:border-gray-600 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition-all`}
               >
                 <WalletIcon
                   wallet={adapter}
                   width={isMobile() ? 24 : 30}
                   height={isMobile() ? 24 : 30}
                 />
-                <span className="font-semibold text-xs ml-4 lg:ml-0 lg:mt-3">
+                <span className="font-semibold text-xs mt-3">
                   {adapterName}
                 </span>
               </div>
@@ -217,28 +222,35 @@ const ListOfWallets: React.FC<{
 
         {list.others.length > 0 ? (
           <>
-            <div
-              className="mt-5 flex justify-between cursor-pointer"
-              onClick={onToggle}
-            >
-              <span className="text-xs font-semibold">
+            <div className={`mt-5 ${isOpen ? 'mb-7' : ''}`}>
+              <button
+                onClick={onToggle}
+                className="flex justify-between w-full text-xs font-semibold"
+              >
                 <span>{t(`More wallets`)}</span>
-              </span>
-
-              <div className="flex items-center">
-                <span className="w-[10px] h-[6px]">
+                <span className="transform transition-transform duration-500">
                   {isOpen ? (
-                    <Icon name="chevronUp" fill="none" />
+                    <Icon
+                      name="chevronUp"
+                      className="w-2.5 h-1.5 fill-current"
+                    />
                   ) : (
-                    <Icon name="chevronDown" fill="none" />
+                    <Icon
+                      name="chevronDown"
+                      className="w-2.5 h-1.5 fill-current"
+                    />
                   )}
                 </span>
+              </button>
+
+              <div
+                className={`transition-all duration-500 ${
+                  isOpen ? 'max-h-screen' : 'max-h-0'
+                } overflow-hidden`}
+              >
+                {renderWalletList}
               </div>
             </div>
-
-            <Collapse height={0} maxHeight={'auto'} expanded={isOpen}>
-              {renderWalletList}
-            </Collapse>
           </>
         ) : null}
         <div className="text-xs font-semibold mt-4 -mb-2 text-white/80 underline cursor-pointer">
@@ -430,7 +442,7 @@ const CubikWalletModal: React.FC<ICubikWalletModal> = ({ onClose }) => {
   useOutsideClick(contentRef, onClose);
 
   return (
-    <div className="z-500">
+    <div>
       <Modal
         open={true}
         onClose={onClose}
@@ -438,7 +450,6 @@ const CubikWalletModal: React.FC<ICubikWalletModal> = ({ onClose }) => {
         headingSize={headingSize}
         dialogSize="md"
         IconComponent={<Icon name={'wallet'} fill="none" />}
-        // RingSVG={<YourRingSVG />}
       >
         {/* <Header onClose={onClose} theme={theme} /> */}
         <div className="border-t-[1px] border-white/10" />
