@@ -20,14 +20,15 @@ import { ThemeProvider } from './home-page-components/utils';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const APP_NAME = "Squares";
-const APP_DEFAULT_TITLE = "Squares Documentation";
-const APP_TITLE_TEMPLATE = "%s - PWA App";
-const APP_DESCRIPTION = "The component library designed and built for use @ CUBIK";
+const APP_NAME = 'Squares';
+const APP_DEFAULT_TITLE = 'Squares Documentation';
+const APP_TITLE_TEMPLATE = '%s - PWA App';
+const APP_DESCRIPTION =
+  'The component library designed and built for use @ CUBIK';
 
 export const viewport: Viewport = {
-  themeColor: "#141414"
-}
+  themeColor: '#141414',
+};
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -36,10 +37,10 @@ export const metadata: Metadata = {
     template: APP_TITLE_TEMPLATE,
   },
   description: APP_DESCRIPTION,
-  manifest: "/manifest.json",
+  manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
-    statusBarStyle: "default",
+    statusBarStyle: 'default',
     title: APP_DEFAULT_TITLE,
     // startUpImage: [],
   },
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    type: "website",
+    type: 'website',
     siteName: APP_NAME,
     title: {
       default: APP_DEFAULT_TITLE,
@@ -56,7 +57,7 @@ export const metadata: Metadata = {
     description: APP_DESCRIPTION,
   },
   twitter: {
-    card: "summary",
+    card: 'summary',
     title: {
       default: APP_DEFAULT_TITLE,
       template: APP_TITLE_TEMPLATE,
