@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import Link from 'next/link';
 
 import { Icon } from '../../../icons/icon';
 import { cn } from '../../../lib/utils';
@@ -14,6 +15,7 @@ interface Props
   name: string;
   description: string;
   Button: ReactNode;
+  href: string;
 }
 interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -45,23 +47,25 @@ export const SaveButton = (props: ButtonProps) => {
 export const ProjectCard = (props: Props) => {
   return (
     <>
-      <div
-        className={cn(
-          props.className,
-          'flex justify-between items-center p-6',
-          'hover:bg-white/10',
-        )}
-        {...props}
-      >
-        <AvatarLabelGroup
-          avatarSrc={props.logo ?? '/logo.svg'} // updated backup image
-          size={'lg'}
-          title={props.name}
-          avatarShape="square"
-          description={props.description}
-        />
-        {props.Button}
-      </div>
+      <Link href={props.href}>
+        <div
+          className={cn(
+            props.className,
+            'flex justify-between items-center p-6',
+            'hover:bg-white/10',
+          )}
+          {...props}
+        >
+          <AvatarLabelGroup
+            avatarSrc={props.logo ?? '/logo.svg'} // updated backup image
+            size={'lg'}
+            title={props.name}
+            avatarShape="square"
+            description={props.description}
+          />
+          {props.Button}
+        </div>
+      </Link>
     </>
   );
 };

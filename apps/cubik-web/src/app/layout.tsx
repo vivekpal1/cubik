@@ -11,9 +11,10 @@ import { AxiomWebVitals } from 'next-axiom';
 import { Toaster } from 'sonner';
 
 import { AuthProvider } from './context/user';
-import { Providers } from './provider';
 
 import './globals.css';
+
+import { cn } from '@ui/lib/utils';
 
 const PlusJakartaSans = Inter({
   subsets: ['latin'],
@@ -26,16 +27,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${PlusJakartaSans.className}`}>
+    <html className="dark" lang="en">
+      {/* @todo update the colors */}
+      <body className={cn(`${PlusJakartaSans.className}`, 'bg-black')}>
         <WalletContext>
           <AuthProvider>
-            <Providers>
-              <Header />
-              <AxiomWebVitals />
-              {children}
-              <Toaster />
-            </Providers>
+            <Header />
+            <AxiomWebVitals />
+            {children}
+            <Toaster />
           </AuthProvider>
         </WalletContext>
       </body>

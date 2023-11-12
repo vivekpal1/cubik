@@ -51,6 +51,7 @@ export default async function Home() {
             {projects.map((project) => {
               return (
                 <ProjectCard
+                  href={'/project'}
                   Button={<SaveButton />}
                   description={project.shortDescription}
                   name={project.name}
@@ -61,7 +62,7 @@ export default async function Home() {
             })}
           </div>
         </div>
-        <div className="block h-full w-full border-l border-[var(--color-bg-tertiary)] px-4 py-3 lg:fixed lg:right-0 lg:top-24 lg:w-1/3 lg:px-10 lg:py-8 xl:px-20 2xl:block ">
+        <div className="block h-full w-full border-l border-[var(--color-neutral-900)] px-4 py-3 lg:fixed lg:right-0 lg:top-24 lg:w-1/3 lg:px-10 lg:py-8 xl:px-20 2xl:block ">
           <SubHead
             heading="Collection"
             size="lg"

@@ -46,7 +46,7 @@ const Header = () => {
           margin: '0px !important',
           marginTop: '0px !important',
         }}
-        className="fixed left-0 top-0 z-10  min-h-[3.6rem] w-screen max-w-full border-b border-[var(--color-bg-tertiary)] bg-transparent  py-6"
+        className="fixed left-0 top-0 z-10  min-h-[3.6rem] w-screen max-w-full border-b border-[var(--color-neutral-900)] bg-transparent  py-6"
       >
         <div className="mx-auto flex w-full max-w-5xl items-center justify-between lg:max-w-6xl xl:max-w-screen-2xl">
           <div className="flex items-center justify-start gap-10">
