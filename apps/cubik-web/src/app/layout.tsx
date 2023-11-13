@@ -14,6 +14,7 @@ import { AuthProvider } from './context/user';
 
 import './globals.css';
 
+import { Providers } from '@/app/provider';
 import { cn } from '@ui/lib/utils';
 
 const PlusJakartaSans = Inter({
@@ -32,10 +33,12 @@ export default function RootLayout({
       <body className={cn(`${PlusJakartaSans.className}`, 'bg-black')}>
         <WalletContext>
           <AuthProvider>
-            <Header />
-            <AxiomWebVitals />
-            {children}
-            <Toaster />
+            <Providers>
+              <Header />
+              <AxiomWebVitals />
+              {children}
+              <Toaster />
+            </Providers>
           </AuthProvider>
         </WalletContext>
       </body>
