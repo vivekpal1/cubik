@@ -2,6 +2,9 @@
 dist
 logs
 
+sw.js.*
+workbox-*.js
+
 # dependencies
 node_modules
 .pnp
