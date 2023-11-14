@@ -8,9 +8,7 @@ import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import morganBody from 'morgan-body';
-import { tokenRouter } from 'routes';
-import { authRouter } from 'routes/auth.router';
-import { uploadRouter } from 'routes/upload.router';
+import priceController from 'routes/price';
 
 import logger from './middleware/logger';
 
@@ -42,9 +40,7 @@ const main = async () => {
     res.send('Server is running');
   });
 
-  app.use(basePath + '/token', tokenRouter);
-  app.use(basePath + '/auth', authRouter);
-  app.use(basePath + '/upload', uploadRouter);
+  app.use(basePath + '/price/', priceController);
 
   app.listen(PORT, () => {
     logger.log('info', `Server is running on Port:${PORT}`);

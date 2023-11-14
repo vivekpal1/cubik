@@ -16,7 +16,7 @@ export const UploadURLs = async (urls: string[]) => {
     }[] = [];
 
     urls.forEach((url) => {
-      let newUrl = new URL(url);
+      const newUrl = new URL(url);
       const filename = newUrl.pathname.split('/').pop() ?? 'unknown-filename';
 
       const newfile = uploadedFiles.find((e) => e.data?.name === filename);

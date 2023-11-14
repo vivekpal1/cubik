@@ -11,7 +11,7 @@ type Props = {
 
 const DialogPrimitive = Transition.Root;
 
-const SidePannel = ({ open, setOpen, children, ...props }: Props) => {
+const SidePannel = ({ open, setOpen, children }: Props) => {
   return (
     <DialogPrimitive show={open}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
