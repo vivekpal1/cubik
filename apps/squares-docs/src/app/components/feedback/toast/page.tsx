@@ -8,7 +8,7 @@ const ToastPage = () => {
   return (
     <PageHOC
       pages={[
-        { name: 'Component', href: '/component', current: false },
+        { name: 'Component', href: '/components', current: false },
         { name: 'Toast', href: '/component/toast', current: true },
       ]}
       heading={'Toast'}

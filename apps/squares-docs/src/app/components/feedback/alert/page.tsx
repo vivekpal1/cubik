@@ -11,7 +11,7 @@ const AlertPage = () => {
     <>
       <PageHOC
         pages={[
-          { name: 'Component', href: '/component', current: false },
+          { name: 'Component', href: '/components', current: false },
           { name: 'Alert', href: '/component/alert', current: true },
         ]}
         heading={'Alert'}

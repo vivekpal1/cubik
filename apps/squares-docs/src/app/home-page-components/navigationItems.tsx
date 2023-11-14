@@ -14,9 +14,17 @@ const ListItem: FC<{ item: any; pathname: string }> = ({ item, pathname }) => {
     <li key={item.id} className="flex flex-col gap-2">
       <div className={`block gap-4 rounded`}>
         {item.children && (
-          <span className="text-[14px] font-medium uppercase tracking-[3px] text-[var(--color-fg-tertiary)]">
-            {item.name}
-          </span>
+          <Link href={item.link ? item.link : ''}>
+            <span
+              className={` ${
+                pathname === item.link
+                  ? 'text-[var(--color-purple-500)]'
+                  : 'text-[var(--color-fg-tertiary)]'
+              } text-[12px] font-medium uppercase tracking-[3px]  md:text-[14px]`}
+            >
+              {item.name}
+            </span>
+          </Link>
         )}
       </div>
       {item.children && (
@@ -47,10 +55,10 @@ const SubItem: FC<{
     <li key={subItem.id} className="flex min-w-[220px] flex-col gap-2">
       <Link href={subItem.link ? subItem.link : ''}>
         <div
-          className={`block rounded px-4 py-2 ${
+          className={`block rounded px-4 py-2 transition duration-200 ${
             pathname === subItem.link
-              ? 'bg-[var(--color-purple-500)]'
-              : 'hover:bg-gray-100'
+              ? 'bg-[var(--color-surface-purple)] font-[600px] text-[var(--color-purple-500)]'
+              : 'font-[500px] text-[var(--color-fg-primary)] hover:bg-[var(--color-surface-purple)]'
           }`}
         >
           {subItem.children ? (
@@ -62,7 +70,7 @@ const SubItem: FC<{
               }
               className="mr-2 flex w-full flex-row items-center justify-between"
             >
-              <span className="font-regular  text-[14px] text-[var(--color-fg-primary)]">
+              <span className="font-regular text-[12px] text-[var(--color-fg-primary)] md:text-[14px]">
                 {subItem.name}
               </span>
               <Icon
@@ -77,9 +85,7 @@ const SubItem: FC<{
             </button>
           ) : (
             <div className="mr-2 flex w-full flex-row items-center justify-between">
-              <span className="font-regular text-[14px] text-[var(--color-fg-primary)]">
-                {subItem.name}
-              </span>
+              <span className="text-[12px] md:text-[14px]">{subItem.name}</span>
             </div>
           )}
         </div>
@@ -108,13 +114,13 @@ const ThirdItem: FC<{
   setToggledThirdItem: (id: number | null) => void;
 }> = ({ thirdItem, pathname, toggledThirdItem, setToggledThirdItem }) => {
   return (
-    <li key={thirdItem.id} className="my-1">
+    <li key={thirdItem.id} className="my-1 ">
       <Link href={thirdItem.link ? thirdItem.link : '#'}>
         <div
-          className={`block rounded px-4 py-2 ${
+          className={`block rounded px-4 py-2 text-[12px] transition duration-200 md:text-[14px] ${
             pathname === thirdItem.link
-              ? 'bg-[var(--color-surface-purple)] font-medium transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50'
-              : 'hover:bg-gray-100'
+              ? 'bg-[var(--color-surface-purple)] font-medium text-[var(--color-purple-500)] focus:outline-none focus:ring-2 focus:ring-purple-500/50'
+              : ' text-[var(--color-fg-primary)] hover:bg-[var(--color-surface-purple)]'
           }`}
         >
           {thirdItem.children ? (
@@ -129,7 +135,7 @@ const ThirdItem: FC<{
               <span
                 className={`${
                   pathname === thirdItem.link ? 'text-purple-500' : 'text-black'
-                } text-[14px]`}
+                } text-[12px] md:text-[14px]`}
               >
                 {thirdItem.name}
               </span>
@@ -147,15 +153,7 @@ const ThirdItem: FC<{
             </button>
           ) : (
             <div className="mr-2 flex w-full flex-row items-center justify-between">
-              <span
-                className={`${
-                  pathname === thirdItem.link
-                    ? 'text-[var(--color-purple-500)]'
-                    : 'text-[var(--color-fg-primary)]'
-                } text-[14px]`}
-              >
-                {thirdItem.name}
-              </span>
+              <span>{thirdItem.name}</span>
             </div>
           )}
         </div>

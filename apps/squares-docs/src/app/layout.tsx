@@ -15,6 +15,7 @@ import { Toaster } from 'sonner';
 
 import Background from './home-page-components/components';
 import Header from './home-page-components/header';
+import { WalletProvider } from './home-page-components/providers/wallet';
 import Sidebar from './home-page-components/sidebar';
 import { ThemeProvider } from './home-page-components/utils';
 
@@ -71,20 +72,41 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const announcement = {
+    bg: 'bg-[var(--color-surface-secondary)]',
+    text: '',
+    link: '',
+  };
   return (
     <html className="light" lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} ${announcement.bg}`}>
         <ClientCookiesProvider value={cookies().getAll()}>
           <ThemeProvider>
-            <div className="min-h-screen">
-              <Header />
-              <AxiomWebVitals />
-              <div className="z-0 mt-14 flex w-full flex-row bg-[var(--color-bg-secondary)] md:mt-0 ">
-                <Toaster />
-                <Sidebar />
-                {children}
+            <WalletProvider>
+              <div className="absolute min-h-screen overflow-hidden bg-[var(--color-bg-secondary)] ">
+                <div className="relative z-[-1]">
+                  <Background />
+                </div>{' '}
+                <div className="z-1 fixed overflow-visible">
+                  {announcement.text.length > 0 && (
+                    <div
+                      className={`h-[60px] w-screen ${announcement.bg}`}
+                    ></div>
+                  )}
+                  <Header />
+                </div>
+                <AxiomWebVitals />
+                <div className="z-0 mt-0 flex w-full flex-row md:mt-[70px]">
+                  <Toaster />
+                  <div className={`fixed h-[calc(100vh-72px)]`}>
+                    <Sidebar />
+                  </div>
+                  <div className="w-screen overflow-y-scroll pt-[70px] md:pl-[285px] md:pt-0">
+                    {children}
+                  </div>
+                </div>
               </div>
-            </div>
+            </WalletProvider>
           </ThemeProvider>
         </ClientCookiesProvider>
       </body>

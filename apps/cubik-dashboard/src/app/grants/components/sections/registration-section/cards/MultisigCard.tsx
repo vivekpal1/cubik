@@ -65,23 +65,23 @@ const MultisigCard = () => {
       </div>
 
       <div className="">
-        <Tabs defaultValue="sponsors" size="lg" className="mt-6">
+        <Tabs defaultValue={2} size="lg" className="mt-6">
           <TabList className="w-full  overflow-x-auto whitespace-nowrap bg-neutral-800">
             <div className="border-b-surface-neutral-800 w-full max-w-7xl border-b ">
-              <Tab className="text-sm font-normal" value="sponsors">
+              <Tab className="text-sm font-normal" value={1}>
                 Sponsors
               </Tab>
-              <Tab value="payout" className="text-sm font-normal">
+              <Tab value={2} className="text-sm font-normal">
                 Payout
               </Tab>
-              <Tab value="transactions" className="text-sm font-normal">
+              <Tab value={3} className="text-sm font-normal">
                 Transactions
               </Tab>
             </div>
           </TabList>
           <div className="mx-auto w-full max-w-7xl rounded-b-lg bg-[#1F1F1F] p-4">
             <TabPanels>
-              <TabPanel value="sponsors">
+              <TabPanel value={1}>
                 <SponsorsTable />
                 <Button
                   variant={'outline'}
@@ -97,10 +97,10 @@ const MultisigCard = () => {
                   />
                 </Button>
               </TabPanel>
-              <TabPanel value="payout">
+              <TabPanel value={2}>
                 <PayoutsTable />
               </TabPanel>
-              <TabPanel value="transactions">
+              <TabPanel value={3}>
                 <TransactionsTable />
               </TabPanel>
             </TabPanels>

@@ -65,7 +65,7 @@ const TablePage = () => {
   return (
     <PageHOC
       pages={[
-        { name: 'Component', href: '/component', current: false },
+        { name: 'Component', href: '/components', current: false },
         { name: 'Table', href: '/component/table', current: true },
       ]}
       heading={'Table'}

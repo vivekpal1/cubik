@@ -43,7 +43,7 @@ export default function ComponentPage() {
         {' '}
         {serialized.map((token, key) => (
           <div key={key}>
-            <Tabs defaultValue="three" size="sm" className="">
+            <Tabs defaultValue={0} size="sm" className="">
               <TabList>
                 {(token.value as objectType[]).map(
                   (tokenVariant: any, key: any) => (

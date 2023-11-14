@@ -44,7 +44,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
   ...props
 }) => {
   const [checked, setChecked] = useState(defaultChecked);
-  console.log('checked', checked);
   const handleToggle = () => {
     const newChecked = !checked;
     setChecked(newChecked);

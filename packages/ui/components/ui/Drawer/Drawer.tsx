@@ -1,58 +1,101 @@
-import React, { ReactNode } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
+import * as React from 'react';
+import * as Dialog from 'vaul';
 
-import { cn } from '../../../lib/utils';
-
-interface Props {
-  open: boolean;
-  onClose: () => void;
-  children: ReactNode | React.JSX.Element;
-  drawerSize: keyof typeof DrawerSize;
-  drawerPosition: keyof typeof DrawerPosition;
-  className?: string;
+interface WithFadeFromProps {
+  snapPoints: (number | string)[];
+  fadeFromIndex: number;
+}
+interface WithoutFadeFromProps {
+  snapPoints?: (number | string)[];
+  fadeFromIndex?: never;
 }
 
-const DrawerSize = {
-  sm: 'max-w-[320px]',
-  md: 'max-w-[480px]',
-  lg: 'max-w-[600px]',
-  max: '',
-};
-const DrawerPosition = {
-  bottom: 'bottom-0 max-h-[85vh]',
-  right: 'right-0 top-0 min-h-screen',
-  left: 'left-0 top-0 min-h-screen',
-};
-export const Drawer = ({
-  onClose,
-  open,
-  children,
-  // handles the width for drawer
-  drawerSize = 'md',
+type DrawerProps = {
+  activeSnapPoint?: number | string | null;
+  setActiveSnapPoint?: (snapPoint: number | string | null) => void;
+  children?: React.ReactNode;
+  open?: boolean;
+  closeThreshold?: number;
+  onOpenChange?: (open: boolean) => void;
+  shouldScaleBackground?: boolean;
+  scrollLockTimeout?: number;
+  fixed?: boolean;
+  dismissible?: boolean;
+  onDrag?: (
+    event: React.PointerEvent<HTMLDivElement>,
+    percentageDragged: number,
+  ) => void;
+  onRelease?: (
+    event: React.PointerEvent<HTMLDivElement>,
+    open: boolean,
+  ) => void;
+  modal?: boolean;
+  nested?: boolean;
+  onClose?: () => void;
+} & (WithFadeFromProps | WithoutFadeFromProps);
 
-  // handles the position for drawer
-  drawerPosition = 'right',
-  className,
-}: Props) => {
-  return (
-    <>
-      <Dialog.Root open={open}>
-        <Dialog.Portal>
-          <Dialog.Overlay
-            onClick={onClose}
-            className="bg-black/50  fixed inset-0"
-          />
-          <Dialog.Content
-            className={cn(
-              'text-white  fixed  w-full  bg-[var(--color-surface-primary)] dark:bg-[var(--color-bg-tertiary)]  focus:outline-none',
-              DrawerPosition[drawerPosition],
-              DrawerSize[drawerSize],
-            )}
-          >
-            <Dialog.Content className={className}>{children}</Dialog.Content>
-          </Dialog.Content>
-        </Dialog.Portal>
-      </Dialog.Root>
-    </>
-  );
+interface DrawerPortalProps {
+  children: React.ReactNode;
+}
+interface DrawerContentProps {
+  children: React.ReactNode;
+}
+interface DrawerHeaderProps {
+  children: React.ReactNode;
+}
+interface DrawerBodyProps {
+  children: React.ReactNode;
+}
+interface DrawerFooterProps {
+  children: React.ReactNode;
+}
+
+const Drawer = ({ open, children, onOpenChange, ...props }: DrawerProps) => (
+  <Dialog.Drawer.Root open={open} onOpenChange={onOpenChange} {...props}>
+    {children}
+  </Dialog.Drawer.Root>
+);
+const DrawerPortal = ({ children }: DrawerPortalProps) => {
+  return <Dialog.Drawer.Portal>{children}</Dialog.Drawer.Portal>;
+};
+
+const DrawerOverlay = () => (
+  <Dialog.Drawer.Overlay className="fixed inset-0 bg-black/60" />
+);
+
+const DrawerContent = ({ children }: DrawerContentProps) => (
+  <Dialog.Drawer.Content className="fixed rounded-t-lg overflow-hidden z-[100] mt-24 bottom-[-200px] w-screen bg-[var(--color-bg-secondary)] h-full">
+    {children}
+  </Dialog.Drawer.Content>
+);
+
+const DrawerCloseButton = () => (
+  <Dialog.Drawer.Close className="drawerCloseButton">X</Dialog.Drawer.Close>
+);
+
+const DrawerHeader = ({ children, ...props }: DrawerHeaderProps) => (
+  <div className="drawerHeader" {...props}>
+    {children}
+  </div>
+);
+
+const DrawerBody = ({ children, ...props }: DrawerBodyProps) => (
+  <div {...props}>{children}</div>
+);
+
+const DrawerFooter = ({ children, ...props }: DrawerFooterProps) => (
+  <div className="drawerFooter" {...props}>
+    {children}
+  </div>
+);
+
+export {
+  Drawer,
+  DrawerPortal,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  DrawerHeader,
+  DrawerBody,
+  DrawerFooter,
 };

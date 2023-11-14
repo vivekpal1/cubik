@@ -12,7 +12,7 @@ const Page = () => {
     <>
       <PageHOC
         pages={[
-          { name: 'Component', href: '/component', current: false },
+          { name: 'Component', href: '/components', current: false },
           { name: 'Drawer', href: '/component/drawer', current: true },
         ]}
         heading={'Drawer'}
@@ -23,14 +23,13 @@ const Page = () => {
             <CodeComponent codeString='import { Drawer } from "@cubik/ui"' />
           </div>
           <button onClick={() => setOpen(true)}>Test Button</button>
-          <Drawer
-            drawerPosition="right"
+          {/* <Drawer
             drawerSize="md"
             onClose={() => setOpen(false)}
             open={open}
           >
             <div className="h-80 w-full bg-red-400"></div>
-          </Drawer>
+          </Drawer> */}
         </div>
       </PageHOC>
     </>

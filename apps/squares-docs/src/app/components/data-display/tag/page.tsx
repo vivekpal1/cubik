@@ -11,7 +11,7 @@ const Tags = () => {
   return (
     <PageHOC
       pages={[
-        { name: 'Component', href: '/component', current: false },
+        { name: 'Component', href: '/components', current: false },
         { name: 'Tags', href: '/component/tags', current: true },
       ]}
       heading={'Tags'}

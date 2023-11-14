@@ -1,24 +1,21 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import PageHOC from '@/app/home-page-components/components/pageHOC';
 
 import BreadCrumb from '../home-page-components/components/BreadCrumb';
 import ComponentHeading from '../home-page-components/components/ComponentHeading';
 import navigationData from '../navigationData';
 
 export default function ComponentPage() {
-  console.log('navigation data - ', navigationData);
   return (
-    <div className="mx-auto flex w-full max-w-[1200px] flex-col justify-start gap-12">
-      <BreadCrumb
-        pages={[{ name: 'Foundations', href: '/foundations', current: true }]}
-      />
-      <ComponentHeading
-        heading={'Foundations'}
-        description={
-          'Squares provides prebuilt components to help you build faster. Here is an overview of the component categories'
-        }
-      />
+    <PageHOC
+      pages={[{ name: 'Foundations', href: '/foundations', current: true }]}
+      heading={'Foundations'}
+      description={
+        'Squares provides prebuilt components to help you build faster. Here is an overview of the component categories'
+      }
+    >
       <div className="flex flex-row flex-wrap gap-8">
         {navigationData.map(
           (component) =>
@@ -45,6 +42,6 @@ export default function ComponentPage() {
             )),
         )}
       </div>
-    </div>
+    </PageHOC>
   );
 }

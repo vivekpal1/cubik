@@ -11,7 +11,7 @@ const page = () => {
   return (
     <PageHOC
       pages={[
-        { name: 'Component', href: '/component', current: false },
+        { name: 'Component', href: '/components', current: false },
         { name: 'Tabs', href: '/component/tabs', current: true },
       ]}
       heading={'Tabs'}
@@ -22,136 +22,136 @@ const page = () => {
       <div className="">
         <CodeComponent codeString='import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@cubik/ui";' />
         <div className="mt-8">
-          <Tabs defaultValue="three" size="xxs" className="">
+          <Tabs defaultValue={2} size="xxs" className="">
             <TabList>
-              <Tab value="one">
+              <Tab value={0}>
                 <div className="p-2">TabItem1</div>
               </Tab>
-              <Tab value="two">
+              <Tab value={1}>
                 {' '}
                 <div className="p-2">TabItem2</div>
               </Tab>
-              <Tab value="three">
+              <Tab value={2}>
                 {' '}
                 <div className="p-2">Tabitem3</div>
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel value="one">
+              <TabPanel value={0}>
                 <p>one!</p>
               </TabPanel>
-              <TabPanel value="two">
+              <TabPanel value={1}>
                 <p>two!</p>
               </TabPanel>
-              <TabPanel value="three">
+              <TabPanel value={2}>
                 <p>three!</p>
               </TabPanel>
             </TabPanels>
           </Tabs>
 
-          <Tabs defaultValue="three" size="xs">
+          <Tabs defaultValue={2} size="xs">
             <TabList>
-              <Tab value="one">
+              <Tab value={0}>
                 <div className="p-2">TabItem1</div>
               </Tab>
-              <Tab value="two">
+              <Tab value={1}>
                 {' '}
                 <div className="p-2">TabItem2</div>
               </Tab>
-              <Tab value="three">
+              <Tab value={2}>
                 {' '}
                 <div className="p-2">Tabitem3</div>
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel value="one">
+              <TabPanel value={0}>
                 <p>one!</p>
               </TabPanel>
-              <TabPanel value="two">
+              <TabPanel value={1}>
                 <p>two!</p>
               </TabPanel>
-              <TabPanel value="three">
+              <TabPanel value={2}>
                 <p>three!</p>
               </TabPanel>
             </TabPanels>
           </Tabs>
 
-          <Tabs defaultValue="three" size="sm">
+          <Tabs defaultValue={2} size="sm">
             <TabList>
-              <Tab value="one">
+              <Tab value={0}>
                 <div className="p-2">TabItem1</div>
               </Tab>
-              <Tab value="two">
+              <Tab value={1}>
                 {' '}
                 <div className="p-2">TabItem2</div>
               </Tab>
-              <Tab value="three">
+              <Tab value={2}>
                 {' '}
                 <div className="p-2">Tabitem3</div>
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel value="one">
+              <TabPanel value={0}>
                 <p>one!</p>
               </TabPanel>
-              <TabPanel value="two">
+              <TabPanel value={1}>
                 <p>two!</p>
               </TabPanel>
-              <TabPanel value="three">
+              <TabPanel value={2}>
                 <p>three!</p>
               </TabPanel>
             </TabPanels>
           </Tabs>
 
-          <Tabs defaultValue="three" size="md">
+          <Tabs defaultValue={2} size="md">
             <TabList>
-              <Tab value="one">
+              <Tab value={0}>
                 <div className="p-2">TabItem1</div>
               </Tab>
-              <Tab value="two">
+              <Tab value={1}>
                 {' '}
                 <div className="p-2">TabItem2</div>
               </Tab>
-              <Tab value="three">
+              <Tab value={2}>
                 {' '}
                 <div className="p-2">Tabitem3</div>
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel value="one">
+              <TabPanel value={0}>
                 <p>one!</p>
               </TabPanel>
-              <TabPanel value="two">
+              <TabPanel value={1}>
                 <p>two!</p>
               </TabPanel>
-              <TabPanel value="three">
+              <TabPanel value={2}>
                 <p>three!</p>
               </TabPanel>
             </TabPanels>
           </Tabs>
 
-          <Tabs defaultValue="three" size="lg">
+          <Tabs defaultValue={2} size="lg">
             <TabList>
-              <Tab value="one">
+              <Tab value={0}>
                 <div className="p-2">TabItem1</div>
               </Tab>
-              <Tab value="two">
+              <Tab value={1}>
                 {' '}
                 <div className="p-2">TabItem2</div>
               </Tab>
-              <Tab value="three">
+              <Tab value={2}>
                 {' '}
                 <div className="p-2">Tabitem3</div>
               </Tab>
             </TabList>
             <TabPanels>
-              <TabPanel value="one">
+              <TabPanel value={0}>
                 <p>one!</p>
               </TabPanel>
-              <TabPanel value="two">
+              <TabPanel value={1}>
                 <p>two!</p>
               </TabPanel>
-              <TabPanel value="three">
+              <TabPanel value={2}>
                 <p>three!</p>
               </TabPanel>
             </TabPanels>

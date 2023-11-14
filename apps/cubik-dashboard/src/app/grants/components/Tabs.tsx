@@ -10,28 +10,26 @@ import { RegistrationsSection } from './sections/registration-section/Registrati
 export const TabsSection = () => {
   return (
     <div className="mx-auto w-full  text-white">
-      <Tabs size="sm" defaultValue="details">
+      <Tabs size="sm" defaultValue={0}>
         <TabList className="w-full  overflow-x-auto whitespace-nowrap bg-neutral-800">
           <div className="mx-auto flex w-full  max-w-7xl justify-start gap-4">
-            <Tab value="details">Details</Tab>
-            <Tab value="registrations">Registrations</Tab>
-            <Tab value="multi">Multi</Tab>
-            <Tab value="analytics">Analytics</Tab>
-            <Tab value="settings">Settings</Tab>
+            <Tab value={0}>Details</Tab>
+            <Tab value={1}>Registrations</Tab>
+            <Tab value={2}>Multi</Tab>
+            <Tab value={3}>Analytics</Tab>
+            <Tab value={4}>Settings</Tab>
           </div>
         </TabList>
         <TabPanels className="mx-auto w-full max-w-7xl">
-          <TabPanel value="details">
-            Make changes to your account here.
-          </TabPanel>
-          <TabPanel value="registrations">
+          <TabPanel value={0}>Make changes to your account here.</TabPanel>
+          <TabPanel value={1}>
             <RegistrationsSection />
           </TabPanel>
-          <TabPanel value="multi">
+          <TabPanel value={2}>
             <MultisigSection />
           </TabPanel>
-          <TabPanel value="analytics">Change your password here.</TabPanel>
-          <TabPanel value="settings">Change your password here.</TabPanel>
+          <TabPanel value={3}>Change your password here.</TabPanel>
+          <TabPanel value={4}>Change your password here.</TabPanel>
         </TabPanels>
       </Tabs>
     </div>

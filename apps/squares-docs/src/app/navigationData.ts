@@ -16,6 +16,7 @@ const navigationData: INavigationData[] = [
   {
     id: 1,
     name: 'Foundations',
+    link: '/foundations',
     children: [
       {
         id: 13,
@@ -136,6 +137,7 @@ const navigationData: INavigationData[] = [
   {
     id: 2,
     name: 'Components',
+    link: '/components',
     children: [
       {
         id: 21,
@@ -328,6 +330,32 @@ const navigationData: INavigationData[] = [
             name: 'Button',
             link: '/components/forms/button',
             description: '',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Others',
+    link: '/others',
+    children: [
+      {
+        id: 31,
+        name: 'Wallet Connect',
+        link: '/others/wallet-connect',
+        image:
+          'https://imagedelivery.net/rWTckr21FEHs39XCNFz7Yw/e352cd92-3205-46cd-22db-74d21331be00/public',
+        pages: [
+          {
+            name: 'Others',
+            href: '/others',
+            current: false,
+          },
+          {
+            name: 'Wallet Connect',
+            href: '/others/wallet-connect',
+            current: true,
           },
         ],
       },

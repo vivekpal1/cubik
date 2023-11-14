@@ -7,6 +7,7 @@
     "format": "prettier  --write \"**/*.{ts,tsx,md}\" --ignore-path .prettierignore",
     "generate": "dotenv -- turbo run db:generate",
     "db:push": "dotenv -- turbo run db:push",
+    "build:wallet": "turbo run build-lib",
     "db:studio": "dotenv -- pnpm -F @cubik/database dev",
     "postinstall": "dotenv -- turbo run db:generate",
     "check-types": "npx tsc --noEmit --pretty",

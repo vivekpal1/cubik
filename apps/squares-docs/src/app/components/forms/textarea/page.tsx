@@ -11,7 +11,7 @@ const TextAreaPage = () => {
     <>
       <PageHOC
         pages={[
-          { name: 'Component', href: '/component', current: false },
+          { name: 'Component', href: '/components', current: false },
           {
             name: 'Input',
             href: '/component/textarea',

@@ -8,6 +8,7 @@ import React, {
   useState,
 } from 'react';
 import { useCookies } from 'next-client-cookies';
+import { Drawer } from 'vaul';
 
 type Theme = 'light' | 'dark';
 
@@ -58,7 +59,7 @@ function ThemeProvider({ children }: ThemeProviderProps) {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
+      <Drawer.Root>{children}</Drawer.Root>
     </ThemeContext.Provider>
   );
 }

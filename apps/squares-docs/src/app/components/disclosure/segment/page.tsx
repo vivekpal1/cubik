@@ -17,7 +17,7 @@ const Page = () => {
     <>
       <PageHOC
         pages={[
-          { name: 'Component', href: '/component', current: false },
+          { name: 'Component', href: '/components', current: false },
           {
             name: 'Segment Control',
             href: '/component/segment',

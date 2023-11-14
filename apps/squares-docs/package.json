@@ -10,9 +10,13 @@
   },
   "dependencies": {
     "@cubik/config": "workspace:*",
-    "@cubik/helper-scripts": "workspace:*",
     "@cubik/presets": "workspace:*",
     "@cubik/ui": "workspace:*",
+    "@cubik/wallet-connect": "workspace:*",
+    "@solana/wallet-adapter-base": "^0.9.18",
+    "@solana/wallet-adapter-react": "^0.15.24",
+    "@solana/wallet-adapter-wallets": "^0.19.5",
+    "@types/react-swipeable-views": "^0.13.5",
     "@ducanh2912/next-pwa": "^9.7.2",
     "@types/react-syntax-highlighter": "^15.5.9",
     "next": "14.0.0",
@@ -21,8 +25,12 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.43.7",
+    "react-swipeable-views": "^0.14.0",
     "react-syntax-highlighter": "^15.5.0",
-    "sonner": "^1.0.3"
+    "sonner": "^1.0.3",
+    "wallet-adapter-mobile": "link:@types/solana-mobile/wallet-adapter-mobile",
+    "zustand": "^4.3.8",
+    "@cubik/helper-scripts": "workspace:*"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.5",
@@ -33,6 +41,7 @@
     "eslint": "^8.48.0",
     "eslint-config-next": "13.5.6",
     "postcss": "^8",
+    "simple-zustand-devtools": "^1.1.0",
     "tailwindcss": "^3",
     "typescript": "^5",
     "webpack": "^5.89.0"

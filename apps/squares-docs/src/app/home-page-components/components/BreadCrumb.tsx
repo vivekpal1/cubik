@@ -5,12 +5,12 @@ export default function BreadCrumb({
 }) {
   return (
     <nav className="flex" aria-label="Breadcrumb">
-      <ol role="list" className="flex items-center space-x-2">
+      <ol role="list" className="flex items-center space-x-1 md:space-x-2">
         <li>
           <div>
             <a
-              href={''}
-              className="text-md text-[var(--color-fg-secondary)] hover:text-[var(--color-purple-500)]"
+              href={'/'}
+              className="md:text-md whitespace-nowrap text-sm text-[var(--color-fg-secondary)] hover:text-[var(--color-purple-500)]"
             >
               Home
             </a>
@@ -29,7 +29,7 @@ export default function BreadCrumb({
               </svg>
               <a
                 href={page.href}
-                className={`text-md ml-4 hover:text-[var(--color-purple-500)] ${
+                className={`md:text-md ml-2 whitespace-nowrap text-sm hover:text-[var(--color-purple-500)] md:ml-4 ${
                   page.current
                     ? 'text-[var(--color-purple-500)]'
                     : 'text-[var(--color-fg-secondary)]'

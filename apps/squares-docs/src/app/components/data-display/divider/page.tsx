@@ -10,8 +10,8 @@ const DividerPage = () => {
   return (
     <PageHOC
       pages={[
-        { name: 'Component', href: '/component', current: false },
-        { name: 'Divider', href: '/component/divider', current: true },
+        { name: 'Component', href: '/components', current: false },
+        { name: 'Divider', href: '/components/divider', current: true },
       ]}
       heading={'Divider'}
       description={

@@ -11,7 +11,7 @@ const CheckboxPage = () => {
     <>
       <PageHOC
         pages={[
-          { name: 'Component', href: '/component', current: false },
+          { name: 'Component', href: '/components', current: false },
           {
             name: 'Checkbox',
             href: '/component/checkbox',

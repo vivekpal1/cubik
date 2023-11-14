@@ -1,3 +1,3 @@
-import { createComponentNames } from '../color/component';
+import { createComponentNames } from '../color/components';
 
 createComponentNames();

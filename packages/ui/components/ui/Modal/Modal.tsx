@@ -15,6 +15,7 @@ interface Props {
   dialogSize: keyof typeof DialogSize;
   children: ReactNode | React.JSX.Element;
 }
+
 export const Modal = ({
   open,
   onClose,
