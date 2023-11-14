@@ -98,6 +98,7 @@ const TextPage = () => {
         <div className="mt-10">
           <p className="text-2xl">h1 - primary</p>
           <Text label="Label Text" as="h1" color="primary" variant="heavy" />
+          <Text label="Label Text" as="h1" color="secondary" variant="heavy" />
           <Text label="Label Text" as="h1" color="primary" />
           <Text label="Label Text" as="h1" color="primary" variant="light" />
         </div>

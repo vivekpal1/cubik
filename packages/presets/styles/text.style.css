@@ -264,7 +264,7 @@
 }
 
 .l3-primary-heavy{
-    @apply text-xxs-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-xxs-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -281,7 +281,7 @@
 }
 
 .l3-primary{
-    @apply text-xxs-medium text-[var(--color-fg-primary-depth)];
+    @apply text-xxs-medium;
    
 }
 @media (min-width: 480px) { 
@@ -298,7 +298,7 @@
 }
 
 .l3-primary-light{
-    @apply text-xxs-regular text-[var(--color-fg-primary-depth)];
+    @apply text-xxs-regular;
    
 }
 @media (min-width: 480px) { 
@@ -315,7 +315,7 @@
 }
 
 .l2-primary-heavy, .b4-primary-heavy{
-    @apply text-xxs-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-xxs-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -332,7 +332,7 @@
 }
 
 .l2-primary, .b4-primary{
-    @apply text-xxs-medium text-[var(--color-fg-primary-depth)];
+    @apply text-xxs-medium;
    
 }
 @media (min-width: 480px) { 
@@ -349,7 +349,7 @@
 }
 
 .l2-primary-light, .b4-primary-light{
-    @apply text-xxs-regular text-[var(--color-fg-primary-depth)];
+    @apply text-xxs-regular;
    
 }
 @media (min-width: 480px) { 
@@ -366,7 +366,7 @@
 }
 
 .l1-primary-heavy, .b3-primary-heavy, .h6-primary{
-    @apply text-xs-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-xs-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -383,7 +383,7 @@
 }
 
 .l1-primary, .b3-primary, .h6-primary-light{
-    @apply text-xs-medium text-[var(--color-fg-primary-depth)];
+    @apply text-xs-medium;
    
 }
 @media (min-width: 480px) { 
@@ -400,7 +400,7 @@
 }
 
 .l1-primary-light, .b3-primary-light{
-    @apply text-xs-regular text-[var(--color-fg-primary-depth)];
+    @apply text-xs-regular;
    
 }
 @media (min-width: 480px) { 
@@ -417,7 +417,7 @@
 }
 
 .b2-primary-heavy, .h5-primary{
-    @apply text-sm-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-sm-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -434,7 +434,7 @@
 }
 
 .b2-primary, .h5-primary-light{
-    @apply text-sm-medium text-[var(--color-fg-primary-depth)];
+    @apply text-sm-medium;
    
 }
 @media (min-width: 480px) { 
@@ -451,7 +451,7 @@
 }
 
 .b2-primary-light{
-    @apply text-sm-regular text-[var(--color-fg-primary-depth)];
+    @apply text-sm-regular;
    
 }
 @media (min-width: 480px) { 
@@ -468,7 +468,7 @@
 }
 
 .b1-primary-heavy, .h4-primary{
-    @apply text-md-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-md-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -485,7 +485,7 @@
 }
 
 .b1-primary, .h4-primary-light{
-    @apply text-md-medium text-[var(--color-fg-primary-depth)];
+    @apply text-md-medium;
    
 }
 @media (min-width: 480px) { 
@@ -502,7 +502,7 @@
 }
 
 .b1-primary-light{
-    @apply text-md-regular text-[var(--color-fg-primary-depth)];
+    @apply text-md-regular;
    
 }
 @media (min-width: 480px) { 
@@ -519,7 +519,7 @@
 }
 
 .h6-primary-heavy{
-    @apply text-xs-bold text-[var(--color-fg-primary-depth)];
+    @apply text-xs-bold;
    
 }
 @media (min-width: 480px) { 
@@ -536,7 +536,7 @@
 }
 
 .h5-primary-heavy{
-    @apply text-sm-bold text-[var(--color-fg-primary-depth)];
+    @apply text-sm-bold;
    
 }
 @media (min-width: 480px) { 
@@ -553,7 +553,7 @@
 }
 
 .h4-primary-heavy{
-    @apply text-md-bold text-[var(--color-fg-primary-depth)];
+    @apply text-md-bold;
    
 }
 @media (min-width: 480px) { 
@@ -570,7 +570,7 @@
 }
 
 .h3-primary-heavy{
-    @apply text-lg-bold text-[var(--color-fg-primary-depth)];
+    @apply text-lg-bold;
    
 }
 @media (min-width: 480px) { 
@@ -587,7 +587,7 @@
 }
 
 .h3-primary{
-    @apply text-lg-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-lg-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -604,7 +604,7 @@
 }
 
 .h3-primary-light{
-    @apply text-lg-medium text-[var(--color-fg-primary-depth)];
+    @apply text-lg-medium;
    
 }
 @media (min-width: 480px) { 
@@ -621,7 +621,7 @@
 }
 
 .h2-primary-heavy{
-    @apply text-xl-bold text-[var(--color-fg-primary-depth)];
+    @apply text-xl-bold;
    
 }
 @media (min-width: 480px) { 
@@ -638,7 +638,7 @@
 }
 
 .h2-primary{
-    @apply text-xl-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-xl-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -655,7 +655,7 @@
 }
 
 .h2-primary-light{
-    @apply text-xl-medium text-[var(--color-fg-primary-depth)];
+    @apply text-xl-medium;
    
 }
 @media (min-width: 480px) { 
@@ -672,7 +672,7 @@
 }
 
 .h1-primary-heavy{
-    @apply text-2xl-bold text-[var(--color-fg-primary-depth)];
+    @apply text-2xl-bold;
    
 }
 @media (min-width: 480px) { 
@@ -689,7 +689,7 @@
 }
 
 .h1-primary{
-    @apply text-2xl-semibold text-[var(--color-fg-primary-depth)];
+    @apply text-2xl-semibold;
    
 }
 @media (min-width: 480px) { 
@@ -706,7 +706,7 @@
 }
 
 .h1-primary-light{
-    @apply text-2xl-medium text-[var(--color-fg-primary-depth)];
+    @apply text-2xl-medium;
    
 }
 @media (min-width: 480px) { 

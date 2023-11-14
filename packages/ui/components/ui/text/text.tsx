@@ -19,14 +19,22 @@ interface TextProps extends VariantProps<typeof headingVariant> {
   label: string;
   as: string;
   variant?: string;
+  className?: string;
 }
 
-const Text: React.FC<TextProps> = ({ label, as, color, variant }) => {
+const Text: React.FC<TextProps> = ({
+  label,
+  as,
+  color,
+  variant,
+  className,
+}) => {
   return (
     <p
       className={cn(
         headingVariant({ color }),
-        variant ? `${as}-${color}-${variant}` : `${as}-${color}`,
+        variant ? `${as}-primary-${variant}` : `${as}-${color}`,
+        className,
       )}
     >
       {label}
